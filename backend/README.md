@@ -41,6 +41,15 @@ npm run dev:storefront
 - **Admin GraphQL API**: http://localhost:3000/admin-api
 - **Storefront**: http://localhost:3001
 
+### 🇬🇷 Greek Translations
+
+This project includes **full Greek translations** for the Vendure admin dashboard. Greek is automatically configured during `npm install`.
+
+To use Greek in the dashboard:
+1. Open http://localhost:3000/dashboard
+2. Click your profile (bottom left)
+3. Select **Greek (Ελληνικά)**
+
 ### Admin Credentials
 
 Use these credentials to log in to the Vendure Dashboard:
