@@ -1,1 +1,6 @@
-{}
+{
+  "git": {
+    "deploymentEnabled": true
+  },
+  "autoAssignCustomDomains": false
+}
