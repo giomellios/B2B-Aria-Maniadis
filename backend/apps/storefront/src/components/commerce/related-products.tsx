@@ -15,23 +15,31 @@ async function getRelatedProducts(collectionSlug: string, currentProductId: stri
     cacheLife('hours')
     cacheTag(`related-products-${collectionSlug}`)
 
-    const result = await query(GetCollectionProductsQuery, {
-        slug: collectionSlug,
-        input: {
-            collectionSlug: collectionSlug,
-            take: 13, // Fetch extra to account for filtering out current product
-            skip: 0,
-            groupByProduct: true
-        }
-    });
+    try {
+        const result = await query(GetCollectionProductsQuery, {
+            slug: collectionSlug,
+            input: {
+                collectionSlug: collectionSlug,
+                take: 13, // Fetch extra to account for filtering out current product
+                skip: 0,
+                groupByProduct: true
+            }
+        });
 
-    // Filter out the current product and limit to 12
-    return result.data.search.items
-        .filter(item => {
-            const product = readFragment(ProductCardFragment, item);
-            return product.productId !== currentProductId;
-        })
-        .slice(0, 12);
+        // Filter out the current product and limit to 12
+        return result.data.search.items
+            .filter(item => {
+                const product = readFragment(ProductCardFragment, item);
+                return product.productId !== currentProductId;
+            })
+            .slice(0, 12);
+    } catch (error) {
+        if (error instanceof TypeError && error.message === 'fetch failed') {
+            console.warn('Vendure API not reachable — returning empty related products');
+            return [];
+        }
+        throw error;
+    }
 }
 
 export async function RelatedProducts({ collectionSlug, currentProductId }: RelatedProductsProps) {

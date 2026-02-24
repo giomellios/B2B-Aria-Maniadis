@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import {connection} from 'next/server';
 import {query} from '@/lib/vendure/api';
 import {
     GetActiveOrderForCheckoutQuery,
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CheckoutPage(_props: PageProps<'/checkout'>) {
+    await connection();
     const customer = await getActiveCustomer();
     const isGuest = !customer;
 

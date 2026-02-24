@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {ChevronLeft} from 'lucide-react';
+import {connection} from 'next/server';
 import {query} from '@/lib/vendure/api';
 import {GetOrderDetailQuery} from '@/lib/vendure/queries';
 import {Badge} from '@/components/ui/badge';
@@ -24,6 +25,7 @@ export async function generateMetadata({params}: OrderDetailPageProps): Promise<
 }
 
 export default async function OrderDetailPage(props: PageProps<'/account/orders/[code]'>) {
+    await connection();
     const params = await props.params;
     const {code} = params;
     const activeCustomer = await getActiveCustomer();

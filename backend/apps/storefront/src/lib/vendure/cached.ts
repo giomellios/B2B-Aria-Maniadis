@@ -3,6 +3,17 @@ import {query} from './api';
 import {GetActiveChannelQuery, GetAvailableCountriesQuery, GetTopCollectionsQuery} from './queries';
 
 /**
+ * Check if an error is a connection error (API server not reachable)
+ */
+function isConnectionError(error: unknown): boolean {
+    if (error instanceof TypeError && error.message === 'fetch failed') return true;
+    if (error instanceof Error && 'code' in error && (error as NodeJS.ErrnoException).code === 'ECONNREFUSED') return true;
+    if (error instanceof AggregateError) return error.errors.some(e => isConnectionError(e));
+    if (error instanceof Error && 'cause' in error) return isConnectionError(error.cause);
+    return false;
+}
+
+/**
  * Get the active channel with caching enabled.
  * Channel configuration rarely changes, so we cache it for 1 hour.
  */
@@ -10,8 +21,16 @@ export async function getActiveChannelCached() {
     'use cache';
     cacheLife('hours');
 
-    const result = await query(GetActiveChannelQuery);
-    return result.data.activeChannel;
+    try {
+        const result = await query(GetActiveChannelQuery);
+        return result.data.activeChannel;
+    } catch (error) {
+        if (isConnectionError(error)) {
+            console.warn('Vendure API not reachable — returning null for active channel');
+            return null;
+        }
+        throw error;
+    }
 }
 
 /**
@@ -23,8 +42,16 @@ export async function getAvailableCountriesCached() {
     cacheLife('max');
     cacheTag('countries');
 
-    const result = await query(GetAvailableCountriesQuery);
-    return result.data.availableCountries || [];
+    try {
+        const result = await query(GetAvailableCountriesQuery);
+        return result.data.availableCountries || [];
+    } catch (error) {
+        if (isConnectionError(error)) {
+            console.warn('Vendure API not reachable — returning empty countries list');
+            return [];
+        }
+        throw error;
+    }
 }
 
 /**
@@ -36,6 +63,14 @@ export async function getTopCollections() {
     cacheLife('days');
     cacheTag('collections');
 
-    const result = await query(GetTopCollectionsQuery);
-    return result.data.collections.items;
+    try {
+        const result = await query(GetTopCollectionsQuery);
+        return result.data.collections.items;
+    } catch (error) {
+        if (isConnectionError(error)) {
+            console.warn('Vendure API not reachable — returning empty collections');
+            return [];
+        }
+        throw error;
+    }
 }

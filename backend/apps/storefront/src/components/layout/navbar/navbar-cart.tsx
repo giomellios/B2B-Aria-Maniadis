@@ -9,12 +9,19 @@ export async function NavbarCart() {
     cacheTag('cart');
     cacheTag('active-order');
 
-    const orderResult = await query(GetActiveOrderQuery, undefined, {
-        useAuthToken: true,
-        tags: ['cart'],
-    });
+    try {
+        const orderResult = await query(GetActiveOrderQuery, undefined, {
+            useAuthToken: true,
+            tags: ['cart'],
+        });
 
-    const cartItemCount = orderResult.data.activeOrder?.totalQuantity || 0;
+        const cartItemCount = orderResult.data.activeOrder?.totalQuantity || 0;
 
-    return <CartIcon cartItemCount={cartItemCount} />;
+        return <CartIcon cartItemCount={cartItemCount} />;
+    } catch (error) {
+        if (error instanceof TypeError && error.message === 'fetch failed') {
+            return <CartIcon cartItemCount={0} />;
+        }
+        throw error;
+    }
 }

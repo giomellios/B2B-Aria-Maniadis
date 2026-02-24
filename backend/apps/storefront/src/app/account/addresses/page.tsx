@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import {connection} from 'next/server';
 import { query } from '@/lib/vendure/api';
 
 export const metadata: Metadata = {
@@ -8,6 +9,8 @@ import { GetCustomerAddressesQuery, GetAvailableCountriesQuery } from '@/lib/ven
 import { AddressesClient } from './addresses-client';
 
 export default async function AddressesPage(_props: PageProps<'/account/addresses'>) {
+    await connection();
+
     const [addressesResult, countriesResult] = await Promise.all([
         query(GetCustomerAddressesQuery, {}, { useAuthToken: true }),
         query(GetAvailableCountriesQuery, {}),

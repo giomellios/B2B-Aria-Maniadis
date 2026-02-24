@@ -7,19 +7,27 @@ async function getFeaturedCollectionProducts() {
     'use cache'
     cacheLife('days')
 
-    // Fetch featured products from a specific collection
-    // Replace 'featured' with your actual collection slug
-    const result = await query(GetCollectionProductsQuery, {
-        slug: "electronics",
-        input: {
-            collectionSlug: "electronics",
-            take: 12,
-            skip: 0,
-            groupByProduct: true
-        }
-    });
+    try {
+        // Fetch featured products from a specific collection
+        // Replace 'featured' with your actual collection slug
+        const result = await query(GetCollectionProductsQuery, {
+            slug: "electronics",
+            input: {
+                collectionSlug: "electronics",
+                take: 12,
+                skip: 0,
+                groupByProduct: true
+            }
+        });
 
-    return result.data.search.items;
+        return result.data.search.items;
+    } catch (error) {
+        if (error instanceof TypeError && error.message === 'fetch failed') {
+            console.warn('Vendure API not reachable — returning empty featured products');
+            return [];
+        }
+        throw error;
+    }
 }
 
 

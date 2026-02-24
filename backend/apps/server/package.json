@@ -7,7 +7,7 @@
     "dev:worker": "ts-node ./src/index-worker.ts",
     "dev:dashboard": "vite --clearScreen false",
     "dev": "concurrently --kill-others npm:dev:*",
-    "build": "tsc",
+    "build": "tsc && vite build",
     "build:dashboard": "vite build",
     "start:server": "node ./dist/index.js",
     "start:worker": "node ./dist/index-worker.js",

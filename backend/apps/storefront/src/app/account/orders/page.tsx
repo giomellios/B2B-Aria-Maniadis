@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import {connection} from 'next/server';
 import {query} from '@/lib/vendure/api';
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ import {redirect} from "next/navigation";
 const ITEMS_PER_PAGE = 10;
 
 export default async function OrdersPage(props: PageProps<'/account/orders'>) {
+    await connection();
     const searchParams = await props.searchParams;
     const pageParam = searchParams.page;
     const currentPage = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || '1', 10);

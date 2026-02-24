@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import {connection} from 'next/server';
 import { getActiveCustomer } from '@/lib/vendure/actions';
 
 export const metadata: Metadata = {
@@ -9,6 +10,7 @@ import { EditProfileForm } from './edit-profile-form';
 import { EditEmailForm } from './edit-email-form';
 
 export default async function ProfilePage(_props: PageProps<'/account/profile'>) {
+    await connection();
     const customer = await getActiveCustomer();
 
     return (
