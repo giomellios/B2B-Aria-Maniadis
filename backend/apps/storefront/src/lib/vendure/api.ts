@@ -53,13 +53,14 @@ export async function query<TResult, TVariables>(
         'Content-Type': 'application/json',
         ...(fetchOptions?.headers as Record<string, string>),
     };
-
+    console.log('[Vendure] Using API URL:', VENDURE_API_URL);
+    console.log('[Vendure] Outgoing headers host/referer:', headers['host'], headers['referer']);
     // Use the explicitly provided token, or fetch from cookies if useAuthToken is true
     let authToken = token;
     if (useAuthToken && !authToken) {
         authToken = await getAuthToken();
     }
-
+    
     if (authToken) {
         headers['Authorization'] = `Bearer ${authToken}`;
     }
