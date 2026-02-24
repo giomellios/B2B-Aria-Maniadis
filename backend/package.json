@@ -16,10 +16,20 @@
     "start:server": "npm run start -w server",
     "start:storefront": "npm run start -w storefront",
     "setup:greek": "node scripts/setup-greek-translations.js",
-    "postinstall": "npm run setup:greek"
+    "postinstall": "npm run setup:greek",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "concurrently": "^9.0.0"
+    "concurrently": "^9.0.0",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint": "^9.15.0",
+    "eslint-config-next": "16.0.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.8.2"
   }
 }
-

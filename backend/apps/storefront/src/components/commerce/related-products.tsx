@@ -6,53 +6,48 @@ import { readFragment } from "@/graphql";
 import { ProductCardFragment } from "@/lib/vendure/fragments";
 
 interface RelatedProductsProps {
-    collectionSlug: string;
-    currentProductId: string;
+  collectionSlug: string;
+  currentProductId: string;
 }
 
 async function getRelatedProducts(collectionSlug: string, currentProductId: string) {
-    'use cache'
-    cacheLife('hours')
-    cacheTag(`related-products-${collectionSlug}`)
+  "use cache";
+  cacheLife("hours");
+  cacheTag(`related-products-${collectionSlug}`);
 
-    try {
-        const result = await query(GetCollectionProductsQuery, {
-            slug: collectionSlug,
-            input: {
-                collectionSlug: collectionSlug,
-                take: 13, // Fetch extra to account for filtering out current product
-                skip: 0,
-                groupByProduct: true
-            }
-        });
+  try {
+    const result = await query(GetCollectionProductsQuery, {
+      slug: collectionSlug,
+      input: {
+        collectionSlug: collectionSlug,
+        take: 13, // Fetch extra to account for filtering out current product
+        skip: 0,
+        groupByProduct: true,
+      },
+    });
 
-        // Filter out the current product and limit to 12
-        return result.data.search.items
-            .filter(item => {
-                const product = readFragment(ProductCardFragment, item);
-                return product.productId !== currentProductId;
-            })
-            .slice(0, 12);
-    } catch (error) {
-        if (error instanceof TypeError && error.message === 'fetch failed') {
-            console.warn('Vendure API not reachable — returning empty related products');
-            return [];
-        }
-        throw error;
+    // Filter out the current product and limit to 12
+    return result.data.search.items
+      .filter((item) => {
+        const product = readFragment(ProductCardFragment, item);
+        return product.productId !== currentProductId;
+      })
+      .slice(0, 12);
+  } catch (error) {
+    if (error instanceof TypeError && error.message === "fetch failed") {
+      console.warn("Vendure API not reachable — returning empty related products");
+      return [];
     }
+    throw error;
+  }
 }
 
 export async function RelatedProducts({ collectionSlug, currentProductId }: RelatedProductsProps) {
-    const products = await getRelatedProducts(collectionSlug, currentProductId);
+  const products = await getRelatedProducts(collectionSlug, currentProductId);
 
-    if (products.length === 0) {
-        return null;
-    }
+  if (products.length === 0) {
+    return null;
+  }
 
-    return (
-        <ProductCarousel
-            title="Related Products"
-            products={products}
-        />
-    );
+  return <ProductCarousel title="Related Products" products={products} />;
 }

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import * as React from "react";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -11,12 +11,8 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface Country {
   code: string;
@@ -44,7 +40,7 @@ export function CountrySelect({ countries, value, onValueChange, disabled }: Cou
           className="w-full justify-between"
           disabled={disabled}
         >
-          {selectedCountry ? selectedCountry.name : 'Select country...'}
+          {selectedCountry ? selectedCountry.name : "Select country..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -65,8 +61,8 @@ export function CountrySelect({ countries, value, onValueChange, disabled }: Cou
                 >
                   <Check
                     className={cn(
-                      'mr-2 h-4 w-4',
-                      value === country.code ? 'opacity-100' : 'opacity-0'
+                      "mr-2 h-4 w-4",
+                      value === country.code ? "opacity-100" : "opacity-0"
                     )}
                   />
                   {country.name}
