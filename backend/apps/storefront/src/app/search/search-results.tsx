@@ -19,7 +19,6 @@ export async function SearchResults({searchParams}: SearchResultsProps) {
     const productDataPromise = query(SearchProductsQuery, {
         input: buildSearchInput({searchParams: searchParamsResolved})
     });
-    console.log((await productDataPromise).data);
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
