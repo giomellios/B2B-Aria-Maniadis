@@ -33,10 +33,16 @@ export async function registerAction(prevState: { error?: string } | undefined, 
         return {error: registerResult.message};
     }
 
-    // Redirect to verification pending page, preserving redirectTo if present
-    const verifyUrl = redirectTo
-        ? `/verify-pending?redirectTo=${encodeURIComponent(redirectTo)}`
-        : '/verify-pending';
+    // EMAIL VERIFICATION DISABLED 
+    // const verifyUrl = redirectTo
+    //     ? `/verify-pending?redirectTo=${encodeURIComponent(redirectTo)}`
+    //     : '/verify-pending';
+    // redirect(verifyUrl);
 
-    redirect(verifyUrl);
+    // Redirect to sign-in page after successful registration
+    const signInUrl = redirectTo
+        ? `/sign-in?redirectTo=${encodeURIComponent(redirectTo)}`
+        : '/sign-in';
+
+    redirect(signInUrl);
 }
