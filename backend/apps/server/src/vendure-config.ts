@@ -48,7 +48,7 @@ export const config: VendureConfig = {
     type: "postgres",
     // See the README.md "Migrations" section for an explanation of
     // the `synchronize` and `migrations` options.
-    synchronize: true,
+    synchronize: false,
     migrations: [path.join(__dirname, "./migrations/*.+(js|ts)")],
     logging: false,
     database: process.env.DB_NAME,
@@ -63,7 +63,10 @@ export const config: VendureConfig = {
   },
   // When adding or altering custom field definitions, the database will
   // need to be updated. See the "Migrations" section in README.md.
-  customFields: {},
+  customFields: {
+    // Demo field for testing migrations — remove after simulating schema change
+    Product: [{ name: "migrationTestField", type: "string" }],
+  },
   plugins: [
     GraphiqlPlugin.init(),
     AssetServerPlugin.init({
