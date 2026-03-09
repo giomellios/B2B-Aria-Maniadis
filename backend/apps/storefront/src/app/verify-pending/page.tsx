@@ -25,15 +25,10 @@ async function VerifyPendingContent({searchParams}: {searchParams: Promise<Recor
                     <CheckCircle className="h-16 w-16 text-green-600" />
                 </div>
                 <div className="space-y-2 text-center">
-                    <h1 className="text-2xl font-bold">Check Your Email</h1>
+                    <h1 className="text-2xl font-bold">Wait for Verification</h1>
                     <p className="text-muted-foreground">
-                        We&apos;ve sent a verification link to your email address.
-                        Please check your inbox and click the link to verify your account.
-                    </p>
-                </div>
-                <div className="bg-muted p-4 rounded-md">
-                    <p className="text-sm text-muted-foreground">
-                        Don&apos;t see the email? Check your spam folder or request a new verification link.
+                        We&apos;ve sent a notification to the store owner about your registration. 
+                        Please be patient until the administrator reviews the request and approves your account.
                     </p>
                 </div>
             </CardContent>

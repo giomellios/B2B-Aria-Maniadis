@@ -20,9 +20,9 @@ export async function loginAction(prevState: { error?: string } | undefined, for
 
     if (loginResult.__typename !== 'CurrentUser') {
         // EMAIL VERIFICATION DISABLED
-        // if (loginResult.__typename === 'NotVerifiedError') {
-        //     return { error: 'Please verify your email address before signing in.' };
-        // }
+        if (loginResult.__typename === 'NotVerifiedError') {
+            return { error: 'Please wait for admin verification before signing in.' };
+        }
         return { error: 'Invalid email or password.' };
     }
 
