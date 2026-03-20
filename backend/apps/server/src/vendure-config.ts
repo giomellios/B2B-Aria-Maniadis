@@ -63,12 +63,7 @@ export const config: VendureConfig = {
   paymentOptions: {
     paymentMethodHandlers: [dummyPaymentHandler],
   },
-  // When adding or altering custom field definitions, the database will
-  // need to be updated. See the "Migrations" section in README.md.
-  customFields: {
-    // Demo field for testing migrations — remove after simulating schema change
-    Product: [{ name: "migrationTestField", type: "string" }],
-  },
+  customFields: {},
   plugins: [
     GraphiqlPlugin.init(),
     AssetServerPlugin.init({
