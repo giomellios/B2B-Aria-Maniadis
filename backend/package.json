@@ -16,7 +16,7 @@
     "start:server": "npm run start -w server",
     "start:storefront": "npm run start -w storefront",
     "setup:greek": "node scripts/setup-greek-translations.js",
-    "postinstall": "patch-package && npm run setup:greek",
+      "postinstall": "node scripts/postinstall.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
