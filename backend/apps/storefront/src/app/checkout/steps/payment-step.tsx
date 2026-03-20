@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
-import { Card } from '@/components/ui/card';
-import { CreditCard } from 'lucide-react';
-import { useCheckout } from '../checkout-provider';
+import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Card } from "@/components/ui/card";
+import { CreditCard } from "lucide-react";
+import { useCheckout } from "../checkout-provider";
 
 interface PaymentStepProps {
   onComplete: () => void;
@@ -31,7 +31,10 @@ export default function PaymentStep({ onComplete }: PaymentStepProps) {
     <div className="space-y-6">
       <h3 className="font-semibold">Select payment method</h3>
 
-      <RadioGroup value={selectedPaymentMethodCode || ''} onValueChange={setSelectedPaymentMethodCode}>
+      <RadioGroup
+        value={selectedPaymentMethodCode || ""}
+        onValueChange={setSelectedPaymentMethodCode}
+      >
         {paymentMethods.map((method) => (
           <Label key={method.code} htmlFor={method.code} className="cursor-pointer">
             <Card className="p-4">
@@ -41,9 +44,7 @@ export default function PaymentStep({ onComplete }: PaymentStepProps) {
                 <div className="flex-1">
                   <p className="font-medium">{method.name}</p>
                   {method.description && (
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {method.description}
-                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
                   )}
                 </div>
               </div>
@@ -52,11 +53,7 @@ export default function PaymentStep({ onComplete }: PaymentStepProps) {
         ))}
       </RadioGroup>
 
-      <Button
-        onClick={handleContinue}
-        disabled={!selectedPaymentMethodCode}
-        className="w-full"
-      >
+      <Button onClick={handleContinue} disabled={!selectedPaymentMethodCode} className="w-full">
         Continue to review
       </Button>
     </div>

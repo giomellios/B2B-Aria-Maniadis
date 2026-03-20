@@ -46,6 +46,7 @@ npm run dev:storefront
 This project includes **full Greek translations** for the Vendure admin dashboard. Greek is automatically configured during `npm install`.
 
 To use Greek in the dashboard:
+
 1. Open http://localhost:3000/dashboard
 2. Click your profile (bottom left)
 3. Select **Greek (Ελληνικά)**
