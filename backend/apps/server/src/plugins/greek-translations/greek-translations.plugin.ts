@@ -1,4 +1,4 @@
-import { VendurePlugin } from '@vendure/core';
+import { VendurePlugin } from "@vendure/core";
 
 /**
  * @description
@@ -11,6 +11,6 @@ import { VendurePlugin } from '@vendure/core';
  * `i18n.availableLanguages` in your vite.config.mts vendureDashboardPlugin options.
  */
 @VendurePlugin({
-    dashboard: './dashboard',
+  dashboard: "./dashboard",
 })
 export class GreekTranslationsPlugin {}

@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Field, FieldLabel, FieldError, FieldGroup } from '@/components/ui/field';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { useForm } from 'react-hook-form';
-import { Loader2, AlertCircle } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { setCustomerForOrder, SetCustomerForOrderResult } from '../actions';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Field, FieldLabel, FieldError, FieldGroup } from "@/components/ui/field";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useForm } from "react-hook-form";
+import { Loader2, AlertCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { setCustomerForOrder, SetCustomerForOrderResult } from "../actions";
 
 interface ContactStepProps {
   onComplete: () => void;
@@ -25,22 +25,22 @@ function getErrorMessage(error: SetCustomerForOrderResult) {
   if (error.success) return null;
 
   switch (error.errorCode) {
-    case 'EMAIL_CONFLICT':
+    case "EMAIL_CONFLICT":
       return (
         <>
-          An account already exists with this email.{' '}
+          An account already exists with this email.{" "}
           <Link href="/sign-in?redirectTo=/checkout" className="underline hover:no-underline">
             Sign in
-          </Link>{' '}
+          </Link>{" "}
           to continue.
         </>
       );
-    case 'GUEST_CHECKOUT_DISABLED':
-      return 'Guest checkout is not enabled. Please sign in or create an account.';
-    case 'NO_ACTIVE_ORDER':
+    case "GUEST_CHECKOUT_DISABLED":
+      return "Guest checkout is not enabled. Please sign in or create an account.";
+    case "NO_ACTIVE_ORDER":
       return (
         <>
-          Your cart is empty.{' '}
+          Your cart is empty.{" "}
           <Link href="/" className="underline hover:no-underline">
             Continue shopping
           </Link>
@@ -76,8 +76,8 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
         setError(result);
       }
     } catch (err) {
-      console.error('Error setting customer:', err);
-      setError({ success: false, errorCode: 'UNKNOWN', message: 'An unexpected error occurred' });
+      console.error("Error setting customer:", err);
+      setError({ success: false, errorCode: "UNKNOWN", message: "An unexpected error occurred" });
     } finally {
       setLoading(false);
     }
@@ -86,8 +86,11 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
   return (
     <div className="space-y-6">
       <p className="text-sm text-muted-foreground">
-        Already have an account?{' '}
-        <Link href="/sign-in?redirectTo=/checkout" className="text-primary underline hover:no-underline">
+        Already have an account?{" "}
+        <Link
+          href="/sign-in?redirectTo=/checkout"
+          className="text-primary underline hover:no-underline"
+        >
           Sign in
         </Link>
       </p>
@@ -107,11 +110,11 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
               <Input
                 id="emailAddress"
                 type="email"
-                {...register('emailAddress', {
-                  required: 'Email is required',
+                {...register("emailAddress", {
+                  required: "Email is required",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Invalid email address',
+                    message: "Invalid email address",
                   },
                 })}
               />
@@ -122,7 +125,7 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
               <FieldLabel htmlFor="firstName">First Name *</FieldLabel>
               <Input
                 id="firstName"
-                {...register('firstName', { required: 'First name is required' })}
+                {...register("firstName", { required: "First name is required" })}
               />
               <FieldError>{errors.firstName?.message}</FieldError>
             </Field>
@@ -131,7 +134,7 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
               <FieldLabel htmlFor="lastName">Last Name *</FieldLabel>
               <Input
                 id="lastName"
-                {...register('lastName', { required: 'Last name is required' })}
+                {...register("lastName", { required: "Last name is required" })}
               />
               <FieldError>{errors.lastName?.message}</FieldError>
             </Field>

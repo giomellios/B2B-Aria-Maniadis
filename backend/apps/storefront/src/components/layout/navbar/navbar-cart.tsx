@@ -1,27 +1,27 @@
-import {cacheLife, cacheTag} from 'next/cache';
-import {CartIcon} from './cart-icon';
-import {query} from '@/lib/vendure/api';
-import {GetActiveOrderQuery} from '@/lib/vendure/queries';
+import { cacheLife, cacheTag } from "next/cache";
+import { CartIcon } from "./cart-icon";
+import { query } from "@/lib/vendure/api";
+import { GetActiveOrderQuery } from "@/lib/vendure/queries";
 
 export async function NavbarCart() {
-    'use cache: private';
-    cacheLife('minutes');
-    cacheTag('cart');
-    cacheTag('active-order');
+  "use cache: private";
+  cacheLife("minutes");
+  cacheTag("cart");
+  cacheTag("active-order");
 
-    try {
-        const orderResult = await query(GetActiveOrderQuery, undefined, {
-            useAuthToken: true,
-            tags: ['cart'],
-        });
+  try {
+    const orderResult = await query(GetActiveOrderQuery, undefined, {
+      useAuthToken: true,
+      tags: ["cart"],
+    });
 
-        const cartItemCount = orderResult.data.activeOrder?.totalQuantity || 0;
+    const cartItemCount = orderResult.data.activeOrder?.totalQuantity || 0;
 
-        return <CartIcon cartItemCount={cartItemCount} />;
-    } catch (error) {
-        if (error instanceof TypeError && error.message === 'fetch failed') {
-            return <CartIcon cartItemCount={0} />;
-        }
-        throw error;
+    return <CartIcon cartItemCount={cartItemCount} />;
+  } catch (error) {
+    if (error instanceof TypeError && error.message === "fetch failed") {
+      return <CartIcon cartItemCount={0} />;
     }
+    throw error;
+  }
 }
