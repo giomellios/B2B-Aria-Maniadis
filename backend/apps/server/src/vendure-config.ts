@@ -11,6 +11,8 @@ import { AssetServerPlugin } from "@vendure/asset-server-plugin";
 import { DashboardPlugin } from "@vendure/dashboard/plugin";
 import { GraphiqlPlugin } from "@vendure/graphiql-plugin";
 import { GreekTranslationsPlugin } from "./plugins/greek-translations/greek-translations.plugin";
+import { TranslationSyncPlugin } from "./plugins/translation-sync/translation-sync.plugin";
+import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
 import "dotenv/config";
 import path from "path";
 
@@ -104,5 +106,7 @@ export const config: VendureConfig = {
         : path.join(__dirname, "dashboard"),
     }),
     GreekTranslationsPlugin,
+    TranslationSyncPlugin,
+    CsvImportPlugin,
   ],
 };

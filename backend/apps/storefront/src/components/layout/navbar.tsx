@@ -17,8 +17,8 @@ export function Navbar() {
           <div className="flex items-center gap-8">
             <Link href="/" className="text-xl font-bold">
               <Image
-                src="/vendure.svg"
-                alt="Vendure"
+                src="/logo.png"
+                alt="Aria Maniadis"
                 width={40}
                 height={27}
                 className="h-6 w-auto dark:invert"
