@@ -68,10 +68,6 @@ export async function getAvailableCountriesCached() {
  * Collections rarely change, so we cache them for 1 day.
  */
 export async function getTopCollections() {
-  "use cache";
-  cacheLife("days");
-  cacheTag("collections");
-
   try {
     const result = await query(GetTopCollectionsQuery);
     return result.data.collections.items;
