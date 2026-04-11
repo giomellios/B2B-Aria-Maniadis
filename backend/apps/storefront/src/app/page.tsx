@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { HeroSection } from "@/components/layout/hero-section";
+import { TrustBar } from "@/components/layout/trust-bar";
+import { MarqueeTicker } from "@/components/layout/marquee-ticker";
+import { CategoryGrid } from "@/components/layout/category-grid";
+import { ValueProps } from "@/components/layout/value-props";
 import { FeaturedProducts } from "@/components/commerce/featured-products";
+import { HowItWorks } from "@/components/layout/how-it-works";
+import { CtaBanner } from "@/components/layout/cta-banner";
 import { SITE_NAME, SITE_URL, buildCanonicalUrl } from "@/lib/metadata";
 
 export const metadata: Metadata = {
@@ -26,9 +32,17 @@ export default async function Home(_props: PageProps<"/">) {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <MarqueeTicker />
+      <TrustBar />
+      <Suspense>
+        <CategoryGrid />
+      </Suspense>
+      <ValueProps />
       <Suspense>
         <FeaturedProducts />
       </Suspense>
+      <HowItWorks />
+      <CtaBanner />
     </div>
   );
 }
