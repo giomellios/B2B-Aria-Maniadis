@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 
+// TODO: Update with real Maniadis brand keywords, product categories, or seasonal campaign words
 const ITEMS = [
   "Bags",
   "Hats",

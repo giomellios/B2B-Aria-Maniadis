@@ -1,6 +1,14 @@
 import { cacheLife } from "next/cache";
 import { getTopCollections } from "@/lib/vendure/cached";
 import Link from "next/link";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
+
+// TODO: Replace # with real Maniadis social profile URLs
+const SOCIAL_LINKS = [
+  { icon: Instagram, label: "Instagram", href: "#" },
+  { icon: Facebook, label: "Facebook", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", href: "#" },
+];
 
 async function Copyright() {
   "use cache";
@@ -95,6 +103,7 @@ export async function Footer() {
           {/* Contact */}
           <div className="space-y-3">
             <p className="text-sm font-medium tracking-widest uppercase">Contact</p>
+            {/* TODO: Replace with real contact email, phone, and address from Maniadis */}
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>contact@maniadis.gr</li>
               <li>Greece</li>
@@ -102,8 +111,22 @@ export async function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border">
+        <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <Copyright />
+          <div className="flex items-center gap-4">
+            {SOCIAL_LINKS.map(({ icon: Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Icon className="w-4 h-4" strokeWidth={1.5} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

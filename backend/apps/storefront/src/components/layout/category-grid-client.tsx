@@ -13,6 +13,8 @@ interface CategoryGridClientProps {
   collections: Collection[];
 }
 
+// TODO: Replace gradient placeholders with real collection images once Vendure assets are uploaded.
+// In category-grid.tsx, pass featuredAsset.preview from each collection and render with next/image instead.
 const CARD_GRADIENTS = [
   "from-stone-200 to-stone-300 dark:from-stone-700 dark:to-stone-800",
   "from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-800",

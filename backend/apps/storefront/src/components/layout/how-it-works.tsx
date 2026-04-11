@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { RevealHeading } from "@/components/ui/reveal-heading";
 
+// TODO: Confirm the actual ordering/approval process with Maniadis and update step descriptions accordingly
 const STEPS = [
   {
     number: "01",

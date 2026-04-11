@@ -10,6 +10,7 @@ import { HowItWorks } from "@/components/layout/how-it-works";
 import { CtaBanner } from "@/components/layout/cta-banner";
 import { SITE_NAME, SITE_URL, buildCanonicalUrl } from "@/lib/metadata";
 
+// TODO: Replace title, description, and OpenGraph copy with final approved text from Maniadis
 export const metadata: Metadata = {
   title: {
     absolute: `${SITE_NAME} — Premium Bags & Hats Wholesale`,

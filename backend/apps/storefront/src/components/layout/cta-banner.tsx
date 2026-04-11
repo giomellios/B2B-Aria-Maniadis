@@ -21,6 +21,7 @@ export function CtaBanner() {
         <RevealHeading className="text-3xl md:text-5xl font-light tracking-tight max-w-2xl mx-auto leading-tight justify-center">
           Ready to become a wholesale partner?
         </RevealHeading>
+        {/* TODO: Replace with approved CTA sub-copy from Maniadis */}
         <p className="text-background/60 text-base md:text-lg max-w-md mx-auto leading-relaxed">
           Join hundreds of retailers who trust Maniadis for their seasonal bag and hat collections.
         </p>
@@ -36,7 +37,7 @@ export function CtaBanner() {
             asChild
             size="lg"
             variant="outline"
-            className="min-w-[180px] border-background/30 text-background hover:bg-background/10 hover:text-background"
+            className="min-w-[180px] bg-transparent border-background/30 text-background hover:bg-background/10 hover:text-background dark:bg-transparent"
           >
             <Link href="/search">Browse Catalog</Link>
           </Button>

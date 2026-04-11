@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+// TODO: Replace with approved headline copy from Maniadis
 const WORDS = ["Bags", "&", "Hats", "for", "Every", "Season"];
 
 const container = {
@@ -83,6 +84,7 @@ export function HeroSection() {
           </motion.h1>
 
           {/* Sub-copy */}
+          {/* TODO: Replace with approved sub-headline copy from Maniadis */}
           <motion.p
             variants={fadeUp}
             custom={1.1}
