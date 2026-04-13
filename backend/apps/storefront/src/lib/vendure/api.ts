@@ -1,6 +1,5 @@
 import type { TadaDocumentNode } from "gql.tada";
 import { print } from "graphql";
-import { getAuthToken } from "@/lib/auth";
 
 const VENDURE_API_URL =
   process.env.VENDURE_SHOP_API_URL || process.env.NEXT_PUBLIC_VENDURE_SHOP_API_URL;
@@ -55,6 +54,7 @@ export async function query<TResult, TVariables>(
   // Use the explicitly provided token, or fetch from cookies if useAuthToken is true
   let authToken = token;
   if (useAuthToken && !authToken) {
+    const { getAuthToken } = await import("@/lib/auth");
     authToken = await getAuthToken();
   }
 
