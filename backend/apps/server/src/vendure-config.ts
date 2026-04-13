@@ -1,33 +1,42 @@
 import {
-    dummyPaymentHandler,
-    DefaultJobQueuePlugin,
-    DefaultSchedulerPlugin,
-    DefaultSearchPlugin,
-    VendureConfig,
-    LanguageCode,
-} from '@vendure/core';
-import { defaultEmailHandlers, EmailPlugin, FileBasedTemplateLoader } from '@vendure/email-plugin';
-import { AssetServerPlugin, configureS3AssetStorage } from '@vendure/asset-server-plugin';
-import { DashboardPlugin } from '@vendure/dashboard/plugin';
-import { GraphiqlPlugin } from '@vendure/graphiql-plugin';
-import { GreekTranslationsPlugin } from './plugins/greek-translations/greek-translations.plugin';
-import { TranslationSyncPlugin } from './plugins/translation-sync/translation-sync.plugin';
-import { CsvImportPlugin } from './plugins/csv-import/csv-import.plugin';
-import 'dotenv/config';
-import path from 'path';
+  dummyPaymentHandler,
+  DefaultJobQueuePlugin,
+  DefaultSchedulerPlugin,
+  DefaultSearchPlugin,
+  VendureConfig,
+  LanguageCode,
+} from "@vendure/core";
+import { defaultEmailHandlers, EmailPlugin, FileBasedTemplateLoader } from "@vendure/email-plugin";
+import { AssetServerPlugin, configureS3AssetStorage } from "@vendure/asset-server-plugin";
+import { DashboardPlugin } from "@vendure/dashboard/plugin";
+import { GraphiqlPlugin } from "@vendure/graphiql-plugin";
+import { GreekTranslationsPlugin } from "./plugins/greek-translations/greek-translations.plugin";
+import { CustomerApprovalPlugin } from "./plugins/customer-approval/customer-approval.plugin";
+import { TranslationSyncPlugin } from "./plugins/translation-sync/translation-sync.plugin";
+import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
+import "dotenv/config";
+import path from "path";
 
 const IS_DEV = process.env.APP_ENV === "dev";
 const IS_WORKER = process.env.VENDURE_ROLE === "worker";
 const serverPort = +process.env.PORT || 3000;
 const useS3AssetStorage = !IS_DEV;
 const assetUrlPrefix = process.env.ASSET_URL_PREFIX?.trim()
-  ? (process.env.ASSET_URL_PREFIX!.endsWith('/')
+  ? process.env.ASSET_URL_PREFIX!.endsWith("/")
     ? process.env.ASSET_URL_PREFIX
-    : `${process.env.ASSET_URL_PREFIX}/`)
+    : `${process.env.ASSET_URL_PREFIX}/`
   : undefined;
 
-if (useS3AssetStorage && (!process.env.S3_BUCKET || !process.env.S3_ACCESS_KEY_ID || !process.env.S3_SECRET_ACCESS_KEY || !process.env.S3_ENDPOINT)) {
-    throw new Error('Cloudflare R2 asset storage is required. Set S3_BUCKET, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, and S3_ENDPOINT.');
+if (
+  useS3AssetStorage &&
+  (!process.env.S3_BUCKET ||
+    !process.env.S3_ACCESS_KEY_ID ||
+    !process.env.S3_SECRET_ACCESS_KEY ||
+    !process.env.S3_ENDPOINT)
+) {
+  throw new Error(
+    "Cloudflare R2 asset storage is required. Set S3_BUCKET, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, and S3_ENDPOINT."
+  );
 }
 
 const s3AssetStorage = useS3AssetStorage
@@ -39,11 +48,11 @@ const s3AssetStorage = useS3AssetStorage
       },
       nativeS3Configuration: {
         endpoint: process.env.S3_ENDPOINT,
-        region: process.env.S3_REGION ?? 'auto',
+        region: process.env.S3_REGION ?? "auto",
         forcePathStyle: process.env.S3_FORCE_PATH_STYLE
-          ? process.env.S3_FORCE_PATH_STYLE === 'true'
+          ? process.env.S3_FORCE_PATH_STYLE === "true"
           : true,
-        signatureVersion: 'v4',
+        signatureVersion: "v4",
       },
     })
   : undefined;
@@ -66,7 +75,7 @@ export const config: VendureConfig = {
   },
   authOptions: {
     tokenMethod: ["bearer", "cookie"],
-    requireVerification: false,
+    requireVerification: true,
     superadminCredentials: {
       identifier: process.env.SUPERADMIN_USERNAME,
       password: process.env.SUPERADMIN_PASSWORD,
@@ -133,5 +142,6 @@ export const config: VendureConfig = {
     GreekTranslationsPlugin,
     TranslationSyncPlugin,
     CsvImportPlugin,
+    CustomerApprovalPlugin,
   ],
 };

@@ -35,16 +35,5 @@ export async function registerAction(
     return { error: registerResult.message };
   }
 
-  // EMAIL VERIFICATION DISABLED
-  // const verifyUrl = redirectTo
-  //     ? `/verify-pending?redirectTo=${encodeURIComponent(redirectTo)}`
-  //     : '/verify-pending';
-  // redirect(verifyUrl);
-
-  // Redirect to sign-in page after successful registration
-  const signInUrl = redirectTo
-    ? `/sign-in?redirectTo=${encodeURIComponent(redirectTo)}`
-    : "/sign-in";
-
-  redirect(signInUrl);
+    redirect('/verify-pending');
 }
