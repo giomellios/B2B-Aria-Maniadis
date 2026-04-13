@@ -1,25 +1,30 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import ContactStep from './steps/contact-step';
-import ShippingAddressStep from './steps/shipping-address-step';
-import DeliveryStep from './steps/delivery-step';
-import PaymentStep from './steps/payment-step';
-import ReviewStep from './steps/review-step';
-import OrderSummary from './order-summary';
-import { useCheckout } from './checkout-provider';
+import { useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import ContactStep from "./steps/contact-step";
+import ShippingAddressStep from "./steps/shipping-address-step";
+import DeliveryStep from "./steps/delivery-step";
+import PaymentStep from "./steps/payment-step";
+import ReviewStep from "./steps/review-step";
+import OrderSummary from "./order-summary";
+import { useCheckout } from "./checkout-provider";
 
-type CheckoutStep = 'contact' | 'shipping' | 'delivery' | 'payment' | 'review';
+type CheckoutStep = "contact" | "shipping" | "delivery" | "payment" | "review";
 
 export default function CheckoutFlow() {
   const { order, isGuest } = useCheckout();
 
   const getStepOrder = (): CheckoutStep[] => {
     if (isGuest) {
-      return ['contact', 'shipping', 'delivery', 'payment', 'review'];
+      return ["contact", "shipping", "delivery", "payment", "review"];
     }
-    return ['shipping', 'delivery', 'payment', 'review'];
+    return ["shipping", "delivery", "payment", "review"];
   };
 
   const stepOrder = getStepOrder();
@@ -30,22 +35,22 @@ export default function CheckoutFlow() {
 
     if (isGuest) {
       if (order.customer?.emailAddress) {
-        completed.add('contact');
-        current = 'shipping';
+        completed.add("contact");
+        current = "shipping";
       }
     }
 
     if (order.shippingAddress?.streetLine1 && order.shippingAddress?.country) {
-      if (!isGuest || completed.has('contact')) {
-        completed.add('shipping');
-        current = 'delivery';
+      if (!isGuest || completed.has("contact")) {
+        completed.add("shipping");
+        current = "delivery";
       }
     }
 
     if (order.shippingLines && order.shippingLines.length > 0) {
-      if (completed.has('shipping')) {
-        completed.add('delivery');
-        current = 'payment';
+      if (completed.has("shipping")) {
+        completed.add("delivery");
+        current = "payment";
       }
     }
 
@@ -57,7 +62,7 @@ export default function CheckoutFlow() {
   const [completedSteps, setCompletedSteps] = useState<Set<CheckoutStep>>(initialState.completed);
 
   const handleStepComplete = (step: CheckoutStep) => {
-    setCompletedSteps(prev => new Set([...prev, step]));
+    setCompletedSteps((prev) => new Set([...prev, step]));
 
     const currentIndex = stepOrder.indexOf(step);
     if (currentIndex < stepOrder.length - 1) {
@@ -96,22 +101,22 @@ export default function CheckoutFlow() {
             <AccordionItem value="contact" className="border rounded-lg px-6">
               <AccordionTrigger className="hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
-                    completedSteps.has('contact')
-                      ? 'bg-green-500 text-white'
-                      : currentStep === 'contact'
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted text-muted-foreground'
-                  }`}>
-                    {completedSteps.has('contact') ? '✓' : getStepNumber('contact')}
+                  <div
+                    className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                      completedSteps.has("contact")
+                        ? "bg-green-500 text-white"
+                        : currentStep === "contact"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {completedSteps.has("contact") ? "✓" : getStepNumber("contact")}
                   </div>
                   <span className="text-lg font-semibold">Contact Information</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4">
-                <ContactStep
-                  onComplete={() => handleStepComplete('contact')}
-                />
+                <ContactStep onComplete={() => handleStepComplete("contact")} />
               </AccordionContent>
             </AccordionItem>
           )}
@@ -119,114 +124,102 @@ export default function CheckoutFlow() {
           <AccordionItem
             value="shipping"
             className="border rounded-lg px-6"
-            disabled={!canAccessStep('shipping')}
+            disabled={!canAccessStep("shipping")}
           >
-            <AccordionTrigger
-              className="hover:no-underline"
-              disabled={!canAccessStep('shipping')}
-            >
+            <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("shipping")}>
               <div className="flex items-center gap-3">
-                <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
-                  completedSteps.has('shipping')
-                    ? 'bg-green-500 text-white'
-                    : currentStep === 'shipping'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground'
-                }`}>
-                  {completedSteps.has('shipping') ? '✓' : getStepNumber('shipping')}
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                    completedSteps.has("shipping")
+                      ? "bg-green-500 text-white"
+                      : currentStep === "shipping"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {completedSteps.has("shipping") ? "✓" : getStepNumber("shipping")}
                 </div>
                 <span className="text-lg font-semibold">Shipping Address</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
-              <ShippingAddressStep
-                onComplete={() => handleStepComplete('shipping')}
-              />
+              <ShippingAddressStep onComplete={() => handleStepComplete("shipping")} />
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem
             value="delivery"
             className="border rounded-lg px-6"
-            disabled={!canAccessStep('delivery')}
+            disabled={!canAccessStep("delivery")}
           >
-            <AccordionTrigger
-              className="hover:no-underline"
-              disabled={!canAccessStep('delivery')}
-            >
+            <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("delivery")}>
               <div className="flex items-center gap-3">
-                <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
-                  completedSteps.has('delivery')
-                    ? 'bg-green-500 text-white'
-                    : currentStep === 'delivery'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground'
-                }`}>
-                  {completedSteps.has('delivery') ? '✓' : getStepNumber('delivery')}
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                    completedSteps.has("delivery")
+                      ? "bg-green-500 text-white"
+                      : currentStep === "delivery"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {completedSteps.has("delivery") ? "✓" : getStepNumber("delivery")}
                 </div>
                 <span className="text-lg font-semibold">Delivery Method</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
-              <DeliveryStep
-                onComplete={() => handleStepComplete('delivery')}
-              />
+              <DeliveryStep onComplete={() => handleStepComplete("delivery")} />
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem
             value="payment"
             className="border rounded-lg px-6"
-            disabled={!canAccessStep('payment')}
+            disabled={!canAccessStep("payment")}
           >
-            <AccordionTrigger
-              className="hover:no-underline"
-              disabled={!canAccessStep('payment')}
-            >
+            <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("payment")}>
               <div className="flex items-center gap-3">
-                <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
-                  completedSteps.has('payment')
-                    ? 'bg-green-500 text-white'
-                    : currentStep === 'payment'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground'
-                }`}>
-                  {completedSteps.has('payment') ? '✓' : getStepNumber('payment')}
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                    completedSteps.has("payment")
+                      ? "bg-green-500 text-white"
+                      : currentStep === "payment"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {completedSteps.has("payment") ? "✓" : getStepNumber("payment")}
                 </div>
                 <span className="text-lg font-semibold">Payment Method</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
-              <PaymentStep
-                onComplete={() => handleStepComplete('payment')}
-              />
+              <PaymentStep onComplete={() => handleStepComplete("payment")} />
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem
             value="review"
             className="border rounded-lg px-6"
-            disabled={!canAccessStep('review')}
+            disabled={!canAccessStep("review")}
           >
-            <AccordionTrigger
-              className="hover:no-underline"
-              disabled={!canAccessStep('review')}
-            >
+            <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("review")}>
               <div className="flex items-center gap-3">
-                <div className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
-                  currentStep === 'review'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground'
-                }`}>
-                  {getStepNumber('review')}
+                <div
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                    currentStep === "review"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {getStepNumber("review")}
                 </div>
                 <span className="text-lg font-semibold">Review & Place Order</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
-              <ReviewStep
-                onEditStep={setCurrentStep}
-              />
+              <ReviewStep onEditStep={setCurrentStep} />
             </AccordionContent>
           </AccordionItem>
         </Accordion>

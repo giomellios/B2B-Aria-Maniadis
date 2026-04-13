@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Loader2, MapPin, Truck, CreditCard, Edit, Mail } from 'lucide-react';
-import { useCheckout } from '../checkout-provider';
-import { placeOrder as placeOrderAction } from '../actions';
-import { Price } from '@/components/commerce/price';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Loader2, MapPin, Truck, CreditCard, Edit, Mail } from "lucide-react";
+import { useCheckout } from "../checkout-provider";
+import { placeOrder as placeOrderAction } from "../actions";
+import { Price } from "@/components/commerce/price";
 
 interface ReviewStepProps {
-  onEditStep: (step: 'contact' | 'shipping' | 'delivery' | 'payment') => void;
+  onEditStep: (step: "contact" | "shipping" | "delivery" | "payment") => void;
 }
 
 export default function ReviewStep({ onEditStep }: ReviewStepProps) {
@@ -26,10 +26,10 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
     try {
       await placeOrderAction(selectedPaymentMethodCode);
     } catch (error) {
-      if (error instanceof Error && error.message.includes('NEXT_REDIRECT')) {
+      if (error instanceof Error && error.message.includes("NEXT_REDIRECT")) {
         throw error;
       }
-      console.error('Error placing order:', error);
+      console.error("Error placing order:", error);
       setLoading(false);
     }
   };
@@ -38,7 +38,9 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
     <div className="space-y-6">
       <h3 className="font-semibold text-lg">Review your order</h3>
 
-      <div className={`grid grid-cols-1 gap-6 ${isGuest ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
+      <div
+        className={`grid grid-cols-1 gap-6 ${isGuest ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"}`}
+      >
         {isGuest && order.customer && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
@@ -52,11 +54,7 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
                 </p>
                 <p className="text-muted-foreground">{order.customer.emailAddress}</p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => onEditStep('contact')}
-              >
+              <Button variant="outline" size="sm" onClick={() => onEditStep("contact")}>
                 <Edit className="h-4 w-4 mr-1" />
                 Edit
               </Button>
@@ -79,16 +77,13 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
                   {order.shippingAddress.streetLine2 && `, ${order.shippingAddress.streetLine2}`}
                 </p>
                 <p className="text-muted-foreground">
-                  {order.shippingAddress.city}, {order.shippingAddress.province} {order.shippingAddress.postalCode}
+                  {order.shippingAddress.city}, {order.shippingAddress.province}{" "}
+                  {order.shippingAddress.postalCode}
                 </p>
                 <p className="text-muted-foreground">{order.shippingAddress.country}</p>
                 <p className="text-muted-foreground">{order.shippingAddress.phoneNumber}</p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => onEditStep('shipping')}
-              >
+              <Button variant="outline" size="sm" onClick={() => onEditStep("shipping")}>
                 <Edit className="h-4 w-4 mr-1" />
                 Edit
               </Button>
@@ -109,16 +104,17 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
               <div>
                 <p className="font-medium">{order.shippingLines[0].shippingMethod.name}</p>
                 <p className="text-muted-foreground">
-                  {order.shippingLines[0].priceWithTax === 0
-                    ? 'FREE'
-                    : <Price value={order.shippingLines[0].priceWithTax} currencyCode={order.currencyCode} />}
+                  {order.shippingLines[0].priceWithTax === 0 ? (
+                    "FREE"
+                  ) : (
+                    <Price
+                      value={order.shippingLines[0].priceWithTax}
+                      currencyCode={order.currencyCode}
+                    />
+                  )}
                 </p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => onEditStep('delivery')}
-              >
+              <Button variant="outline" size="sm" onClick={() => onEditStep("delivery")}>
                 <Edit className="h-4 w-4 mr-1" />
                 Edit
               </Button>
@@ -139,16 +135,10 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
               <div>
                 <p className="font-medium">{selectedPaymentMethod.name}</p>
                 {selectedPaymentMethod.description && (
-                  <p className="text-muted-foreground mt-1">
-                    {selectedPaymentMethod.description}
-                  </p>
+                  <p className="text-muted-foreground mt-1">{selectedPaymentMethod.description}</p>
                 )}
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => onEditStep('payment')}
-              >
+              <Button variant="outline" size="sm" onClick={() => onEditStep("payment")}>
                 <Edit className="h-4 w-4 mr-1" />
                 Edit
               </Button>
@@ -161,7 +151,12 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
 
       <Button
         onClick={handlePlaceOrder}
-        disabled={loading || !order.shippingAddress || !order.shippingLines?.length || !selectedPaymentMethodCode}
+        disabled={
+          loading ||
+          !order.shippingAddress ||
+          !order.shippingLines?.length ||
+          !selectedPaymentMethodCode
+        }
         size="lg"
         className="w-full"
       >

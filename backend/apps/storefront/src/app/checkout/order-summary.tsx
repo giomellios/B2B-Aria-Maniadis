@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { OrderLine } from './types';
-import { useCheckout } from './checkout-provider';
-import { Price } from '@/components/commerce/price';
+import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { OrderLine } from "./types";
+import { useCheckout } from "./checkout-provider";
+import { Price } from "@/components/commerce/price";
 
 export default function OrderSummary() {
   const { order } = useCheckout();
@@ -34,13 +34,9 @@ export default function OrderSummary() {
                   {line.productVariant.product.name}
                 </p>
                 {line.productVariant.name !== line.productVariant.product.name && (
-                  <p className="text-xs text-muted-foreground">
-                    {line.productVariant.name}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{line.productVariant.name}</p>
                 )}
-                <p className="text-xs text-muted-foreground">
-                  Qty: {line.quantity}
-                </p>
+                <p className="text-xs text-muted-foreground">Qty: {line.quantity}</p>
               </div>
               <div className="text-sm font-medium">
                 <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
@@ -75,9 +71,11 @@ export default function OrderSummary() {
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Shipping</span>
             <span>
-              {order.shippingWithTax > 0
-                ? <Price value={order.shippingWithTax} currencyCode={order.currencyCode} />
-                : 'To be calculated'}
+              {order.shippingWithTax > 0 ? (
+                <Price value={order.shippingWithTax} currencyCode={order.currencyCode} />
+              ) : (
+                "To be calculated"
+              )}
             </span>
           </div>
         </div>

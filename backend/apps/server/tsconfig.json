@@ -28,7 +28,9 @@
   "ts-node": {
     "files": true
   },
-  "references": [{
-    "path": "./tsconfig.dashboard.json"
-  }]
+  "references": [
+    {
+      "path": "./tsconfig.dashboard.json"
+    }
+  ]
 }

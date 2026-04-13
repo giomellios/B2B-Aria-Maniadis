@@ -1,22 +1,26 @@
-import type {Metadata} from 'next';
-import {Suspense} from 'react';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { CheckCircle } from 'lucide-react';
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: 'Verification Pending',
-    description: 'Check your email to verify your account.',
+  title: "Verification Pending",
+  description: "Check your email to verify your account.",
 };
 
-async function VerifyPendingContent({searchParams}: {searchParams: Promise<Record<string, string | string[] | undefined>>}) {
-    const resolvedParams = await searchParams;
-    const redirectTo = resolvedParams?.redirectTo as string | undefined;
+async function VerifyPendingContent({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const resolvedParams = await searchParams;
+  const redirectTo = resolvedParams?.redirectTo as string | undefined;
 
-    const signInHref = redirectTo
-        ? `/sign-in?redirectTo=${encodeURIComponent(redirectTo)}`
-        : '/sign-in';
+  const signInHref = redirectTo
+    ? `/sign-in?redirectTo=${encodeURIComponent(redirectTo)}`
+    : "/sign-in";
 
     return (
         <Card>
@@ -43,14 +47,14 @@ async function VerifyPendingContent({searchParams}: {searchParams: Promise<Recor
     );
 }
 
-export default async function VerifyPendingPage({searchParams}: PageProps<'/verify-pending'>) {
-    return (
-        <div className="flex min-h-screen items-center justify-center px-4">
-            <div className="w-full max-w-md space-y-6">
-                <Suspense fallback={<div>Loading...</div>}>
-                    <VerifyPendingContent searchParams={searchParams} />
-                </Suspense>
-            </div>
-        </div>
-    );
+export default async function VerifyPendingPage({ searchParams }: PageProps<"/verify-pending">) {
+  return (
+    <div className="flex min-h-screen items-center justify-center px-4">
+      <div className="w-full max-w-md space-y-6">
+        <Suspense fallback={<div>Loading...</div>}>
+          <VerifyPendingContent searchParams={searchParams} />
+        </Suspense>
+      </div>
+    </div>
+  );
 }

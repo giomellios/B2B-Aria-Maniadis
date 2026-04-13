@@ -1,0 +1,28 @@
+diff --git a/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx b/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
+index 5d64e6a..040165f 100644
+--- a/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
++++ b/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
+@@ -1,6 +1,6 @@
+ import { useAuth } from '@/vdb/hooks/use-auth.js';
+ import { Link, useNavigate, useRouter } from '@tanstack/react-router';
+-import { ChevronsUpDown, LogOut, Monitor, Moon, Sparkles, Sun } from 'lucide-react';
++import { ChevronsUpDown, LogOut, Monitor, Moon, Sun } from 'lucide-react';
+ 
+ import {
+     DropdownMenu,
+@@ -93,15 +93,6 @@ export function NavUser() {
+                                 </div>
+                             </DropdownMenuLabel>
+                             <DropdownMenuSeparator />
+-                            <DropdownMenuGroup>
+-                                <DropdownMenuItem asChild>
+-                                    <a href="https://vendure.io/pricing" target="_blank">
+-                                        <Sparkles />
+-                                        <Trans>Explore Enterprise Edition</Trans>
+-                                    </a>
+-                                </DropdownMenuItem>
+-                            </DropdownMenuGroup>
+-                            <DropdownMenuSeparator />
+                             <DropdownMenuGroup>
+                                 <DropdownMenuItem asChild>
+                                     <Link to="/profile">

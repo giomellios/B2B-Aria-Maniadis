@@ -21,34 +21,40 @@
 ## Features
 
 **Authentication & Accounts**
+
 - Customer registration with email verification
 - Login/logout with session management
 - Password reset & change password
 - Email address updates with verification
 
 **Customer Account**
+
 - Profile management (name, email, password)
 - Address management (create, update, delete, set default)
 - Order history with pagination & detailed order views
 
 **Product Browsing**
+
 - Collections & featured products
 - Product detail pages with variants & galleries
 - Full-text search with faceted filtering
 - Pagination & sorting
 
 **Shopping Cart**
+
 - Add/remove items, adjust quantities
 - Promotion code support
 - Real-time cart updates with totals
 
 **Checkout**
+
 - Multi-step flow: shipping address, delivery method, payment, review
 - Saved address selection
 - Shipping method selection
 - Payment integration
 
 **Order Management**
+
 - Order confirmation page
 - Order tracking with status
 - Detailed order information

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Field, FieldLabel, FieldError, FieldGroup } from '@/components/ui/field';
-import { useForm, Controller } from 'react-hook-form';
-import { Loader2 } from 'lucide-react';
-import { CountrySelect } from '@/components/shared/country-select';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Field, FieldLabel, FieldError, FieldGroup } from "@/components/ui/field";
+import { useForm, Controller } from "react-hook-form";
+import { Loader2 } from "lucide-react";
+import { CountrySelect } from "@/components/shared/country-select";
 
 interface Country {
   id: string;
@@ -48,21 +48,34 @@ interface AddressFormProps {
   isSubmitting: boolean;
 }
 
-export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitting }: AddressFormProps) {
-  const { register, handleSubmit, formState: { errors }, control } = useForm<AddressFormData>({
-    defaultValues: address ? {
-      fullName: address.fullName || '',
-      company: address.company || '',
-      streetLine1: address.streetLine1,
-      streetLine2: address.streetLine2 || '',
-      city: address.city || '',
-      province: address.province || '',
-      postalCode: address.postalCode || '',
-      countryCode: address.country.code,
-      phoneNumber: address.phoneNumber || '',
-    } : {
-      countryCode: countries[0]?.code || 'US',
-    }
+export function AddressForm({
+  countries,
+  address,
+  onSubmit,
+  onCancel,
+  isSubmitting,
+}: AddressFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm<AddressFormData>({
+    defaultValues: address
+      ? {
+          fullName: address.fullName || "",
+          company: address.company || "",
+          streetLine1: address.streetLine1,
+          streetLine2: address.streetLine2 || "",
+          city: address.city || "",
+          province: address.province || "",
+          postalCode: address.postalCode || "",
+          countryCode: address.country.code,
+          phoneNumber: address.phoneNumber || "",
+        }
+      : {
+          countryCode: countries[0]?.code || "US",
+        },
   });
 
   const handleFormSubmit = async (data: AddressFormData) => {
@@ -77,7 +90,7 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
             <FieldLabel htmlFor="fullName">Full Name *</FieldLabel>
             <Input
               id="fullName"
-              {...register('fullName', { required: 'Full name is required' })}
+              {...register("fullName", { required: "Full name is required" })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.fullName?.message}</FieldError>
@@ -85,14 +98,14 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
 
           <Field className="col-span-2">
             <FieldLabel htmlFor="company">Company</FieldLabel>
-            <Input id="company" {...register('company')} disabled={isSubmitting} />
+            <Input id="company" {...register("company")} disabled={isSubmitting} />
           </Field>
 
           <Field className="col-span-2">
             <FieldLabel htmlFor="streetLine1">Street Address *</FieldLabel>
             <Input
               id="streetLine1"
-              {...register('streetLine1', { required: 'Street address is required' })}
+              {...register("streetLine1", { required: "Street address is required" })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.streetLine1?.message}</FieldError>
@@ -100,14 +113,14 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
 
           <Field className="col-span-2">
             <FieldLabel htmlFor="streetLine2">Apartment, suite, etc.</FieldLabel>
-            <Input id="streetLine2" {...register('streetLine2')} disabled={isSubmitting} />
+            <Input id="streetLine2" {...register("streetLine2")} disabled={isSubmitting} />
           </Field>
 
           <Field>
             <FieldLabel htmlFor="city">City *</FieldLabel>
             <Input
               id="city"
-              {...register('city', { required: 'City is required' })}
+              {...register("city", { required: "City is required" })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.city?.message}</FieldError>
@@ -117,7 +130,7 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
             <FieldLabel htmlFor="province">State/Province *</FieldLabel>
             <Input
               id="province"
-              {...register('province', { required: 'State/Province is required' })}
+              {...register("province", { required: "State/Province is required" })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.province?.message}</FieldError>
@@ -127,7 +140,7 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
             <FieldLabel htmlFor="postalCode">Postal Code *</FieldLabel>
             <Input
               id="postalCode"
-              {...register('postalCode', { required: 'Postal code is required' })}
+              {...register("postalCode", { required: "Postal code is required" })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.postalCode?.message}</FieldError>
@@ -138,7 +151,7 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
             <Controller
               name="countryCode"
               control={control}
-              rules={{ required: 'Country is required' }}
+              rules={{ required: "Country is required" }}
               render={({ field }) => (
                 <CountrySelect
                   countries={countries}
@@ -156,7 +169,7 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
             <Input
               id="phoneNumber"
               type="tel"
-              {...register('phoneNumber', { required: 'Phone number is required' })}
+              {...register("phoneNumber", { required: "Phone number is required" })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.phoneNumber?.message}</FieldError>
@@ -170,7 +183,7 @@ export function AddressForm({ countries, address, onSubmit, onCancel, isSubmitti
         </Button>
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {address ? 'Update address' : 'Save address'}
+          {address ? "Update address" : "Save address"}
         </Button>
       </div>
     </form>

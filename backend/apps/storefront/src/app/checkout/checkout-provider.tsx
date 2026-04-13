@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { createContext, useContext, ReactNode, useState } from 'react';
-import { CheckoutOrder } from './types';
+import { createContext, useContext, ReactNode, useState } from "react";
+import { CheckoutOrder } from "./types";
 
 interface CustomerAddress {
   id: string;
@@ -98,7 +98,7 @@ export function CheckoutProvider({
 export function useCheckout() {
   const context = useContext(CheckoutContext);
   if (!context) {
-    throw new Error('useCheckout must be used within CheckoutProvider');
+    throw new Error("useCheckout must be used within CheckoutProvider");
   }
   return context;
 }

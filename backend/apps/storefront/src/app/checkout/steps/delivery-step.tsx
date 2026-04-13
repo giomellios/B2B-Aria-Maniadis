@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
-import { Card } from '@/components/ui/card';
-import { Loader2, Truck } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useCheckout } from '../checkout-provider';
-import { setShippingMethod as setShippingMethodAction } from '../actions';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Card } from "@/components/ui/card";
+import { Loader2, Truck } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useCheckout } from "../checkout-provider";
+import { setShippingMethod as setShippingMethodAction } from "../actions";
 
 interface DeliveryStepProps {
   onComplete: () => void;
@@ -36,7 +36,7 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
       router.refresh();
       onComplete();
     } catch (error) {
-      console.error('Error setting shipping method:', error);
+      console.error("Error setting shipping method:", error);
     } finally {
       setSubmitting(false);
     }
@@ -45,7 +45,9 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
   if (shippingMethods.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-muted-foreground">No shipping methods available. Please check your address.</p>
+        <p className="text-muted-foreground">
+          No shipping methods available. Please check your address.
+        </p>
       </div>
     );
   }
@@ -54,7 +56,7 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
     <div className="space-y-6">
       <h3 className="font-semibold">Select shipping method</h3>
 
-      <RadioGroup value={selectedMethodId || ''} onValueChange={setSelectedMethodId}>
+      <RadioGroup value={selectedMethodId || ""} onValueChange={setSelectedMethodId}>
         {shippingMethods.map((method) => (
           <Label key={method.id} htmlFor={method.id} className="cursor-pointer">
             <Card className="p-4">
@@ -65,19 +67,17 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
                   <div>
                     <p className="font-medium">{method.name}</p>
                     {method.description && (
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {method.description}
-                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
                     )}
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">
                   <p className="font-semibold">
                     {method.priceWithTax === 0
-                      ? 'FREE'
-                      : (method.priceWithTax / 100).toLocaleString('en-US', {
-                          style: 'currency',
-                          currency: 'USD',
+                      ? "FREE"
+                      : (method.priceWithTax / 100).toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
                         })}
                   </p>
                 </div>
