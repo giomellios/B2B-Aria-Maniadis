@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:server": "ts-node ./src/index.ts",
-    "dev:worker": "ts-node ./src/index-worker.ts",
+    "dev:server": "VENDURE_ROLE=server ts-node ./src/index.ts",
+    "dev:worker": "VENDURE_ROLE=worker ts-node ./src/index-worker.ts",
     "dev:dashboard": "vite --clearScreen false",
     "dev": "concurrently --kill-others npm:dev:*",
     "build": "tsc && vite build",
@@ -14,6 +14,8 @@
     "start": "concurrently npm:start:*"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1015.0",
+    "@aws-sdk/lib-storage": "^3.1015.0",
     "@vendure/asset-server-plugin": "3.5.3",
     "@vendure/core": "3.5.3",
     "@vendure/dashboard": "3.5.3",

@@ -1,19 +1,15 @@
 import { ProductCarousel } from "@/components/commerce/product-carousel";
 import { cacheLife } from "next/cache";
 import { query } from "@/lib/vendure/api";
-import { GetCollectionProductsQuery } from "@/lib/vendure/queries";
+import { SearchProductsQuery } from "@/lib/vendure/queries";
 
-async function getFeaturedCollectionProducts() {
+async function getAllProducts() {
   "use cache";
   cacheLife("days");
 
   try {
-    // Fetch featured products from a specific collection
-    // Replace 'featured' with your actual collection slug
-    const result = await query(GetCollectionProductsQuery, {
-      slug: "electronics",
+    const result = await query(SearchProductsQuery, {
       input: {
-        collectionSlug: "electronics",
         take: 12,
         skip: 0,
         groupByProduct: true,
@@ -23,7 +19,7 @@ async function getFeaturedCollectionProducts() {
     return result.data.search.items;
   } catch (error) {
     if (error instanceof TypeError && error.message === "fetch failed") {
-      console.warn("Vendure API not reachable — returning empty featured products");
+      console.warn("Vendure API not reachable — returning empty product list");
       return [];
     }
     throw error;
@@ -31,7 +27,7 @@ async function getFeaturedCollectionProducts() {
 }
 
 export async function FeaturedProducts() {
-  const products = await getFeaturedCollectionProducts();
+  const products = await getAllProducts();
 
-  return <ProductCarousel title="Featured Products" products={products} />;
+  return <ProductCarousel title="Our Collection" products={products} />;
 }
