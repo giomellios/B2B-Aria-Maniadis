@@ -13,7 +13,7 @@ const wordVariant = {
   show: (i: number) => ({
     y: "0%",
     opacity: 1,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: i * 0.08 },
   }),
 };
 
