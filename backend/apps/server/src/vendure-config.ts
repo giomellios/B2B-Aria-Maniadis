@@ -11,6 +11,7 @@ import { AssetServerPlugin } from "@vendure/asset-server-plugin";
 import { DashboardPlugin } from "@vendure/dashboard/plugin";
 import { GraphiqlPlugin } from "@vendure/graphiql-plugin";
 import { GreekTranslationsPlugin } from "./plugins/greek-translations/greek-translations.plugin";
+import { CustomerApprovalPlugin } from './plugins/customer-approval/customer-approval.plugin';
 import { TranslationSyncPlugin } from "./plugins/translation-sync/translation-sync.plugin";
 import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
 import "dotenv/config";
@@ -37,7 +38,7 @@ export const config: VendureConfig = {
   },
   authOptions: {
     tokenMethod: ["bearer", "cookie"],
-    requireVerification: false,
+    requireVerification: true,
     superadminCredentials: {
       identifier: process.env.SUPERADMIN_USERNAME,
       password: process.env.SUPERADMIN_PASSWORD,
@@ -103,5 +104,6 @@ export const config: VendureConfig = {
     GreekTranslationsPlugin,
     TranslationSyncPlugin,
     CsvImportPlugin,
+    CustomerApprovalPlugin,
   ],
 };
