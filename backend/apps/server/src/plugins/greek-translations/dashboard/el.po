@@ -719,6 +719,14 @@ msgid "fieldName.zone"
 msgstr "Ζώνη"
 
 #. js-lingui-explicit-id
+msgid "fieldName.vatNumber"
+msgstr "Αριθμός ΦΠΑ"
+
+#. js-lingui-explicit-id
+msgid "fieldName.company"
+msgstr "Εταιρεία"
+
+#. js-lingui-explicit-id
 #: src/app/routes/_authenticated/_customers/components/customer-history/use-customer-history.ts:99
 #: src/app/routes/_authenticated/_orders/components/order-history/use-order-history.ts:104
 msgid "Note added successfully"
