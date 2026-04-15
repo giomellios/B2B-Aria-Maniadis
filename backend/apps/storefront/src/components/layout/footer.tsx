@@ -1,4 +1,3 @@
-import { cacheLife } from "next/cache";
 import { getTopCollections } from "@/lib/vendure/cached";
 import Link from "next/link";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
@@ -10,21 +9,17 @@ const SOCIAL_LINKS = [
   { icon: Linkedin, label: "LinkedIn", href: "#" },
 ];
 
-async function Copyright() {
-  "use cache";
-  cacheLife("days");
+const COPYRIGHT_YEAR = new Date().getFullYear();
 
+async function Copyright() {
   return (
     <p className="text-sm text-muted-foreground">
-      © {new Date().getFullYear()} Maniadis. All rights reserved.
+      © {COPYRIGHT_YEAR} Maniadis. All rights reserved.
     </p>
   );
 }
 
 export async function Footer() {
-  "use cache";
-  cacheLife("days");
-
   const collections = await getTopCollections();
 
   return (
