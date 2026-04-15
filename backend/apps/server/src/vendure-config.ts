@@ -3,6 +3,7 @@ import {
   DefaultJobQueuePlugin,
   DefaultSchedulerPlugin,
   DefaultSearchPlugin,
+  SearchStrategy,
   VendureConfig,
   LanguageCode,
 } from "@vendure/core";
@@ -14,6 +15,7 @@ import { GreekTranslationsPlugin } from "./plugins/greek-translations/greek-tran
 import { CustomerApprovalPlugin } from "./plugins/customer-approval/customer-approval.plugin";
 import { TranslationSyncPlugin } from "./plugins/translation-sync/translation-sync.plugin";
 import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
+import { B2BPostgresSearchStrategy } from "./plugins/search/b2b-search-strategy";
 import "dotenv/config";
 import path from "path";
 
@@ -115,7 +117,11 @@ export const config: VendureConfig = {
     }),
     DefaultSchedulerPlugin.init(),
     DefaultJobQueuePlugin.init({ useDatabaseForBuffer: true }),
-    DefaultSearchPlugin.init({ bufferUpdates: false, indexStockStatus: true }),
+    DefaultSearchPlugin.init({
+      bufferUpdates: false,
+      indexStockStatus: true,
+      searchStrategy: new B2BPostgresSearchStrategy() as unknown as SearchStrategy,
+    }),
     EmailPlugin.init({
       devMode: true,
       outputPath: path.join(__dirname, "../static/email/test-emails"),
