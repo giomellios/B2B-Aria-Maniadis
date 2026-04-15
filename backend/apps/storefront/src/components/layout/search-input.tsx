@@ -54,8 +54,8 @@ export function SearchInput() {
       <Input
         ref={inputRef}
         type="search"
-        placeholder="Search products..."
-        className="pl-9 pr-8 w-64 [&::-webkit-search-cancel-button]:hidden"
+        placeholder="Search by name, SKU, or keyword..."
+        className="pl-9 pr-8 w-64 xl:w-80 [&::-webkit-search-cancel-button]:hidden"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={handleKeyDown}
