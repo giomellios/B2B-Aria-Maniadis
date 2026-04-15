@@ -11,6 +11,7 @@ import {
 import { FragmentOf } from "@/graphql";
 import { ProductCardFragment } from "@/lib/vendure/fragments";
 import { useId } from "react";
+import { motion } from "framer-motion";
 
 interface ProductCarouselClientProps {
   title: string;
@@ -21,9 +22,15 @@ export function ProductCarousel({ title, products }: ProductCarouselClientProps)
   const id = useId();
 
   return (
-    <section className="py-12 md:py-16">
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="py-12 md:py-16"
+    >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">{title}</h2>
+        <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-8">{title}</h2>
         <Carousel
           opts={{
             align: "start",
@@ -45,6 +52,6 @@ export function ProductCarousel({ title, products }: ProductCarouselClientProps)
           <CarouselNext className="hidden md:flex" />
         </Carousel>
       </div>
-    </section>
+    </motion.section>
   );
 }
