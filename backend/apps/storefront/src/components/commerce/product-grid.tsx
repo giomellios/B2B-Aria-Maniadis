@@ -1,9 +1,10 @@
-import { ResultOf } from "@/graphql";
+import { ResultOf, readFragment } from "@/graphql";
 import { ProductCard } from "./product-card";
 import { Pagination } from "@/components/shared/pagination";
 import { SortDropdown } from "./sort-dropdown";
 import { SearchProductsQuery } from "@/lib/vendure/queries";
-import { getActiveChannel } from "@/lib/vendure/actions";
+import { ProductCardFragment } from "@/lib/vendure/fragments";
+import { getProductCardImageFallbacks } from "@/lib/vendure/product-card-images";
 
 interface ProductGridProps {
   productDataPromise: Promise<{
@@ -15,7 +16,7 @@ interface ProductGridProps {
 }
 
 export async function ProductGrid({ productDataPromise, currentPage, take }: ProductGridProps) {
-  const [result, channel] = await Promise.all([productDataPromise, getActiveChannel()]);
+  const result = await productDataPromise;
 
   const searchResult = result.data.search;
   const totalPages = Math.ceil(searchResult.totalItems / take);
@@ -28,6 +29,21 @@ export async function ProductGrid({ productDataPromise, currentPage, take }: Pro
     );
   }
 
+  const productsWithData = searchResult.items.map((item) => ({
+    item,
+    data: readFragment(ProductCardFragment, item),
+  }));
+
+  const missingImageSlugs = productsWithData
+    .map(({ data }) => data)
+    .filter((product) => {
+      return !product.productAsset?.preview && !product.productVariantAsset?.preview;
+    })
+    .map((product) => product.slug)
+    .filter(Boolean);
+
+  const fallbackImagesBySlug = await getProductCardImageFallbacks(missingImageSlugs);
+
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
@@ -38,8 +54,12 @@ export async function ProductGrid({ productDataPromise, currentPage, take }: Pro
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {searchResult.items.map((product, i) => (
-          <ProductCard key={"product-grid-item" + i} product={product} />
+        {productsWithData.map(({ item, data }, i) => (
+          <ProductCard
+            key={"product-grid-item" + i}
+            product={item}
+            fallbackImageUrl={fallbackImagesBySlug.get(data.slug) ?? null}
+          />
         ))}
       </div>
 
