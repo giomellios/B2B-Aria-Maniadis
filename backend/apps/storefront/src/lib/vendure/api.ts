@@ -22,6 +22,7 @@ interface VendureRequestOptions {
   channelToken?: string;
   fetch?: RequestInit;
   tags?: string[];
+  revalidateSeconds?: number;
 }
 
 interface VendureResponse<T> {
@@ -45,7 +46,8 @@ export async function query<TResult, TVariables>(
     ? [variables?: TVariables, options?: VendureRequestOptions]
     : [variables: TVariables, options?: VendureRequestOptions]
 ): Promise<{ data: TResult; token?: string }> {
-  const { token, useAuthToken, channelToken, fetch: fetchOptions, tags } = options || {};
+  const { token, useAuthToken, channelToken, fetch: fetchOptions, tags, revalidateSeconds } =
+    options || {};
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
@@ -65,6 +67,14 @@ export async function query<TResult, TVariables>(
   // Set the channel token header (use provided channelToken or default)
   headers[VENDURE_CHANNEL_TOKEN_HEADER] = channelToken || VENDURE_CHANNEL_TOKEN;
 
+  const nextOptions =
+    revalidateSeconds !== undefined || tags
+      ? {
+          ...(revalidateSeconds !== undefined && { revalidate: revalidateSeconds }),
+          ...(tags && { tags }),
+        }
+      : undefined;
+
   const response = await fetch(VENDURE_API_URL!, {
     ...fetchOptions,
     method: "POST",
@@ -73,7 +83,7 @@ export async function query<TResult, TVariables>(
       query: print(document),
       variables: variables || {},
     }),
-    ...(tags && { next: { tags } }),
+    ...(nextOptions && { next: nextOptions }),
   });
 
   if (!response.ok) {

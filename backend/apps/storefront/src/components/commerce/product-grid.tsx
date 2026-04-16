@@ -1,4 +1,4 @@
-import { ResultOf, readFragment } from "@/graphql";
+import { readFragment, ResultOf } from "@/graphql";
 import { ProductCard } from "./product-card";
 import { Pagination } from "@/components/shared/pagination";
 import { SortDropdown } from "./sort-dropdown";
@@ -23,8 +23,11 @@ export async function ProductGrid({ productDataPromise, currentPage, take }: Pro
 
   if (!searchResult.items.length) {
     return (
-      <div className="text-center py-12">
-        <p className="text-muted-foreground">No products found</p>
+      <div className="text-center py-12 space-y-2">
+        <p className="text-muted-foreground">No products match your filters.</p>
+        <p className="text-sm text-muted-foreground">
+          Try clearing filters or turning off in-stock filtering.
+        </p>
       </div>
     );
   }
@@ -54,13 +57,14 @@ export async function ProductGrid({ productDataPromise, currentPage, take }: Pro
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {productsWithData.map(({ item, data }, i) => (
-          <ProductCard
-            key={"product-grid-item" + i}
+        {productsWithData.map(({ item, data }) => {
+          const productData = readFragment(ProductCardFragment, item);
+          return <ProductCard
+            key={productData.productId}
             product={item}
             fallbackImageUrl={fallbackImagesBySlug.get(data.slug) ?? null}
-          />
-        ))}
+          />;
+        })}
       </div>
 
       {totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} />}

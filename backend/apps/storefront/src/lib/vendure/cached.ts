@@ -68,12 +68,10 @@ export async function getAvailableCountriesCached() {
  * Collections rarely change, so we cache them for 1 day.
  */
 export async function getTopCollections() {
-  "use cache";
-  cacheLife("days");
-  cacheTag("collections");
-
   try {
-    const result = await query(GetTopCollectionsQuery);
+    const result = await query(GetTopCollectionsQuery, undefined, {
+      revalidateSeconds: 60 * 60 * 24,
+    });
     return result.data.collections.items;
   } catch (error) {
     if (isConnectionError(error)) {

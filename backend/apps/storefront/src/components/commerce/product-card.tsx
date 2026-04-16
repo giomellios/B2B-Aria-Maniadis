@@ -23,6 +23,17 @@ export function ProductCard({ product: productProp, fallbackImageUrl }: ProductC
       className="group block bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow"
     >
       <div className="aspect-square relative bg-muted">
+        <div className="absolute top-2 right-2 z-10">
+          {product.inStock ? (
+            <span className="rounded-md bg-green-600/90 px-2 py-0.5 text-xs font-medium text-white">
+              In stock
+            </span>
+          ) : (
+            <span className="rounded-md bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground border border-border">
+              Out of stock
+            </span>
+          )}
+        </div>
         {productImageUrl ? (
           <Image
             src={productImageUrl}
@@ -41,6 +52,10 @@ export function ProductCard({ product: productProp, fallbackImageUrl }: ProductC
         <h3 className="font-medium line-clamp-2 group-hover:text-primary transition-colors">
           {product.productName}
         </h3>
+        {product.productVariantName && product.productVariantName !== product.productName ? (
+          <p className="text-xs text-muted-foreground line-clamp-1">{product.productVariantName}</p>
+        ) : null}
+        <p className="font-mono text-xs text-muted-foreground">SKU: {product.sku}</p>
         <Suspense fallback={<div className="h-8 w-36 rounded bg-muted"></div>}>
           <p className="text-lg font-bold">
             {product.priceWithTax.__typename === "PriceRange" ? (

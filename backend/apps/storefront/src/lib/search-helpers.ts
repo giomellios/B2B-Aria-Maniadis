@@ -6,6 +6,7 @@ export interface SearchInputParams {
   groupByProduct: boolean;
   sort: { name?: "ASC" | "DESC"; price?: "ASC" | "DESC" };
   facetValueFilters?: Array<{ and: string }>;
+  inStock?: boolean;
 }
 
 interface BuildSearchInputOptions {
@@ -22,6 +23,10 @@ export function buildSearchInput({
   const skip = (page - 1) * take;
   const sort = (searchParams.sort as string) || "name-asc";
   const searchTerm = searchParams.q as string;
+  const inStockParam = searchParams.inStock;
+  const inStockValue = Array.isArray(inStockParam) ? inStockParam[0] : inStockParam;
+  const inStockOnly =
+    inStockValue === "1" || inStockValue === "true" || inStockValue === "yes";
 
   // Extract facet value IDs from search params
   const facetValueIds = searchParams.facets
@@ -45,6 +50,7 @@ export function buildSearchInput({
     skip,
     groupByProduct: true,
     sort: sortMapping[sort] || sortMapping["name-asc"],
+    ...(inStockOnly && { inStock: true }),
     ...(facetValueIds.length > 0 && {
       facetValueFilters: facetValueIds.map((id) => ({ and: id })),
     }),
