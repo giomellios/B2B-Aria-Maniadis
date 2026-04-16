@@ -49,6 +49,30 @@ export const SearchProductsQuery = graphql(
   [ProductCardFragment]
 );
 
+export const GetProductCardImageFallbackQuery = graphql(`
+  query GetProductCardImageFallback($slug: String!) {
+    product(slug: $slug) {
+      id
+      slug
+      featuredAsset {
+        id
+        preview
+      }
+      assets {
+        id
+        preview
+      }
+      variants {
+        id
+        featuredAsset {
+          id
+          preview
+        }
+      }
+    }
+  }
+`);
+
 export const GetProductDetailQuery = graphql(`
   query GetProductDetail($slug: String!) {
     product(slug: $slug) {
@@ -56,6 +80,11 @@ export const GetProductDetailQuery = graphql(`
       name
       description
       slug
+      featuredAsset {
+        id
+        preview
+        source
+      }
       assets {
         id
         preview
@@ -65,6 +94,11 @@ export const GetProductDetailQuery = graphql(`
         id
         name
         sku
+        featuredAsset {
+          id
+          preview
+          source
+        }
         priceWithTax
         stockLevel
         options {

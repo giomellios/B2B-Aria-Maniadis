@@ -75,6 +75,16 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  const productImages =
+    product.assets.length > 0
+      ? product.assets
+      : [
+          ...(product.featuredAsset ? [product.featuredAsset] : []),
+          ...product.variants
+            .map((variant) => variant.featuredAsset)
+            .filter((asset): asset is NonNullable<typeof asset> => Boolean(asset)),
+        ].filter((asset, index, list) => list.findIndex((item) => item.id === asset.id) === index);
+
   // Get the primary collection (prefer deepest nested / most specific)
   const primaryCollection =
     product.collections?.find((c) => c.parent?.id) ?? product.collections?.[0];
@@ -85,7 +95,7 @@ export default async function ProductDetailPage({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Column: Image Carousel */}
           <div className="lg:sticky lg:top-20 lg:self-start">
-            <ProductImageCarousel images={product.assets} />
+            <ProductImageCarousel images={productImages} />
           </div>
 
           {/* Right Column: Product Info */}
