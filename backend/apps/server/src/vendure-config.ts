@@ -103,7 +103,32 @@ export const config: VendureConfig = {
   paymentOptions: {
     paymentMethodHandlers: [dummyPaymentHandler],
   },
-  customFields: {},
+  customFields: {
+    Customer: [
+      {
+        name: "vatNumber",
+        type: "string",
+        label: [
+          { languageCode: LanguageCode.en, value: "VAT Number" },
+          { languageCode: LanguageCode.el, value: "Αριθμός ΦΠΑ" },
+        ],
+        public: true,
+        nullable: false,
+        defaultValue: "",
+      },
+      {
+        name: "company",
+        type: "string",
+        label: [
+          { languageCode: LanguageCode.en, value: "Company" },
+          { languageCode: LanguageCode.el, value: "Εταιρεία" },
+        ],
+        public: true,
+        nullable: false,
+        defaultValue: "",
+      },
+    ],
+  },
   plugins: [
     GraphiqlPlugin.init(),
     AssetServerPlugin.init({

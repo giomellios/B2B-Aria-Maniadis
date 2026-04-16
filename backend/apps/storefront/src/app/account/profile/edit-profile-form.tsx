@@ -12,9 +12,13 @@ interface EditProfileFormProps {
     firstName: string;
     lastName: string;
   } | null;
+  customFields: {
+    vatNumber: string;
+    company: string;
+  };
 }
 
-export function EditProfileForm({ customer }: EditProfileFormProps) {
+export function EditProfileForm({ customer, customFields }: EditProfileFormProps) {
   const [state, formAction, isPending] = useActionState(updateCustomerAction, undefined);
 
   useEffect(() => {
@@ -28,7 +32,7 @@ export function EditProfileForm({ customer }: EditProfileFormProps) {
     <Card>
       <CardHeader>
         <CardTitle>Personal Information</CardTitle>
-        <CardDescription>Update your personal details.</CardDescription>
+        <CardDescription>Update your personal and company details.</CardDescription>
       </CardHeader>
       <form id="edit-profile-form" action={formAction}>
         <CardContent className="space-y-4">
@@ -52,6 +56,28 @@ export function EditProfileForm({ customer }: EditProfileFormProps) {
               type="text"
               placeholder="Doe"
               defaultValue={customer?.lastName || ""}
+              required
+              disabled={isPending}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="vatNumber">VAT Number</Label>
+            <Input
+              id="vatNumber"
+              name="vatNumber"
+              type="text"
+              defaultValue={customFields.vatNumber}
+              required
+              disabled={isPending}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="company">Company</Label>
+            <Input
+              id="company"
+              name="company"
+              type="text"
+              defaultValue={customFields.company}
               required
               disabled={isPending}
             />

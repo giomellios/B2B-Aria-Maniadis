@@ -4,13 +4,18 @@ import { ProductCardFragment } from "@/lib/vendure/fragments";
 import { Price } from "@/components/commerce/price";
 import { Suspense } from "react";
 import Link from "next/link";
+import { resolveVendureAssetUrl } from "@/lib/utils";
 
 interface ProductCardProps {
   product: FragmentOf<typeof ProductCardFragment>;
+  fallbackImageUrl?: string | null;
 }
 
-export function ProductCard({ product: productProp }: ProductCardProps) {
+export function ProductCard({ product: productProp, fallbackImageUrl }: ProductCardProps) {
   const product = readFragment(ProductCardFragment, productProp);
+  const productImageUrl = resolveVendureAssetUrl(
+    product.productAsset?.preview || product.productVariantAsset?.preview || fallbackImageUrl
+  );
 
   return (
     <Link
@@ -29,9 +34,9 @@ export function ProductCard({ product: productProp }: ProductCardProps) {
             </span>
           )}
         </div>
-        {product.productAsset ? (
+        {productImageUrl ? (
           <Image
-            src={product.productAsset.preview}
+            src={productImageUrl}
             alt={product.productName}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
