@@ -54,11 +54,13 @@ export async function updateCustomerAction(
   prevState: { error?: string; success?: boolean } | undefined,
   formData: FormData
 ) {
-  const firstName = formData.get("firstName") as string;
-  const lastName = formData.get("lastName") as string;
+  const firstName = (formData.get("firstName") as string | null)?.trim() ?? "";
+  const lastName = (formData.get("lastName") as string | null)?.trim() ?? "";
+  const vatNumber = (formData.get("vatNumber") as string | null)?.trim() ?? "";
+  const company = (formData.get("company") as string | null)?.trim() ?? "";
 
-  if (!firstName || !lastName) {
-    return { error: "First name and last name are required" };
+  if (!firstName || !lastName || !vatNumber || !company) {
+    return { error: "First name, last name, VAT number, and company are required" };
   }
 
   try {
@@ -68,6 +70,10 @@ export async function updateCustomerAction(
         input: {
           firstName,
           lastName,
+          customFields: {
+            vatNumber,
+            company,
+          },
         },
       },
       { useAuthToken: true }

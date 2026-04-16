@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
-import { getActiveCustomer } from "@/lib/vendure/actions";
+import { getActiveCustomer, getActiveCustomerCustomFields } from "@/lib/vendure/actions";
 
 export const metadata: Metadata = {
   title: "Profile",
@@ -11,7 +11,10 @@ import { EditEmailForm } from "./edit-email-form";
 
 export default async function ProfilePage(_props: PageProps<"/account/profile">) {
   await connection();
-  const customer = await getActiveCustomer();
+  const [customer, customFields] = await Promise.all([
+    getActiveCustomer(),
+    getActiveCustomerCustomFields(),
+  ]);
 
   return (
     <div className="space-y-6">
@@ -20,7 +23,7 @@ export default async function ProfilePage(_props: PageProps<"/account/profile">)
         <p className="text-muted-foreground mt-2">Manage your account information</p>
       </div>
 
-      <EditProfileForm customer={customer} />
+      <EditProfileForm customer={customer} customFields={customFields} />
 
       <EditEmailForm currentEmail={customer?.emailAddress || ""} />
 
