@@ -21,9 +21,11 @@ import Link from "next/link";
 const registrationSchema = z
   .object({
     emailAddress: z.string().email("Please enter a valid email address"),
-    firstName: z.string().optional(),
-    lastName: z.string().optional(),
-    phoneNumber: z.string().optional(),
+    firstName: z.string().trim().min(1, "First name is required"),
+    lastName: z.string().trim().min(1, "Last name is required"),
+    vatNumber: z.string().trim().min(1, "VAT number is required"),
+    company: z.string().trim().min(1, "Company is required"),
+    mobileNumber: z.string().trim().min(1, "Mobile number is required"),
     password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string(),
   })
@@ -48,7 +50,9 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
       emailAddress: "",
       firstName: "",
       lastName: "",
-      phoneNumber: "",
+      vatNumber: "",
+      company: "",
+      mobileNumber: "",
       password: "",
       confirmPassword: "",
     },
@@ -59,10 +63,12 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
 
     startTransition(async () => {
       const formData = new FormData();
-      formData.append("emailAddress", data.emailAddress);
-      if (data.firstName) formData.append("firstName", data.firstName);
-      if (data.lastName) formData.append("lastName", data.lastName);
-      if (data.phoneNumber) formData.append("phoneNumber", data.phoneNumber);
+      formData.append("emailAddress", data.emailAddress.trim());
+      formData.append("firstName", data.firstName.trim());
+      formData.append("lastName", data.lastName.trim());
+      formData.append("vatNumber", data.vatNumber.trim());
+      formData.append("company", data.company.trim());
+      formData.append("mobileNumber", data.mobileNumber.trim());
       formData.append("password", data.password);
       if (redirectTo) {
         formData.append("redirectTo", redirectTo);
@@ -89,7 +95,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
               name="emailAddress"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email Address</FormLabel>
+                  <FormLabel>Mail</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -135,14 +141,45 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
 
             <FormField
               control={form.control}
-              name="phoneNumber"
+              name="company"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone Number (Optional)</FormLabel>
+                  <FormLabel>Company</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      disabled={isPending}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="vatNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>VAT Number</FormLabel>
+                  <FormControl>
+                    <Input type="text" disabled={isPending} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="mobileNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mobile Number</FormLabel>
                   <FormControl>
                     <Input
                       type="tel"
-                      placeholder="+1 (555) 000-0000"
                       disabled={isPending}
                       {...field}
                     />

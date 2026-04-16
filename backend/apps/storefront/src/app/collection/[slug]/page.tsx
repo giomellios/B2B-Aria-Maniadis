@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { query } from "@/lib/vendure/api";
 import { SearchProductsQuery, GetCollectionProductsQuery } from "@/lib/vendure/queries";
 import { ProductGrid } from "@/components/commerce/product-grid";
+import { CollectionHeader } from "@/components/commerce/collection-header";
 import { FacetFilters } from "@/components/commerce/facet-filters";
 import { ProductGridSkeleton } from "@/components/shared/product-grid-skeleton";
 import { buildSearchInput, getCurrentPage } from "@/lib/search-helpers";
@@ -87,6 +88,9 @@ export default async function CollectionPage({
 
   return (
     <div className="container mx-auto px-4 py-8 mt-16">
+      <Suspense fallback={<div className="mb-8 h-24 animate-pulse rounded-lg bg-muted" />}>
+        <CollectionHeader slug={slug} />
+      </Suspense>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
         <aside className="lg:col-span-1">

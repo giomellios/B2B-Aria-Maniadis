@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { FragmentOf } from "@/graphql";
+import { FragmentOf, readFragment } from "@/graphql";
 import { ProductCardFragment } from "@/lib/vendure/fragments";
 import { useId } from "react";
 import { motion } from "framer-motion";
@@ -16,9 +16,14 @@ import { motion } from "framer-motion";
 interface ProductCarouselClientProps {
   title: string;
   products: Array<FragmentOf<typeof ProductCardFragment>>;
+  fallbackImagesBySlug?: Record<string, string>;
 }
 
-export function ProductCarousel({ title, products }: ProductCarouselClientProps) {
+export function ProductCarousel({
+  title,
+  products,
+  fallbackImagesBySlug,
+}: ProductCarouselClientProps) {
   const id = useId();
 
   return (
@@ -39,14 +44,21 @@ export function ProductCarousel({ title, products }: ProductCarouselClientProps)
           className="w-full"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {products.map((product, i) => (
-              <CarouselItem
-                key={id + i}
-                className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-              >
-                <ProductCard product={product} />
-              </CarouselItem>
-            ))}
+              {products.map((product, i) => {
+                const productData = readFragment(ProductCardFragment, product);
+
+                return (
+                  <CarouselItem
+                    key={id + i}
+                    className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  >
+                    <ProductCard
+                      product={product}
+                      fallbackImageUrl={fallbackImagesBySlug?.[productData.slug] ?? null}
+                    />
+                  </CarouselItem>
+                );
+              })}
           </CarouselContent>
           <CarouselPrevious className="hidden md:flex" />
           <CarouselNext className="hidden md:flex" />

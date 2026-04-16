@@ -47,6 +47,9 @@ export function FacetFilters({ productDataPromise }: FacetFiltersProps) {
   }, {});
 
   const selectedFacets = searchParams.getAll("facets");
+  const inStockParam = searchParams.get("inStock");
+  const inStockOnly =
+    inStockParam === "1" || inStockParam === "true" || inStockParam === "yes";
 
   const toggleFacet = (facetId: string) => {
     const params = new URLSearchParams(searchParams);
@@ -65,18 +68,27 @@ export function FacetFilters({ productDataPromise }: FacetFiltersProps) {
     router.push(`${pathname}?${params.toString()}`);
   };
 
-  const clearFilters = () => {
+  const toggleInStockOnly = () => {
     const params = new URLSearchParams(searchParams);
-    params.delete("facets");
+    if (inStockOnly) {
+      params.delete("inStock");
+    } else {
+      params.set("inStock", "1");
+    }
     params.delete("page");
     router.push(`${pathname}?${params.toString()}`);
   };
 
-  const hasActiveFilters = selectedFacets.length > 0;
+  const clearFilters = () => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("facets");
+    params.delete("inStock");
+    params.delete("page");
+    router.push(`${pathname}?${params.toString()}`);
+  };
 
-  if (Object.keys(facetGroups).length === 0) {
-    return null;
-  }
+  const hasActiveFilters = selectedFacets.length > 0 || inStockOnly;
+  const hasFacetGroups = Object.keys(facetGroups).length > 0;
 
   return (
     <div className="space-y-6">
@@ -88,6 +100,24 @@ export function FacetFilters({ productDataPromise }: FacetFiltersProps) {
           </Button>
         )}
       </div>
+
+      <div className="space-y-3 rounded-lg border border-border p-4">
+        <h3 className="font-medium text-sm">Availability</h3>
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="in-stock-only"
+            checked={inStockOnly}
+            onCheckedChange={toggleInStockOnly}
+          />
+          <Label htmlFor="in-stock-only" className="text-sm font-normal cursor-pointer">
+            In stock only
+          </Label>
+        </div>
+      </div>
+
+      {!hasFacetGroups ? (
+        <p className="text-sm text-muted-foreground">No attribute filters for this result set.</p>
+      ) : null}
 
       {Object.entries(facetGroups).map(([facetName, facet]) => (
         <div key={facet.id} className="space-y-3">

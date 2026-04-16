@@ -1,9 +1,10 @@
-import { ResultOf } from "@/graphql";
+import { readFragment, ResultOf } from "@/graphql";
 import { ProductCard } from "./product-card";
 import { Pagination } from "@/components/shared/pagination";
 import { SortDropdown } from "./sort-dropdown";
 import { SearchProductsQuery } from "@/lib/vendure/queries";
-import { getActiveChannel } from "@/lib/vendure/actions";
+import { ProductCardFragment } from "@/lib/vendure/fragments";
+import { getProductCardImageFallbacks } from "@/lib/vendure/product-card-images";
 
 interface ProductGridProps {
   productDataPromise: Promise<{
@@ -15,18 +16,36 @@ interface ProductGridProps {
 }
 
 export async function ProductGrid({ productDataPromise, currentPage, take }: ProductGridProps) {
-  const [result, channel] = await Promise.all([productDataPromise, getActiveChannel()]);
+  const result = await productDataPromise;
 
   const searchResult = result.data.search;
   const totalPages = Math.ceil(searchResult.totalItems / take);
 
   if (!searchResult.items.length) {
     return (
-      <div className="text-center py-12">
-        <p className="text-muted-foreground">No products found</p>
+      <div className="text-center py-12 space-y-2">
+        <p className="text-muted-foreground">No products match your filters.</p>
+        <p className="text-sm text-muted-foreground">
+          Try clearing filters or turning off in-stock filtering.
+        </p>
       </div>
     );
   }
+
+  const productsWithData = searchResult.items.map((item) => ({
+    item,
+    data: readFragment(ProductCardFragment, item),
+  }));
+
+  const missingImageSlugs = productsWithData
+    .map(({ data }) => data)
+    .filter((product) => {
+      return !product.productAsset?.preview && !product.productVariantAsset?.preview;
+    })
+    .map((product) => product.slug)
+    .filter(Boolean);
+
+  const fallbackImagesBySlug = await getProductCardImageFallbacks(missingImageSlugs);
 
   return (
     <div className="space-y-8">
@@ -38,9 +57,14 @@ export async function ProductGrid({ productDataPromise, currentPage, take }: Pro
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {searchResult.items.map((product, i) => (
-          <ProductCard key={"product-grid-item" + i} product={product} />
-        ))}
+        {productsWithData.map(({ item, data }) => {
+          const productData = readFragment(ProductCardFragment, item);
+          return <ProductCard
+            key={productData.productId}
+            product={item}
+            fallbackImageUrl={fallbackImagesBySlug.get(data.slug) ?? null}
+          />;
+        })}
       </div>
 
       {totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} />}

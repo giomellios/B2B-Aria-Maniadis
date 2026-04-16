@@ -4,13 +4,18 @@ import { ProductCardFragment } from "@/lib/vendure/fragments";
 import { Price } from "@/components/commerce/price";
 import { Suspense } from "react";
 import Link from "next/link";
+import { resolveVendureAssetUrl } from "@/lib/utils";
 
 interface ProductCardProps {
   product: FragmentOf<typeof ProductCardFragment>;
+  fallbackImageUrl?: string | null;
 }
 
-export function ProductCard({ product: productProp }: ProductCardProps) {
+export function ProductCard({ product: productProp, fallbackImageUrl }: ProductCardProps) {
   const product = readFragment(ProductCardFragment, productProp);
+  const productImageUrl = resolveVendureAssetUrl(
+    product.productAsset?.preview || product.productVariantAsset?.preview || fallbackImageUrl
+  );
 
   return (
     <Link
@@ -18,9 +23,20 @@ export function ProductCard({ product: productProp }: ProductCardProps) {
       className="group block bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow"
     >
       <div className="aspect-square relative bg-muted">
-        {product.productAsset ? (
+        <div className="absolute top-2 right-2 z-10">
+          {product.inStock ? (
+            <span className="rounded-md bg-green-600/90 px-2 py-0.5 text-xs font-medium text-white">
+              In stock
+            </span>
+          ) : (
+            <span className="rounded-md bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground border border-border">
+              Out of stock
+            </span>
+          )}
+        </div>
+        {productImageUrl ? (
           <Image
-            src={product.productAsset.preview}
+            src={productImageUrl}
             alt={product.productName}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -36,6 +52,10 @@ export function ProductCard({ product: productProp }: ProductCardProps) {
         <h3 className="font-medium line-clamp-2 group-hover:text-primary transition-colors">
           {product.productName}
         </h3>
+        {product.productVariantName && product.productVariantName !== product.productName ? (
+          <p className="text-xs text-muted-foreground line-clamp-1">{product.productVariantName}</p>
+        ) : null}
+        <p className="font-mono text-xs text-muted-foreground">SKU: {product.sku}</p>
         <Suspense fallback={<div className="h-8 w-36 rounded bg-muted"></div>}>
           <p className="text-lg font-bold">
             {product.priceWithTax.__typename === "PriceRange" ? (

@@ -6,6 +6,7 @@ import { NavbarUser } from "@/components/layout/navbar/navbar-user";
 import { ThemeSwitcher } from "@/components/layout/navbar/theme-switcher";
 import { Suspense } from "react";
 import { SearchInput } from "@/components/layout/search-input";
+import { SearchDialog } from "@/components/layout/search-dialog";
 import { NavbarUserSkeleton } from "@/components/shared/skeletons/navbar-user-skeleton";
 import { SearchInputSkeleton } from "@/components/shared/skeletons/search-input-skeleton";
 
@@ -34,6 +35,11 @@ export function Navbar() {
             <div className="hidden lg:flex">
               <Suspense fallback={<SearchInputSkeleton />}>
                 <SearchInput />
+              </Suspense>
+            </div>
+            <div className="flex lg:hidden">
+              <Suspense fallback={<div className="h-9 w-9" />}>
+                <SearchDialog />
               </Suspense>
             </div>
             <ThemeSwitcher />
