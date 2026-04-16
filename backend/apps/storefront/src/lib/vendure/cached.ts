@@ -69,7 +69,9 @@ export async function getAvailableCountriesCached() {
  */
 export async function getTopCollections() {
   try {
-    const result = await query(GetTopCollectionsQuery);
+    const result = await query(GetTopCollectionsQuery, undefined, {
+      revalidateSeconds: 60 * 60 * 24,
+    });
     return result.data.collections.items;
   } catch (error) {
     if (isConnectionError(error)) {

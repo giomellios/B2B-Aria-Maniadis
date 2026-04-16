@@ -1,4 +1,4 @@
-import { readFragment, ResultOf, readFragment } from "@/graphql";
+import { readFragment, ResultOf } from "@/graphql";
 import { ProductCard } from "./product-card";
 import { Pagination } from "@/components/shared/pagination";
 import { SortDropdown } from "./sort-dropdown";
@@ -58,7 +58,7 @@ export async function ProductGrid({ productDataPromise, currentPage, take }: Pro
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {productsWithData.map(({ item, data }) => {
-          const productData = readFragment(ProductCardFragment, product);
+          const productData = readFragment(ProductCardFragment, item);
           return <ProductCard
             key={productData.productId}
             product={item}
