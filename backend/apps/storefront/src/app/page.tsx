@@ -43,7 +43,9 @@ export default async function Home(_props: PageProps<"/">) {
         <FeaturedProducts />
       </Suspense>
       <HowItWorks />
-      <CtaBanner />
+      <Suspense>
+        <CtaBanner />
+      </Suspense>
     </div>
   );
 }
