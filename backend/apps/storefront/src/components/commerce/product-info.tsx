@@ -3,9 +3,10 @@
 import { useState, useMemo, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ShoppingCart, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, CheckCircle2, Minus, Plus } from "lucide-react";
 import { addToCart } from "@/app/product/[slug]/actions";
 import { toast } from "sonner";
 import { Price } from "@/components/commerce/price";
@@ -53,6 +54,7 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
   const currentSearchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const [isAdded, setIsAdded] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   // Initialize selected options from URL
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>(() => {
@@ -111,16 +113,17 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
   };
 
   const handleAddToCart = async () => {
-    if (!selectedVariant) return;
+    if (!selectedVariant || quantity < 1) return;
 
     startTransition(async () => {
-      const result = await addToCart(selectedVariant.id, 1);
+      const result = await addToCart(selectedVariant.id, quantity);
 
       if (result.success) {
         setIsAdded(true);
         toast.success("Added to cart", {
-          description: `${product.name} has been added to your cart`,
+          description: `${quantity} × ${product.name} has been added to your cart`,
         });
+        setQuantity(1);
 
         // Reset the added state after 2 seconds
         setTimeout(() => setIsAdded(false), 2000);
@@ -192,11 +195,51 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
         </div>
       )}
 
-      {/* Add to Cart Button */}
-      <div className="pt-4">
+      {/* Quantity Selector + Add to Cart Button */}
+      <div className="pt-4 flex items-center gap-3">
+        <div className="flex items-center border rounded-md shrink-0">
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-11 w-11 rounded-none"
+            disabled={!canAddToCart || isPending || quantity <= 1}
+            onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+          >
+            <Minus className="h-4 w-4" />
+          </Button>
+
+          <Input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            value={quantity}
+            disabled={!canAddToCart || isPending}
+            onChange={(e) => {
+              const digits = e.target.value.replace(/\D/g, "");
+              setQuantity(digits === "" ? 0 : Number(digits));
+            }}
+            onBlur={() => {
+              if (!quantity || quantity < 1) setQuantity(1);
+            }}
+            className="h-11 w-14 rounded-none border-y-0 border-x text-center font-medium tabular-nums shadow-none focus-visible:ring-0"
+          />
+
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-11 w-11 rounded-none"
+            disabled={!canAddToCart || isPending}
+            onClick={() => setQuantity((q) => q + 1)}
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
+        </div>
+
         <Button
           size="lg"
-          className="w-full"
+          className="flex-1"
           disabled={!canAddToCart || isPending}
           onClick={handleAddToCart}
         >
