@@ -52,7 +52,7 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
         >
           {line.productVariant.product.featuredAsset && (
             <Link
-              href={`/src/app/%5Blocale%5D/product/${line.productVariant.product.slug}`}
+              href={`/product/${line.productVariant.product.slug}`}
               className="flex-shrink-0"
             >
               <Image
@@ -67,7 +67,7 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
 
           <div className="flex-grow min-w-0">
             <Link
-              href={`/src/app/%5Blocale%5D/product/${line.productVariant.product.slug}`}
+              href={`/product/${line.productVariant.product.slug}`}
               className="font-semibold hover:underline block"
             >
               {line.productVariant.product.name}
