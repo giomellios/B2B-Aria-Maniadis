@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { getTopCollections } from "@/lib/vendure/cached";
+import { getActiveCustomer } from "@/lib/vendure/actions";
 import Link from "next/link";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
 
@@ -16,6 +18,35 @@ async function Copyright() {
     <p className="text-sm text-muted-foreground">
       © {COPYRIGHT_YEAR} Maniadis. All rights reserved.
     </p>
+  );
+}
+
+async function FooterAccountLinks() {
+  const customer = await getActiveCustomer();
+
+  return (
+    <>
+      {!customer && (
+        <>
+          <li>
+            <Link
+              href="/sign-in"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Sign In
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/register"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Register
+            </Link>
+          </li>
+        </>
+      )}
+    </>
   );
 }
 
@@ -68,22 +99,9 @@ export async function Footer() {
           <div className="space-y-3">
             <p className="text-sm font-medium tracking-widest uppercase">Account</p>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/sign-in"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Sign In
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/register"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Register
-                </Link>
-              </li>
+              <Suspense fallback={null}>
+                <FooterAccountLinks />
+              </Suspense>
               <li>
                 <Link
                   href="/account/orders"

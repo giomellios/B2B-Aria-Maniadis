@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 import { LoginForm } from "./login-form";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getActiveCustomer } from "@/lib/vendure/actions";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -37,7 +39,10 @@ async function SignInContent({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const resolvedParams = await searchParams;
+  const [customer, resolvedParams] = await Promise.all([getActiveCustomer(), searchParams]);
+  if (customer) {
+    redirect("/");
+  }
   const redirectTo = resolvedParams?.redirectTo as string | undefined;
 
   return <LoginForm redirectTo={redirectTo} />;
