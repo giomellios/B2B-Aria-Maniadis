@@ -58,8 +58,16 @@ jobs:
         if: github.event_name == 'pull_request'
         working-directory: ${{ github.workspace }}
         run: |
-          BASE='${{ github.event.pull_request.base.sha }}'
-          CHANGED=$(git diff --name-only --diff-filter=ACMR "$BASE"...HEAD -- 'backend/')
+          # Diff against the base BRANCH, not pull_request.base.sha. base.sha is
+          # the base tip from when the PR event fired, but actions/checkout checks
+          # out the merge ref (this branch merged into the CURRENT base tip). If
+          # the base advanced in between, base.sha...HEAD also reports every file
+          # the base gained meanwhile, so unrelated files get linted and the PR
+          # fails on other people's code. Diffing against the branch ref makes the
+          # merge base the base tip, leaving only this PR's own changes.
+          BASE_REF='${{ github.event.pull_request.base.ref }}'
+          git fetch --no-tags --prune origin "+refs/heads/$BASE_REF:refs/remotes/origin/$BASE_REF"
+          CHANGED=$(git diff --name-only --diff-filter=ACMR "origin/$BASE_REF...HEAD" -- 'backend/')
           echo "Changed files under backend/:"
           echo "$CHANGED"
           # Lint: TS/JS source under apps/ and scripts/ (paths relative to backend/).
