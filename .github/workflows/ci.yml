@@ -1,0 +1,98 @@
+name: CI
+
+# Fast, deterministic quality gates for PRs into staging/main (and post-merge
+# status on those branches). Type-checks run on every event; lint and format
+# run only on the files a PR changed, so pre-existing debt doesn't block work.
+#
+# The actual production builds are performed by Vercel (storefront preview per
+# PR) and Render (backend) with the real environment + API, so we deliberately
+# do NOT run `next build` / `vite build` here — a full build needs a live,
+# schema-compatible Vendure API that CI doesn't have.
+on:
+  pull_request:
+    branches: [staging, main]
+  push:
+    branches: [staging, main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Type-check, lint & format
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so we can diff a PR against its merge base.
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      # Installs both workspaces. postinstall applies patch-package patches and
+      # injects the Greek dashboard translations into node_modules.
+      - name: Install dependencies
+        run: npm ci
+
+      # Whole-project type-checks. Neither needs a DB or the Shop API.
+      - name: Type-check server
+        run: npm run check-types --workspace server
+
+      - name: Type-check storefront
+        run: npm run check-types --workspace storefront
+
+      # Collect the files this PR changed (repo-root-relative), narrowed to the
+      # backend workspace and split into lint targets vs format targets.
+      - name: Determine changed files
+        if: github.event_name == 'pull_request'
+        working-directory: ${{ github.workspace }}
+        run: |
+          # Diff against the base BRANCH, not pull_request.base.sha. base.sha is
+          # the base tip from when the PR event fired, but actions/checkout checks
+          # out the merge ref (this branch merged into the CURRENT base tip). If
+          # the base advanced in between, base.sha...HEAD also reports every file
+          # the base gained meanwhile, so unrelated files get linted and the PR
+          # fails on other people's code. Diffing against the branch ref makes the
+          # merge base the base tip, leaving only this PR's own changes.
+          BASE_REF='${{ github.event.pull_request.base.ref }}'
+          git fetch --no-tags --prune origin "+refs/heads/$BASE_REF:refs/remotes/origin/$BASE_REF"
+          CHANGED=$(git diff --name-only --diff-filter=ACMR "origin/$BASE_REF...HEAD" -- 'backend/')
+          echo "Changed files under backend/:"
+          echo "$CHANGED"
+          # Lint: TS/JS source under apps/ and scripts/ (paths relative to backend/).
+          LINT=$(echo "$CHANGED" | grep -E '^backend/(apps|scripts)/.*\.(ts|tsx|js|jsx)$' | sed 's#^backend/##' || true)
+          # Format: every changed backend file; prettier --ignore-unknown skips the rest.
+          FMT=$(echo "$CHANGED" | sed 's#^backend/##' || true)
+          {
+            echo "LINT_FILES<<EOF"; echo "$LINT"; echo "EOF"
+            echo "FMT_FILES<<EOF"; echo "$FMT"; echo "EOF"
+          } >> "$GITHUB_ENV"
+
+      - name: Lint changed files
+        if: github.event_name == 'pull_request'
+        run: |
+          if [ -z "$LINT_FILES" ]; then
+            echo "No lintable files changed."
+            exit 0
+          fi
+          echo "$LINT_FILES" | xargs -r -d '\n' npx eslint
+
+      - name: Check formatting of changed files
+        if: github.event_name == 'pull_request'
+        run: |
+          if [ -z "$FMT_FILES" ]; then
+            echo "No changed files to format-check."
+            exit 0
+          fi
+          echo "$FMT_FILES" | xargs -r -d '\n' npx prettier --check --ignore-unknown
