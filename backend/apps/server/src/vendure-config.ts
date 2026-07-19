@@ -29,6 +29,16 @@ const assetUrlPrefix = process.env.ASSET_URL_PREFIX?.trim()
     : `${process.env.ASSET_URL_PREFIX}/`
   : undefined;
 
+// Base URL of the Next.js storefront, used to build links in transactional emails.
+const storefrontUrl = (process.env.STOREFRONT_URL?.trim() || "http://localhost:3001").replace(
+  /\/+$/,
+  ""
+);
+
+if (!IS_DEV && !process.env.STOREFRONT_URL?.trim()) {
+  throw new Error("STOREFRONT_URL is required outside of dev so that email links resolve.");
+}
+
 if (
   useS3AssetStorage &&
   (!process.env.S3_BUCKET ||
@@ -156,12 +166,14 @@ export const config: VendureConfig = {
         path.join(__dirname, "../static/email/templates")
       ),
       globalTemplateVars: {
-        // The following variables will change depending on your storefront implementation.
-        // Here we are assuming a storefront running at http://localhost:8080.
         fromAddress: '"example" <noreply@example.com>',
-        verifyEmailAddressUrl: "http://localhost:8080/verify",
-        passwordResetUrl: "http://localhost:8080/password-reset",
-        changeEmailAddressUrl: "http://localhost:8080/verify-email-address-change",
+        // Used by the email templates to resolve the logo and brand links.
+        storefrontUrl,
+        // Customer verification is done by an admin in the dashboard (customer-approval plugin),
+        // so this link is not part of any storefront flow.
+        verifyEmailAddressUrl: `${storefrontUrl}/verify`,
+        passwordResetUrl: `${storefrontUrl}/reset-password`,
+        changeEmailAddressUrl: `${storefrontUrl}/account/verify-email`,
       },
     }),
     DashboardPlugin.init({

@@ -1,18 +1,40 @@
 <mjml>
     <mj-head>
         <mj-title>{{ title }}</mj-title>
+        <mj-preview>{{ title }}</mj-preview>
+        <mj-attributes>
+            <mj-all font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" />
+            <mj-text color="#0f172a" font-size="15px" line-height="24px" />
+            <mj-button background-color="#0f172a"
+                       color="#f8fafc"
+                       font-size="15px"
+                       font-weight="500"
+                       border-radius="8px"
+                       inner-padding="12px 28px" />
+        </mj-attributes>
         <mj-style inline="inline">
             h3 {
                 font-size: 18px;
-                color: #555;
-                font-weight: normal;
+                color: #0f172a;
+                font-weight: 500;
+            }
+            a {
+                color: #0f172a;
             }
         </mj-style>
     </mj-head>
 
-    <mj-body>
-        <mj-section background-color="#f0f0f0">
+    <mj-body background-color="#f1f5f9">
+        <mj-section background-color="#ffffff"
+                    border-bottom="1px solid #e2e8f0"
+                    padding="28px 24px 24px 24px">
             <mj-column>
-                <mj-text>[company header]</mj-text>
+                <!-- logo.png is 169x210 (portrait); 40px wide renders ~50px tall. -->
+                <mj-image src="{{ storefrontUrl }}/logo.png"
+                          alt="Aria Maniadis"
+                          href="{{ storefrontUrl }}"
+                          width="40px"
+                          align="left"
+                          padding="0" />
             </mj-column>
         </mj-section>

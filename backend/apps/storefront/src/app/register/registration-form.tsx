@@ -7,6 +7,7 @@ import * as z from "zod";
 import { registerAction } from "./actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Form,
@@ -196,7 +197,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="••••••••" disabled={isPending} {...field} />
+                    <PasswordInput placeholder="••••••••" disabled={isPending} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -210,7 +211,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
                 <FormItem>
                   <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="••••••••" disabled={isPending} {...field} />
+                    <PasswordInput placeholder="••••••••" disabled={isPending} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
