@@ -86,17 +86,17 @@ export function parseCsvBuffer(buffer: Buffer): CsvRow[] {
 
         // Handle semicolon delimiter with optional double-quoted fields
         const cols = splitCsvLine(line, ';');
-        if (cols.length < 6) continue;
+        if (cols.length < 5) continue;
 
         const code = cols[0].trim();
         if (!code) continue;
 
         const rawName = cols[1].trim().replace(/^"(.*)"$/, '$1').replace(/""/g, '"');
         const name = cleanProductName(rawName);
-        const color = cols[3].trim();
-        const characteristic = cols[4].trim();
-        const rawPrice = cols[5].trim();
-        const rawQty = cols[6]?.trim() ?? '0';
+        const color = cols[2].trim();
+        const characteristic = cols[3].trim();
+        const rawPrice = cols[4].trim();
+        const rawQty = cols[5]?.trim() ?? '0';
 
         // Parse price: " 2,88 € " → 288
         const priceNumber = parseFloat(rawPrice.replace(/[^0-9,]/g, '').replace(',', '.'));
