@@ -13,6 +13,7 @@ import { DashboardPlugin } from "@vendure/dashboard/plugin";
 import { GraphiqlPlugin } from "@vendure/graphiql-plugin";
 import { GreekTranslationsPlugin } from "./plugins/greek-translations/greek-translations.plugin";
 import { CustomerApprovalPlugin } from "./plugins/customer-approval/customer-approval.plugin";
+import { OrderNotificationsPlugin } from "./plugins/order-notifications/order-notifications.plugin";
 import { TranslationSyncPlugin } from "./plugins/translation-sync/translation-sync.plugin";
 import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
 import { B2BPostgresSearchStrategy } from "./plugins/search/b2b-search-strategy";
@@ -174,5 +175,6 @@ export const config: VendureConfig = {
     TranslationSyncPlugin,
     CsvImportPlugin,
     CustomerApprovalPlugin,
+    OrderNotificationsPlugin,
   ],
 };
