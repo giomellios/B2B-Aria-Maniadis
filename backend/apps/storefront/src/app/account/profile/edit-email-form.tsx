@@ -4,6 +4,7 @@ import { useActionState, useEffect } from "react";
 import { requestEmailUpdateAction } from "./actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -54,10 +55,9 @@ export function EditEmailForm({ currentEmail }: EditEmailFormProps) {
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Current Password</Label>
-            <Input
+            <PasswordInput
               id="password"
               name="password"
-              type="password"
               placeholder="••••••••"
               required
               disabled={isPending}

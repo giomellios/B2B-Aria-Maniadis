@@ -3,7 +3,7 @@
 import { use, useActionState } from "react";
 import { resetPasswordAction } from "./actions";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
 import { Label } from "@/components/ui/label";
 import {
   Card,
@@ -54,10 +54,9 @@ export function ResetPasswordForm({ searchParams }: ResetPasswordFormProps) {
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="password">New Password</Label>
-            <Input
+            <PasswordInput
               id="password"
               name="password"
-              type="password"
               placeholder="••••••••"
               required
               disabled={isPending}
@@ -65,10 +64,9 @@ export function ResetPasswordForm({ searchParams }: ResetPasswordFormProps) {
           </div>
           <div className="space-y-2">
             <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <Input
+            <PasswordInput
               id="confirmPassword"
               name="confirmPassword"
-              type="password"
               placeholder="••••••••"
               required
               disabled={isPending}
