@@ -1,15 +1,17 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+// eslint-config-next v16 ships native flat configs, so we consume them
+// directly instead of via @eslint/eslintrc's FlatCompat, which crashed with
+// "Converting circular structure to JSON" when translating the React plugin.
+const storefrontFiles = [
+  "apps/storefront/**/*.ts",
+  "apps/storefront/**/*.tsx",
+  "apps/storefront/**/*.js",
+  "apps/storefront/**/*.jsx",
+];
 
 export default [
   {
@@ -42,14 +44,9 @@ export default [
       ...tsPlugin.configs.recommended.rules,
     },
   },
-  // Storefront: Next.js config
-  ...compat.extends("next/core-web-vitals", "next/typescript").map((block) => ({
+  // Storefront: Next.js flat config, scoped to the storefront workspace.
+  ...[...nextCoreWebVitals, ...nextTypescript].map((block) => ({
     ...block,
-    files: [
-      "apps/storefront/**/*.ts",
-      "apps/storefront/**/*.tsx",
-      "apps/storefront/**/*.js",
-      "apps/storefront/**/*.jsx",
-    ],
+    files: storefrontFiles,
   })),
 ];
