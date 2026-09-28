@@ -1,7 +1,8 @@
 # Dashboard recipes (React admin Dashboard, `@vendure/dashboard`)
 
-Source: docs.vendure.io → "Extending the Dashboard" (v3.7). Items marked **(≥ 3.6)** /
-**(≥ 3.7)** don't exist on 3.5.3 — see `version-notes.md` for the 3.5 equivalent.
+Source: docs.vendure.io → "Extending the Dashboard" (v3.7). This project runs **3.7.3**, so
+everything marked (≥ 3.6) / (≥ 3.7) is available; the 3.5.x variants in comments are only
+for reading old code.
 
 Contents: §0 How it works · §1 Plugin wiring & entry file · §2 List page · §3 Detail page ·
 §4 Page blocks · §5 Customize existing detail pages · §6 Customize existing tables ·

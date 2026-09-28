@@ -23,8 +23,7 @@ relative to it, and `npx vendure …` must run there. npm workspaces root is `ba
 
 1. Check the installed versions:
    ```bash
-   node -p "require('@vendure/core/package.json').version"
-   node -p "require('@vendure/dashboard/package.json').version"
+   cd backend && npm ls @vendure/core @vendure/dashboard
    ```
 2. Open `references/version-notes.md` and note which APIs you may use.
 3. Read `src/vendure-config.ts` and list `src/plugins/` so you reuse an existing plugin when the

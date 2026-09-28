@@ -12,5 +12,6 @@ import { VendurePlugin } from "@vendure/core";
  */
 @VendurePlugin({
   dashboard: "./dashboard",
+  compatibility: "^3.0.0",
 })
 export class GreekTranslationsPlugin {}

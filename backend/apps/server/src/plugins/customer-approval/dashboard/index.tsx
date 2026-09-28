@@ -4,10 +4,11 @@ import {
     DataTableBulkActionItem,
     defineDashboardExtension,
     PermissionGuard,
+    toast,
+    useMutation,
+    useQueryClient,
 } from '@vendure/dashboard';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { CheckCircle } from 'lucide-react';
-import { toast } from 'sonner';
 
 const ManuallyVerifyCustomerDocument = {
     kind: 'Document',

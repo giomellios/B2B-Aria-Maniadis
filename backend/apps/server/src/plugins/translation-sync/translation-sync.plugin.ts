@@ -168,5 +168,6 @@ class TranslationSyncSubscriber implements OnApplicationBootstrap {
 @VendurePlugin({
   imports: [PluginCommonModule],
   providers: [TranslationSyncSubscriber],
+  compatibility: "^3.0.0",
 })
 export class TranslationSyncPlugin {}

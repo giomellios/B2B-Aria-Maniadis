@@ -1,8 +1,9 @@
 diff --git a/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx b/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
-index 5d64e6a..040165f 100644
+index 11630ef..db625d2 100644
 --- a/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
 +++ b/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
-@@ -1,6 +1,6 @@
+@@ -1,7 +1,7 @@
+ import { MenuBranding } from '@/vdb/components/shared/powered-by-vendure.js';
  import { useAuth } from '@/vdb/hooks/use-auth.js';
  import { Link, useNavigate, useRouter } from '@tanstack/react-router';
 -import { ChevronsUpDown, LogOut, Monitor, Moon, Sparkles, Sun } from 'lucide-react';
@@ -10,19 +11,17 @@ index 5d64e6a..040165f 100644
  
  import {
      DropdownMenu,
-@@ -93,15 +93,6 @@ export function NavUser() {
-                                 </div>
-                             </DropdownMenuLabel>
+@@ -96,13 +96,6 @@ export function NavUser() {
+                                 </DropdownMenuLabel>
+                             </DropdownMenuGroup>
                              <DropdownMenuSeparator />
 -                            <DropdownMenuGroup>
--                                <DropdownMenuItem asChild>
--                                    <a href="https://vendure.io/pricing" target="_blank">
+-                                <DropdownMenuItem render={<a href="https://vendure.io/pricing" target="_blank" rel="noopener noreferrer" aria-label="Explore Platform & Cloud" />}>
 -                                        <Sparkles />
--                                        <Trans>Explore Enterprise Edition</Trans>
--                                    </a>
+-                                        <Trans>Explore Platform & Cloud</Trans>
 -                                </DropdownMenuItem>
 -                            </DropdownMenuGroup>
 -                            <DropdownMenuSeparator />
                              <DropdownMenuGroup>
-                                 <DropdownMenuItem asChild>
-                                     <Link to="/profile">
+                                 <DropdownMenuItem render={<Link to="/profile" />}>
+                                         <Trans>Profile</Trans>

@@ -13,5 +13,6 @@ import { CustomerApprovalResolver } from './customer-approval.resolver';
         resolvers: [CustomerApprovalResolver],
     },
     dashboard: './dashboard',
+    compatibility: '^3.0.0',
 })
 export class CustomerApprovalPlugin {}

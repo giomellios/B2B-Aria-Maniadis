@@ -11,5 +11,6 @@ import { CsvImportService } from './services/csv-import.service';
         resolvers: [CsvImportResolver],
     },
     dashboard: './dashboard',
+    compatibility: '^3.0.0',
 })
 export class CsvImportPlugin {}

@@ -1,17 +1,18 @@
 # Version notes: what exists in 3.5.3 vs 3.6.x / 3.7.x, and the upgrade runbook
 
-The docs at docs.vendure.io track the **latest** release (3.7.3 as of Sept 2026). This project
-runs **3.5.3** until the upgrade is done. Always confirm with:
+The docs at docs.vendure.io track the **latest** release. This project runs **3.7.3**
+(upgraded from 3.5.3 in Sept 2026) — the "3.5.3" column below is kept for reference and for
+reading older code. Confirm the installed versions with (in `backend/`):
 
 ```bash
-node -p "require('@vendure/core/package.json').version"
-node -p "require('@vendure/dashboard/package.json').version"
+npm ls @vendure/core @vendure/dashboard typeorm
 ```
 
-**Confirmed in this repo's installed `@vendure/dashboard@3.5.3`:** `Button` uses Radix
-`asChild` (`src/lib/components/ui/button.tsx`); `PageActionBarRight` is exported from
-`framework/layout-engine/page-layout.tsx`; there is **no** `ActionBarItem` export and **no**
-`z`/`zodResolver` re-export; `actionBarItems[].requiresPermission` is supported; bundled Vite is 6.4.1.
+**Confirmed in this repo's installed `@vendure/dashboard@3.7.3`:** `Button` is Base UI with a
+`render` prop (`src/lib/components/ui/button.tsx`); `ActionBarItem` exists
+(`framework/layout-engine/action-bar-item-wrapper.tsx`) and `PageActionBarRight` is still
+exported; `z`/`zodResolver` are re-exported; Vite 7. (Before the upgrade, 3.5.3 had Radix
+`asChild`, no `ActionBarItem`, no zod re-export, Vite 6.4.1.)
 
 When unsure whether something exists, search the installed code, e.g.
 `grep -rn "export .*ActionBarItem" node_modules/@vendure/dashboard/src/lib | head` or
@@ -51,7 +52,7 @@ If you are unsure whether an API predates 3.5.3, look for "since" / "Version Int
   the codemod (below) can rewrite them.
 - Don't depend on internal paths (`@/vdb/*`) unless unavoidable.
 
-## 3. Upgrade runbook: 3.5.3 → 3.7.3
+## 3. Upgrade runbook (used for 3.5.3 → 3.7.3; reuse the pattern for future upgrades)
 
 Only run this when the user asks. It is a moderate job: most effort is the **database
 migration of 3.6** and checking custom Dashboard code. A direct jump to 3.7.3 is fine (one

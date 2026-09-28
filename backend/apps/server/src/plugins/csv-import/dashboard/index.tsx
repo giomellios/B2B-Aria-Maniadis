@@ -1,5 +1,5 @@
-import { api } from '@/vdb/graphql/api.js';
 import {
+    api,
     Button,
     defineDashboardExtension,
     Page,

@@ -24,11 +24,11 @@ B2B-Aria-Maniadis/
 ├── CLAUDE.md, .mcp.json, .claude/skills/   ← Claude Code setup (open Claude Code HERE)
 ├── docker-compose.yml                       ← local Postgres 15 (+ Meilisearch, currently unused by Vendure)
 └── backend/                                 ← npm workspaces root (package-lock.json, postinstall, patches/)
-    ├── patches/@vendure+dashboard+3.5.3.patch
+    ├── patches/@vendure+dashboard+3.7.3.patch
     ├── scripts/postinstall.js, scripts/setup-greek-translations.js
     ├── lingui.config.js
     └── apps/
-        ├── server/       ← Vendure 3.5.3 (server + worker + Dashboard)
+        ├── server/       ← Vendure 3.7.3 (server + worker + Dashboard)
         └── storefront/   ← Next.js 16 / React 19 B2B storefront (gql.tada, Tailwind 4, Radix/shadcn)
 ```
 
@@ -37,7 +37,7 @@ B2B-Aria-Maniadis/
 | Fact | Value |
 |---|---|
 | What the app is | B2B wholesale shop for **ARIA Bags & Hats** (Greek client): Vendure backend + admin Dashboard + Next.js storefront. Customers register with company + VAT number and must be approved by an admin before they can log in. |
-| Vendure version (installed) | **3.5.3** (`@vendure/core`, `dashboard`, `cli`, `email-plugin`, `asset-server-plugin`, `graphiql-plugin` — all pinned exactly). Latest is 3.7.3; see §11. |
+| Vendure version (installed) | **3.7.3** (`@vendure/core`, `dashboard`, `cli`, `email-plugin`, `asset-server-plugin`, `graphiql-plugin` — all pinned exactly; upgraded from 3.5.3 in Sept 2026, see §11). `typeorm` is pinned in `backend/package.json` (root) so npm hoists a single copy — keep it equal to the version `@vendure/core` uses. Dashboard runs on Vite 7 / Base UI. |
 | Package manager | **npm** workspaces (`backend/package-lock.json`). Never use pnpm/yarn/bun here. |
 | Database | **PostgreSQL** (`pg`), via `docker-compose.yml` locally. Env: `DB_HOST/PORT/NAME/USERNAME/PASSWORD/SCHEMA`. |
 | Node | Server Docker image uses `node:20`. |
@@ -50,15 +50,15 @@ B2B-Aria-Maniadis/
 | Customer custom fields | `Customer.vatNumber`, `Customer.company` (defined directly in `vendure-config.ts`, labels in en + el). |
 | Payments | `dummyPaymentHandler` only (no real payment method yet). |
 | Custom plugins (`src/plugins/`) | `csv-import` (Admin mutation `importProductsFromCsv` + Dashboard page; decodes cp1253/UTF-8 CSV) · `customer-approval` (Admin mutation `manuallyVerifyCustomer` + "Approve Customer" button on customer detail) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (copies product/variant translations to all channel languages on save) · `search/b2b-search-strategy.ts` (not a plugin — a SearchStrategy). |
-| Migrations | `src/migrations/` (Postgres). In **dev** (`APP_ENV=dev`) the server uses `synchronize: true` and does **not** run migrations; outside dev, `src/index.ts` runs `runMigrations` before bootstrap. |
+| Migrations | `src/migrations/` (Postgres). In **dev** (`APP_ENV=dev`) the server uses `synchronize: true` and does **not** run migrations; outside dev, `src/index.ts` runs `runMigrations` before bootstrap. `1790605810464-vendure-3-7-3-upgrade.ts` is the 3.5.3→3.7.3 upgrade (with the 3.6 data helpers); the first migration uses `IF NOT EXISTS` so it is safe on databases created by `synchronize`. |
 
 ---
 
 ## 2. How to look things up (in this order)
 
 1. **The installed code is the source of truth for the version we run.**
-   - Check versions: `node -p "require('@vendure/core/package.json').version"` and
-     `node -p "require('@vendure/dashboard/package.json').version"`.
+   - Check versions (in `backend/`): `npm ls @vendure/core @vendure/dashboard typeorm`
+     (`require('@vendure/dashboard/package.json')` doesn't work — the package has an exports map).
    - Server APIs: `node_modules/@vendure/core/dist/**/*.d.ts`.
    - Dashboard APIs: `@vendure/dashboard` ships its **source** — read
      `node_modules/@vendure/dashboard/src/lib/` to confirm an export or a prop exists before using it.
@@ -124,7 +124,7 @@ tsconfig.dashboard.json    # dashboard extension type-checking (jsx, @/gql and @
 
 ## 5. Commands
 
-npm only. On **3.5.3** (current). `(backend)` = run in `backend/`, `(server)` = run in `backend/apps/server/`.
+npm only. On **3.7.3** (current). `(backend)` = run in `backend/`, `(server)` = run in `backend/apps/server/`.
 
 | Task | Command |
 |---|---|
@@ -143,13 +143,14 @@ npm only. On **3.5.3** (current). `(backend)` = run in `backend/`, `(server)` = 
 | Run pending migrations | `npx vendure migrate -r` (the server also runs them on start via `runMigrations`) |
 | Revert last migration | `npx vendure migrate --revert` (ask the user first) |
 | Dump schema for tooling | `npx vendure schema --api admin` (or `--api shop`) |
+| Diagnose project | `npx vendure doctor` (server; needs DB env vars) · before deploy: `npx vendure doctor --profile production` |
 | Help | `npx vendure add --help` (flag names changed between versions — check before using) |
 
-After upgrading to **≥ 3.7** you also get `npx vendure dev | build | start` and
-`npx vendure doctor [--profile production]` (run `doctor` after every upgrade or config change).
+3.7 also offers `npx vendure dev | build | start`; this repo keeps its own npm scripts
+(`dev:server`/`dev:worker`/`dev:dashboard` via concurrently) — use those.
 
-⚠️ **Never run an interactive CLI prompt.** On 3.5.3 the `vendure` CLI may wait for input if a
-flag is missing, and the session will hang. Always pass every required flag. If a command
+⚠️ **Never run an interactive CLI prompt.** Since 3.7 the `vendure` CLI fails fast when a flag
+is missing in a non-interactive shell, but still pass every flag explicitly (and `< /dev/null`). Always pass every required flag. If a command
 starts prompting anyway, stop it and scaffold by hand using the templates in the skill.
 
 ---
@@ -158,7 +159,7 @@ starts prompting anyway, stop it and scaffold by hand using the templates in the
 
 1. **Never edit `node_modules/`, never fork or patch `@vendure/dashboard` or `@vendure/core`.**
    Extend through plugins, strategies, custom fields, and `defineDashboardExtension`.
-   (This repo has two legacy exceptions — `backend/patches/@vendure+dashboard+3.5.3.patch` and
+   (This repo has two legacy exceptions — `backend/patches/@vendure+dashboard+3.7.3.patch` and
    the Greek-translation copy in `postinstall`. Don't add new ones; see §12.)
 2. **All custom code lives in a plugin** under `src/plugins/<feature>/`, registered in the
    `plugins` array of `src/vendure-config.ts`. One plugin per business capability.
@@ -188,8 +189,8 @@ starts prompting anyway, stop it and scaffold by hand using the templates in the
     Never import `@radix-ui/*`, `@base-ui/*`, `@tanstack/*`, `react-hook-form`, `sonner` directly.
     **This rule is for `apps/server/src/plugins/**/dashboard/` only** — the Next.js storefront
     (`apps/storefront`) is a separate app that legitimately uses Radix/shadcn, gql.tada, etc.
-    (On 3.5.3 only: `z` from `zod` and `zodResolver` from `@hookform/resolvers/zod` are OK —
-    they are re-exported from `@vendure/dashboard` only since 3.6.1.)
+    `z` and `zodResolver` also come from `@vendure/dashboard`. Components use Base UI's
+    **`render` prop** (e.g. `<Button render={<Link to="./new" />}>`), not Radix `asChild`.
 11. **Do not use the legacy Angular Admin UI APIs** (`@vendure/ui-devkit`, `AdminUiPlugin`
     extensions, `addNavMenuItem`, `registerFormInputComponent`, anything under the docs'
     "legacy-apis" section) for new work.
@@ -260,11 +261,11 @@ starts prompting anyway, stop it and scaffold by hand using the templates in the
 
 ## 11. Upgrade status
 
-We are on 3.5.3; 3.7.3 is current. The 3.5 line gets no more fixes, and 3.6.x–3.7.x contain
-security fixes (including cross-channel access fixes that matter for B2B). **Do not start an
-upgrade on your own** — when the user asks, follow the runbook in
-`.claude/skills/vendure-plugin-dev/references/version-notes.md`. After the upgrade, update §1
-and remove the 3.5-only notes in §6 rule 10.
+Upgraded **3.5.3 → 3.7.3** on branch `chore/vendure-3.7.3-upgrade` (Sept 2026): packages bumped,
+Radix→Base UI codemod run on `src/plugins/`, Dashboard patch regenerated for 3.7.3, Greek
+lingui config re-synced, search strategy updated, upgrade migration generated and tested against
+a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
+`.claude/skills/vendure-plugin-dev/references/version-notes.md` (and §12 for repo-specific traps).
 
 ---
 
@@ -273,21 +274,26 @@ and remove the 3.5-only notes in §6 rule 10.
 Existing code predates this file. When you touch these files, bring them in line with the rules;
 don't refactor them unasked.
 
-- **`backend/patches/@vendure+dashboard+3.5.3.patch`** (patch-package) removes the "Explore
-  Enterprise Edition" link from the Dashboard user menu. It is tied to the exact version
-  3.5.3 and **will fail on upgrade** — on upgrade, drop it or regenerate it.
-- **`scripts/setup-greek-translations.js`** copies `lingui.config.js` and
+- **`backend/patches/@vendure+dashboard+3.7.3.patch`** (patch-package) removes the "Explore
+  Platform & Cloud" link from the Dashboard user menu (`nav-user.tsx`). It is tied to the exact
+  version and **will fail on the next upgrade** — regenerate it: edit the file in
+  `node_modules`, then `npx patch-package @vendure/dashboard` (restore the pristine
+  `lingui.config.js` and remove `src/i18n/locales/el.po` from the package first, otherwise the
+  Greek setup files end up in the patch).
+- **`scripts/setup-greek-translations.js`** copies `backend/lingui.config.js` and
   `src/plugins/greek-translations/dashboard/el.po` into `node_modules/@vendure/dashboard` on
-  every install. Re-check it after any `@vendure/dashboard` upgrade (paths/catalog format may change).
-- `customer-approval/dashboard/index.tsx`: hand-written GraphQL AST, imports
-  `@tanstack/react-query` and `sonner` directly → should use `graphql` from `@/gql`, and
-  `useMutation`/`toast` from `@vendure/dashboard`. Its resolver mutation lacks `@Transaction()`.
-- `csv-import/dashboard/index.tsx`: imports `api` from the internal `@/vdb/graphql/api.js` and
-  `gql` from `graphql-tag` → should be `api` from `@vendure/dashboard` + `graphql` from `@/gql`.
-  The CSV mutation should have `@Transaction()` and a dedicated permission if non-superadmins use it.
+  every install. `backend/lingui.config.js` is the 3.7.3 upstream config + `'el'` — re-sync its
+  locale list with the upstream file on every Dashboard upgrade. Strings added to the Dashboard
+  after 3.5.3 have no Greek translation yet (they show in English) until added to `el.po`.
+- `customer-approval/dashboard/index.tsx`: hand-written GraphQL AST → should use `graphql`
+  from `@/gql`. Its resolver mutation lacks `@Transaction()`.
+- `csv-import/dashboard/index.tsx`: uses `gql` from `graphql-tag` → should be `graphql` from
+  `@/gql` for typing. The CSV mutation should have `@Transaction()` and a dedicated permission
+  if non-superadmins use it.
 - `search/b2b-search-strategy.ts` subclasses Vendure's **internal** `PostgresSearchStrategy`
-  via `require('@vendure/core/dist/...')` and re-implements a private method. It can silently
-  break on any Vendure upgrade — re-test SKU search after upgrading.
+  via `require('@vendure/core/dist/...')` and re-implements the private `applyTermAndFilters`
+  (currently mirroring 3.7.3 + the partial-SKU `ILIKE`). On every upgrade, diff it against the
+  new core file and re-test that searching "1034" finds SKU "A1034…".
 - `translation-sync` uses `connection.rawConnection` (no `ctx`, bypasses the transaction) and
   `console.error`; prefer `connection.getRepository(ctx, …)` and `Logger` from `@vendure/core`.
 - Customer custom fields live directly in `vendure-config.ts`; new ones should go in the plugin
