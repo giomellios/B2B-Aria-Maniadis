@@ -36,7 +36,7 @@ B2B-Aria-Maniadis/
 
 | Fact | Value |
 |---|---|
-| What the app is | B2B wholesale shop for **ARIA Bags & Hats** (Greek client): Vendure backend + admin Dashboard + Next.js storefront. Customers register with company + VAT number and must be approved by an admin before they can log in. |
+| What the app is | B2B wholesale shop for **ARIA Bags & Hats** (Greek client): Vendure backend + admin Dashboard + Next.js storefront. Customers register with company + VAT number and can log in **only after an admin approves them** (no self-service email verification). |
 | Vendure version (installed) | **3.7.3** (`@vendure/core`, `dashboard`, `cli`, `email-plugin`, `asset-server-plugin`, `graphiql-plugin` — all pinned exactly; upgraded from 3.5.3 in Sept 2026, see §11). `typeorm` is pinned in `backend/package.json` (root) so npm hoists a single copy — keep it equal to the version `@vendure/core` uses. Dashboard runs on Vite 7 / Base UI. |
 | Package manager | **npm** workspaces (`backend/package-lock.json`). Never use pnpm/yarn/bun here. |
 | Database | **PostgreSQL** (`pg`), via `docker-compose.yml` locally. Env: `DB_HOST/PORT/NAME/USERNAME/PASSWORD/SCHEMA`. |
@@ -46,10 +46,11 @@ B2B-Aria-Maniadis/
 | Channels | Single default channel (as far as the code shows). |
 | Assets | Local `static/assets` in dev; **Cloudflare R2 via S3** (`configureS3AssetStorage`) outside dev — needs `S3_*` env vars. |
 | Search | `DefaultSearchPlugin` with custom `B2BPostgresSearchStrategy` (adds partial-SKU `ILIKE` matching). |
-| Auth | `requireVerification: true`, bearer + cookie tokens, superadmin from `SUPERADMIN_USERNAME/PASSWORD` env. |
-| Customer custom fields | `Customer.vatNumber`, `Customer.company` (defined directly in `vendure-config.ts`, labels in en + el). |
+| Auth | `requireVerification: true`, bearer + cookie tokens, superadmin from `SUPERADMIN_USERNAME/PASSWORD` env. Shop login uses `ApprovalAwareNativeAuthenticationStrategy` (customer-approval plugin); the "verify your email" email is disabled. |
+| Customer custom fields | `vatNumber`, `company` (in `vendure-config.ts`, editable by the customer in the storefront profile) and `approved` (readonly, admin-only, defined by the customer-approval plugin). |
 | Payments | `dummyPaymentHandler` only (no real payment method yet). |
-| Custom plugins (`src/plugins/`) | `csv-import` (Admin mutation `importProductsFromCsv` + Dashboard page; decodes cp1253/UTF-8 CSV) · `customer-approval` (Admin mutation `manuallyVerifyCustomer` + "Approve Customer" button on customer detail) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (copies product/variant translations to all channel languages on save) · `search/b2b-search-strategy.ts` (not a plugin — a SearchStrategy). |
+| Email | Dev: files + `/mailbox`. Elsewhere: SMTP when `SMTP_HOST` is set, otherwise no emails. Links use `STOREFRONT_URL`. Env vars typed in `src/environment.d.ts`. |
+| Custom plugins (`src/plugins/`) | `csv-import` (upload → job queue on the **worker** → creates/updates products; permission `ImportProductsFromCsv`; Admin API `startCsvProductImport` / `csvProductImportJob`) · `customer-approval` (`Customer.approved` flag, `approveCustomer` / `revokeCustomerApproval` mutations, login gate, Dashboard button + bulk action) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (fills missing product/variant translations for all channel languages) · `search/b2b-search-strategy.ts` (not a plugin — a SearchStrategy). |
 | Migrations | `src/migrations/` (Postgres). In **dev** (`APP_ENV=dev`) the server uses `synchronize: true` and does **not** run migrations; outside dev, `src/index.ts` runs `runMigrations` before bootstrap. `1790605810464-vendure-3-7-3-upgrade.ts` is the 3.5.3→3.7.3 upgrade (with the 3.6 data helpers); the first migration uses `IF NOT EXISTS` so it is safe on databases created by `synchronize`. |
 
 ---
@@ -271,9 +272,6 @@ a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
 
 ## 12. Project-specific notes & known deviations (don't copy these patterns)
 
-Existing code predates this file. When you touch these files, bring them in line with the rules;
-don't refactor them unasked.
-
 - **`backend/patches/@vendure+dashboard+3.7.3.patch`** (patch-package) removes the "Explore
   Platform & Cloud" link from the Dashboard user menu (`nav-user.tsx`). It is tied to the exact
   version and **will fail on the next upgrade** — regenerate it: edit the file in
@@ -282,23 +280,24 @@ don't refactor them unasked.
   Greek setup files end up in the patch).
 - **`scripts/setup-greek-translations.js`** copies `backend/lingui.config.js` and
   `src/plugins/greek-translations/dashboard/el.po` into `node_modules/@vendure/dashboard` on
-  every install. `backend/lingui.config.js` is the 3.7.3 upstream config + `'el'` — re-sync its
-  locale list with the upstream file on every Dashboard upgrade. Strings added to the Dashboard
-  after 3.5.3 have no Greek translation yet (they show in English) until added to `el.po`.
-- `customer-approval/dashboard/index.tsx`: hand-written GraphQL AST → should use `graphql`
-  from `@/gql`. Its resolver mutation lacks `@Transaction()`.
-- `csv-import/dashboard/index.tsx`: uses `gql` from `graphql-tag` → should be `graphql` from
-  `@/gql` for typing. The CSV mutation should have `@Transaction()` and a dedicated permission
-  if non-superadmins use it.
+  every install. The docs confirm a plugin cannot add a new Dashboard UI language, so this is
+  still needed. `backend/lingui.config.js` is the 3.7.3 upstream config + `'el'` — re-sync it on
+  every Dashboard upgrade. Strings added after 3.5.3 show in English until added to `el.po`.
 - `search/b2b-search-strategy.ts` subclasses Vendure's **internal** `PostgresSearchStrategy`
   via `require('@vendure/core/dist/...')` and re-implements the private `applyTermAndFilters`
   (currently mirroring 3.7.3 + the partial-SKU `ILIKE`). On every upgrade, diff it against the
   new core file and re-test that searching "1034" finds SKU "A1034…".
-- `translation-sync` uses `connection.rawConnection` (no `ctx`, bypasses the transaction) and
-  `console.error`; prefer `connection.getRepository(ctx, …)` and `Logger` from `@vendure/core`.
-- Customer custom fields live directly in `vendure-config.ts`; new ones should go in the plugin
-  that owns the feature (with TS typings in the plugin's `types.ts`).
-- Plugins use `dashboard: './dashboard'` (folder form, resolves to `dashboard/index.tsx`/`.ts`) — fine.
+- **Customer approval invariants** (customer-approval plugin): `approved === true` ⇔ admin
+  approved. Approve also sets `user.verified = true`; revoke sets it back to `false` and deletes
+  the customer's sessions, so pending customers get `NotVerifiedError` at login (the storefront
+  shows "wait for admin verification"). Never re-enable the `emailVerificationHandler`, and never
+  make `approved` writable through the API. Unapproved customers cannot complete a password reset.
+- **CSV import** runs on the worker: in dev the worker is started by `npm run dev:server`; in
+  production the worker process must be deployed too, or imports stay PENDING. New products use
+  the shared option groups `color` / `characteristic`; products imported before Sept 2026 keep
+  their per-product `color-<code>` groups (still recognised). SKU format:
+  `<code>-<color>-<characteristic>` — changing it breaks re-import matching.
+- `vatNumber` / `company` are intentionally editable by customers (storefront profile page).
 - Only `dummyPaymentHandler` is configured — don't ship to production without a real
   payment method (e.g. invoice/bank-transfer handler, see skill backend §9).
 - `README.md` mentions Meilisearch, but Vendure currently uses the Postgres search strategy.

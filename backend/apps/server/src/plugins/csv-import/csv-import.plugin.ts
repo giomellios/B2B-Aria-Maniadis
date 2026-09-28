@@ -1,9 +1,14 @@
 import { PluginCommonModule, VendurePlugin } from '@vendure/core';
+
 import { adminApiExtensions } from './api/api-extensions';
 import { CsvImportResolver } from './api/csv-import.resolver';
-import { CsvImportService } from './services/csv-import.service';
 import { importProductsFromCsvPermission } from './constants';
+import { CsvImportService } from './services/csv-import.service';
 
+/**
+ * Product import from the ERP's CSV export (Dashboard: Catalog › CSV).
+ * The upload is queued and processed on the worker — the worker must be running.
+ */
 @VendurePlugin({
     imports: [PluginCommonModule],
     providers: [CsvImportService],
