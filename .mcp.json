@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vendure-docs": {
+      "type": "http",
+      "url": "https://docs.vendure.io/mcp"
+    }
+  }
+}
