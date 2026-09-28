@@ -1,4 +1,4 @@
-# Version notes: what exists in 3.5.3 vs 3.6.x / 3.7.x, and the upgrade runbook
+# Version notes: what exists in our installed 3.7.3 (and what came in 3.6 / 3.7), and the upgrade runbook
 
 The docs at docs.vendure.io track the **latest** release. This project runs **3.7.3**
 (upgraded from 3.5.3 in Sept 2026) — the "3.5.3" column below is kept for reference and for

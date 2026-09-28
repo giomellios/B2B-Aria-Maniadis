@@ -11,7 +11,7 @@ you are working on — don't work from memory, Vendure's APIs are specific.
 
 | Reference | Read it when |
 |---|---|
-| `references/version-notes.md` | **Always first.** Version gate table (what exists in 3.5.3 vs 3.6/3.7), 3.5 vs 3.6 Dashboard differences, and the upgrade runbook. |
+| `references/version-notes.md` | **Always first.** Version gate table (which APIs exist in our installed 3.7.3, and which were added in 3.6/3.7), Dashboard API changes since 3.5, and the upgrade runbook for the next upgrade. |
 | `references/backend-recipes.md` | Plugins, entities, custom fields, services, GraphQL, permissions, channels, events, job queue, strategies, migrations, tests. |
 | `references/dashboard-recipes.md` | Anything the admin sees: routes/pages, list & detail pages, page blocks, action bar, nav, forms, tables, widgets, data fetching, build & deploy. |
 | `references/extension-targets.md` | Built-in `pageId` / `blockId` / action-bar `itemId` / nav section IDs to hook into. |
@@ -123,7 +123,7 @@ The Dashboard package itself is never edited. To change a built-in screen:
 | `graphql()` query has no types / `any` | Imported `graphql` from `@vendure/dashboard` instead of `@/gql`; or server not running when Vite started (schema introspection failed) → start server, restart Vite. |
 | Docs example fails to compile | API is newer than our version (see version-notes) — e.g. `render` prop vs `asChild`, `ActionBarItem` vs `PageActionBarRight`, `z` from `@vendure/dashboard`. |
 | "Your database schema does not match…" on boot | Missing migration → generate + review + run. |
-| Custom field not visible in Dashboard | Migration not run, `internal: true`, `requiresPermission` the admin lacks, or (≥3.5.6) `dashboard: { visible: false }`. |
+| Custom field not visible in Dashboard | Migration not run, `internal: true`, `requiresPermission` the admin lacks, or `dashboard: { visible: false }`. |
 | Data from another channel shows up | Missing `channelId: ctx.channelId` / `findOneInChannel`; entity not `ChannelAware`. |
 | Code runs twice at startup | Lifecycle hook runs in server **and** worker → guard with `ProcessContext.isWorker`. |
 | Mutation partially saved after an error | Missing `@Transaction()` on the resolver, or repository used without `ctx`. |
