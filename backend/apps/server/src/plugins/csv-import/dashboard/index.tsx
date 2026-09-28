@@ -223,6 +223,7 @@ defineDashboardExtension({
                 title: 'CSV',
                 sectionId: 'catalog',
                 icon: Upload,
+                requiresPermission: ['ImportProductsFromCsv'],
             },
             component: CsvImportPage,
         },

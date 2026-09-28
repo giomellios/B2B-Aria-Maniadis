@@ -1,5 +1,6 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { Allow, Ctx, Permission, RequestContext } from '@vendure/core';
+import { Allow, Ctx, RequestContext } from '@vendure/core';
+import { importProductsFromCsvPermission } from '../constants';
 import { CsvImportService } from '../services/csv-import.service';
 import { ImportResult } from '../types';
 
@@ -8,7 +9,8 @@ export class CsvImportResolver {
     constructor(private readonly csvImportService: CsvImportService) {}
 
     @Mutation()
-    @Allow(Permission.Authenticated)
+    // Previously Permission.Authenticated, which every logged-in *customer* also has.
+    @Allow(importProductsFromCsvPermission.Permission)
     async importProductsFromCsv(
         @Ctx() ctx: RequestContext,
         @Args() args: { csvBase64: string },
