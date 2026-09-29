@@ -7,7 +7,14 @@ import {
   VendureConfig,
   LanguageCode,
 } from "@vendure/core";
-import { defaultEmailHandlers, EmailPlugin, FileBasedTemplateLoader } from "@vendure/email-plugin";
+import {
+  defaultEmailHandlers,
+  EmailPlugin,
+  EmailPluginDevModeOptions,
+  EmailPluginOptions,
+  emailVerificationHandler,
+  FileBasedTemplateLoader,
+} from "@vendure/email-plugin";
 import { AssetServerPlugin, configureS3AssetStorage } from "@vendure/asset-server-plugin";
 import { DashboardPlugin } from "@vendure/dashboard/plugin";
 import { GraphiqlPlugin } from "@vendure/graphiql-plugin";
@@ -40,6 +47,50 @@ if (
     "Cloudflare R2 asset storage is required. Set S3_BUCKET, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, and S3_ENDPOINT."
   );
 }
+
+// ---- Email -------------------------------------------------------------------------------
+// Dev: emails are written to static/email/test-emails and viewable at /mailbox.
+// Elsewhere: sent via SMTP when SMTP_HOST is set; otherwise not sent at all (never the dev
+// mailbox, which would publicly expose password-reset links).
+const STOREFRONT_URL = (process.env.STOREFRONT_URL?.trim() || "http://localhost:3001").replace(/\/$/, "");
+const emailTemplateVars = {
+  fromAddress: process.env.EMAIL_FROM?.trim() || '"ARIA Bags & Hats" <noreply@example.com>',
+  verifyEmailAddressUrl: `${STOREFRONT_URL}/verify`,
+  passwordResetUrl: `${STOREFRONT_URL}/reset-password`,
+  changeEmailAddressUrl: `${STOREFRONT_URL}/account/verify-email`,
+};
+// Customers are approved by an administrator (CustomerApprovalPlugin), not by clicking an
+// email link, so the "verify your email" message is never sent.
+const emailHandlers = defaultEmailHandlers.filter(h => h !== emailVerificationHandler);
+const emailTemplateLoader = new FileBasedTemplateLoader(path.join(__dirname, "../static/email/templates"));
+
+if (!IS_DEV && !IS_WORKER && !process.env.SMTP_HOST) {
+  console.warn("[vendure-config] SMTP_HOST is not set: emails (password reset, order confirmation) will NOT be sent.");
+}
+
+const emailPluginOptions: EmailPluginOptions | EmailPluginDevModeOptions = IS_DEV
+  ? {
+      devMode: true,
+      outputPath: path.join(__dirname, "../static/email/test-emails"),
+      route: "mailbox",
+      handlers: emailHandlers,
+      templateLoader: emailTemplateLoader,
+      globalTemplateVars: emailTemplateVars,
+    }
+  : {
+      transport: process.env.SMTP_HOST
+        ? {
+            type: "smtp",
+            host: process.env.SMTP_HOST,
+            port: +(process.env.SMTP_PORT || 587),
+            secure: process.env.SMTP_SECURE === "true",
+            auth: { user: process.env.SMTP_USER ?? "", pass: process.env.SMTP_PASSWORD ?? "" },
+          }
+        : { type: "none" },
+      handlers: emailHandlers,
+      templateLoader: emailTemplateLoader,
+      globalTemplateVars: emailTemplateVars,
+    };
 
 const s3AssetStorage = useS3AssetStorage
   ? configureS3AssetStorage({
@@ -147,23 +198,7 @@ export const config: VendureConfig = {
       indexStockStatus: true,
       searchStrategy: new B2BPostgresSearchStrategy() as unknown as SearchStrategy,
     }),
-    EmailPlugin.init({
-      devMode: true,
-      outputPath: path.join(__dirname, "../static/email/test-emails"),
-      route: "mailbox",
-      handlers: defaultEmailHandlers,
-      templateLoader: new FileBasedTemplateLoader(
-        path.join(__dirname, "../static/email/templates")
-      ),
-      globalTemplateVars: {
-        // The following variables will change depending on your storefront implementation.
-        // Here we are assuming a storefront running at http://localhost:8080.
-        fromAddress: '"example" <noreply@example.com>',
-        verifyEmailAddressUrl: "http://localhost:8080/verify",
-        passwordResetUrl: "http://localhost:8080/password-reset",
-        changeEmailAddressUrl: "http://localhost:8080/verify-email-address-change",
-      },
-    }),
+    EmailPlugin.init(emailPluginOptions),
     DashboardPlugin.init({
       route: "dashboard",
       appDir: IS_DEV
