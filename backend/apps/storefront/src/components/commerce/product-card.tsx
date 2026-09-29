@@ -22,7 +22,7 @@ export function ProductCard({ product: productProp, fallbackImageUrl }: ProductC
       href={`/product/${product.slug}`}
       className="group block bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow"
     >
-      <div className="aspect-square relative bg-muted">
+      <div className="aspect-square relative bg-white">
         <div className="absolute top-2 right-2 z-10">
           {product.inStock ? (
             <span className="rounded-md bg-green-600/90 px-2 py-0.5 text-xs font-medium text-white">

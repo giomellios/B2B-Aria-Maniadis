@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useTransition } from "react";
+import { useState, useMemo, useTransition, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -74,6 +74,22 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
 
     return initialOptions;
   });
+
+  // Follow option changes made elsewhere in the URL (e.g. picking an image selects its colour)
+  useEffect(() => {
+    const fromUrl: Record<string, string> = {};
+    product.optionGroups.forEach((group) => {
+      const option = group.options.find((opt) => opt.code === currentSearchParams.get(group.code));
+      if (option) {
+        fromUrl[group.id] = option.id;
+      }
+    });
+    setSelectedOptions((prev) => {
+      const next = { ...prev, ...fromUrl };
+      const changed = Object.keys(next).some((groupId) => next[groupId] !== prev[groupId]);
+      return changed ? next : prev;
+    });
+  }, [currentSearchParams, product.optionGroups]);
 
   // Find the matching variant based on selected options
   const selectedVariant = useMemo(() => {
