@@ -1,92 +1,87 @@
-import { api } from '@/vdb/graphql/api.js';
 import {
+    api,
     Button,
     defineDashboardExtension,
     Page,
     PageBlock,
     PageLayout,
     PageTitle,
+    useMutation,
+    useQuery,
 } from '@vendure/dashboard';
 import { Upload } from 'lucide-react';
-import { gql } from 'graphql-tag';
 import { useRef, useState } from 'react';
 
-interface ImportResult {
-    productsCreated: number;
-    productsUpdated: number;
-    variantsCreated: number;
-    errors: string[];
-}
+import { graphql } from '@/gql';
+
+const startImportDocument = graphql(`
+    mutation StartCsvProductImport($file: Upload!) {
+        startCsvProductImport(file: $file) {
+            id
+            state
+        }
+    }
+`);
+
+const importJobDocument = graphql(`
+    query CsvProductImportJob($id: ID!) {
+        csvProductImportJob(id: $id) {
+            id
+            state
+            progress
+            error
+            result {
+                productsCreated
+                productsUpdated
+                variantsCreated
+                variantsUpdated
+                errors
+            }
+        }
+    }
+`);
+
+const RUNNING_STATES = ['PENDING', 'RUNNING', 'RETRYING'];
 
 function CsvImportPage() {
     const [file, setFile] = useState<File | null>(null);
-    const [result, setResult] = useState<ImportResult | null>(null);
-    const [loading, setLoading] = useState(false);
-    const [errorMsg, setErrorMsg] = useState<string | null>(null);
+    const [jobId, setJobId] = useState<string | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
+    const startImport = useMutation({
+        mutationFn: (selected: File) => api.mutate(startImportDocument, { file: selected }),
+        onSuccess: data => setJobId(String(data.startCsvProductImport.id)),
+    });
+
+    const jobQuery = useQuery({
+        queryKey: ['csvProductImportJob', jobId],
+        queryFn: () => api.query(importJobDocument, { id: jobId as string }),
+        enabled: !!jobId,
+        // Poll every 1.5 s until the worker has finished the job.
+        refetchInterval: query => {
+            const state = query.state.data?.csvProductImportJob?.state;
+            return !state || RUNNING_STATES.includes(state) ? 1500 : false;
+        },
+    });
+
+    const job = jobQuery.data?.csvProductImportJob;
+    const isRunning = startImport.isPending || (!!jobId && (!job || RUNNING_STATES.includes(job.state)));
+    const result = job?.state === 'COMPLETED' ? job.result : null;
+    const errorMsg =
+        (startImport.error instanceof Error ? startImport.error.message : null) ??
+        (job?.state === 'FAILED' ? (job.error ?? 'Η εισαγωγή απέτυχε.') : null) ??
+        (jobId && jobQuery.isFetched && !job ? 'Η εργασία εισαγωγής δεν βρέθηκε.' : null);
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const selected = e.target.files?.[0] ?? null;
-        setFile(selected);
-        setResult(null);
-        setErrorMsg(null);
-    };
-
-    const handleImport = async () => {
-        if (!file) return;
-        setLoading(true);
-        setErrorMsg(null);
-        setResult(null);
-
-        try {
-            // Read file as raw bytes and encode as base64 so the server can
-            // decode using the correct charset (cp1253 / UTF-8).
-            const arrayBuffer = await file.arrayBuffer();
-            const bytes = new Uint8Array(arrayBuffer);
-            let binary = '';
-            for (let i = 0; i < bytes.length; i++) {
-                binary += String.fromCharCode(bytes[i]);
-            }
-            const csvBase64 = btoa(binary);
-
-            const mutation = gql`
-                mutation ImportProductsFromCsv($csvBase64: String!) {
-                    importProductsFromCsv(csvBase64: $csvBase64) {
-                        productsCreated
-                        productsUpdated
-                        variantsCreated
-                        errors
-                    }
-                }
-            `;
-
-            const json = await api.mutate<{
-                importProductsFromCsv: ImportResult;
-            }>(mutation, { csvBase64 });
-
-            const data = (json as any)?.importProductsFromCsv;
-            if (!data) {
-                setErrorMsg('Δεν επεστράφησαν δεδομένα από τον server.');
-            } else {
-                setResult(data);
-            }
-        } catch (err: any) {
-
-            const gqlErrors = err?.response?.errors ?? err?.errors;
-            if (Array.isArray(gqlErrors) && gqlErrors.length > 0) {
-                setErrorMsg(gqlErrors.map((e: any) => e.message).join('\n'));
-            } else {
-                setErrorMsg(err?.message ?? 'Άγνωστο σφάλμα');
-            }
-        } finally {
-            setLoading(false);
-        }
+        setFile(e.target.files?.[0] ?? null);
+        setJobId(null);
+        startImport.reset();
     };
 
     const handleReset = () => {
         setFile(null);
-        setResult(null);
-        setErrorMsg(null);
+        setJobId(null);
+        startImport.reset();
         if (fileInputRef.current) fileInputRef.current.value = '';
     };
 
@@ -96,8 +91,12 @@ function CsvImportPage() {
             <PageLayout>
                 <PageBlock column="main" blockId="csv-upload-block">
                     <div className="space-y-6 p-2">
+                        <p className="text-sm text-muted-foreground">
+                            Νέα προϊόντα δημιουργούνται· για υπάρχοντα προϊόντα ενημερώνονται τιμές και απόθεμα
+                            των παραλλαγών (ανά SKU) και προστίθενται οι παραλλαγές που λείπουν. Η εισαγωγή
+                            εκτελείται στο παρασκήνιο (worker).
+                        </p>
 
-                        {/* File picker */}
                         <div className="flex items-center gap-3">
                             <label
                                 htmlFor="csv-file-input"
@@ -116,29 +115,38 @@ function CsvImportPage() {
                             {file && (
                                 <span className="text-sm text-muted-foreground">
                                     {file.name}{' '}
-                                    <span className="text-xs">
-                                        ({(file.size / 1024).toFixed(1)} KB)
-                                    </span>
+                                    <span className="text-xs">({(file.size / 1024).toFixed(1)} KB)</span>
                                 </span>
                             )}
                         </div>
 
-                        {/* Action buttons */}
                         <div className="flex gap-2">
-                            <Button
-                                onClick={handleImport}
-                                disabled={!file || loading}
-                            >
-                                {loading ? 'Εισαγωγή…' : 'Εισαγωγή Προϊόντων'}
+                            <Button onClick={() => file && startImport.mutate(file)} disabled={!file || isRunning}>
+                                {isRunning ? 'Εισαγωγή…' : 'Εισαγωγή Προϊόντων'}
                             </Button>
-                            {(file || result) && (
-                                <Button variant="outline" onClick={handleReset} disabled={loading}>
+                            {(file || jobId) && (
+                                <Button variant="outline" onClick={handleReset} disabled={isRunning}>
                                     Επαναφορά
                                 </Button>
                             )}
                         </div>
 
-                        {/* Error */}
+                        {jobId && isRunning && (
+                            <div className="space-y-1">
+                                <div className="h-2 w-full overflow-hidden rounded bg-muted">
+                                    <div
+                                        className="h-full bg-primary transition-all"
+                                        style={{ width: `${Math.round(job?.progress ?? 0)}%` }}
+                                    />
+                                </div>
+                                <p className="text-xs text-muted-foreground">
+                                    {job?.state === 'PENDING'
+                                        ? 'Σε αναμονή για τον worker…'
+                                        : `${Math.round(job?.progress ?? 0)}%`}
+                                </p>
+                            </div>
+                        )}
+
                         {errorMsg && (
                             <div className="rounded-md border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive whitespace-pre-wrap">
                                 <p className="font-semibold mb-1">❌ Σφάλμα</p>
@@ -146,26 +154,18 @@ function CsvImportPage() {
                             </div>
                         )}
 
-                        {/* Success result */}
                         {result && (
                             <div className="space-y-4">
                                 <div className="rounded-md border border-border p-4">
                                     <p className="font-semibold mb-3 text-sm">✅ Αποτέλεσμα εισαγωγής</p>
-                                    <div className="grid grid-cols-3 gap-4 text-center">
+                                    <div className="grid grid-cols-2 gap-4 text-center md:grid-cols-4">
+                                        <StatCard label="Νέα Προϊόντα" value={result.productsCreated} color="green" />
+                                        <StatCard label="Ενημερωμένα Προϊόντα" value={result.productsUpdated} color="blue" />
+                                        <StatCard label="Νέες Παραλλαγές" value={result.variantsCreated} color="purple" />
                                         <StatCard
-                                            label="Νέα Προϊόντα"
-                                            value={result.productsCreated}
-                                            color="green"
-                                        />
-                                        <StatCard
-                                            label="Ενημερωμένα"
-                                            value={result.productsUpdated}
+                                            label="Ενημερωμένες Παραλλαγές"
+                                            value={result.variantsUpdated}
                                             color="blue"
-                                        />
-                                        <StatCard
-                                            label="Παραλλαγές"
-                                            value={result.variantsCreated}
-                                            color="purple"
                                         />
                                     </div>
                                 </div>
@@ -223,18 +223,9 @@ defineDashboardExtension({
                 title: 'CSV',
                 sectionId: 'catalog',
                 icon: Upload,
+                requiresPermission: ['ImportProductsFromCsv'],
             },
             component: CsvImportPage,
         },
     ],
-    pageBlocks: [],
-    navSections: [],
-    actionBarItems: [],
-    alerts: [],
-    widgets: [],
-    customFormComponents: {},
-    dataTables: [],
-    detailForms: [],
-    login: {},
-    historyEntries: [],
 });

@@ -1,9 +1,5 @@
-import { getTopCollections } from "@/lib/vendure/cached";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-} from "@/components/ui/navigation-menu";
+import { getTopCollections } from "@/lib/queries/cached";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/design-system";
 import { NavbarLink } from "@/components/layout/navbar/navbar-link";
 
 export async function NavbarCollections() {

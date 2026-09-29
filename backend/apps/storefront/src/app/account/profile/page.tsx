@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
-import { getActiveCustomer, getActiveCustomerCustomFields } from "@/lib/vendure/actions";
+import { getActiveCustomer, getActiveCustomerCustomFields } from "@/features/auth/server";
 
 export const metadata: Metadata = {
   title: "Profile",
 };
-import { ChangePasswordForm } from "./change-password-form";
-import { EditProfileForm } from "./edit-profile-form";
-import { EditEmailForm } from "./edit-email-form";
+import { ChangePasswordForm, EditProfileForm, EditEmailForm } from "@/features/account";
 
-export default async function ProfilePage(_props: PageProps<"/account/profile">) {
+export default async function ProfilePage() {
   await connection();
   const [customer, customFields] = await Promise.all([
     getActiveCustomer(),

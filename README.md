@@ -5,7 +5,7 @@
 This is a **full-stack B2B e-commerce application** built with [Vendure](https://www.vendure.io/) (headless commerce backend) and [Next.js](https://nextjs.org/) (modern React framework for the storefront). The project uses a monorepo structure with workspaces to manage both the backend API server and the customer-facing storefront application.
 
 **Tech Stack:**
-- **Backend:** Vendure 3.5.3 (Node.js/TypeScript GraphQL API)
+- **Backend:** Vendure 3.7.3 (Node.js/TypeScript GraphQL API)
 - **Frontend:** Next.js 16 with React 19
 - **Database:** PostgreSQL 15
 - **Search:** Meilisearch v1.6

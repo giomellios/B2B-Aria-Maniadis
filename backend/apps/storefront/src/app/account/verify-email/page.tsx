@@ -1,9 +1,6 @@
 import { Suspense } from "react";
-import { redirect } from "next/navigation";
-import { mutate } from "@/lib/vendure/api";
-import { UpdateCustomerEmailAddressMutation } from "@/lib/vendure/mutations";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { confirmEmailAddressChange } from "@/features/account/server";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Button } from "@/design-system";
 import Link from "next/link";
 
 async function VerifyEmailContent({
@@ -35,54 +32,14 @@ async function VerifyEmailContent({
     );
   }
 
+  let updateResult;
   try {
-    const result = await mutate(
-      UpdateCustomerEmailAddressMutation,
-      { token: token! },
-      { useAuthToken: true }
-    );
-    const updateResult = result.data.updateCustomerEmailAddress;
+    updateResult = await confirmEmailAddressChange(token);
+  } catch {
+    updateResult = null;
+  }
 
-    if (updateResult.__typename === "Success") {
-      return (
-        <Card className="max-w-md mx-auto">
-          <CardHeader>
-            <CardTitle>Email Verified!</CardTitle>
-            <CardDescription>Your email address has been updated successfully.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground mb-4">
-              Your email address has been changed. You can now use your new email address to sign
-              in.
-            </p>
-            <Button asChild>
-              <Link href="/account/profile">Go to Profile</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      );
-    }
-
-    return (
-      <Card className="max-w-md mx-auto">
-        <CardHeader>
-          <CardTitle>Verification Failed</CardTitle>
-          <CardDescription>
-            {updateResult.message || "Unable to verify your email address."}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-4">
-            The verification link may have expired or already been used. Please request a new
-            verification email from your profile page.
-          </p>
-          <Button asChild>
-            <Link href="/account/profile">Go to Profile</Link>
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  } catch (error) {
+  if (!updateResult) {
     return (
       <Card className="max-w-md mx-auto">
         <CardHeader>
@@ -100,6 +57,45 @@ async function VerifyEmailContent({
       </Card>
     );
   }
+
+  if (updateResult.__typename === "Success") {
+    return (
+      <Card className="max-w-md mx-auto">
+        <CardHeader>
+          <CardTitle>Email Verified!</CardTitle>
+          <CardDescription>Your email address has been updated successfully.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground mb-4">
+            Your email address has been changed. You can now use your new email address to sign in.
+          </p>
+          <Button asChild>
+            <Link href="/account/profile">Go to Profile</Link>
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <Card className="max-w-md mx-auto">
+      <CardHeader>
+        <CardTitle>Verification Failed</CardTitle>
+        <CardDescription>
+          {updateResult.message || "Unable to verify your email address."}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-muted-foreground mb-4">
+          The verification link may have expired or already been used. Please request a new
+          verification email from your profile page.
+        </p>
+        <Button asChild>
+          <Link href="/account/profile">Go to Profile</Link>
+        </Button>
+      </CardContent>
+    </Card>
+  );
 }
 
 export default async function VerifyEmailPage({

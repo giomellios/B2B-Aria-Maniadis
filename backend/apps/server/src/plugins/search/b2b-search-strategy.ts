@@ -11,6 +11,10 @@ import {
 const { PostgresSearchStrategy } = require('@vendure/core/dist/plugin/default-search-plugin/search-strategy/postgres-search-strategy');
 
 /**
+ * NOTE: applyTermAndFilters below mirrors the private method of the same name in
+ * @vendure/core 3.7.3 (dist/plugin/default-search-plugin/search-strategy/postgres-search-strategy.js).
+ * Re-diff it against the new version on every Vendure upgrade.
+ *
  * Extends Vendure's default PostgresSearchStrategy to also match partial SKU
  * fragments via ILIKE. The default strategy uses PostgreSQL full-text search
  * (to_tsvector / to_tsquery) which tokenises e.g. "A1034" as a single token,
@@ -37,21 +41,23 @@ export class B2BPostgresSearchStrategy extends PostgresSearchStrategy {
             facetValueOperator,
             collectionId,
             collectionSlug,
+            collectionIds,
+            collectionSlugs,
         } = input;
 
         // Build a prefix-match tsquery: "A 1034" → "'A':* & '1034':*"
+        // Characters with meaning in tsquery syntax are stripped (same sanitising as Vendure ≥ 3.6.2).
         const termLogicalAnd = term
             ? term
                   .trim()
+                  .replace(/['":\\!|&()]/g, ' ')
                   .split(/\s+/g)
+                  .filter((t: string) => t.length > 0)
                   .map((t: string) => `'${t}':*`)
                   .join(' & ')
             : '';
 
         qb.where('1 = 1');
-
-        // Diagnostic — remove after confirming the override is active
-        console.log('[B2BSearch] applyTermAndFilters called, term:', term);
 
         if (term && term.length > this.minTermLength) {
             const minIfGrouped = (col: string) =>
@@ -148,8 +154,40 @@ export class B2BPostgresSearchStrategy extends PostgresSearchStrategy {
             );
         }
 
+        // Added in Vendure 3.6: multi-collection filters
+        if (collectionIds?.length) {
+            qb.andWhere(
+                new Brackets(qb1 => {
+                    for (const id of Array.from(new Set(collectionIds as string[]))) {
+                        const placeholder = createPlaceholderFromId(id);
+                        qb1.orWhere(`:${placeholder}::varchar = ANY (string_to_array(si.collectionIds, ','))`, {
+                            [placeholder]: id,
+                        });
+                    }
+                }),
+            );
+        }
+
+        if (collectionSlugs?.length) {
+            qb.andWhere(
+                new Brackets(qb1 => {
+                    for (const slug of Array.from(new Set(collectionSlugs as string[]))) {
+                        const placeholder = createPlaceholderFromId(slug);
+                        qb1.orWhere(`:${placeholder}::varchar = ANY (string_to_array(si.collectionSlugs, ','))`, {
+                            [placeholder]: slug,
+                        });
+                    }
+                }),
+            );
+        }
+
         qb.andWhere('si.channelId = :channelId', { channelId: ctx.channelId });
         applyLanguageConstraints(qb, ctx.languageCode, ctx.channel.defaultLanguageCode);
+
+        // Added in Vendure 3.6: optional per-currency index (DefaultSearchPlugin indexCurrencyCode)
+        if ((this as any).options?.indexCurrencyCode) {
+            qb.andWhere('si.currencyCode = :currencyCode', { currencyCode: ctx.currencyCode });
+        }
 
         if (input.groupByProduct === true) {
             qb.groupBy('si.productId');
