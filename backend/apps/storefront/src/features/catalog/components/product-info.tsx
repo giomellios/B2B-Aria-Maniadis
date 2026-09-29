@@ -1,0 +1,269 @@
+"use client";
+
+import { useState, useMemo, useTransition } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Button, Input, Label, RadioGroup, RadioGroupItem } from "@/design-system";
+import { ShoppingCart, CheckCircle2, Minus, Plus } from "lucide-react";
+import { addToCart } from "@/features/cart";
+import { toast } from "sonner";
+import { Price } from "@/components/shared/price";
+
+interface ProductInfoProps {
+  product: {
+    id: string;
+    name: string;
+    description: string;
+    variants: Array<{
+      id: string;
+      name: string;
+      sku: string;
+      priceWithTax: number;
+      stockLevel: string;
+      options: Array<{
+        id: string;
+        code: string;
+        name: string;
+        groupId: string;
+        group: {
+          id: string;
+          code: string;
+          name: string;
+        };
+      }>;
+    }>;
+    optionGroups: Array<{
+      id: string;
+      code: string;
+      name: string;
+      options: Array<{
+        id: string;
+        code: string;
+        name: string;
+      }>;
+    }>;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export function ProductInfo({ product, searchParams }: ProductInfoProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const currentSearchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
+  const [isAdded, setIsAdded] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+
+  // Initialize selected options from URL
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>(() => {
+    const initialOptions: Record<string, string> = {};
+
+    // Load from URL search params
+    product.optionGroups.forEach((group) => {
+      const paramValue = searchParams[group.code];
+      if (typeof paramValue === "string") {
+        // Find the option by code
+        const option = group.options.find((opt) => opt.code === paramValue);
+        if (option) {
+          initialOptions[group.id] = option.id;
+        }
+      }
+    });
+
+    return initialOptions;
+  });
+
+  // Find the matching variant based on selected options
+  const selectedVariant = useMemo(() => {
+    if (product.variants.length === 1) {
+      return product.variants[0];
+    }
+
+    // If not all option groups have a selection, return null
+    if (Object.keys(selectedOptions).length !== product.optionGroups.length) {
+      return null;
+    }
+
+    // Find variant that matches all selected options
+    return product.variants.find((variant) => {
+      const variantOptionIds = variant.options.map((opt) => opt.id);
+      const selectedOptionIds = Object.values(selectedOptions);
+      return selectedOptionIds.every((optId) => variantOptionIds.includes(optId));
+    });
+  }, [selectedOptions, product.variants, product.optionGroups]);
+
+  const handleOptionChange = (groupId: string, optionId: string) => {
+    setSelectedOptions((prev) => ({
+      ...prev,
+      [groupId]: optionId,
+    }));
+
+    // Find the option group and option to get their codes
+    const group = product.optionGroups.find((g) => g.id === groupId);
+    const option = group?.options.find((opt) => opt.id === optionId);
+
+    if (group && option) {
+      // Update URL with option code
+      const params = new URLSearchParams(currentSearchParams);
+      params.set(group.code, option.code);
+      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    }
+  };
+
+  const handleAddToCart = async () => {
+    if (!selectedVariant || quantity < 1) return;
+
+    startTransition(async () => {
+      const result = await addToCart(selectedVariant.id, quantity);
+
+      if (result.success) {
+        setIsAdded(true);
+        toast.success("Added to cart", {
+          description: `${quantity} × ${product.name} has been added to your cart`,
+        });
+        setQuantity(1);
+
+        // Reset the added state after 2 seconds
+        setTimeout(() => setIsAdded(false), 2000);
+      } else {
+        toast.error("Error", {
+          description: result.error || "Failed to add item to cart",
+        });
+      }
+    });
+  };
+
+  const isInStock = selectedVariant && selectedVariant.stockLevel !== "OUT_OF_STOCK";
+  const canAddToCart = selectedVariant && isInStock;
+
+  return (
+    <div className="space-y-6">
+      {/* Product Title */}
+      <div>
+        <h1 className="text-3xl font-bold">{product.name}</h1>
+        {selectedVariant && (
+          <p className="text-2xl font-bold mt-2">
+            <Price value={selectedVariant.priceWithTax} />
+          </p>
+        )}
+      </div>
+
+      {/* Product Description */}
+      <div className="prose prose-sm max-w-none">
+        <div dangerouslySetInnerHTML={{ __html: product.description }} />
+      </div>
+
+      {/* Option Groups */}
+      {product.optionGroups.length > 0 && (
+        <div className="space-y-4">
+          {product.optionGroups.map((group) => (
+            <div key={group.id} className="space-y-3">
+              <Label className="text-base font-semibold">{group.name}</Label>
+              <RadioGroup
+                value={selectedOptions[group.id] || ""}
+                onValueChange={(value) => handleOptionChange(group.id, value)}
+              >
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {group.options.map((option) => (
+                    <div key={option.id}>
+                      <RadioGroupItem value={option.id} id={option.id} className="peer sr-only" />
+                      <Label
+                        htmlFor={option.id}
+                        className="flex items-center justify-center rounded-md border-2 border-muted bg-popover px-4 py-3 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary cursor-pointer transition-colors"
+                      >
+                        {option.name}
+                      </Label>
+                    </div>
+                  ))}
+                </div>
+              </RadioGroup>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Stock Status */}
+      {selectedVariant && (
+        <div className="text-sm">
+          {isInStock ? (
+            <span className="text-green-600 font-medium">In Stock</span>
+          ) : (
+            <span className="text-destructive font-medium">Out of Stock</span>
+          )}
+        </div>
+      )}
+
+      {/* Quantity Selector + Add to Cart Button */}
+      <div className="pt-4 flex items-center gap-3">
+        <div className="flex items-center border rounded-md shrink-0">
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-11 w-11 rounded-none"
+            disabled={!canAddToCart || isPending || quantity <= 1}
+            onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+          >
+            <Minus className="h-4 w-4" />
+          </Button>
+
+          <Input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            value={quantity}
+            disabled={!canAddToCart || isPending}
+            onChange={(e) => {
+              const digits = e.target.value.replace(/\D/g, "");
+              setQuantity(digits === "" ? 0 : Number(digits));
+            }}
+            onBlur={() => {
+              if (!quantity || quantity < 1) setQuantity(1);
+            }}
+            className="h-11 w-14 rounded-none border-y-0 border-x text-center font-medium tabular-nums shadow-none focus-visible:ring-0"
+          />
+
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-11 w-11 rounded-none"
+            disabled={!canAddToCart || isPending}
+            onClick={() => setQuantity((q) => q + 1)}
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
+        </div>
+
+        <Button
+          size="lg"
+          className="flex-1"
+          disabled={!canAddToCart || isPending}
+          onClick={handleAddToCart}
+        >
+          {isAdded ? (
+            <>
+              <CheckCircle2 className="mr-2 h-5 w-5" />
+              Added to Cart
+            </>
+          ) : (
+            <>
+              <ShoppingCart className="mr-2 h-5 w-5" />
+              {isPending
+                ? "Adding..."
+                : !selectedVariant && product.optionGroups.length > 0
+                  ? "Select Options"
+                  : !isInStock
+                    ? "Out of Stock"
+                    : "Add to Cart"}
+            </>
+          )}
+        </Button>
+      </div>
+
+      {/* SKU */}
+      {selectedVariant && (
+        <div className="text-xs text-muted-foreground">SKU: {selectedVariant.sku}</div>
+      )}
+    </div>
+  );
+}

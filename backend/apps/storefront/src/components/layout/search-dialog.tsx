@@ -3,9 +3,7 @@
 import { useRef, useState, useTransition, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search, X } from "lucide-react";
-import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle, DialogClose, Input, Button } from "@/design-system";
 
 export function SearchDialog() {
   const [open, setOpen] = useState(false);
@@ -17,10 +15,17 @@ export function SearchDialog() {
 
   useEffect(() => {
     if (open) {
-      setSearchValue(searchParams.get("q") || "");
       setTimeout(() => inputRef.current?.focus(), 50);
     }
-  }, [open, searchParams]);
+  }, [open]);
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (nextOpen) {
+      // Start from the current search term each time the dialog opens.
+      setSearchValue(searchParams.get("q") || "");
+    }
+    setOpen(nextOpen);
+  };
 
   const navigateToSearch = (query: string) => {
     startTransition(() => {
@@ -46,12 +51,12 @@ export function SearchDialog() {
         variant="ghost"
         size="icon"
         aria-label="Open search"
-        onClick={() => setOpen(true)}
+        onClick={() => handleOpenChange(true)}
       >
         <Search className="h-5 w-5" />
       </Button>
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className="top-[72px] translate-y-0 sm:max-w-xl p-3" showCloseButton={false}>
           <DialogTitle className="sr-only">Search products</DialogTitle>
           <div className="flex items-center gap-2">

@@ -1,5 +1,6 @@
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+import { serverEnv } from "@/lib/config/env.server";
 
 // Supported cache tags that can be revalidated
 const VALID_TAGS = ["collections", "countries", "featured-products"] as const;
@@ -15,7 +16,7 @@ function isValidTag(tag: string): boolean {
 export async function POST(request: NextRequest) {
   // Verify the secret token
   const authHeader = request.headers.get("authorization");
-  const expectedToken = process.env.REVALIDATION_SECRET;
+  const expectedToken = serverEnv.revalidationSecret;
 
   if (!expectedToken) {
     console.error("REVALIDATION_SECRET environment variable not set");

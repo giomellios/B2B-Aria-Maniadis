@@ -1,0 +1,52 @@
+"use server";
+
+import { mutate } from "@/lib/api/client";
+import { LoginMutation, LogoutMutation } from "@/features/auth/services/mutations";
+import { removeAuthToken, setAuthToken } from "@/lib/api/auth-token";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+
+export async function loginAction(prevState: { error?: string } | undefined, formData: FormData) {
+  const username = formData.get("username") as string;
+  const password = formData.get("password") as string;
+  const redirectTo = formData.get("redirectTo") as string | null;
+
+  const result = await mutate(
+    LoginMutation,
+    {
+      username,
+      password,
+    },
+    { useAuthToken: true }
+  );
+
+  const loginResult = result.data.login;
+
+  if (loginResult.__typename !== "CurrentUser") {
+    // EMAIL VERIFICATION DISABLED
+    if (loginResult.__typename === "NotVerifiedError") {
+      return { error: "Please wait for admin verification before signing in." };
+    }
+    return { error: "Invalid email or password." };
+  }
+
+  // Store the token in a cookie if returned
+  if (result.token) {
+    await setAuthToken(result.token);
+  }
+
+  revalidatePath("/", "layout");
+
+  // Validate redirectTo is a safe internal path
+  const safeRedirect =
+    redirectTo?.startsWith("/") && !redirectTo.startsWith("//") ? redirectTo : "/";
+
+  redirect(safeRedirect);
+}
+
+export async function logoutAction() {
+  await mutate(LogoutMutation);
+  await removeAuthToken();
+
+  redirect("/");
+}

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
-import { query } from "@/lib/vendure/api";
 
 export const metadata: Metadata = {
   title: "My Orders",
 };
-import { GetCustomerOrdersQuery } from "@/lib/vendure/queries";
+import { getCustomerOrders } from "@/features/account/server";
 import {
   Table,
   TableBody,
@@ -13,8 +12,6 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
@@ -22,12 +19,12 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+  Button,
+} from "@/design-system";
 import { ArrowRightIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Price } from "@/components/commerce/price";
-import { OrderStatusBadge } from "@/components/commerce/order-status-badge";
-import { formatDate } from "@/lib/format";
+import { Price } from "@/components/shared/price";
+import { OrderStatusBadge } from "@/features/account";
+import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -40,28 +37,14 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
   const currentPage = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1", 10);
   const skip = (currentPage - 1) * ITEMS_PER_PAGE;
 
-  const { data } = await query(
-    GetCustomerOrdersQuery,
-    {
-      options: {
-        take: ITEMS_PER_PAGE,
-        skip,
-        filter: {
-          state: {
-            notEq: "AddingItems",
-          },
-        },
-      },
-    },
-    { useAuthToken: true }
-  );
+  const activeCustomer = await getCustomerOrders({ take: ITEMS_PER_PAGE, skip });
 
-  if (!data.activeCustomer) {
+  if (!activeCustomer) {
     return redirect("/sign-in");
   }
 
-  const orders = data.activeCustomer.orders.items;
-  const totalItems = data.activeCustomer.orders.totalItems;
+  const orders = activeCustomer.orders.items;
+  const totalItems = activeCustomer.orders.totalItems;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
 
   return (

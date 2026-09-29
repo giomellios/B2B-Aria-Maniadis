@@ -1,5 +1,4 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Card, CardContent, CardHeader, Skeleton } from "@/design-system";
 
 export default function AddressesLoading() {
   return (

@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/design-system";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { SITE_NAME, SITE_URL } from "@/lib/metadata";
+import { SITE_NAME, SITE_URL } from "@/lib/utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Shop the best products at Vendure Store. Quality products, competitive prices, and fast delivery.",
+    "Wholesale bags and hats from Maniadis. Premium accessories for retailers across Greece and Europe.",
   openGraph: {
     type: "website",
     siteName: SITE_NAME,

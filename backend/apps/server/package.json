@@ -11,7 +11,8 @@
     "build:dashboard": "vite build",
     "start:server": "node ./dist/index.js",
     "start:worker": "node ./dist/index-worker.js",
-    "start": "concurrently npm:start:*"
+    "start": "concurrently npm:start:*",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1015.0",
