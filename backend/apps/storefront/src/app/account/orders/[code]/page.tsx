@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
 import { ChevronLeft } from "lucide-react";
 import { connection } from "next/server";
-import { query } from "@/lib/vendure/api";
-import { GetOrderDetailQuery } from "@/lib/vendure/queries";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { getOrderDetail } from "@/features/account/server";
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Separator,
+} from "@/design-system";
 import Image from "next/image";
-import { getActiveCustomer } from "@/lib/vendure/actions";
+import { getActiveCustomer } from "@/features/auth/server";
 import { notFound, redirect } from "next/navigation";
-import { Price } from "@/components/commerce/price";
-import { OrderStatusBadge } from "@/components/commerce/order-status-badge";
-import { formatDate } from "@/lib/format";
+import { Price } from "@/components/shared/price";
+import { OrderStatusBadge } from "@/features/account";
+import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 
 type OrderDetailPageProps = PageProps<"/account/orders/[code]">;
@@ -30,17 +34,15 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
   const { code } = params;
   const activeCustomer = await getActiveCustomer();
 
-  const { data } = await query(GetOrderDetailQuery, { code }, { useAuthToken: true, fetch: {} });
+  const order = await getOrderDetail(code);
 
-  if (!data.orderByCode) {
+  if (!order) {
     return redirect("/account/orders");
   }
 
-  if (data.orderByCode.customer?.id !== activeCustomer?.id) {
+  if (order.customer?.id !== activeCustomer?.id) {
     return notFound();
   }
-
-  const order = data.orderByCode;
 
   return (
     <div>

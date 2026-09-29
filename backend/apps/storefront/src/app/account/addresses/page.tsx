@@ -1,23 +1,16 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
-import { query } from "@/lib/vendure/api";
+import { getAddressBook } from "@/features/account/server";
 
 export const metadata: Metadata = {
   title: "Addresses",
 };
-import { GetCustomerAddressesQuery, GetAvailableCountriesQuery } from "@/lib/vendure/queries";
-import { AddressesClient } from "./addresses-client";
+import { AddressesClient } from "@/features/account";
 
-export default async function AddressesPage(_props: PageProps<"/account/addresses">) {
+export default async function AddressesPage() {
   await connection();
 
-  const [addressesResult, countriesResult] = await Promise.all([
-    query(GetCustomerAddressesQuery, {}, { useAuthToken: true }),
-    query(GetAvailableCountriesQuery, {}),
-  ]);
-
-  const addresses = addressesResult.data.activeCustomer?.addresses || [];
-  const countries = countriesResult.data.availableCountries || [];
+  const { addresses, countries } = await getAddressBook();
 
   return (
     <div className="space-y-6">

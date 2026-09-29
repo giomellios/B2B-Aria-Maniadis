@@ -1,15 +1,8 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+import { storefrontBoundaries } from "./apps/storefront/eslint.boundaries.mjs";
 
 export default [
   {
@@ -43,7 +36,7 @@ export default [
     },
   },
   // Storefront: Next.js config
-  ...compat.extends("next/core-web-vitals", "next/typescript").map((block) => ({
+  ...[...nextVitals, ...nextTs].map((block) => ({
     ...block,
     files: [
       "apps/storefront/**/*.ts",
@@ -52,4 +45,5 @@ export default [
       "apps/storefront/**/*.jsx",
     ],
   })),
+  ...storefrontBoundaries("apps/storefront/src"),
 ];
