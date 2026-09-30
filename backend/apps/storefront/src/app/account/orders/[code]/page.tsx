@@ -18,6 +18,7 @@ import { Price } from "@/components/shared/price";
 import { OrderStatusBadge } from "@/features/account";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
+import { getOrderLineImagePreview } from "@/lib/utils";
 
 type OrderDetailPageProps = PageProps<"/account/orders/[code]">;
 
@@ -74,41 +75,44 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {order.lines.map((line) => (
-                  <div key={line.id} className="flex gap-4">
-                    <div className="relative h-20 w-20 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
-                      {line.productVariant.product.featuredAsset && (
-                        <Image
-                          src={line.productVariant.product.featuredAsset.preview}
-                          alt={line.productVariant.name}
-                          fill
-                          className="object-cover"
-                        />
-                      )}
+                {order.lines.map((line) => {
+                  const imagePreview = getOrderLineImagePreview(line.productVariant);
+                  return (
+                    <div key={line.id} className="flex gap-4">
+                      <div className="relative h-20 w-20 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
+                        {imagePreview && (
+                          <Image
+                            src={imagePreview}
+                            alt={line.productVariant.name}
+                            fill
+                            className="object-cover"
+                          />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <Link
+                          href={`/product/${line.productVariant.product.slug}`}
+                          className="font-medium hover:underline"
+                        >
+                          {line.productVariant.product.name}
+                        </Link>
+                        <p className="text-sm text-muted-foreground">{line.productVariant.name}</p>
+                        <p className="text-sm text-muted-foreground">
+                          SKU: {line.productVariant.sku}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-medium">
+                          <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Qty: {line.quantity} ×{" "}
+                          <Price value={line.unitPriceWithTax} currencyCode={order.currencyCode} />
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <Link
-                        href={`/product/${line.productVariant.product.slug}`}
-                        className="font-medium hover:underline"
-                      >
-                        {line.productVariant.product.name}
-                      </Link>
-                      <p className="text-sm text-muted-foreground">{line.productVariant.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        SKU: {line.productVariant.sku}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-medium">
-                        <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Qty: {line.quantity} ×{" "}
-                        <Price value={line.unitPriceWithTax} currencyCode={order.currencyCode} />
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </CardContent>
           </Card>

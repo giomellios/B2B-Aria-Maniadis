@@ -72,6 +72,24 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
     return initialOptions;
   });
 
+  // Follow option changes made elsewhere in the URL (e.g. picking an image selects its colour).
+  // Adjusted during render when the URL changes, as React recommends instead of an effect.
+  const [lastSearchParams, setLastSearchParams] = useState(currentSearchParams);
+  if (currentSearchParams !== lastSearchParams) {
+    setLastSearchParams(currentSearchParams);
+    const fromUrl: Record<string, string> = {};
+    product.optionGroups.forEach((group) => {
+      const option = group.options.find((opt) => opt.code === currentSearchParams.get(group.code));
+      if (option) {
+        fromUrl[group.id] = option.id;
+      }
+    });
+    const next = { ...selectedOptions, ...fromUrl };
+    if (Object.keys(next).some((groupId) => next[groupId] !== selectedOptions[groupId])) {
+      setSelectedOptions(next);
+    }
+  }
+
   // Find the matching variant based on selected options
   const selectedVariant = useMemo(() => {
     if (product.variants.length === 1) {

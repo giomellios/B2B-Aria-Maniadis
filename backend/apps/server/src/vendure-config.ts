@@ -52,7 +52,10 @@ if (
 // Dev: emails are written to static/email/test-emails and viewable at /mailbox.
 // Elsewhere: sent via SMTP when SMTP_HOST is set; otherwise not sent at all (never the dev
 // mailbox, which would publicly expose password-reset links).
-const STOREFRONT_URL = (process.env.STOREFRONT_URL?.trim() || "http://localhost:3001").replace(/\/$/, "");
+const STOREFRONT_URL = (process.env.STOREFRONT_URL?.trim() || "http://localhost:3001").replace(
+  /\/$/,
+  ""
+);
 const emailTemplateVars = {
   fromAddress: process.env.EMAIL_FROM?.trim() || '"ARIA Bags & Hats" <noreply@example.com>',
   verifyEmailAddressUrl: `${STOREFRONT_URL}/verify`,
@@ -61,11 +64,15 @@ const emailTemplateVars = {
 };
 // Customers are approved by an administrator (CustomerApprovalPlugin), not by clicking an
 // email link, so the "verify your email" message is never sent.
-const emailHandlers = defaultEmailHandlers.filter(h => h !== emailVerificationHandler);
-const emailTemplateLoader = new FileBasedTemplateLoader(path.join(__dirname, "../static/email/templates"));
+const emailHandlers = defaultEmailHandlers.filter((h) => h !== emailVerificationHandler);
+const emailTemplateLoader = new FileBasedTemplateLoader(
+  path.join(__dirname, "../static/email/templates")
+);
 
 if (!IS_DEV && !IS_WORKER && !process.env.SMTP_HOST) {
-  console.warn("[vendure-config] SMTP_HOST is not set: emails (password reset, order confirmation) will NOT be sent.");
+  console.warn(
+    "[vendure-config] SMTP_HOST is not set: emails (password reset, order confirmation) will NOT be sent."
+  );
 }
 
 const emailPluginOptions: EmailPluginOptions | EmailPluginDevModeOptions = IS_DEV

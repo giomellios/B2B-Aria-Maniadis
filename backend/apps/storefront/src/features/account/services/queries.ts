@@ -45,6 +45,10 @@ export const GetCustomerOrdersQuery = graphql(`
             productVariant {
               id
               name
+              featuredAsset {
+                id
+                preview
+              }
               product {
                 id
                 name
@@ -128,6 +132,10 @@ export const GetOrderDetailQuery = graphql(`
           id
           name
           sku
+          featuredAsset {
+            id
+            preview
+          }
           product {
             id
             name

@@ -7,6 +7,8 @@ import { useCheckout } from "@/features/checkout/hooks/use-checkout";
 import { Price } from "@/components/shared/price";
 import { OrderGrandTotal, OrderTotalsBreakdown } from "@/components/shared/order-totals";
 
+import { getOrderLineImagePreview } from "@/lib/utils";
+
 export default function OrderSummary() {
   const { order } = useCheckout();
   return (
@@ -16,33 +18,36 @@ export default function OrderSummary() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-3">
-          {order.lines.map((line: OrderLine) => (
-            <div key={line.id} className="flex gap-3">
-              {line.productVariant.product.featuredAsset && (
-                <div className="flex-shrink-0 w-15 h-15">
-                  <Image
-                    src={line.productVariant.product.featuredAsset.preview}
-                    alt={line.productVariant.name}
-                    width={60}
-                    height={60}
-                    className="rounded object-cover w-full h-full"
-                  />
-                </div>
-              )}
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium line-clamp-2">
-                  {line.productVariant.product.name}
-                </p>
-                {line.productVariant.name !== line.productVariant.product.name && (
-                  <p className="text-xs text-muted-foreground">{line.productVariant.name}</p>
+          {order.lines.map((line: OrderLine) => {
+            const imagePreview = getOrderLineImagePreview(line.productVariant);
+            return (
+              <div key={line.id} className="flex gap-3">
+                {imagePreview && (
+                  <div className="flex-shrink-0 w-15 h-15">
+                    <Image
+                      src={imagePreview}
+                      alt={line.productVariant.name}
+                      width={60}
+                      height={60}
+                      className="rounded object-cover w-full h-full"
+                    />
+                  </div>
                 )}
-                <p className="text-xs text-muted-foreground">Qty: {line.quantity}</p>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium line-clamp-2">
+                    {line.productVariant.product.name}
+                  </p>
+                  {line.productVariant.name !== line.productVariant.product.name && (
+                    <p className="text-xs text-muted-foreground">{line.productVariant.name}</p>
+                  )}
+                  <p className="text-xs text-muted-foreground">Qty: {line.quantity}</p>
+                </div>
+                <div className="text-sm font-medium">
+                  <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
+                </div>
               </div>
-              <div className="text-sm font-medium">
-                <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <Separator />

@@ -25,6 +25,10 @@ export const GetActiveOrderQuery = graphql(`
           id
           name
           sku
+          featuredAsset {
+            id
+            preview
+          }
           product {
             id
             name

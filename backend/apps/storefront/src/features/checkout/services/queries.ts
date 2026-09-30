@@ -62,6 +62,10 @@ export const GetActiveOrderForCheckoutQuery = graphql(`
           id
           name
           sku
+          featuredAsset {
+            id
+            preview
+          }
           product {
             id
             name
@@ -118,6 +122,10 @@ export const GetOrderByCodeQuery = graphql(`
         productVariant {
           id
           name
+          featuredAsset {
+            id
+            preview
+          }
           product {
             id
             name

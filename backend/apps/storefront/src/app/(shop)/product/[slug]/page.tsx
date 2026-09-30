@@ -58,15 +58,31 @@ export default async function ProductDetailPage({
     notFound();
   }
 
-  const productImages =
-    product.assets.length > 0
+  // Product gallery first, then any variant image that isn't in it, so every variant's image can be shown
+  const productImages = [
+    ...(product.assets.length > 0
       ? product.assets
-      : [
-          ...(product.featuredAsset ? [product.featuredAsset] : []),
-          ...product.variants
-            .map((variant) => variant.featuredAsset)
-            .filter((asset): asset is NonNullable<typeof asset> => Boolean(asset)),
-        ].filter((asset, index, list) => list.findIndex((item) => item.id === asset.id) === index);
+      : product.featuredAsset
+        ? [product.featuredAsset]
+        : []),
+    ...product.variants
+      .map((variant) => variant.featuredAsset)
+      .filter((asset): asset is NonNullable<typeof asset> => Boolean(asset)),
+  ].filter((asset, index, list) => list.findIndex((item) => item.id === asset.id) === index);
+
+  const variantImages = product.variants.flatMap((variant) =>
+    variant.featuredAsset
+      ? [
+          {
+            assetId: variant.featuredAsset.id,
+            options: variant.options.map((option) => ({
+              groupCode: option.group.code,
+              optionCode: option.code,
+            })),
+          },
+        ]
+      : []
+  );
 
   // Get the primary collection (prefer deepest nested / most specific)
   const primaryCollection =
@@ -78,7 +94,7 @@ export default async function ProductDetailPage({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Column: Image Carousel */}
           <div className="lg:sticky lg:top-20 lg:self-start">
-            <ProductImageCarousel images={productImages} />
+            <ProductImageCarousel images={productImages} variantImages={variantImages} />
           </div>
 
           {/* Right Column: Product Info */}

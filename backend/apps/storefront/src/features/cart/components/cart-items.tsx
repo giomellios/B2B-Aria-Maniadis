@@ -5,6 +5,8 @@ import { Minus, Plus, X } from "lucide-react";
 import { Price } from "@/components/shared/price";
 import { removeFromCart, adjustQuantity } from "@/features/cart/services/cart.actions";
 
+import { getOrderLineImagePreview } from "@/lib/utils";
+
 type ActiveOrder = {
   id: string;
   currencyCode: string;
@@ -17,6 +19,9 @@ type ActiveOrder = {
       id: string;
       name: string;
       sku: string;
+      featuredAsset?: {
+        preview: string;
+      } | null;
       product: {
         name: string;
         slug: string;
@@ -45,110 +50,113 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
 
   return (
     <div className="lg:col-span-2 space-y-4">
-      {activeOrder.lines.map((line) => (
-        <div
-          key={line.id}
-          className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-card"
-        >
-          {line.productVariant.product.featuredAsset && (
-            <Link href={`/product/${line.productVariant.product.slug}`} className="flex-shrink-0">
-              <Image
-                src={line.productVariant.product.featuredAsset.preview}
-                alt={line.productVariant.name}
-                width={120}
-                height={120}
-                className="rounded-md object-cover w-full sm:w-[120px] h-[120px]"
-              />
-            </Link>
-          )}
-
-          <div className="flex-grow min-w-0">
-            <Link
-              href={`/product/${line.productVariant.product.slug}`}
-              className="font-semibold hover:underline block"
-            >
-              {line.productVariant.product.name}
-            </Link>
-            {line.productVariant.name !== line.productVariant.product.name && (
-              <p className="text-sm text-muted-foreground mt-1">{line.productVariant.name}</p>
+      {activeOrder.lines.map((line) => {
+        const imagePreview = getOrderLineImagePreview(line.productVariant);
+        return (
+          <div
+            key={line.id}
+            className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-card"
+          >
+            {imagePreview && (
+              <Link href={`/product/${line.productVariant.product.slug}`} className="flex-shrink-0">
+                <Image
+                  src={imagePreview}
+                  alt={line.productVariant.name}
+                  width={120}
+                  height={120}
+                  className="rounded-md object-cover w-full sm:w-[120px] h-[120px]"
+                />
+              </Link>
             )}
-            <p className="text-sm text-muted-foreground mt-1">SKU: {line.productVariant.sku}</p>
-            <p className="text-sm text-muted-foreground mt-2 sm:hidden">
-              <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} /> each
-            </p>
 
-            <div className="flex items-center gap-3 mt-4">
-              <div className="flex items-center gap-2 border rounded-md">
-                <form
-                  action={async () => {
-                    "use server";
-                    await adjustQuantity(line.id, Math.max(1, line.quantity - 1));
-                  }}
-                >
-                  <Button
-                    type="submit"
-                    variant="ghost"
-                    size="icon"
-                    className="h-9 w-9 rounded-none"
-                    disabled={line.quantity <= 1}
-                  >
-                    <Minus className="h-4 w-4" />
-                  </Button>
-                </form>
-
-                <span className="w-12 text-center font-medium">{line.quantity}</span>
-
-                <form
-                  action={async () => {
-                    "use server";
-                    await adjustQuantity(line.id, line.quantity + 1);
-                  }}
-                >
-                  <Button
-                    type="submit"
-                    variant="ghost"
-                    size="icon"
-                    className="h-9 w-9 rounded-none"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </Button>
-                </form>
-              </div>
-
-              <form
-                action={async () => {
-                  "use server";
-                  await removeFromCart(line.id);
-                }}
+            <div className="flex-grow min-w-0">
+              <Link
+                href={`/product/${line.productVariant.product.slug}`}
+                className="font-semibold hover:underline block"
               >
-                <Button
-                  type="submit"
-                  variant="ghost"
-                  size="icon"
-                  className="h-9 w-9 text-destructive hover:text-destructive hover:bg-destructive/10"
-                >
-                  <X className="h-5 w-5" />
-                </Button>
-              </form>
+                {line.productVariant.product.name}
+              </Link>
+              {line.productVariant.name !== line.productVariant.product.name && (
+                <p className="text-sm text-muted-foreground mt-1">{line.productVariant.name}</p>
+              )}
+              <p className="text-sm text-muted-foreground mt-1">SKU: {line.productVariant.sku}</p>
+              <p className="text-sm text-muted-foreground mt-2 sm:hidden">
+                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} /> each
+              </p>
 
-              <div className="sm:hidden ml-auto">
-                <p className="font-semibold text-lg">
-                  <Price value={line.linePriceWithTax} currencyCode={activeOrder.currencyCode} />
-                </p>
+              <div className="flex items-center gap-3 mt-4">
+                <div className="flex items-center gap-2 border rounded-md">
+                  <form
+                    action={async () => {
+                      "use server";
+                      await adjustQuantity(line.id, Math.max(1, line.quantity - 1));
+                    }}
+                  >
+                    <Button
+                      type="submit"
+                      variant="ghost"
+                      size="icon"
+                      className="h-9 w-9 rounded-none"
+                      disabled={line.quantity <= 1}
+                    >
+                      <Minus className="h-4 w-4" />
+                    </Button>
+                  </form>
+
+                  <span className="w-12 text-center font-medium">{line.quantity}</span>
+
+                  <form
+                    action={async () => {
+                      "use server";
+                      await adjustQuantity(line.id, line.quantity + 1);
+                    }}
+                  >
+                    <Button
+                      type="submit"
+                      variant="ghost"
+                      size="icon"
+                      className="h-9 w-9 rounded-none"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </Button>
+                  </form>
+                </div>
+
+                <form
+                  action={async () => {
+                    "use server";
+                    await removeFromCart(line.id);
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    variant="ghost"
+                    size="icon"
+                    className="h-9 w-9 text-destructive hover:text-destructive hover:bg-destructive/10"
+                  >
+                    <X className="h-5 w-5" />
+                  </Button>
+                </form>
+
+                <div className="sm:hidden ml-auto">
+                  <p className="font-semibold text-lg">
+                    <Price value={line.linePriceWithTax} currencyCode={activeOrder.currencyCode} />
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="hidden sm:block text-right flex-shrink-0">
-            <p className="font-semibold text-lg">
-              <Price value={line.linePriceWithTax} currencyCode={activeOrder.currencyCode} />
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">
-              <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} /> each
-            </p>
+            <div className="hidden sm:block text-right flex-shrink-0">
+              <p className="font-semibold text-lg">
+                <Price value={line.linePriceWithTax} currencyCode={activeOrder.currencyCode} />
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} /> each
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

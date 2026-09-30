@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Price } from "@/components/shared/price";
 import { notFound } from "next/navigation";
 
+import { getOrderLineImagePreview } from "@/lib/utils";
+
 export async function OrderConfirmation({ params }: PageProps<"/order-confirmation/[code]">) {
   const { code } = await params;
   let order;
@@ -37,36 +39,39 @@ export async function OrderConfirmation({ params }: PageProps<"/order-confirmati
             <CardTitle>Order Summary</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {order.lines.map((line) => (
-              <div key={line.id} className="flex gap-4 items-center">
-                {line.productVariant.product.featuredAsset && (
-                  <div className="flex-shrink-0">
-                    <Image
-                      src={line.productVariant.product.featuredAsset.preview}
-                      alt={line.productVariant.name}
-                      width={80}
-                      height={80}
-                      className="rounded object-cover h-20 w-20 object-center"
-                    />
-                  </div>
-                )}
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium">{line.productVariant.product.name}</p>
-                  {line.productVariant.name !== line.productVariant.product.name && (
-                    <p className="text-sm text-muted-foreground">{line.productVariant.name}</p>
+            {order.lines.map((line) => {
+              const imagePreview = getOrderLineImagePreview(line.productVariant);
+              return (
+                <div key={line.id} className="flex gap-4 items-center">
+                  {imagePreview && (
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={imagePreview}
+                        alt={line.productVariant.name}
+                        width={80}
+                        height={80}
+                        className="rounded object-cover h-20 w-20 object-center"
+                      />
+                    </div>
                   )}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium">{line.productVariant.product.name}</p>
+                    {line.productVariant.name !== line.productVariant.product.name && (
+                      <p className="text-sm text-muted-foreground">{line.productVariant.name}</p>
+                    )}
+                  </div>
+                  <div className="text-center w-16">
+                    <p className="text-sm text-muted-foreground">Qty</p>
+                    <p className="font-medium">{line.quantity}</p>
+                  </div>
+                  <div className="text-right w-24">
+                    <p className="font-semibold">
+                      <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
+                    </p>
+                  </div>
                 </div>
-                <div className="text-center w-16">
-                  <p className="text-sm text-muted-foreground">Qty</p>
-                  <p className="font-medium">{line.quantity}</p>
-                </div>
-                <div className="text-right w-24">
-                  <p className="font-semibold">
-                    <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
 
             <Separator />
 
