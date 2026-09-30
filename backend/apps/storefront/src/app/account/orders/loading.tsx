@@ -5,8 +5,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Skeleton } from "@/components/ui/skeleton";
+  Skeleton,
+} from "@/design-system";
 
 export default function OrdersLoading() {
   return (

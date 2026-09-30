@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Search, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/design-system";
 
 export function SearchInput() {
   const router = useRouter();
@@ -11,11 +11,15 @@ export function SearchInput() {
   const searchParams = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
   const [isPending, startTransition] = useTransition();
-  const [searchValue, setSearchValue] = useState(searchParams.get("q") || "");
+  const urlQuery = searchParams.get("q") || "";
+  const [searchValue, setSearchValue] = useState(urlQuery);
+  const [syncedQuery, setSyncedQuery] = useState(urlQuery);
 
-  useEffect(() => {
-    setSearchValue(searchParams.get("q") || "");
-  }, [searchParams]);
+  // Reset the field when the URL's query changes (e.g. back/forward navigation).
+  if (urlQuery !== syncedQuery) {
+    setSyncedQuery(urlQuery);
+    setSearchValue(urlQuery);
+  }
 
   const navigateToSearch = (query: string) => {
     startTransition(() => {

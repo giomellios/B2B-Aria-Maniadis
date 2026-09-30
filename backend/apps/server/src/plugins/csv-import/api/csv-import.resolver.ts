@@ -1,19 +1,33 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { Allow, Ctx, Permission, RequestContext } from '@vendure/core';
-import { CsvImportService } from '../services/csv-import.service';
-import { ImportResult } from '../types';
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { Allow, Ctx, ID, RequestContext } from "@vendure/core";
+
+import { importProductsFromCsvPermission } from "../constants";
+import { CsvImportJobInfo, CsvImportService } from "../services/csv-import.service";
+
+interface FileUpload {
+  filename: string;
+  mimetype: string;
+  createReadStream(): NodeJS.ReadableStream;
+}
 
 @Resolver()
 export class CsvImportResolver {
-    constructor(private readonly csvImportService: CsvImportService) {}
+  constructor(private readonly csvImportService: CsvImportService) {}
 
-    @Mutation()
-    @Allow(Permission.Authenticated)
-    async importProductsFromCsv(
-        @Ctx() ctx: RequestContext,
-        @Args() args: { csvBase64: string },
-    ): Promise<ImportResult> {
-        const buffer = Buffer.from(args.csvBase64, 'base64');
-        return this.csvImportService.importFromBuffer(ctx, buffer);
-    }
+  @Mutation()
+  @Allow(importProductsFromCsvPermission.Permission)
+  async startCsvProductImport(
+    @Ctx() ctx: RequestContext,
+    @Args() args: { file: Promise<FileUpload> }
+  ): Promise<CsvImportJobInfo> {
+    const upload = await args.file;
+    const buffer = await this.csvImportService.readUpload(upload.createReadStream());
+    return this.csvImportService.startImport(ctx, buffer, upload.filename);
+  }
+
+  @Query()
+  @Allow(importProductsFromCsvPermission.Permission)
+  csvProductImportJob(@Args() args: { id: ID }): Promise<CsvImportJobInfo | undefined> {
+    return this.csvImportService.getImportJob(args.id);
+  }
 }

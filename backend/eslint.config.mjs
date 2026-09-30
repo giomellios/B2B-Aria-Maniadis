@@ -1,17 +1,8 @@
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
-import nextTypescript from "eslint-config-next/typescript";
-
-// eslint-config-next v16 ships native flat configs, so we consume them
-// directly instead of via @eslint/eslintrc's FlatCompat, which crashed with
-// "Converting circular structure to JSON" when translating the React plugin.
-const storefrontFiles = [
-  "apps/storefront/**/*.ts",
-  "apps/storefront/**/*.tsx",
-  "apps/storefront/**/*.js",
-  "apps/storefront/**/*.jsx",
-];
+import { storefrontBoundaries } from "./apps/storefront/eslint.boundaries.mjs";
 
 export default [
   {
@@ -44,9 +35,15 @@ export default [
       ...tsPlugin.configs.recommended.rules,
     },
   },
-  // Storefront: Next.js flat config, scoped to the storefront workspace.
-  ...[...nextCoreWebVitals, ...nextTypescript].map((block) => ({
+  // Storefront: Next.js config
+  ...[...nextVitals, ...nextTs].map((block) => ({
     ...block,
-    files: storefrontFiles,
+    files: [
+      "apps/storefront/**/*.ts",
+      "apps/storefront/**/*.tsx",
+      "apps/storefront/**/*.js",
+      "apps/storefront/**/*.jsx",
+    ],
   })),
+  ...storefrontBoundaries("apps/storefront/src"),
 ];

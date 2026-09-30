@@ -1,0 +1,27 @@
+diff --git a/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx b/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
+index 11630ef..db625d2 100644
+--- a/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
++++ b/node_modules/@vendure/dashboard/src/lib/components/layout/nav-user.tsx
+@@ -1,7 +1,7 @@
+ import { MenuBranding } from '@/vdb/components/shared/powered-by-vendure.js';
+ import { useAuth } from '@/vdb/hooks/use-auth.js';
+ import { Link, useNavigate, useRouter } from '@tanstack/react-router';
+-import { ChevronsUpDown, LogOut, Monitor, Moon, Sparkles, Sun } from 'lucide-react';
++import { ChevronsUpDown, LogOut, Monitor, Moon, Sun } from 'lucide-react';
+ 
+ import {
+     DropdownMenu,
+@@ -96,13 +96,6 @@ export function NavUser() {
+                                 </DropdownMenuLabel>
+                             </DropdownMenuGroup>
+                             <DropdownMenuSeparator />
+-                            <DropdownMenuGroup>
+-                                <DropdownMenuItem render={<a href="https://vendure.io/pricing" target="_blank" rel="noopener noreferrer" aria-label="Explore Platform & Cloud" />}>
+-                                        <Sparkles />
+-                                        <Trans>Explore Platform & Cloud</Trans>
+-                                </DropdownMenuItem>
+-                            </DropdownMenuGroup>
+-                            <DropdownMenuSeparator />
+                             <DropdownMenuGroup>
+                                 <DropdownMenuItem render={<Link to="/profile" />}>
+                                         <Trans>Profile</Trans>

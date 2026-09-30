@@ -3,7 +3,7 @@
 import { useSelectedLayoutSegment } from "next/navigation";
 import { ComponentProps } from "react";
 import Link from "next/link";
-import { NavigationMenuLink, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { NavigationMenuLink, navigationMenuTriggerStyle } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function NavbarLink({ href, ...rest }: ComponentProps<typeof Link>) {

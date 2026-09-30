@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { getTopCollections } from "@/lib/vendure/cached";
-import { getActiveCustomer } from "@/lib/vendure/actions";
+import { getTopCollections } from "@/lib/queries/cached";
+import { getActiveCustomer } from "@/features/auth/server";
 import Link from "next/link";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
 

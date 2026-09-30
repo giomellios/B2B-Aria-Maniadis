@@ -1,133 +1,128 @@
 import {
-    api,
-    Button,
-    DataTableBulkActionItem,
-    defineDashboardExtension,
-    PermissionGuard,
-} from '@vendure/dashboard';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { CheckCircle } from 'lucide-react';
-import { toast } from 'sonner';
+  api,
+  Button,
+  DataTableBulkActionItem,
+  defineDashboardExtension,
+  toast,
+  useMutation,
+  usePaginatedList,
+  useQueryClient,
+} from "@vendure/dashboard";
+import type { BulkActionComponent, PageContextValue } from "@vendure/dashboard";
+import { CheckCircle, ShieldOff } from "lucide-react";
 
-const ManuallyVerifyCustomerDocument = {
-    kind: 'Document',
-    definitions: [
-        {
-            kind: 'OperationDefinition',
-            operation: 'mutation',
-            name: { kind: 'Name', value: 'ManuallyVerifyCustomer' },
-            variableDefinitions: [
-                {
-                    kind: 'VariableDefinition',
-                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-                    type: {
-                        kind: 'NonNullType',
-                        type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
-                    },
-                },
-            ],
-            selectionSet: {
-                kind: 'SelectionSet',
-                selections: [
-                    {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'manuallyVerifyCustomer' },
-                        arguments: [
-                            {
-                                kind: 'Argument',
-                                name: { kind: 'Name', value: 'id' },
-                                value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-                            },
-                        ],
-                    },
-                ],
-            },
-        },
-    ],
-} as any;
+import { graphql } from "@/gql";
 
-function ApproveCustomerButton({ context }: { context: any }) {
-    const queryClient = useQueryClient();
-    const customer = context.entity;
-
-    const { mutate, isPending } = useMutation({
-        mutationFn: (variables: { id: string }) =>
-            api.mutate(ManuallyVerifyCustomerDocument, variables),
-        onSuccess: () => {
-            toast.success('Customer approved successfully');
-            queryClient.invalidateQueries();
-        },
-        onError: () => {
-            toast.error('Failed to approve customer');
-        },
-    });
-
-    if (!customer || customer.user?.verified) {
-        return null;
+const approveCustomerDocument = graphql(`
+  mutation ApproveCustomer($id: ID!) {
+    approveCustomer(id: $id) {
+      id
+      customFields {
+        approved
+      }
     }
+  }
+`);
 
-    return (
-        <PermissionGuard requires={['UpdateCustomer']}>
-            <Button
-                type="button"
-                variant="default"
-                onClick={() => mutate({ id: customer.id })}
-                disabled={isPending}
-            >
-                <CheckCircle className="mr-2 h-4 w-4" />
-                {isPending ? 'Approving...' : 'Approve Customer'}
-            </Button>
-        </PermissionGuard>
-    );
+const revokeCustomerApprovalDocument = graphql(`
+  mutation RevokeCustomerApproval($id: ID!) {
+    revokeCustomerApproval(id: $id) {
+      id
+      customFields {
+        approved
+      }
+    }
+  }
+`);
+
+function CustomerApprovalButton({ context }: { context: PageContextValue }) {
+  const queryClient = useQueryClient();
+  const customer = context.entity;
+  const approved = customer?.customFields?.approved === true;
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (id: string) => {
+      if (approved) {
+        await api.mutate(revokeCustomerApprovalDocument, { id });
+      } else {
+        await api.mutate(approveCustomerDocument, { id });
+      }
+    },
+    onSuccess: () => {
+      toast.success(approved ? "Η έγκριση ανακλήθηκε" : "Ο πελάτης εγκρίθηκε");
+      // Refresh only detail pages (the customer detail query), not every query in the app.
+      void queryClient.invalidateQueries({ queryKey: ["DetailPage"] });
+    },
+    onError: (err: unknown) => {
+      toast.error(approved ? "Αποτυχία ανάκλησης έγκρισης" : "Αποτυχία έγκρισης πελάτη", {
+        description: err instanceof Error ? err.message : undefined,
+      });
+    },
+  });
+
+  // Guests (no user account) cannot log in, so there is nothing to approve.
+  if (!customer?.id || !customer.user) {
+    return null;
+  }
+
+  return (
+    <Button
+      type="button"
+      variant={approved ? "outline" : "default"}
+      onClick={() => mutate(String(customer.id))}
+      disabled={isPending}
+    >
+      {approved ? <ShieldOff className="mr-2 h-4 w-4" /> : <CheckCircle className="mr-2 h-4 w-4" />}
+      {isPending ? "…" : approved ? "Ανάκληση έγκρισης" : "Έγκριση πελάτη"}
+    </Button>
+  );
 }
 
-function ApproveBulkAction({ selection }: { selection: any[] }) {
-    const queryClient = useQueryClient();
-    const unapproved = selection.filter(c => !c.user?.verified);
+const ApproveCustomersBulkAction: BulkActionComponent<{ id: string }> = ({ selection, table }) => {
+  const { refetchPaginatedList } = usePaginatedList();
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (ids: string[]) => {
+      // approveCustomer is idempotent, so already-approved customers are simply skipped.
+      for (const id of ids) {
+        await api.mutate(approveCustomerDocument, { id });
+      }
+    },
+    onSuccess: (_data: unknown, ids: string[]) => {
+      toast.success(`Εγκρίθηκαν ${ids.length} πελάτες`);
+      table.resetRowSelection();
+      refetchPaginatedList();
+    },
+    onError: (err: unknown) => {
+      toast.error("Αποτυχία έγκρισης πελατών", {
+        description: err instanceof Error ? err.message : undefined,
+      });
+      refetchPaginatedList();
+    },
+  });
 
-    const { mutate, isPending } = useMutation({
-        mutationFn: async (ids: string[]) => {
-            for (const id of ids) {
-                await api.mutate(ManuallyVerifyCustomerDocument, { id });
-            }
-        },
-        onSuccess: () => {
-            toast.success(`${unapproved.length} customer(s) approved`);
-            queryClient.invalidateQueries();
-        },
-        onError: () => {
-            toast.error('Failed to approve customers');
-        },
-    });
-
-    if (unapproved.length === 0) {
-        return null;
-    }
-
-    return (
-        <DataTableBulkActionItem
-            onClick={() => mutate(unapproved.map(c => c.id))}
-            label={isPending ? 'Approving...' : `Approve (${unapproved.length})`}
-            icon={CheckCircle}
-        />
-    );
-}
+  return (
+    <DataTableBulkActionItem
+      onClick={() => mutate(selection.map((c) => String(c.id)))}
+      label={isPending ? "Έγκριση…" : `Έγκριση (${selection.length})`}
+      icon={CheckCircle}
+      requiresPermission={["UpdateCustomer"]}
+    />
+  );
+};
 
 defineDashboardExtension({
-    actionBarItems: [
-        {
-            pageId: 'customer-detail',
-            component: ({ context }) => <ApproveCustomerButton context={context} />,
-        },
-    ],
-    dataTables: [
-        {
-            pageId: 'customer-list',
-            bulkActions: [
-                {
-                    component: props => <ApproveBulkAction selection={props.selection} />,
-                },
-            ],
-        },
-    ],
+  actionBarItems: [
+    {
+      pageId: "customer-detail",
+      requiresPermission: ["UpdateCustomer"],
+      position: { itemId: "save-button", order: "before" },
+      component: CustomerApprovalButton,
+    },
+  ],
+  dataTables: [
+    {
+      pageId: "customer-list",
+      bulkActions: [{ order: 100, component: ApproveCustomersBulkAction }],
+    },
+  ],
 });

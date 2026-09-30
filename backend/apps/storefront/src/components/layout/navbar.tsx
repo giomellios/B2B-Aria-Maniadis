@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NavbarCollections } from "@/components/layout/navbar/navbar-collections";
-import { NavbarCart } from "@/components/layout/navbar/navbar-cart";
-import { NavbarUser } from "@/components/layout/navbar/navbar-user";
+import { NavbarCart } from "@/features/cart/server";
+import { NavbarUser } from "@/features/auth/server";
 import { ThemeSwitcher } from "@/components/layout/navbar/theme-switcher";
 import { Suspense } from "react";
 import { SearchInput } from "@/components/layout/search-input";
 import { SearchDialog } from "@/components/layout/search-dialog";
-import { NavbarUserSkeleton } from "@/components/shared/skeletons/navbar-user-skeleton";
-import { SearchInputSkeleton } from "@/components/shared/skeletons/search-input-skeleton";
+import { NavbarUserSkeleton } from "@/features/auth";
+import { SearchInputSkeleton } from "@/components/layout/search-input-skeleton";
 
 export function Navbar() {
   return (
