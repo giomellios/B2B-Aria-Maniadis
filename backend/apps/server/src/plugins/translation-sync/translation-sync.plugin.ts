@@ -35,7 +35,7 @@ class TranslationSyncSubscriber implements OnApplicationBootstrap {
     private eventBus: EventBus,
     private connection: TransactionalConnection,
     private productService: ProductService,
-    private productVariantService: ProductVariantService,
+    private productVariantService: ProductVariantService
   ) {}
 
   onApplicationBootstrap() {
@@ -47,8 +47,12 @@ class TranslationSyncSubscriber implements OnApplicationBootstrap {
       .subscribe(async (event) => {
         try {
           await this.syncProductTranslations(event.ctx, event.entity.id);
-        } catch (e: any) {
-          Logger.error(`Error syncing translations of product ${event.entity.id}: ${e?.message}`, loggerCtx, e?.stack);
+        } catch (e) {
+          Logger.error(
+            `Error syncing translations of product ${event.entity.id}: ${(e as Error | undefined)?.message}`,
+            loggerCtx,
+            (e as Error | undefined)?.stack
+          );
         }
       });
 
@@ -59,8 +63,12 @@ class TranslationSyncSubscriber implements OnApplicationBootstrap {
         for (const variant of event.entity) {
           try {
             await this.syncVariantTranslations(event.ctx, variant.id);
-          } catch (e: any) {
-            Logger.error(`Error syncing translations of variant ${variant.id}: ${e?.message}`, loggerCtx, e?.stack);
+          } catch (e) {
+            Logger.error(
+              `Error syncing translations of variant ${variant.id}: ${(e as Error | undefined)?.message}`,
+              loggerCtx,
+              (e as Error | undefined)?.stack
+            );
           }
         }
       });
@@ -118,7 +126,10 @@ class TranslationSyncSubscriber implements OnApplicationBootstrap {
     if (!missing.length) return;
 
     await this.productVariantService.update(ctx, [
-      { id: variantId, translations: missing.map((languageCode) => ({ languageCode, name: source.name })) },
+      {
+        id: variantId,
+        translations: missing.map((languageCode) => ({ languageCode, name: source.name })),
+      },
     ]);
     Logger.verbose(`Copied variant ${variantId} name to ${missing.join(", ")}`, loggerCtx);
   }
