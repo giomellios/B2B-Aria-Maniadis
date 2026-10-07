@@ -27,9 +27,11 @@ import {
 } from "@vendure/core";
 
 import {
-  CHARACTERISTIC_GROUP_CODE,
-  COLOR_GROUP_CODE,
+  CHARACTERISTIC_GROUP_PREFIX,
+  COLOR_GROUP_PREFIX,
   CSV_IMPORT_QUEUE,
+  LEGACY_SHARED_CHARACTERISTIC_GROUP_CODE,
+  LEGACY_SHARED_COLOR_GROUP_CODE,
   loggerCtx,
   MAX_CSV_BYTES,
 } from "../constants";
@@ -67,24 +69,24 @@ type Delta = Omit<ImportResult, "errors">;
 type PriceConverter = (priceWithTax: number) => number;
 
 interface OptionDimension {
-  /** Shared group code used for new products. */
-  sharedCode: string;
-  /** Prefix of the per-product groups created by earlier versions of this importer. */
-  legacyPrefix: string;
+  /** Prefix of the product's own group: "<prefix><product slug>". */
+  prefix: string;
+  /** Shared group code from the Oct 2026 import — only recognised, never assigned. */
+  legacySharedCode: string;
   name: { el: string; en: string };
   valueOf: (v: WantedVariant) => string;
 }
 
 const DIMENSIONS: OptionDimension[] = [
   {
-    sharedCode: COLOR_GROUP_CODE,
-    legacyPrefix: "color-",
+    prefix: COLOR_GROUP_PREFIX,
+    legacySharedCode: LEGACY_SHARED_COLOR_GROUP_CODE,
     name: { el: "Χρώμα", en: "Color" },
     valueOf: (v) => v.color,
   },
   {
-    sharedCode: CHARACTERISTIC_GROUP_CODE,
-    legacyPrefix: "characteristic-",
+    prefix: CHARACTERISTIC_GROUP_PREFIX,
+    legacySharedCode: LEGACY_SHARED_CHARACTERISTIC_GROUP_CODE,
     name: { el: "Χαρακτηριστικό", en: "Characteristic" },
     valueOf: (v) => v.characteristic,
   },
@@ -98,7 +100,8 @@ const DIMENSIONS: OptionDimension[] = [
  *   and is reported in `errors`, the rest of the file continues.
  * - Existing products (matched by slug = product code) are updated: price and stock of
  *   variants matched by SKU, and missing variants are added.
- * - New products use the shared "color" / "characteristic" option groups.
+ * - Every product gets its own "color-<slug>" / "characteristic-<slug>" option groups (never
+ *   shared: the storefront lists all options of a product's groups).
  */
 @Injectable()
 export class CsvImportService implements OnModuleInit {
@@ -293,7 +296,7 @@ export class CsvImportService implements OnModuleInit {
           continue;
         }
         let optionGroup = optionGroups.find(
-          (g) => g.code === dim.sharedCode || g.code.startsWith(dim.legacyPrefix)
+          (g) => g.code.startsWith(dim.prefix) || g.code === dim.legacySharedCode
         );
         if (!optionGroup) {
           if (existing.length) {
@@ -301,7 +304,7 @@ export class CsvImportService implements OnModuleInit {
               `υπάρχουν ήδη παραλλαγές χωρίς ομάδα «${dim.name.el}» — διαγράψτε το προϊόν και εισάγετέ το ξανά`
             );
           }
-          optionGroup = await this.getOrCreateSharedGroup(ctx, dim);
+          optionGroup = await this.createProductGroup(ctx, dim, slug);
           await this.productService.addOptionGroupToProduct(ctx, productId, optionGroup.id);
         }
         groupsForDimension.set(dim, optionGroup);
@@ -373,19 +376,13 @@ export class CsvImportService implements OnModuleInit {
     return delta;
   }
 
-  private async getOrCreateSharedGroup(
+  private async createProductGroup(
     ctx: RequestContext,
-    dim: OptionDimension
+    dim: OptionDimension,
+    productSlug: string
   ): Promise<Translated<ProductOptionGroup> | ProductOptionGroup> {
-    const found = await this.productOptionGroupService.findAll(ctx, {
-      filter: { code: { eq: dim.sharedCode } },
-      take: 1,
-    });
-    if (found.items[0]) {
-      return found.items[0];
-    }
     return this.productOptionGroupService.create(ctx, {
-      code: dim.sharedCode,
+      code: `${dim.prefix}${productSlug}`,
       translations: [
         { languageCode: LanguageCode.el, name: dim.name.el },
         { languageCode: LanguageCode.en, name: dim.name.en },
