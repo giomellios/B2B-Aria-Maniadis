@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { getT } from "@/lib/i18n/server";
 import { Suspense } from "react";
-import { redirect } from "next/navigation";
+import Image from "next/image";
+import { localeRedirect } from "@/lib/i18n/redirect";
 import { RegistrationForm } from "@/features/auth";
 import { Card, CardContent, CardFooter, Skeleton } from "@/design-system";
 import { getActiveCustomer } from "@/features/auth/server";
 
-export const metadata: Metadata = {
-  title: "Create Account",
-  description: "Create a new account to start shopping with us.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.auth.register.metaTitle, description: t.auth.register.metaDescription };
+}
 
 function RegistrationFormSkeleton() {
   return (
@@ -56,20 +58,28 @@ async function RegisterContent({
 }) {
   const [customer, resolvedParams] = await Promise.all([getActiveCustomer(), searchParams]);
   if (customer) {
-    redirect("/");
+    await localeRedirect("/");
   }
   const redirectTo = resolvedParams?.redirectTo as string | undefined;
 
   return <RegistrationForm redirectTo={redirectTo} />;
 }
 
-export default async function RegisterPage({ searchParams }: PageProps<"/register">) {
+export default async function RegisterPage({ searchParams }: PageProps<"/[locale]/register">) {
+  const t = await getT();
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-6">
+    <div className="flex min-h-screen items-center justify-center px-4 pt-24 pb-16">
+      <div className="w-full max-w-md space-y-8 animate-in fade-in-0 slide-in-from-bottom-3 duration-500 ease-out">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Create Account</h1>
-          <p className="text-muted-foreground">Sign up to start shopping with us</p>
+          <Image
+            src="/logo.png"
+            alt=""
+            width={169}
+            height={210}
+            className="mx-auto mb-4 h-16 w-auto dark:brightness-0 dark:invert"
+          />
+          <h1 className="display text-4xl">{t.auth.register.title}</h1>
+          <p className="text-muted-foreground">{t.auth.register.subtitle}</p>
         </div>
         <Suspense fallback={<RegistrationFormSkeleton />}>
           <RegisterContent searchParams={searchParams} />

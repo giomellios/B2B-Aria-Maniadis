@@ -2,83 +2,60 @@
 
 import { motion } from "framer-motion";
 import { RevealHeading } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 
-// TODO: Confirm the actual ordering/approval process with Maniadis and update step descriptions accordingly
-const STEPS = [
-  {
-    number: "01",
-    title: "Register",
-    description:
-      "Create a wholesale account in minutes. Our team reviews and approves new partners promptly.",
-  },
-  {
-    number: "02",
-    title: "Browse the Catalog",
-    description: "Explore our full range of bags and hats, filtered by category, style, or season.",
-  },
-  {
-    number: "03",
-    title: "Place Your Order",
-    description:
-      "Order online at any time. We handle packing and dispatch so your stock arrives on time.",
-  },
-];
-
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.15 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  },
-};
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function HowItWorks() {
+  const t = useT().home.steps;
+  // TODO: Confirm the actual ordering/approval process with Maniadis and update step descriptions accordingly
+  const steps = [
+    { title: t.register, description: t.registerText },
+    { title: t.browse, description: t.browseText },
+    { title: t.order, description: t.orderText },
+  ];
+
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-20 md:py-28">
       <div className="container mx-auto px-4">
-        <div className="mb-12 space-y-2">
-          <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">
-            Getting Started
-          </p>
-          <RevealHeading className="text-3xl md:text-4xl font-light tracking-tight text-foreground">
-            How It Works
-          </RevealHeading>
+        <div className="mb-14 space-y-3">
+          <p className="eyebrow">{t.eyebrow}</p>
+          <RevealHeading className="display text-4xl md:text-5xl">{t.title}</RevealHeading>
         </div>
 
-        <motion.div
-          variants={container}
+        <motion.ol
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-0"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15 } } }}
+          className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10"
         >
-          {STEPS.map((step, i) => (
-            <motion.div
-              key={step.number}
-              variants={item}
-              className="relative flex flex-col gap-4 p-8 border border-border first:rounded-t-lg last:rounded-b-lg md:first:rounded-l-lg md:first:rounded-tr-none md:last:rounded-r-lg md:last:rounded-bl-none"
+          {steps.map((step, i) => (
+            <motion.li
+              key={step.title}
+              variants={{
+                hidden: { opacity: 0, y: 16 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+              }}
+              className="relative space-y-4 pt-8"
             >
-              {/* Connector line between steps on desktop */}
-              {i < STEPS.length - 1 && (
-                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-[1px] w-px h-12 bg-border z-10" />
-              )}
-
-              <p className="text-4xl font-extralight text-muted-foreground/40 tracking-tight">
-                {step.number}
+              {/* Rule that draws itself across when the step appears */}
+              <motion.span
+                aria-hidden
+                variants={{
+                  hidden: { scaleX: 0 },
+                  show: { scaleX: 1, transition: { duration: 0.9, ease: EASE } },
+                }}
+                className="absolute left-0 right-0 top-0 h-px origin-left bg-primary"
+              />
+              <p className="display text-5xl text-primary">{i + 1}</p>
+              <p className="font-serif text-2xl text-foreground">{step.title}</p>
+              <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+                {step.description}
               </p>
-              <div className="space-y-2">
-                <p className="text-base font-medium text-foreground">{step.title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-              </div>
-            </motion.div>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ol>
       </div>
     </section>
   );

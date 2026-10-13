@@ -1,32 +1,27 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Skeleton,
-} from "@/design-system";
+import { getT } from "@/lib/i18n/server";
+import { Card, CardContent, CardHeader, Skeleton } from "@/design-system";
 
-export default function ProfileLoading() {
+export default async function ProfileLoading() {
+  const t = (await getT()).account.profile;
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Profile</h1>
-        <p className="text-muted-foreground mt-2">Manage your account information</p>
+        <h1 className="display text-3xl md:text-4xl">{t.title}</h1>
+        <p className="text-muted-foreground mt-2">{t.subtitle}</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Account Information</CardTitle>
-          <CardDescription>Your personal details</CardDescription>
+          <Skeleton className="h-6 w-48" />
+          <Skeleton className="h-4 w-64" />
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <p className="text-sm font-medium">Email</p>
+            <Skeleton className="h-4 w-20" />
             <Skeleton className="h-4 w-48 mt-1" />
           </div>
           <div>
-            <p className="text-sm font-medium">Name</p>
+            <Skeleton className="h-4 w-20" />
             <Skeleton className="h-4 w-32 mt-1" />
           </div>
         </CardContent>
@@ -34,8 +29,8 @@ export default function ProfileLoading() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Change Password</CardTitle>
-          <CardDescription>Update your password</CardDescription>
+          <Skeleton className="h-6 w-48" />
+          <Skeleton className="h-4 w-64" />
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">

@@ -1,3 +1,4 @@
+import { getT } from "@/lib/i18n/server";
 import {
   Table,
   TableBody,
@@ -8,20 +9,21 @@ import {
   Skeleton,
 } from "@/design-system";
 
-export default function OrdersLoading() {
+export default async function OrdersLoading() {
+  const t = (await getT()).account.orders;
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">My Orders</h1>
+      <h1 className="display text-3xl md:text-4xl mb-6">{t.title}</h1>
 
       <div className="border rounded-lg">
         <Table>
           <TableHeader className="bg-muted">
             <TableRow>
-              <TableHead>Order Number</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Items</TableHead>
-              <TableHead className="text-right">Total</TableHead>
+              <TableHead>{t.orderNumber}</TableHead>
+              <TableHead>{t.date}</TableHead>
+              <TableHead>{t.status}</TableHead>
+              <TableHead>{t.items}</TableHead>
+              <TableHead className="text-right">{t.total}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

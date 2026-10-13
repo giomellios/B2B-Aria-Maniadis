@@ -1,37 +1,25 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Package, User, MapPin } from "lucide-react";
+import { Suspense } from "react";
+import { AccountNav, AccountNavList } from "@/features/account";
 import { noIndexRobots } from "@/lib/utils";
+import { getT } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
   robots: noIndexRobots(),
 };
 
-const navItems = [
-  { href: "/account/orders", label: "Orders", icon: Package },
-  { href: "/account/addresses", label: "Addresses", icon: MapPin },
-  { href: "/account/profile", label: "Profile", icon: User },
-];
-
-export default async function AccountLayout({ children }: LayoutProps<"/account">) {
+export default async function AccountLayout({ children }: LayoutProps<"/[locale]/account">) {
+  const t = await getT();
   return (
-    <div className="container mx-auto px-4 py-30">
-      <div className="flex gap-8">
-        <aside className="w-64 shrink-0">
-          <nav className="space-y-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="flex items-center gap-3 px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-colors"
-              >
-                <item.icon className="h-5 w-5" />
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
+      <p className="eyebrow mb-8">{t.account.eyebrow}</p>
+      <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+        <aside className="md:w-52 md:shrink-0">
+          <Suspense fallback={<AccountNavList pathname={null} />}>
+            <AccountNav />
+          </Suspense>
         </aside>
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1">{children}</main>
       </div>
     </div>
   );

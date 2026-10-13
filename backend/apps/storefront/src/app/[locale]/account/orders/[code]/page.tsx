@@ -13,32 +13,37 @@ import {
 } from "@/design-system";
 import Image from "next/image";
 import { getActiveCustomer } from "@/features/auth/server";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { localeRedirect } from "@/lib/i18n/redirect";
+import { format } from "@/lib/i18n/dictionaries";
 import { Price } from "@/components/shared/price";
 import { OrderStatusBadge } from "@/features/account";
 import { formatDate } from "@/lib/utils";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
 import { getOrderLineImagePreview } from "@/lib/utils";
 
-type OrderDetailPageProps = PageProps<"/account/orders/[code]">;
+type OrderDetailPageProps = PageProps<"/[locale]/account/orders/[code]">;
 
 export async function generateMetadata({ params }: OrderDetailPageProps): Promise<Metadata> {
-  const { code } = await params;
+  const [{ code }, t] = await Promise.all([params, getT()]);
   return {
-    title: `Order ${code}`,
+    title: format(t.account.order.metaTitle, { code }),
   };
 }
 
-export default async function OrderDetailPage(props: PageProps<"/account/orders/[code]">) {
+export default async function OrderDetailPage(props: PageProps<"/[locale]/account/orders/[code]">) {
   await connection();
   const params = await props.params;
   const { code } = params;
   const activeCustomer = await getActiveCustomer();
+  const [locale, dict] = await Promise.all([getLocale(), getT()]);
+  const t = dict.account.order;
 
   const order = await getOrderDetail(code);
 
   if (!order) {
-    return redirect("/account/orders");
+    return localeRedirect("/account/orders");
   }
 
   if (order.customer?.id !== activeCustomer?.id) {
@@ -51,14 +56,16 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
         <Button variant="ghost" size="sm" asChild className="mb-4">
           <Link href="/account/orders">
             <ChevronLeft className="h-4 w-4 mr-2" />
-            Back to Orders
+            {t.back}
           </Link>
         </Button>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold">Order {order.code}</h1>
+            <h1 className="display text-3xl md:text-4xl">
+              {format(t.title, { code: order.code })}
+            </h1>
             <p className="text-muted-foreground mt-1">
-              Placed on {formatDate(order.createdAt, "long")}
+              {format(t.placedOn, { date: formatDate(order.createdAt, "long", locale) })}
             </p>
           </div>
           <OrderStatusBadge state={order.state} />
@@ -71,7 +78,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
           {/* Order Items */}
           <Card>
             <CardHeader>
-              <CardTitle>Order Items</CardTitle>
+              <CardTitle>{t.items}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -79,7 +86,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
                   const imagePreview = getOrderLineImagePreview(line.productVariant);
                   return (
                     <div key={line.id} className="flex gap-4">
-                      <div className="relative h-20 w-20 rounded-md overflow-hidden bg-gray-100 flex-shrink-0">
+                      <div className="relative h-20 w-20 rounded-md overflow-hidden bg-secondary flex-shrink-0">
                         {imagePreview && (
                           <Image
                             src={imagePreview}
@@ -98,7 +105,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
                         </Link>
                         <p className="text-sm text-muted-foreground">{line.productVariant.name}</p>
                         <p className="text-sm text-muted-foreground">
-                          SKU: {line.productVariant.sku}
+                          {dict.common.sku}: {line.productVariant.sku}
                         </p>
                       </div>
                       <div className="text-right">
@@ -106,7 +113,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
                           <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
                         </p>
                         <p className="text-sm text-muted-foreground">
-                          Qty: {line.quantity} ×{" "}
+                          {dict.common.qty}: {line.quantity} ×{" "}
                           <Price value={line.unitPriceWithTax} currencyCode={order.currencyCode} />
                         </p>
                       </div>
@@ -120,18 +127,18 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
           {/* Order Totals */}
           <Card>
             <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
+              <CardTitle>{t.summary}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Subtotal</span>
+                  <span className="text-muted-foreground">{dict.common.subtotal}</span>
                   <span>
                     <Price value={order.subTotalWithTax} currencyCode={order.currencyCode} />
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Shipping</span>
+                  <span className="text-muted-foreground">{dict.common.shipping}</span>
                   <span>
                     <Price value={order.shippingWithTax} currencyCode={order.currencyCode} />
                   </span>
@@ -141,7 +148,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
                     {order.discounts.map((discount, idx) => (
                       <div key={idx} className="flex justify-between text-sm">
                         <span className="text-muted-foreground">{discount.description}</span>
-                        <span className="text-green-600">
+                        <span className="text-success">
                           -
                           <Price value={discount.amountWithTax} currencyCode={order.currencyCode} />
                         </span>
@@ -150,8 +157,8 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
                   </>
                 )}
                 <Separator className="my-2" />
-                <div className="flex justify-between font-bold text-lg">
-                  <span>Total</span>
+                <div className="flex justify-between font-semibold text-lg">
+                  <span>{dict.common.total}</span>
                   <span>
                     <Price value={order.totalWithTax} currencyCode={order.currencyCode} />
                   </span>
@@ -167,7 +174,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
           {order.shippingAddress && (
             <Card>
               <CardHeader>
-                <CardTitle>Shipping Address</CardTitle>
+                <CardTitle>{t.shippingAddress}</CardTitle>
               </CardHeader>
               <CardContent className="text-sm">
                 <p className="font-medium">{order.shippingAddress.fullName}</p>
@@ -190,7 +197,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
           {order.billingAddress && (
             <Card>
               <CardHeader>
-                <CardTitle>Billing Address</CardTitle>
+                <CardTitle>{t.billingAddress}</CardTitle>
               </CardHeader>
               <CardContent className="text-sm">
                 <p className="font-medium">{order.billingAddress.fullName}</p>
@@ -213,30 +220,30 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
           {order.payments && order.payments.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>Payment</CardTitle>
+                <CardTitle>{t.payment}</CardTitle>
               </CardHeader>
               <CardContent>
                 {order.payments.map((payment) => (
                   <div key={payment.id} className="space-y-1 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Method</span>
+                      <span className="text-muted-foreground">{t.method}</span>
                       <span className="font-medium">{payment.method}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Amount</span>
+                      <span className="text-muted-foreground">{t.amount}</span>
                       <span>
                         <Price value={payment.amount} currencyCode={order.currencyCode} />
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Status</span>
+                      <span className="text-muted-foreground">{t.status}</span>
                       <Badge variant="secondary" className="text-xs">
                         {payment.state}
                       </Badge>
                     </div>
                     {payment.transactionId && (
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Transaction ID</span>
+                        <span className="text-muted-foreground">{t.transactionId}</span>
                         <span className="font-mono text-xs">{payment.transactionId}</span>
                       </div>
                     )}
@@ -250,7 +257,7 @@ export default async function OrderDetailPage(props: PageProps<"/account/orders/
           {order.shippingLines && order.shippingLines.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>Shipping Method</CardTitle>
+                <CardTitle>{t.shippingMethod}</CardTitle>
               </CardHeader>
               <CardContent>
                 {order.shippingLines.map((line, idx) => (

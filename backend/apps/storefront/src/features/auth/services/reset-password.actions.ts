@@ -3,7 +3,8 @@
 import { mutate } from "@/lib/api/client";
 import { ResetPasswordMutation } from "@/features/auth/services/mutations";
 import { setAuthToken } from "@/lib/api/auth-token";
-import { redirect } from "next/navigation";
+import { getRequestT } from "@/lib/i18n/server";
+import { localeRedirect } from "@/lib/i18n/redirect";
 
 export async function resetPasswordAction(
   prevState: { error?: string } | undefined,
@@ -12,13 +13,14 @@ export async function resetPasswordAction(
   const token = formData.get("token") as string;
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
+  const t = await getRequestT();
 
   if (!token || !password || !confirmPassword) {
-    return { error: "All fields are required" };
+    return { error: t.auth.validation.allFieldsRequired };
   }
 
   if (password !== confirmPassword) {
-    return { error: "Passwords do not match" };
+    return { error: t.auth.validation.passwordsDontMatch };
   }
 
   const result = await mutate(ResetPasswordMutation, {
@@ -37,5 +39,5 @@ export async function resetPasswordAction(
     await setAuthToken(result.token);
   }
 
-  redirect("/");
+  await localeRedirect("/");
 }

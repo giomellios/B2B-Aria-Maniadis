@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 
 interface EditProfileFormProps {
   customer: {
@@ -26,6 +27,8 @@ interface EditProfileFormProps {
 
 export function EditProfileForm({ customer, customFields }: EditProfileFormProps) {
   const [state, formAction, isPending] = useActionState(updateCustomerAction, undefined);
+  const { account, auth, common } = useT();
+  const t = account.profile;
 
   useEffect(() => {
     if (state?.success) {
@@ -37,37 +40,37 @@ export function EditProfileForm({ customer, customFields }: EditProfileFormProps
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Personal Information</CardTitle>
-        <CardDescription>Update your personal and company details.</CardDescription>
+        <CardTitle>{t.personal}</CardTitle>
+        <CardDescription>{t.personalText}</CardDescription>
       </CardHeader>
       <form id="edit-profile-form" action={formAction}>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="firstName">First Name</Label>
+            <Label htmlFor="firstName">{auth.firstName}</Label>
             <Input
               id="firstName"
               name="firstName"
               type="text"
-              placeholder="John"
+              placeholder={auth.firstNamePlaceholder}
               defaultValue={customer?.firstName || ""}
               required
               disabled={isPending}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="lastName">Last Name</Label>
+            <Label htmlFor="lastName">{auth.lastName}</Label>
             <Input
               id="lastName"
               name="lastName"
               type="text"
-              placeholder="Doe"
+              placeholder={auth.lastNamePlaceholder}
               defaultValue={customer?.lastName || ""}
               required
               disabled={isPending}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="vatNumber">VAT Number</Label>
+            <Label htmlFor="vatNumber">{auth.vatNumber}</Label>
             <Input
               id="vatNumber"
               name="vatNumber"
@@ -78,7 +81,7 @@ export function EditProfileForm({ customer, customFields }: EditProfileFormProps
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="company">Company</Label>
+            <Label htmlFor="company">{auth.company}</Label>
             <Input
               id="company"
               name="company"
@@ -89,11 +92,9 @@ export function EditProfileForm({ customer, customFields }: EditProfileFormProps
             />
           </div>
           {state?.error && <div className="text-sm text-destructive">{state.error}</div>}
-          {state?.success && (
-            <div className="text-sm text-green-600">Profile updated successfully!</div>
-          )}
+          {state?.success && <div className="text-sm text-success">{t.profileUpdated}</div>}
           <Button type="submit" disabled={isPending}>
-            {isPending ? "Updating..." : "Update Profile"}
+            {isPending ? common.updating : t.updateProfile}
           </Button>
         </CardContent>
       </form>

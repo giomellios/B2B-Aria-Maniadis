@@ -1,14 +1,16 @@
 import { Suspense } from "react";
 import { confirmEmailAddressChange } from "@/features/account/server";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Button } from "@/design-system";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { getT } from "@/lib/i18n/server";
 
 async function VerifyEmailContent({
   searchParams,
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const resolvedParams = await searchParams;
+  const [resolvedParams, dict] = await Promise.all([searchParams, getT()]);
+  const t = dict.account.verifyEmail;
   const tokenParam = resolvedParams.token;
   const token = Array.isArray(tokenParam) ? tokenParam[0] : tokenParam;
 
@@ -16,16 +18,13 @@ async function VerifyEmailContent({
     return (
       <Card className="max-w-md mx-auto">
         <CardHeader>
-          <CardTitle>Invalid Verification Link</CardTitle>
-          <CardDescription>The verification link is missing or invalid.</CardDescription>
+          <CardTitle>{t.invalidTitle}</CardTitle>
+          <CardDescription>{t.invalidText}</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-4">
-            Please check your email for the correct verification link, or request a new one from
-            your profile page.
-          </p>
+          <p className="text-sm text-muted-foreground mb-4">{t.invalidHelp}</p>
           <Button asChild>
-            <Link href="/account/profile">Go to Profile</Link>
+            <Link href="/account/profile">{t.goToProfile}</Link>
           </Button>
         </CardContent>
       </Card>
@@ -43,15 +42,13 @@ async function VerifyEmailContent({
     return (
       <Card className="max-w-md mx-auto">
         <CardHeader>
-          <CardTitle>Verification Error</CardTitle>
-          <CardDescription>An unexpected error occurred during verification.</CardDescription>
+          <CardTitle>{t.errorTitle}</CardTitle>
+          <CardDescription>{t.errorText}</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-4">
-            Please try again later or contact support if the problem persists.
-          </p>
+          <p className="text-sm text-muted-foreground mb-4">{t.errorHelp}</p>
           <Button asChild>
-            <Link href="/account/profile">Go to Profile</Link>
+            <Link href="/account/profile">{t.goToProfile}</Link>
           </Button>
         </CardContent>
       </Card>
@@ -62,15 +59,13 @@ async function VerifyEmailContent({
     return (
       <Card className="max-w-md mx-auto">
         <CardHeader>
-          <CardTitle>Email Verified!</CardTitle>
-          <CardDescription>Your email address has been updated successfully.</CardDescription>
+          <CardTitle>{t.successTitle}</CardTitle>
+          <CardDescription>{t.successText}</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-4">
-            Your email address has been changed. You can now use your new email address to sign in.
-          </p>
+          <p className="text-sm text-muted-foreground mb-4">{t.successHelp}</p>
           <Button asChild>
-            <Link href="/account/profile">Go to Profile</Link>
+            <Link href="/account/profile">{t.goToProfile}</Link>
           </Button>
         </CardContent>
       </Card>
@@ -80,39 +75,37 @@ async function VerifyEmailContent({
   return (
     <Card className="max-w-md mx-auto">
       <CardHeader>
-        <CardTitle>Verification Failed</CardTitle>
-        <CardDescription>
-          {updateResult.message || "Unable to verify your email address."}
-        </CardDescription>
+        <CardTitle>{t.failedTitle}</CardTitle>
+        <CardDescription>{updateResult.message || t.failedText}</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-sm text-muted-foreground mb-4">
-          The verification link may have expired or already been used. Please request a new
-          verification email from your profile page.
-        </p>
+        <p className="text-sm text-muted-foreground mb-4">{t.failedHelp}</p>
         <Button asChild>
-          <Link href="/account/profile">Go to Profile</Link>
+          <Link href="/account/profile">{t.goToProfile}</Link>
         </Button>
       </CardContent>
     </Card>
   );
 }
 
+async function VerifyingCard() {
+  const t = (await getT()).account.verifyEmail;
+  return (
+    <Card className="max-w-md mx-auto">
+      <CardHeader>
+        <CardTitle>{t.verifying}</CardTitle>
+        <CardDescription>{t.verifyingText}</CardDescription>
+      </CardHeader>
+    </Card>
+  );
+}
+
 export default async function VerifyEmailPage({
   searchParams,
-}: PageProps<"/account/verify-email">) {
+}: PageProps<"/[locale]/account/verify-email">) {
   return (
-    <div className="container mx-auto px-4 py-8 mt-16">
-      <Suspense
-        fallback={
-          <Card className="max-w-md mx-auto">
-            <CardHeader>
-              <CardTitle>Verifying Email...</CardTitle>
-              <CardDescription>Please wait while we verify your email address.</CardDescription>
-            </CardHeader>
-          </Card>
-        }
-      >
+    <div>
+      <Suspense fallback={<VerifyingCard />}>
         <VerifyEmailContent searchParams={searchParams} />
       </Suspense>
     </div>

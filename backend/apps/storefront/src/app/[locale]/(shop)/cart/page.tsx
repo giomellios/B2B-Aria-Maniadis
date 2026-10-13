@@ -3,17 +3,18 @@ import { Cart } from "@/features/cart/server";
 import { Suspense } from "react";
 import { CartSkeleton } from "@/features/cart";
 import { noIndexRobots } from "@/lib/utils";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Shopping Cart",
-  description: "Review items in your shopping cart.",
-  robots: noIndexRobots(),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.cart.title, robots: noIndexRobots() };
+}
 
-export default function CartPage() {
+export default async function CartPage() {
+  const t = await getT();
   return (
-    <div className="container mx-auto px-4 py-20">
-      <h1 className="text-3xl font-bold mb-8">Shopping Cart</h1>
+    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
+      <h1 className="display text-4xl md:text-5xl mb-8">{t.cart.title}</h1>
 
       <Suspense fallback={<CartSkeleton />}>
         <Cart />

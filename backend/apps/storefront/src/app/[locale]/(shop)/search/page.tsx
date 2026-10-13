@@ -3,25 +3,31 @@ import { Suspense } from "react";
 import { SearchResults } from "@/features/catalog/server";
 import { SearchTerm, SearchTermSkeleton, SearchResultsSkeleton } from "@/features/catalog";
 import { SITE_NAME, noIndexRobots } from "@/lib/utils";
+import { getT } from "@/lib/i18n/server";
+import { format } from "@/lib/i18n/dictionaries";
 
-export async function generateMetadata({ searchParams }: PageProps<"/search">): Promise<Metadata> {
-  const resolvedParams = await searchParams;
+export async function generateMetadata({
+  searchParams,
+}: PageProps<"/[locale]/search">): Promise<Metadata> {
+  const [resolvedParams, t] = await Promise.all([searchParams, getT()]);
   const searchQuery = resolvedParams.q as string | undefined;
 
-  const title = searchQuery ? `Search results for "${searchQuery}"` : "Search Products";
+  const title = searchQuery
+    ? format(t.meta.searchResultsFor, { q: searchQuery })
+    : t.meta.searchProducts;
 
   return {
     title,
     description: searchQuery
-      ? `Find products matching "${searchQuery}" at ${SITE_NAME}`
-      : `Search our product catalog at ${SITE_NAME}`,
+      ? format(t.meta.searchDescriptionQuery, { q: searchQuery, site: SITE_NAME })
+      : format(t.meta.searchDescription, { site: SITE_NAME }),
     robots: noIndexRobots(),
   };
 }
 
-export default async function SearchPage({ searchParams }: PageProps<"/search">) {
+export default async function SearchPage({ searchParams }: PageProps<"/[locale]/search">) {
   return (
-    <div className="container mx-auto px-4 py-8 mt-16">
+    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
       <Suspense fallback={<SearchTermSkeleton />}>
         <SearchTerm searchParams={searchParams} />
       </Suspense>

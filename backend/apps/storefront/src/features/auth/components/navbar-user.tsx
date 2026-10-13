@@ -7,16 +7,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/design-system";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { getT } from "@/lib/i18n/server";
 import { LoginButton } from "@/features/auth/components/login-button";
 import { getActiveCustomer } from "@/features/auth/services/customer.service";
 
 export async function NavbarUser() {
-  const customer = await getActiveCustomer();
+  const [customer, t] = await Promise.all([getActiveCustomer(), getT()]);
 
   if (!customer) {
     return (
-      <Button variant="ghost" asChild>
+      <Button variant="outline" size="sm" className="ml-1" asChild>
         <LoginButton isLoggedIn={false} />
       </Button>
     );
@@ -25,17 +26,17 @@ export async function NavbarUser() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost">
-          <User className="h-5 w-5" />
-          Hi, {customer.firstName}
+        <Button variant="ghost" className="gap-2 px-2">
+          <User className="size-5" strokeWidth={1.5} />
+          <span className="hidden sm:inline">{customer.firstName}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align="end" className="min-w-44">
         <DropdownMenuItem asChild>
-          <Link href="/account/profile">Profile</Link>
+          <Link href="/account/profile">{t.nav.profile}</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href="/account/orders">Orders</Link>
+          <Link href="/account/orders">{t.nav.orders}</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>

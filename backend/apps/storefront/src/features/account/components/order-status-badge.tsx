@@ -1,4 +1,7 @@
+"use client";
+
 import { Badge } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 import {
   ShoppingCart,
   CreditCard,
@@ -11,36 +14,40 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-const STATUS_CONFIG: Record<string, { color: string; label: string; icon: LucideIcon }> = {
-  AddingItems: { color: "bg-gray-100 text-gray-800", label: "Adding Items", icon: ShoppingCart },
+const STATUS_CONFIG: Record<string, { color: string; icon: LucideIcon }> = {
+  AddingItems: {
+    color: "border-border bg-secondary text-muted-foreground",
+    icon: ShoppingCart,
+  },
   ArrangingPayment: {
-    color: "bg-yellow-100 text-yellow-800",
-    label: "Arranging Payment",
+    color: "border-primary/20 bg-accent text-primary",
     icon: CreditCard,
   },
   PaymentAuthorized: {
-    color: "bg-blue-100 text-blue-800",
-    label: "Payment Authorized",
+    color: "border-primary/20 bg-accent text-primary",
     icon: Clock,
   },
   PaymentSettled: {
-    color: "bg-green-100 text-green-800",
-    label: "Payment Settled",
+    color: "border-success/25 bg-success/10 text-success",
     icon: CheckCircle,
   },
   PartiallyShipped: {
-    color: "bg-indigo-100 text-indigo-800",
-    label: "Partially Shipped",
+    color: "border-primary/20 bg-accent text-primary",
     icon: Package,
   },
-  Shipped: { color: "bg-purple-100 text-purple-800", label: "Shipped", icon: Truck },
+  Shipped: { color: "border-primary/20 bg-accent text-primary", icon: Truck },
   PartiallyDelivered: {
-    color: "bg-cyan-100 text-cyan-800",
-    label: "Partially Delivered",
+    color: "border-success/25 bg-success/10 text-success",
     icon: PackageCheck,
   },
-  Delivered: { color: "bg-emerald-100 text-emerald-800", label: "Delivered", icon: PackageCheck },
-  Cancelled: { color: "bg-red-100 text-red-800", label: "Cancelled", icon: XCircle },
+  Delivered: {
+    color: "border-success/25 bg-success/10 text-success",
+    icon: PackageCheck,
+  },
+  Cancelled: {
+    color: "border-destructive/25 bg-destructive/10 text-destructive",
+    icon: XCircle,
+  },
 };
 
 interface OrderStatusBadgeProps {
@@ -48,17 +55,17 @@ interface OrderStatusBadgeProps {
 }
 
 export function OrderStatusBadge({ state }: OrderStatusBadgeProps) {
+  const t = useT();
   const config = STATUS_CONFIG[state] || {
-    color: "bg-gray-100 text-gray-800",
-    label: state,
+    color: "border-border bg-secondary text-muted-foreground",
     icon: Clock,
   };
   const Icon = config.icon;
 
   return (
-    <Badge className={config.color} variant="secondary">
+    <Badge className={config.color} variant="outline">
       <Icon className="h-3 w-3 mr-1" />
-      {config.label}
+      {t.orderStatus[state] ?? state}
     </Badge>
   );
 }

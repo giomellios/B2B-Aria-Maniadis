@@ -11,7 +11,8 @@ import {
 } from "@/features/checkout/services/mutations";
 import { CreateCustomerAddressMutation } from "@/features/account/server";
 import { revalidatePath, updateTag } from "next/cache";
-import { redirect } from "next/navigation";
+import { localeRedirect } from "@/lib/i18n/redirect";
+import { getRequestT } from "@/lib/i18n/server";
 
 interface AddressInput {
   fullName: string;
@@ -47,7 +48,7 @@ export async function setShippingAddress(
     );
   }
 
-  revalidatePath("/checkout");
+  revalidatePath("/[locale]/checkout", "page");
 }
 
 export async function setShippingMethod(shippingMethodId: string) {
@@ -61,7 +62,7 @@ export async function setShippingMethod(shippingMethodId: string) {
     throw new Error("Failed to set shipping method");
   }
 
-  revalidatePath("/checkout");
+  revalidatePath("/[locale]/checkout", "page");
 }
 
 export async function createCustomerAddress(address: AddressInput) {
@@ -75,7 +76,7 @@ export async function createCustomerAddress(address: AddressInput) {
     throw new Error("Failed to create customer address");
   }
 
-  revalidatePath("/checkout");
+  revalidatePath("/[locale]/checkout", "page");
   return result.data.createCustomerAddress;
 }
 
@@ -93,7 +94,7 @@ export async function transitionToArrangingPayment() {
     );
   }
 
-  revalidatePath("/checkout");
+  revalidatePath("/[locale]/checkout", "page");
 }
 
 export async function placeOrder(paymentMethodCode: string) {
@@ -133,7 +134,7 @@ export async function placeOrder(paymentMethodCode: string) {
   updateTag("cart");
   updateTag("active-order");
 
-  redirect(`/order-confirmation/${orderCode}`);
+  await localeRedirect(`/order-confirmation/${orderCode}`);
 }
 
 interface GuestCustomerInput {
@@ -159,7 +160,7 @@ export async function setCustomerForOrder(
 
   switch (response.__typename) {
     case "Order":
-      revalidatePath("/checkout");
+      revalidatePath("/[locale]/checkout", "page");
       return { success: true };
     case "AlreadyLoggedInError":
       return { success: true };
@@ -170,6 +171,10 @@ export async function setCustomerForOrder(
     case "NoActiveOrderError":
       return { success: false, errorCode: "NO_ACTIVE_ORDER", message: response.message };
     default:
-      return { success: false, errorCode: "UNKNOWN", message: "Unknown error" };
+      return {
+        success: false,
+        errorCode: "UNKNOWN",
+        message: (await getRequestT()).common.unknownError,
+      };
   }
 }

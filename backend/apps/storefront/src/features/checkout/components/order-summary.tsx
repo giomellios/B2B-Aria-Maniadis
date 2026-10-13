@@ -8,13 +8,15 @@ import { Price } from "@/components/shared/price";
 import { OrderGrandTotal, OrderTotalsBreakdown } from "@/components/shared/order-totals";
 
 import { getOrderLineImagePreview } from "@/lib/utils";
+import { useT } from "@/lib/i18n/provider";
 
 export default function OrderSummary() {
   const { order } = useCheckout();
+  const t = useT();
   return (
-    <Card className="sticky top-4">
+    <Card className="sticky top-24">
       <CardHeader>
-        <CardTitle>Order Summary</CardTitle>
+        <CardTitle>{t.checkout.summary}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-3">
@@ -40,7 +42,9 @@ export default function OrderSummary() {
                   {line.productVariant.name !== line.productVariant.product.name && (
                     <p className="text-xs text-muted-foreground">{line.productVariant.name}</p>
                   )}
-                  <p className="text-xs text-muted-foreground">Qty: {line.quantity}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {t.common.qty}: {line.quantity}
+                  </p>
                 </div>
                 <div className="text-sm font-medium">
                   <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
@@ -52,7 +56,7 @@ export default function OrderSummary() {
 
         <Separator />
 
-        <OrderTotalsBreakdown order={order} shippingFallback="To be calculated" />
+        <OrderTotalsBreakdown order={order} shippingFallback={t.checkout.shippingToBeCalculated} />
 
         <Separator />
 

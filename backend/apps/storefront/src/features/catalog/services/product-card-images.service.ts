@@ -1,4 +1,6 @@
 import { query } from "@/lib/api/client";
+import type { Locale } from "@/lib/i18n/config";
+
 import { GetProductCardImageFallbackQuery } from "@/features/catalog/services/queries";
 
 function getFallbackPreview(product: {
@@ -22,7 +24,8 @@ function getFallbackPreview(product: {
   return firstVariantAsset?.featuredAsset?.preview;
 }
 
-export async function getProductCardImageFallbacks(slugs: string[]) {
+/** languageCode is required when called from a "use cache" function. */
+export async function getProductCardImageFallbacks(slugs: string[], languageCode?: Locale) {
   const uniqueSlugs = Array.from(new Set(slugs.filter(Boolean)));
 
   if (uniqueSlugs.length === 0) {
@@ -32,7 +35,7 @@ export async function getProductCardImageFallbacks(slugs: string[]) {
   const entries = await Promise.all(
     uniqueSlugs.map(async (slug) => {
       try {
-        const result = await query(GetProductCardImageFallbackQuery, { slug });
+        const result = await query(GetProductCardImageFallbackQuery, { slug }, { languageCode });
         const product = result.data.product;
         if (!product) {
           return [slug, null] as const;

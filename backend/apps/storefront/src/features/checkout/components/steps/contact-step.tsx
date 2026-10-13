@@ -14,7 +14,9 @@ import {
 import { useForm } from "react-hook-form";
 import { Loader2, AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 import {
   setCustomerForOrder,
   SetCustomerForOrderResult,
@@ -30,28 +32,28 @@ interface ContactFormData {
   lastName: string;
 }
 
-function getErrorMessage(error: SetCustomerForOrderResult) {
+function getErrorMessage(error: SetCustomerForOrderResult, t: Dictionary["checkout"]["contact"]) {
   if (error.success) return null;
 
   switch (error.errorCode) {
     case "EMAIL_CONFLICT":
       return (
         <>
-          An account already exists with this email.{" "}
+          {t.emailConflict}{" "}
           <Link href="/sign-in?redirectTo=/checkout" className="underline hover:no-underline">
-            Sign in
+            {t.signIn}
           </Link>{" "}
-          to continue.
+          {t.toContinue}
         </>
       );
     case "GUEST_CHECKOUT_DISABLED":
-      return "Guest checkout is not enabled. Please sign in or create an account.";
+      return t.guestDisabled;
     case "NO_ACTIVE_ORDER":
       return (
         <>
-          Your cart is empty.{" "}
+          {t.cartEmpty}{" "}
           <Link href="/" className="underline hover:no-underline">
-            Continue shopping
+            {t.continueShopping}
           </Link>
         </>
       );
@@ -62,6 +64,7 @@ function getErrorMessage(error: SetCustomerForOrderResult) {
 
 export default function ContactStep({ onComplete }: ContactStepProps) {
   const router = useRouter();
+  const t = useT();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<SetCustomerForOrderResult | null>(null);
 
@@ -86,7 +89,7 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
       }
     } catch (err) {
       console.error("Error setting customer:", err);
-      setError({ success: false, errorCode: "UNKNOWN", message: "An unexpected error occurred" });
+      setError({ success: false, errorCode: "UNKNOWN", message: t.common.unexpectedError });
     } finally {
       setLoading(false);
     }
@@ -95,19 +98,19 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
   return (
     <div className="space-y-6">
       <p className="text-sm text-muted-foreground">
-        Already have an account?{" "}
+        {t.checkout.contact.haveAccount}{" "}
         <Link
           href="/sign-in?redirectTo=/checkout"
           className="text-primary underline hover:no-underline"
         >
-          Sign in
+          {t.checkout.contact.signIn}
         </Link>
       </p>
 
       {error && !error.success && (
         <Alert variant="destructive">
           <AlertCircle className="h-4 w-4" />
-          <AlertDescription>{getErrorMessage(error)}</AlertDescription>
+          <AlertDescription>{getErrorMessage(error, t.checkout.contact)}</AlertDescription>
         </Alert>
       )}
 
@@ -115,15 +118,15 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
         <FieldGroup>
           <div className="grid grid-cols-2 gap-4">
             <Field className="col-span-2">
-              <FieldLabel htmlFor="emailAddress">Email Address *</FieldLabel>
+              <FieldLabel htmlFor="emailAddress">{t.auth.email} *</FieldLabel>
               <Input
                 id="emailAddress"
                 type="email"
                 {...register("emailAddress", {
-                  required: "Email is required",
+                  required: t.auth.validation.emailRequired,
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address",
+                    message: t.auth.validation.email,
                   },
                 })}
               />
@@ -131,19 +134,19 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="firstName">First Name *</FieldLabel>
+              <FieldLabel htmlFor="firstName">{t.auth.firstName} *</FieldLabel>
               <Input
                 id="firstName"
-                {...register("firstName", { required: "First name is required" })}
+                {...register("firstName", { required: t.auth.validation.firstNameRequired })}
               />
               <FieldError>{errors.firstName?.message}</FieldError>
             </Field>
 
             <Field>
-              <FieldLabel htmlFor="lastName">Last Name *</FieldLabel>
+              <FieldLabel htmlFor="lastName">{t.auth.lastName} *</FieldLabel>
               <Input
                 id="lastName"
-                {...register("lastName", { required: "Last name is required" })}
+                {...register("lastName", { required: t.auth.validation.lastNameRequired })}
               />
               <FieldError>{errors.lastName?.message}</FieldError>
             </Field>
@@ -151,7 +154,7 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
 
           <Button type="submit" disabled={loading} className="w-full mt-4">
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Continue
+            {t.common.continue}
           </Button>
         </FieldGroup>
       </form>

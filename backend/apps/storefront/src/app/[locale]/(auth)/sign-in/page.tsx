@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { getT } from "@/lib/i18n/server";
 import { Suspense } from "react";
-import { redirect } from "next/navigation";
+import Image from "next/image";
+import { localeRedirect } from "@/lib/i18n/redirect";
 import { LoginForm } from "@/features/auth";
 import { Card, CardContent, CardFooter, Skeleton } from "@/design-system";
 import { getActiveCustomer } from "@/features/auth/server";
 
-export const metadata: Metadata = {
-  title: "Sign In",
-  description: "Sign in to your account to access your orders, wishlist, and more.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.auth.signIn.metaTitle, description: t.auth.signIn.metaDescription };
+}
 
 function LoginFormSkeleton() {
   return (
@@ -40,20 +42,28 @@ async function SignInContent({
 }) {
   const [customer, resolvedParams] = await Promise.all([getActiveCustomer(), searchParams]);
   if (customer) {
-    redirect("/");
+    await localeRedirect("/");
   }
   const redirectTo = resolvedParams?.redirectTo as string | undefined;
 
   return <LoginForm redirectTo={redirectTo} />;
 }
 
-export default async function SignInPage({ searchParams }: PageProps<"/sign-in">) {
+export default async function SignInPage({ searchParams }: PageProps<"/[locale]/sign-in">) {
+  const t = await getT();
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-6">
+    <div className="flex min-h-screen items-center justify-center px-4 pt-24 pb-16">
+      <div className="w-full max-w-md space-y-8 animate-in fade-in-0 slide-in-from-bottom-3 duration-500 ease-out">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Sign In</h1>
-          <p className="text-muted-foreground">Enter your credentials to access your account</p>
+          <Image
+            src="/logo.png"
+            alt=""
+            width={169}
+            height={210}
+            className="mx-auto mb-4 h-16 w-auto dark:brightness-0 dark:invert"
+          />
+          <h1 className="display text-4xl">{t.auth.signIn.title}</h1>
+          <p className="text-muted-foreground">{t.auth.signIn.subtitle}</p>
         </div>
         <Suspense fallback={<LoginFormSkeleton />}>
           <SignInContent searchParams={searchParams} />

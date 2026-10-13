@@ -1,12 +1,16 @@
 "use client";
 
 import { useRef, useState, useTransition } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useLocaleRouter } from "@/lib/i18n/navigation";
+import { stripLocale } from "@/lib/i18n/config";
+import { useT } from "@/lib/i18n/provider";
 import { Search, X } from "lucide-react";
 import { Input } from "@/design-system";
 
 export function SearchInput() {
-  const router = useRouter();
+  const router = useLocaleRouter();
+  const t = useT();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -46,7 +50,7 @@ export function SearchInput() {
     if (e.key === "Escape") {
       setSearchValue("");
       inputRef.current?.blur();
-      if (pathname === "/search" && searchParams.has("q")) {
+      if (stripLocale(pathname) === "/search" && searchParams.has("q")) {
         navigateToSearch("");
       }
     }
@@ -54,12 +58,12 @@ export function SearchInput() {
 
   return (
     <form onSubmit={handleSubmit} className="relative">
-      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+      <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
       <Input
         ref={inputRef}
         type="search"
-        placeholder="Search by name, SKU, or keyword..."
-        className="pl-9 pr-8 w-64 xl:w-80 [&::-webkit-search-cancel-button]:hidden"
+        placeholder={t.nav.searchPlaceholder}
+        className="h-9 pl-9 pr-8 w-56 bg-secondary/60 border-transparent hover:border-input focus-visible:bg-card focus-visible:w-72 xl:w-64 xl:focus-visible:w-80 transition-[width,background-color,border-color,box-shadow] duration-300 [&::-webkit-search-cancel-button]:hidden"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -70,7 +74,7 @@ export function SearchInput() {
           type="button"
           onClick={handleClear}
           className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-0.5 text-muted-foreground hover:text-foreground transition-colors"
-          aria-label="Clear search"
+          aria-label={t.nav.searchClear}
         >
           <X className="h-3.5 w-3.5" />
         </button>

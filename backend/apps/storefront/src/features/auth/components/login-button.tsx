@@ -2,7 +2,8 @@
 
 import { ComponentProps, useTransition } from "react";
 import { logoutAction } from "@/features/auth/services/sign-in.actions";
-import { useRouter } from "next/navigation";
+import { useLocaleRouter } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
 
 interface LoginButtonProps extends ComponentProps<"button"> {
   isLoggedIn: boolean;
@@ -10,7 +11,8 @@ interface LoginButtonProps extends ComponentProps<"button"> {
 
 export function LoginButton({ isLoggedIn, ...props }: LoginButtonProps) {
   const [isPending, startTransition] = useTransition();
-  const router = useRouter();
+  const router = useLocaleRouter();
+  const t = useT();
 
   return (
     <button
@@ -26,7 +28,7 @@ export function LoginButton({ isLoggedIn, ...props }: LoginButtonProps) {
         }
       }}
     >
-      {isLoggedIn ? "Sign out" : "Sign in"}
+      {isLoggedIn ? t.nav.signOut : t.nav.signIn}
     </button>
   );
 }

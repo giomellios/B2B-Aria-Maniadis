@@ -1,46 +1,50 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
 import { motion } from "framer-motion";
-import { Button, RevealHeading } from "@/design-system";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/design-system";
 
 export function CtaBannerContent({ isLoggedIn }: { isLoggedIn: boolean }) {
+  const t = useT().home.cta;
   return (
-    <section className="bg-foreground text-background">
+    <section className="bg-primary text-primary-foreground dark:bg-card dark:text-foreground">
       <motion.div
-        initial={{ opacity: 0, y: 32 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="container mx-auto px-4 py-20 md:py-28 text-center space-y-6"
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="container mx-auto grid gap-10 px-4 py-20 md:grid-cols-[1fr_auto] md:items-end md:py-28"
       >
-        <p className="text-xs tracking-[0.3em] uppercase text-background/50">
-          Wholesale Partnership
-        </p>
-        <RevealHeading className="text-3xl md:text-5xl font-light tracking-tight max-w-2xl mx-auto leading-tight justify-center">
-          Ready to become a wholesale partner?
-        </RevealHeading>
-        {/* TODO: Replace with approved CTA sub-copy from Maniadis */}
-        <p className="text-background/60 text-base md:text-lg max-w-md mx-auto leading-relaxed">
-          Join hundreds of retailers who trust Maniadis for their seasonal bag and hat collections.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+        <div className="max-w-2xl space-y-5">
+          <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] opacity-70">
+            {t.eyebrow}
+          </p>
+          <h2 className="font-serif text-4xl leading-[1.1] md:text-6xl">{t.title}</h2>
+          {/* TODO: Replace with approved CTA sub-copy from Maniadis */}
+          <p className="max-w-md text-base leading-relaxed opacity-75 md:text-lg">{t.text}</p>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row">
           {!isLoggedIn && (
             <Button
               asChild
               size="lg"
-              className="min-w-[180px] bg-background text-foreground hover:bg-background/90"
+              className="group bg-primary-foreground text-primary hover:bg-primary-foreground/90 dark:bg-primary dark:text-primary-foreground"
             >
-              <Link href="/register">Register Now</Link>
+              <Link href="/register">
+                {t.apply}
+                <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </Button>
           )}
           <Button
             asChild
             size="lg"
             variant="outline"
-            className="min-w-[180px] bg-transparent border-background/30 text-background hover:bg-background/10 hover:text-background dark:bg-transparent"
+            className="border-current/30 text-current hover:border-current hover:bg-transparent hover:text-current"
           >
-            <Link href="/search">Browse Catalog</Link>
+            <Link href="/search">{t.browse}</Link>
           </Button>
         </div>
       </motion.div>

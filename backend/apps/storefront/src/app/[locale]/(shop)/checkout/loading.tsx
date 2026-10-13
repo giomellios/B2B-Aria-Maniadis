@@ -2,7 +2,7 @@ import { Skeleton } from "@/design-system";
 
 export default function CheckoutLoading() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
       <Skeleton className="h-9 w-32 mb-8" />
 
       <div className="grid lg:grid-cols-3 gap-8">
@@ -77,7 +77,7 @@ export default function CheckoutLoading() {
                 <Skeleton className="h-4 w-16" />
                 <Skeleton className="h-4 w-16" />
               </div>
-              <div className="flex justify-between font-bold pt-2 border-t">
+              <div className="flex justify-between font-semibold pt-2 border-t">
                 <Skeleton className="h-5 w-12" />
                 <Skeleton className="h-5 w-20" />
               </div>

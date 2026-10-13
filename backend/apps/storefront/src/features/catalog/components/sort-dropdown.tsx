@@ -2,18 +2,19 @@
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/design-system";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
-const sortOptions = [
-  { value: "name-asc", label: "Name: A to Z" },
-  { value: "name-desc", label: "Name: Z to A" },
-  { value: "price-asc", label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
-];
+import { useT } from "@/lib/i18n/provider";
 
 export function SortDropdown() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const t = useT().catalog;
+  const sortOptions = [
+    { value: "name-asc", label: t.sort.nameAsc },
+    { value: "name-desc", label: t.sort.nameDesc },
+    { value: "price-asc", label: t.sort.priceAsc },
+    { value: "price-desc", label: t.sort.priceDesc },
+  ];
 
   const currentSort = searchParams.get("sort") || "name-asc";
 
@@ -26,8 +27,8 @@ export function SortDropdown() {
 
   return (
     <Select value={currentSort} onValueChange={handleSortChange}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Sort by" />
+      <SelectTrigger className="w-[190px] border-transparent bg-transparent hover:border-input">
+        <SelectValue placeholder={t.sortBy} />
       </SelectTrigger>
       <SelectContent>
         {sortOptions.map((option) => (

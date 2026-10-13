@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { localizePath } from "@/lib/i18n/config";
+import { localeRedirect } from "@/lib/i18n/redirect";
 
-export const metadata: Metadata = {
-  title: "My Orders",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.account.orders.title };
+}
 import { getCustomerOrders } from "@/features/account/server";
 import {
   Table,
@@ -25,22 +29,27 @@ import { ArrowRightIcon } from "lucide-react";
 import { Price } from "@/components/shared/price";
 import { OrderStatusBadge } from "@/features/account";
 import { formatDate } from "@/lib/utils";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { Link } from "@/lib/i18n/navigation";
 
 const ITEMS_PER_PAGE = 10;
 
-export default async function OrdersPage(props: PageProps<"/account/orders">) {
+export default async function OrdersPage(props: PageProps<"/[locale]/account/orders">) {
   await connection();
   const searchParams = await props.searchParams;
   const pageParam = searchParams.page;
   const currentPage = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1", 10);
   const skip = (currentPage - 1) * ITEMS_PER_PAGE;
 
-  const activeCustomer = await getCustomerOrders({ take: ITEMS_PER_PAGE, skip });
+  const [activeCustomer, locale, dict] = await Promise.all([
+    getCustomerOrders({ take: ITEMS_PER_PAGE, skip }),
+    getLocale(),
+    getT(),
+  ]);
+  const t = dict.account.orders;
+  const pageHref = (page: number) => localizePath(`/account/orders?page=${page}`, locale);
 
   if (!activeCustomer) {
-    return redirect("/sign-in");
+    return localeRedirect("/sign-in");
   }
 
   const orders = activeCustomer.orders.items;
@@ -49,11 +58,11 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">My Orders</h1>
+      <h1 className="display text-3xl md:text-4xl mb-6">{t.title}</h1>
 
       {orders.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-500">You haven&apos;t placed any orders yet.</p>
+          <p className="text-muted-foreground">{t.empty}</p>
         </div>
       ) : (
         <>
@@ -61,11 +70,11 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
             <Table>
               <TableHeader className="bg-muted">
                 <TableRow>
-                  <TableHead>Order Number</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Items</TableHead>
-                  <TableHead className="text-right">Total</TableHead>
+                  <TableHead>{t.orderNumber}</TableHead>
+                  <TableHead>{t.date}</TableHead>
+                  <TableHead>{t.status}</TableHead>
+                  <TableHead>{t.items}</TableHead>
+                  <TableHead className="text-right">{t.total}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -78,13 +87,11 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
                         </Link>
                       </Button>
                     </TableCell>
-                    <TableCell>{formatDate(order.createdAt)}</TableCell>
+                    <TableCell>{formatDate(order.createdAt, "short", locale)}</TableCell>
                     <TableCell>
                       <OrderStatusBadge state={order.state} />
                     </TableCell>
-                    <TableCell>
-                      {order.lines.length} {order.lines.length === 1 ? "item" : "items"}
-                    </TableCell>
+                    <TableCell>{t.itemCount(order.lines.length)}</TableCell>
                     <TableCell className="text-right">
                       <Price value={order.totalWithTax} currencyCode={order.currencyCode} />
                     </TableCell>
@@ -100,7 +107,9 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
                 <PaginationContent>
                   <PaginationItem>
                     <PaginationPrevious
-                      href={currentPage > 1 ? `/account/orders?page=${currentPage - 1}` : "#"}
+                      href={currentPage > 1 ? pageHref(currentPage - 1) : "#"}
+                      label={dict.a11y.previous}
+                      ariaLabel={dict.a11y.previousPage}
                       className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
                     />
                   </PaginationItem>
@@ -113,10 +122,7 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
                     ) {
                       return (
                         <PaginationItem key={page}>
-                          <PaginationLink
-                            href={`/account/orders?page=${page}`}
-                            isActive={page === currentPage}
-                          >
+                          <PaginationLink href={pageHref(page)} isActive={page === currentPage}>
                             {page}
                           </PaginationLink>
                         </PaginationItem>
@@ -124,7 +130,7 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
                     } else if (page === currentPage - 2 || page === currentPage + 2) {
                       return (
                         <PaginationItem key={page}>
-                          <PaginationEllipsis />
+                          <PaginationEllipsis label={dict.a11y.morePages} />
                         </PaginationItem>
                       );
                     }
@@ -133,9 +139,9 @@ export default async function OrdersPage(props: PageProps<"/account/orders">) {
 
                   <PaginationItem>
                     <PaginationNext
-                      href={
-                        currentPage < totalPages ? `/account/orders?page=${currentPage + 1}` : "#"
-                      }
+                      href={currentPage < totalPages ? pageHref(currentPage + 1) : "#"}
+                      label={dict.a11y.next}
+                      ariaLabel={dict.a11y.nextPage}
                       className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
                     />
                   </PaginationItem>

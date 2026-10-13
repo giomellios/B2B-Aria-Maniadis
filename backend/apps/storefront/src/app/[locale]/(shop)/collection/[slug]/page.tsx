@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { format } from "@/lib/i18n/dictionaries";
 import {
   ProductGrid,
   CollectionHeader,
@@ -7,36 +9,42 @@ import {
   getCollectionProducts,
 } from "@/features/catalog/server";
 import { FacetFilters, ProductGridSkeleton, getCurrentPage } from "@/features/catalog";
-import { SITE_NAME, truncateDescription, buildCanonicalUrl, buildOgImages } from "@/lib/utils";
+import {
+  SITE_NAME,
+  truncateDescription,
+  buildAlternates,
+  buildCanonicalUrl,
+  buildOgImages,
+} from "@/lib/utils";
 
 export async function generateMetadata({
   params,
-}: PageProps<"/collection/[slug]">): Promise<Metadata> {
+}: PageProps<"/[locale]/collection/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const result = await getCollectionMetadata(slug);
+  const locale = await getLocale();
+  const t = await getT();
+  const result = await getCollectionMetadata(slug, locale);
   const collection = result.data.collection;
 
   if (!collection) {
     return {
-      title: "Collection Not Found",
+      title: t.meta.collectionNotFound,
     };
   }
 
   const description =
     truncateDescription(collection.description) ||
-    `Browse our ${collection.name} collection at ${SITE_NAME}`;
+    format(t.meta.browseCollection, { name: collection.name, site: SITE_NAME });
 
   return {
     title: collection.name,
     description,
-    alternates: {
-      canonical: buildCanonicalUrl(`/collection/${collection.slug}`),
-    },
+    alternates: buildAlternates(`/collection/${collection.slug}`, locale),
     openGraph: {
       title: collection.name,
       description,
       type: "website",
-      url: buildCanonicalUrl(`/collection/${collection.slug}`),
+      url: buildCanonicalUrl(`/collection/${collection.slug}`, locale),
       images: buildOgImages(collection.featuredAsset?.preview, collection.name),
     },
     twitter: {
@@ -51,28 +59,32 @@ export async function generateMetadata({
 export default async function CollectionPage({
   params,
   searchParams,
-}: PageProps<"/collection/[slug]">) {
+}: PageProps<"/[locale]/collection/[slug]">) {
   const { slug } = await params;
   const searchParamsResolved = await searchParams;
   const page = getCurrentPage(searchParamsResolved);
 
-  const productDataPromise = getCollectionProducts(slug, searchParamsResolved);
+  const productDataPromise = getCollectionProducts(slug, searchParamsResolved, await getLocale());
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-16">
-      <Suspense fallback={<div className="mb-8 h-24 animate-pulse rounded-lg bg-muted" />}>
+    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
+      <Suspense
+        fallback={<div className="mb-10 h-40 animate-pulse rounded-md bg-foreground/[0.04]" />}
+      >
         <CollectionHeader slug={slug} />
       </Suspense>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[220px_1fr] lg:gap-12">
         {/* Filters Sidebar */}
-        <aside className="lg:col-span-1">
-          <Suspense fallback={<div className="h-64 animate-pulse bg-muted rounded-lg" />}>
+        <aside className="lg:sticky lg:top-24 lg:self-start">
+          <Suspense
+            fallback={<div className="h-64 animate-pulse rounded-md bg-foreground/[0.04]" />}
+          >
             <FacetFilters productDataPromise={productDataPromise} />
           </Suspense>
         </aside>
 
         {/* Product Grid */}
-        <div className="lg:col-span-3">
+        <div>
           <Suspense fallback={<ProductGridSkeleton />}>
             <ProductGrid productDataPromise={productDataPromise} currentPage={page} take={12} />
           </Suspense>

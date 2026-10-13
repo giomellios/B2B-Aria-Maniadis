@@ -1,6 +1,7 @@
 import "server-only";
 import { query } from "@/lib/api/client";
 import { getAvailableCountriesCached } from "@/lib/queries/cached";
+import { getRequestLocale } from "@/lib/i18n/server";
 import { GetCustomerAddressesQuery } from "@/features/account/server";
 import {
   GetActiveOrderForCheckoutQuery,
@@ -11,13 +12,14 @@ import {
 
 /** Everything the checkout page needs, fetched in parallel. */
 export async function getCheckoutData({ isGuest }: { isGuest: boolean }) {
+  const languageCode = await getRequestLocale();
   const [orderRes, addressesRes, countries, shippingMethodsRes, paymentMethodsRes] =
     await Promise.all([
       query(GetActiveOrderForCheckoutQuery, {}, { useAuthToken: true }),
       isGuest
         ? Promise.resolve({ data: { activeCustomer: null } })
         : query(GetCustomerAddressesQuery, {}, { useAuthToken: true }),
-      getAvailableCountriesCached(),
+      getAvailableCountriesCached(languageCode),
       query(GetEligibleShippingMethodsQuery, {}, { useAuthToken: true }),
       query(GetEligiblePaymentMethodsQuery, {}, { useAuthToken: true }),
     ]);

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  forgotPasswordSchema,
+  createForgotPasswordSchema,
   type ForgotPasswordFormData,
 } from "@/features/auth/schemas/forgot-password.schema";
 import { requestPasswordResetAction } from "@/features/auth/services/forgot-password.actions";
@@ -24,12 +24,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/design-system";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
 
 export function ForgotPasswordForm() {
   const [isPending, startTransition] = useTransition();
   const [serverError, setServerError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const { auth: t, common } = useT();
+  const forgotPasswordSchema = useMemo(() => createForgotPasswordSchema(t.validation), [t]);
 
   const form = useForm<ForgotPasswordFormData>({
     resolver: zodResolver(forgotPasswordSchema),
@@ -58,15 +61,13 @@ export function ForgotPasswordForm() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Check your email</CardTitle>
-          <CardDescription>
-            If an account exists with that email, we&apos;ve sent password reset instructions.
-          </CardDescription>
+          <CardTitle>{t.forgot.checkEmail}</CardTitle>
+          <CardDescription>{t.forgot.checkEmailText}</CardDescription>
         </CardHeader>
         <CardFooter>
           <Link href="/sign-in">
             <Button variant="outline" className="w-full">
-              Back to Sign In
+              {t.backToSignIn}
             </Button>
           </Link>
         </CardFooter>
@@ -77,10 +78,8 @@ export function ForgotPasswordForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Forgot password?</CardTitle>
-        <CardDescription>
-          Enter your email address and we&apos;ll send you a link to reset your password.
-        </CardDescription>
+        <CardTitle>{t.forgot.title}</CardTitle>
+        <CardDescription>{t.forgot.text}</CardDescription>
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -90,11 +89,11 @@ export function ForgotPasswordForm() {
               name="emailAddress"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t.email}</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder={t.emailPlaceholder}
                       disabled={isPending}
                       {...field}
                     />
@@ -108,13 +107,13 @@ export function ForgotPasswordForm() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4 mt-4">
             <Button type="submit" className="w-full" disabled={isPending}>
-              {isPending ? "Sending..." : "Send reset link"}
+              {isPending ? common.sending : t.forgot.submit}
             </Button>
             <Link
               href="/sign-in"
               className="text-sm text-center text-muted-foreground hover:text-primary"
             >
-              Back to Sign In
+              {t.backToSignIn}
             </Link>
           </CardFooter>
         </form>

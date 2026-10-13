@@ -1,15 +1,18 @@
 import { getOrderByCode } from "@/features/checkout/services/checkout.service";
 import { Button, Card, CardContent, CardHeader, CardTitle, Separator } from "@/design-system";
-import { CheckCircle2 } from "lucide-react";
-import Link from "next/link";
+import { Check } from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
+import { getT } from "@/lib/i18n/server";
 import Image from "next/image";
 import { Price } from "@/components/shared/price";
 import { notFound } from "next/navigation";
 
 import { getOrderLineImagePreview } from "@/lib/utils";
 
-export async function OrderConfirmation({ params }: PageProps<"/order-confirmation/[code]">) {
-  const { code } = await params;
+export async function OrderConfirmation({
+  params,
+}: PageProps<"/[locale]/order-confirmation/[code]">) {
+  const [{ code }, t] = await Promise.all([params, getT()]);
   let order;
 
   try {
@@ -23,20 +26,23 @@ export async function OrderConfirmation({ params }: PageProps<"/order-confirmati
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
-          <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold mb-2">Order Confirmed!</h1>
+          <span className="mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground animate-in zoom-in-50 fade-in-0 duration-500">
+            <Check className="size-8" strokeWidth={2} />
+          </span>
+          <h1 className="display text-4xl md:text-5xl mb-3 animate-in fade-in-0 slide-in-from-bottom-2 fill-mode-both delay-150 duration-500">
+            {t.orderConfirmation.title}
+          </h1>
           <p className="text-muted-foreground">
-            Thank you for your order. Your order number is
-            <span className="font-semibold">{order.code}</span>
+            {t.orderConfirmation.thanks} <span className="font-semibold">{order.code}</span>
           </p>
         </div>
 
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle>Order Summary</CardTitle>
+            <CardTitle>{t.orderConfirmation.items}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {order.lines.map((line) => {
@@ -61,7 +67,7 @@ export async function OrderConfirmation({ params }: PageProps<"/order-confirmati
                     )}
                   </div>
                   <div className="text-center w-16">
-                    <p className="text-sm text-muted-foreground">Qty</p>
+                    <p className="text-sm text-muted-foreground">{t.common.qty}</p>
                     <p className="font-medium">{line.quantity}</p>
                   </div>
                   <div className="text-right w-24">
@@ -75,8 +81,8 @@ export async function OrderConfirmation({ params }: PageProps<"/order-confirmati
 
             <Separator />
 
-            <div className="flex justify-between font-bold text-lg">
-              <span>Total</span>
+            <div className="flex justify-between font-semibold text-lg">
+              <span>{t.common.total}</span>
               <span>
                 <Price value={order.totalWithTax} currencyCode={order.currencyCode} />
               </span>
@@ -87,7 +93,7 @@ export async function OrderConfirmation({ params }: PageProps<"/order-confirmati
         {order.shippingAddress && (
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle>Shipping Address</CardTitle>
+              <CardTitle>{t.orderConfirmation.shippingAddress}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="font-medium">{order.shippingAddress.fullName}</p>
@@ -106,7 +112,7 @@ export async function OrderConfirmation({ params }: PageProps<"/order-confirmati
 
         <div className="flex gap-4">
           <Button asChild className="flex-1">
-            <Link href="/">Continue Shopping</Link>
+            <Link href="/">{t.orderConfirmation.continueShopping}</Link>
           </Button>
         </div>
       </div>

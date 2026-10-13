@@ -5,6 +5,7 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { ResultOf } from "@/lib/api/graphql";
 import { Checkbox, Label, Button } from "@/design-system";
 import { SearchProductsQuery } from "@/features/catalog/services/queries";
+import { useT } from "@/lib/i18n/provider";
 
 interface FacetFiltersProps {
   productDataPromise: Promise<{
@@ -19,6 +20,7 @@ export function FacetFilters({ productDataPromise }: FacetFiltersProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const t = useT().catalog;
 
   // Group facet values by facet
   interface FacetGroup {
@@ -88,34 +90,40 @@ export function FacetFilters({ productDataPromise }: FacetFiltersProps) {
   const hasFacetGroups = Object.keys(facetGroups).length > 0;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="font-semibold text-lg">Filters</h2>
+    <div className="space-y-7">
+      <div className="flex h-9 items-center justify-between border-b border-border pb-4 box-content">
+        <h2 className="eyebrow">{t.filter}</h2>
         {hasActiveFilters && (
-          <Button variant="ghost" size="sm" onClick={clearFilters}>
-            Clear all
+          <Button
+            variant="link"
+            size="sm"
+            onClick={clearFilters}
+            className="h-auto px-0 text-xs text-muted-foreground hover:text-primary animate-in fade-in-0 duration-200"
+          >
+            {t.clearAll}
           </Button>
         )}
       </div>
 
-      <div className="space-y-3 rounded-lg border border-border p-4">
-        <h3 className="font-medium text-sm">Availability</h3>
+      <div className="space-y-3">
+        <h3 className="text-sm font-semibold">{t.availability}</h3>
         <div className="flex items-center space-x-2">
           <Checkbox id="in-stock-only" checked={inStockOnly} onCheckedChange={toggleInStockOnly} />
-          <Label htmlFor="in-stock-only" className="text-sm font-normal cursor-pointer">
-            In stock only
+          <Label
+            htmlFor="in-stock-only"
+            className="cursor-pointer text-sm font-normal text-foreground/80 transition-colors hover:text-primary"
+          >
+            {t.inStockOnly}
           </Label>
         </div>
       </div>
 
-      {!hasFacetGroups ? (
-        <p className="text-sm text-muted-foreground">No attribute filters for this result set.</p>
-      ) : null}
+      {!hasFacetGroups ? <p className="text-sm text-muted-foreground">{t.noFacets}</p> : null}
 
       {Object.entries(facetGroups).map(([facetName, facet]) => (
         <div key={facet.id} className="space-y-3">
-          <h3 className="font-medium text-sm">{facetName}</h3>
-          <div className="space-y-2">
+          <h3 className="text-sm font-semibold">{facetName}</h3>
+          <div className="space-y-2.5">
             {facet.values.map((value) => {
               const isChecked = selectedFacets.includes(value.id);
               return (
@@ -127,10 +135,12 @@ export function FacetFilters({ productDataPromise }: FacetFiltersProps) {
                   />
                   <Label
                     htmlFor={value.id}
-                    className="text-sm font-normal cursor-pointer flex items-center gap-2"
+                    className="flex cursor-pointer items-center gap-2 text-sm font-normal text-foreground/80 transition-colors hover:text-primary"
                   >
                     {value.name}
-                    <span className="text-xs text-muted-foreground">({value.count})</span>
+                    <span className="text-xs tabular-nums text-muted-foreground">
+                      {value.count}
+                    </span>
                   </Label>
                 </div>
               );
