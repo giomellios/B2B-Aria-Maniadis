@@ -2,7 +2,8 @@
 
 import { mutate } from "@/lib/api/client";
 import { RegisterCustomerAccountMutation } from "@/features/auth/services/mutations";
-import { redirect } from "next/navigation";
+import { getRequestT } from "@/lib/i18n/server";
+import { localeRedirect } from "@/lib/i18n/redirect";
 
 export async function registerAction(
   prevState: { error?: string } | undefined,
@@ -15,20 +16,20 @@ export async function registerAction(
   const company = (formData.get("company") as string | null)?.trim() ?? "";
   const mobileNumber = (formData.get("mobileNumber") as string | null)?.trim() ?? "";
   const password = (formData.get("password") as string | null) ?? "";
+  const t = await getRequestT();
 
   if (!emailAddress || !firstName || !lastName || !vatNumber || !company || !mobileNumber) {
     return {
-      error:
-        "First name, last name, VAT number, company, mail, mobile number, and password are required",
+      error: t.auth.validation.registrationFieldsRequired,
     };
   }
 
   if (!password) {
-    return { error: "Password is required" };
+    return { error: t.auth.validation.passwordRequired };
   }
 
   if (password.length < 8) {
-    return { error: "Password must be at least 8 characters" };
+    return { error: t.auth.validation.passwordMin };
   }
 
   const registrationInput = {
@@ -53,5 +54,5 @@ export async function registerAction(
     return { error: registerResult.message };
   }
 
-  redirect("/verify-pending");
+  await localeRedirect("/verify-pending");
 }

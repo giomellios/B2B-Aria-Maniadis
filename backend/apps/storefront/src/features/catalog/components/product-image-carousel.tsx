@@ -3,8 +3,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "@/design-system/icons";
 import { Button } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
+import { format } from "@/lib/i18n/dictionaries";
 
 interface ProductImageCarouselProps {
   images: Array<{
@@ -21,6 +23,7 @@ interface ProductImageCarouselProps {
 
 export function ProductImageCarousel({ images, variantImages = [] }: ProductImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const t = useT().product;
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -88,8 +91,10 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
 
   if (!images || images.length === 0) {
     return (
-      <div className="aspect-square bg-muted rounded-lg flex items-center justify-center">
-        <span className="text-muted-foreground">No images available</span>
+      <div className="flex aspect-square items-center justify-center rounded-md border border-border bg-secondary">
+        <span className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+          {t.noImages}
+        </span>
       </div>
     );
   }
@@ -103,14 +108,15 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {/* Main Image */}
-      <div className="relative aspect-square bg-white rounded-lg overflow-hidden group">
+      <div className="group relative aspect-square overflow-hidden rounded-md border border-border bg-white">
         <Image
+          key={images[currentIndex].id}
           src={images[currentIndex].source}
-          alt={`Product image ${currentIndex + 1}`}
+          alt={format(t.imageAlt, { n: currentIndex + 1 })}
           fill
-          className="object-cover"
+          className="animate-in fade-in-0 zoom-in-[1.02] object-cover duration-500 ease-out"
           sizes="(max-width: 1024px) 100vw, 50vw"
           priority={currentIndex === 0}
         />
@@ -119,27 +125,29 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
         {images.length > 1 && (
           <>
             <Button
-              variant="ghost"
+              variant="outline"
               size="icon"
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label={t.previousImage}
+              className="absolute left-3 top-1/2 size-10 -translate-x-2 -translate-y-1/2 rounded-full border-border bg-background/90 opacity-0 backdrop-blur transition-[opacity,transform,color,border-color] duration-300 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
               onClick={goToPrevious}
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-5 w-5" />
             </Button>
             <Button
-              variant="ghost"
+              variant="outline"
               size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label={t.nextImage}
+              className="absolute right-3 top-1/2 size-10 translate-x-2 -translate-y-1/2 rounded-full border-border bg-background/90 opacity-0 backdrop-blur transition-[opacity,transform,color,border-color] duration-300 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
               onClick={goToNext}
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-5 w-5" />
             </Button>
           </>
         )}
 
         {/* Image Counter */}
         {images.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 px-3 py-1 rounded-full text-sm">
+          <div className="absolute bottom-3 right-3 rounded-sm bg-background/90 px-2 py-1 text-[0.6875rem] font-medium tabular-nums text-muted-foreground backdrop-blur">
             {currentIndex + 1} / {images.length}
           </div>
         )}
@@ -147,24 +155,20 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
 
       {/* Thumbnail Grid */}
       {images.length > 1 && (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-5 gap-2">
           {images.map((image, index) => (
             <button
               key={image.id}
               onClick={() => showImage(index)}
-              className={`aspect-square relative rounded-lg overflow-hidden border-2 bg-white transition-colors ${
+              aria-label={format(t.showImage, { n: index + 1 })}
+              aria-current={index === currentIndex}
+              className={`relative aspect-square overflow-hidden rounded-sm border bg-white transition-[border-color,opacity,box-shadow] duration-200 ${
                 index === currentIndex
-                  ? "border-primary"
-                  : "border-transparent hover:border-muted-foreground"
+                  ? "border-primary ring-1 ring-primary"
+                  : "border-border opacity-70 hover:opacity-100"
               }`}
             >
-              <Image
-                src={image.preview}
-                alt={`Thumbnail ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="25vw"
-              />
+              <Image src={image.preview} alt="" fill className="object-cover" sizes="20vw" />
             </button>
           ))}
         </div>

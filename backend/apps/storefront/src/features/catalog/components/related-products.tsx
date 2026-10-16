@@ -1,4 +1,5 @@
 import { ProductCarousel } from "@/features/catalog/components/product-carousel";
+import { getLocale, getT } from "@/lib/i18n/server";
 import { getRelatedProducts } from "@/features/catalog/services/catalog.service";
 
 interface RelatedProductsProps {
@@ -7,9 +8,11 @@ interface RelatedProductsProps {
 }
 
 export async function RelatedProducts({ collectionSlug, currentProductId }: RelatedProductsProps) {
+  const t = await getT();
   const { products, fallbackImagesBySlug } = await getRelatedProducts(
     collectionSlug,
-    currentProductId
+    currentProductId,
+    await getLocale()
   );
 
   if (products.length === 0) {
@@ -18,7 +21,8 @@ export async function RelatedProducts({ collectionSlug, currentProductId }: Rela
 
   return (
     <ProductCarousel
-      title="Related Products"
+      eyebrow={t.home.featured.eyebrow}
+      title={t.catalog.youMayAlsoLike}
       products={products}
       fallbackImagesBySlug={fallbackImagesBySlug}
     />

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, type LoginFormData } from "@/features/auth/schemas/login.schema";
+import { createLoginSchema, type LoginFormData } from "@/features/auth/schemas/login.schema";
 import { loginAction } from "@/features/auth/services/sign-in.actions";
 import {
   Button,
@@ -18,7 +18,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/design-system";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
 
 interface LoginFormProps {
   redirectTo?: string;
@@ -27,6 +28,8 @@ interface LoginFormProps {
 export function LoginForm({ redirectTo }: LoginFormProps) {
   const [isPending, startTransition] = useTransition();
   const [serverError, setServerError] = useState<string | null>(null);
+  const t = useT().auth;
+  const loginSchema = useMemo(() => createLoginSchema(t.validation), [t]);
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -68,11 +71,11 @@ export function LoginForm({ redirectTo }: LoginFormProps) {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t.email}</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder={t.emailPlaceholder}
                       disabled={isPending}
                       {...field}
                     />
@@ -88,12 +91,12 @@ export function LoginForm({ redirectTo }: LoginFormProps) {
               render={({ field }) => (
                 <FormItem>
                   <div className="flex items-center justify-between">
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{t.password}</FormLabel>
                     <Link
                       href="/forgot-password"
                       className="text-muted-foreground hover:text-primary text-sm"
                     >
-                      Forgot password?
+                      {t.signIn.forgot}
                     </Link>
                   </div>
 
@@ -107,14 +110,14 @@ export function LoginForm({ redirectTo }: LoginFormProps) {
 
             {serverError && <div className="text-sm text-destructive">{serverError}</div>}
             <Button type="submit" className="w-full" disabled={isPending}>
-              {isPending ? "Signing in..." : "Sign In"}
+              {isPending ? t.signIn.submitting : t.signIn.submit}
             </Button>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4 mt-2">
             <div className="text-muted-foreground text-sm text-center">
-              Don&apos;t have an account?{" "}
+              {t.signIn.noAccount}{" "}
               <Link href={registerHref} className="hover:text-primary underline">
-                Register
+                {t.signIn.register}
               </Link>
             </div>
           </CardFooter>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEntranceAnimation } from "@/design-system/motion/use-entrance-animation";
 
 interface RevealHeadingProps {
   children: string;
@@ -8,38 +9,22 @@ interface RevealHeadingProps {
   as?: "h1" | "h2" | "h3";
 }
 
-const wordVariant = {
-  hidden: { y: "110%", opacity: 0 },
-  show: (i: number) => ({
-    y: "0%",
-    opacity: 1,
-    transition: {
-      duration: 0.65,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      delay: i * 0.08,
-    },
-  }),
-};
+const MotionTags = { h1: motion.h1, h2: motion.h2, h3: motion.h3 };
 
-export function RevealHeading({ children, className = "", as: Tag = "h2" }: RevealHeadingProps) {
-  const words = children.split(" ");
+// A heading that rises into place once, the first time it scrolls into view.
+export function RevealHeading({ children, className = "", as = "h2" }: RevealHeadingProps) {
+  const entrance = useEntranceAnimation();
+  const Tag = MotionTags[as];
 
   return (
-    <Tag className={`flex flex-wrap gap-x-[0.3em] overflow-hidden ${className}`}>
-      {words.map((word, i) => (
-        <span key={i} className="overflow-hidden inline-block">
-          <motion.span
-            custom={i}
-            variants={wordVariant}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-60px" }}
-            className="inline-block"
-          >
-            {word}
-          </motion.span>
-        </span>
-      ))}
+    <Tag
+      initial={entrance ? { opacity: 0, y: 14 } : false}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={className}
+    >
+      {children}
     </Tag>
   );
 }

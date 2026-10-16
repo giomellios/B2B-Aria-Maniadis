@@ -50,7 +50,7 @@ B2B-Aria-Maniadis/
 | Customer custom fields | `vatNumber`, `company` (in `vendure-config.ts`, editable by the customer in the storefront profile) and `approved` (readonly, admin-only, defined by the customer-approval plugin). |
 | Payments | `dummyPaymentHandler` only (no real payment method yet). |
 | Email | Dev: files + `/mailbox`. Elsewhere: SMTP when `SMTP_HOST` is set, otherwise no emails. Links use `STOREFRONT_URL`. Env vars typed in `src/environment.d.ts`. |
-| Custom plugins (`src/plugins/`) | `csv-import` (upload → job queue on the **worker** → creates/updates products; permission `ImportProductsFromCsv`; Admin API `startCsvProductImport` / `csvProductImportJob`) · `customer-approval` (`Customer.approved` flag, `approveCustomer` / `revokeCustomerApproval` mutations, login gate, Dashboard button + bulk action) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (fills missing product/variant translations for all channel languages) · `search/b2b-search-strategy.ts` (not a plugin — a SearchStrategy). |
+| Custom plugins (`src/plugins/`) | `csv-import` (upload → job queue on the **worker** → creates/updates products; permission `ImportProductsFromCsv`; Admin API `startCsvProductImport` / `csvProductImportJob`) · `customer-approval` (`Customer.approved` flag, `approveCustomer` / `revokeCustomerApproval` mutations, login gate, Dashboard button + bulk action) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (fills missing product/variant translations for all channel languages) · `search/b2b-search-strategy.ts` (SearchStrategy: partial-SKU `ILIKE` + `priceRangeWithTax` filter) with `search/b2b-search.plugin.ts` (`B2BSearchPlugin`, only extends the Shop API `SearchInput` with `priceRangeWithTax`). |
 | Migrations | `src/migrations/` (Postgres). In **dev** (`APP_ENV=dev`) the server uses `synchronize: true` and does **not** run migrations; outside dev, `src/index.ts` runs `runMigrations` before bootstrap. `1790605810464-vendure-3-7-3-upgrade.ts` is the 3.5.3→3.7.3 upgrade (with the 3.6 data helpers); the first migration uses `IF NOT EXISTS` so it is safe on databases created by `synchronize`. |
 
 ---
@@ -296,7 +296,9 @@ a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
   production the worker process must be deployed too, or imports stay PENDING. New products use
   the shared option groups `color` / `characteristic`; products imported before Sept 2026 keep
   their per-product `color-<code>` groups (still recognised). SKU format:
-  `<code>-<color>-<characteristic>` — changing it breaks re-import matching.
+  `<code>-<color>-<characteristic>` — changing it breaks re-import matching. The import also tags
+  every variant with the shared facets `color` / `characteristic` (storefront search filters);
+  re-importing a CSV back-fills them, and hand-assigned facet values are kept.
 - `vatNumber` / `company` are intentionally editable by customers (storefront profile page).
 - Only `dummyPaymentHandler` is configured — don't ship to production without a real
   payment method (e.g. invoice/bank-transfer handler, see skill backend §9).

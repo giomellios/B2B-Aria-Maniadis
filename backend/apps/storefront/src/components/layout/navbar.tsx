@@ -1,6 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
-import { NavbarCollections } from "@/components/layout/navbar/navbar-collections";
+import { Link } from "@/lib/i18n/navigation";
+import { getT } from "@/lib/i18n/server";
+import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
+import { CategoryBar } from "@/components/layout/navbar/category-bar";
 import { NavbarCart } from "@/features/cart/server";
 import { NavbarUser } from "@/features/auth/server";
 import { ThemeSwitcher } from "@/components/layout/navbar/theme-switcher";
@@ -10,28 +12,34 @@ import { SearchDialog } from "@/components/layout/search-dialog";
 import { NavbarUserSkeleton } from "@/features/auth";
 import { SearchInputSkeleton } from "@/components/layout/search-input-skeleton";
 
-export function Navbar() {
+export async function Navbar() {
+  const t = await getT();
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b bg-background">
+    <header className="fixed top-0 left-0 right-0 z-50 h-header border-b border-border bg-background/92 backdrop-blur-md supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-xl font-bold">
+        <div className="flex h-16 items-center justify-between gap-4">
+          <div className="flex items-center gap-10">
+            <Link href="/" className="group flex items-center gap-3" aria-label={t.nav.homeAria}>
               <Image
                 src="/logo.png"
-                alt="Aria Maniadis"
-                width={40}
-                height={27}
-                className="h-6 w-auto dark:invert"
+                alt=""
+                width={169}
+                height={210}
+                priority
+                className="h-11 w-auto transition-transform duration-500 ease-out group-hover:-rotate-3 dark:brightness-0 dark:invert"
               />
+              <span className="hidden leading-none sm:block">
+                <span className="block font-serif text-xl tracking-[0.12em] text-primary">
+                  ARIA
+                </span>
+                <span className="mt-1 block text-[0.625rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  E. Maniadis
+                </span>
+              </span>
             </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Suspense>
-                <NavbarCollections />
-              </Suspense>
-            </nav>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1 sm:gap-2">
             <div className="hidden lg:flex">
               <Suspense fallback={<SearchInputSkeleton />}>
                 <SearchInput />
@@ -42,6 +50,9 @@ export function Navbar() {
                 <SearchDialog />
               </Suspense>
             </div>
+            <Suspense fallback={<div className="h-8 w-[76px] rounded-full border border-border" />}>
+              <LanguageSwitcher />
+            </Suspense>
             <ThemeSwitcher />
             <Suspense>
               <NavbarCart />
@@ -52,6 +63,9 @@ export function Navbar() {
           </div>
         </div>
       </div>
+      <Suspense fallback={<div className="h-11 border-t border-border" />}>
+        <CategoryBar />
+      </Suspense>
     </header>
   );
 }

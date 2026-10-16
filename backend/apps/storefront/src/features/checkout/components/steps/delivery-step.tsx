@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { Button, RadioGroup, RadioGroupItem, Label, Card } from "@/design-system";
-import { Loader2, Truck } from "lucide-react";
+import { Spinner, Truck } from "@/design-system/icons";
 import { useRouter } from "next/navigation";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
+import { useT } from "@/lib/i18n/provider";
+import { Price } from "@/components/shared/price";
 import { setShippingMethod as setShippingMethodAction } from "@/features/checkout/services/checkout.actions";
 
 interface DeliveryStepProps {
@@ -13,6 +15,7 @@ interface DeliveryStepProps {
 
 export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
   const router = useRouter();
+  const t = useT();
   const { shippingMethods, order } = useCheckout();
   const [selectedMethodId, setSelectedMethodId] = useState<string | null>(() => {
     // If order already has a shipping method selected, pre-select it
@@ -42,16 +45,14 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
   if (shippingMethods.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-muted-foreground">
-          No shipping methods available. Please check your address.
-        </p>
+        <p className="text-muted-foreground">{t.checkout.delivery.none}</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      <h3 className="font-semibold">Select shipping method</h3>
+      <h3 className="font-semibold">{t.checkout.delivery.select}</h3>
 
       <RadioGroup value={selectedMethodId || ""} onValueChange={setSelectedMethodId}>
         {shippingMethods.map((method) => (
@@ -70,12 +71,11 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
                 </div>
                 <div className="text-right flex-shrink-0">
                   <p className="font-semibold">
-                    {method.priceWithTax === 0
-                      ? "FREE"
-                      : (method.priceWithTax / 100).toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
+                    {method.priceWithTax === 0 ? (
+                      t.common.free
+                    ) : (
+                      <Price value={method.priceWithTax} currencyCode={order.currencyCode} />
+                    )}
                   </p>
                 </div>
               </div>
@@ -89,8 +89,8 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
         disabled={!selectedMethodId || submitting}
         className="w-full"
       >
-        {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-        Continue to payment
+        {submitting && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
+        {t.checkout.delivery.continue}
       </Button>
     </div>
   );

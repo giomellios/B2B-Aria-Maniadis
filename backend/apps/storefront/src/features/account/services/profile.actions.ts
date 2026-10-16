@@ -7,25 +7,27 @@ import {
   RequestUpdateCustomerEmailAddressMutation,
 } from "@/features/account/services/mutations";
 import { revalidatePath } from "next/cache";
+import { getRequestT } from "@/lib/i18n/server";
 
 export async function updatePasswordAction(
   prevState: { error?: string; success?: boolean } | undefined,
   formData: FormData
 ) {
+  const t = await getRequestT();
   const currentPassword = formData.get("currentPassword") as string;
   const newPassword = formData.get("newPassword") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
 
   if (!currentPassword || !newPassword || !confirmPassword) {
-    return { error: "All fields are required" };
+    return { error: t.auth.validation.allFieldsRequired };
   }
 
   if (newPassword !== confirmPassword) {
-    return { error: "New passwords do not match" };
+    return { error: t.account.profile.newPasswordsDontMatch };
   }
 
   if (currentPassword === newPassword) {
-    return { error: "New password must be different from current password" };
+    return { error: t.account.profile.passwordMustDiffer };
   }
 
   try {
@@ -46,7 +48,7 @@ export async function updatePasswordAction(
 
     return { success: true };
   } catch {
-    return { error: "An unexpected error occurred. Please try again." };
+    return { error: t.common.unexpectedError };
   }
 }
 
@@ -54,13 +56,14 @@ export async function updateCustomerAction(
   prevState: { error?: string; success?: boolean } | undefined,
   formData: FormData
 ) {
+  const t = await getRequestT();
   const firstName = (formData.get("firstName") as string | null)?.trim() ?? "";
   const lastName = (formData.get("lastName") as string | null)?.trim() ?? "";
   const vatNumber = (formData.get("vatNumber") as string | null)?.trim() ?? "";
   const company = (formData.get("company") as string | null)?.trim() ?? "";
 
   if (!firstName || !lastName || !vatNumber || !company) {
-    return { error: "First name, last name, VAT number, and company are required" };
+    return { error: t.account.profile.profileFieldsRequired };
   }
 
   try {
@@ -82,13 +85,13 @@ export async function updateCustomerAction(
     const updateResult = result.data.updateCustomer;
 
     if (!updateResult || !updateResult.id) {
-      return { error: "Failed to update customer information" };
+      return { error: t.account.profile.profileUpdateFailed };
     }
 
-    revalidatePath("/account/profile");
+    revalidatePath("/[locale]/account/profile", "page");
     return { success: true };
   } catch {
-    return { error: "An unexpected error occurred. Please try again." };
+    return { error: t.common.unexpectedError };
   }
 }
 
@@ -96,17 +99,18 @@ export async function requestEmailUpdateAction(
   prevState: { error?: string; success?: boolean } | undefined,
   formData: FormData
 ) {
+  const t = await getRequestT();
   const password = formData.get("password") as string;
   const newEmailAddress = formData.get("newEmailAddress") as string;
 
   if (!password || !newEmailAddress) {
-    return { error: "Password and new email address are required" };
+    return { error: t.account.profile.emailFieldsRequired };
   }
 
   // Basic email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(newEmailAddress)) {
-    return { error: "Please enter a valid email address" };
+    return { error: t.auth.validation.email };
   }
 
   try {
@@ -127,6 +131,6 @@ export async function requestEmailUpdateAction(
 
     return { success: true };
   } catch {
-    return { error: "An unexpected error occurred. Please try again." };
+    return { error: t.common.unexpectedError };
   }
 }

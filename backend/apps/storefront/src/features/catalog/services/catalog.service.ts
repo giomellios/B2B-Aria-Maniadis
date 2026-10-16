@@ -1,41 +1,55 @@
 import "server-only";
 import { cacheLife, cacheTag } from "next/cache";
 import { query } from "@/lib/api/client";
+import type { Locale } from "@/lib/i18n/config";
+
 import { readFragment } from "@/lib/api/graphql";
 import {
   GetCollectionProductsQuery,
   GetProductDetailQuery,
+  SearchFilterOptionsQuery,
   SearchProductsQuery,
 } from "@/features/catalog/services/queries";
 import { ProductCardFragment } from "@/features/catalog/services/fragments";
 import { getProductCardImageFallbacks } from "@/features/catalog/services/product-card-images.service";
-import { buildSearchInput } from "@/features/catalog/utils/search-helpers";
+import { buildBaseSearchInput, buildSearchInput } from "@/features/catalog/utils/search-helpers";
+
+type SearchParams = { [key: string]: string | string[] | undefined };
 
 export async function getCollectionProducts(
   slug: string,
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: SearchParams,
+  languageCode: Locale
 ) {
   "use cache";
   cacheLife("hours");
   cacheTag(`collection-${slug}`);
 
-  return query(SearchProductsQuery, {
-    input: buildSearchInput({
-      searchParams,
-      collectionSlug: slug,
-    }),
-  });
+  return query(
+    SearchProductsQuery,
+    {
+      input: buildSearchInput({
+        searchParams,
+        collectionSlug: slug,
+      }),
+    },
+    { languageCode }
+  );
 }
 
-export async function getCollectionMetadata(slug: string) {
+export async function getCollectionMetadata(slug: string, languageCode: Locale) {
   "use cache";
   cacheLife("hours");
   cacheTag(`collection-meta-${slug}`);
 
-  return query(GetCollectionProductsQuery, {
-    slug,
-    input: { take: 0, collectionSlug: slug, groupByProduct: true },
-  });
+  return query(
+    GetCollectionProductsQuery,
+    {
+      slug,
+      input: { take: 0, collectionSlug: slug, groupByProduct: true },
+    },
+    { languageCode }
+  );
 }
 
 /** Collection name/description for the collection header (uncached). */
@@ -47,29 +61,37 @@ export async function getCollectionSummary(slug: string) {
   return result.data.collection;
 }
 
-export async function getProductData(slug: string) {
+export async function getProductData(slug: string, languageCode: Locale) {
   "use cache";
   cacheLife("hours");
   cacheTag(`product-${slug}`);
 
-  return await query(GetProductDetailQuery, { slug });
+  return await query(GetProductDetailQuery, { slug }, { languageCode });
 }
 
-export async function getRelatedProducts(collectionSlug: string, currentProductId: string) {
+export async function getRelatedProducts(
+  collectionSlug: string,
+  currentProductId: string,
+  languageCode: Locale
+) {
   "use cache";
   cacheLife("hours");
   cacheTag(`related-products-${collectionSlug}`);
 
   try {
-    const result = await query(GetCollectionProductsQuery, {
-      slug: collectionSlug,
-      input: {
-        collectionSlug: collectionSlug,
-        take: 13, // Fetch extra to account for filtering out current product
-        skip: 0,
-        groupByProduct: true,
+    const result = await query(
+      GetCollectionProductsQuery,
+      {
+        slug: collectionSlug,
+        input: {
+          collectionSlug: collectionSlug,
+          take: 13, // Fetch extra to account for filtering out current product
+          skip: 0,
+          groupByProduct: true,
+        },
       },
-    });
+      { languageCode }
+    );
 
     const products = result.data.search.items
       .filter((item) => {
@@ -86,7 +108,10 @@ export async function getRelatedProducts(collectionSlug: string, currentProductI
       .map((product) => product.slug)
       .filter(Boolean);
 
-    const fallbackImagesBySlugMap = await getProductCardImageFallbacks(missingImageSlugs);
+    const fallbackImagesBySlugMap = await getProductCardImageFallbacks(
+      missingImageSlugs,
+      languageCode
+    );
 
     return {
       products,
@@ -108,12 +133,40 @@ export async function getRelatedProducts(collectionSlug: string, currentProductI
  * Search results for the /search page. Search is anonymous (no auth token), so results are
  * shared across visitors and revalidated every minute.
  */
-export async function searchProducts(searchParams: { page?: string; q?: string }) {
+export async function searchProducts(searchParams: SearchParams, languageCode: Locale) {
   "use cache";
   cacheLife("minutes");
   cacheTag("search");
 
-  return query(SearchProductsQuery, {
-    input: buildSearchInput({ searchParams }),
-  });
+  return query(
+    SearchProductsQuery,
+    { input: buildSearchInput({ searchParams }) },
+    { languageCode }
+  );
+}
+
+/**
+ * Options for the filter sidebar (facet values, categories, price bounds) for what is being
+ * browsed — a search term and/or a collection — independent of the selected filters.
+ */
+export async function getSearchFilterOptions(
+  searchParams: SearchParams,
+  languageCode: Locale,
+  collectionSlug?: string
+) {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag(collectionSlug ? `collection-${collectionSlug}` : "search");
+
+  const base = buildBaseSearchInput({ searchParams, collectionSlug });
+  const result = await query(
+    SearchFilterOptionsQuery,
+    {
+      input: { ...base, take: 0, groupByProduct: true },
+      cheapestInput: { ...base, take: 1, groupByProduct: false, sort: { price: "ASC" } },
+      priciestInput: { ...base, take: 1, groupByProduct: false, sort: { price: "DESC" } },
+    },
+    { languageCode }
+  );
+  return result.data;
 }

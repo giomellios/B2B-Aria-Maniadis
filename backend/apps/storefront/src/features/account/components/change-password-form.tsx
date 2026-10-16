@@ -12,9 +12,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 
 export function ChangePasswordForm() {
   const [state, formAction, isPending] = useActionState(updatePasswordAction, undefined);
+  const { account, auth, common } = useT();
+  const t = account.profile;
 
   useEffect(() => {
     if (state?.success) {
@@ -26,13 +29,13 @@ export function ChangePasswordForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Change Password</CardTitle>
-        <CardDescription>Update your password to keep your account secure.</CardDescription>
+        <CardTitle>{t.passwordTitle}</CardTitle>
+        <CardDescription>{t.passwordText}</CardDescription>
       </CardHeader>
       <form id="change-password-form" action={formAction}>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="currentPassword">Current Password</Label>
+            <Label htmlFor="currentPassword">{t.currentPassword}</Label>
             <Input
               id="currentPassword"
               name="currentPassword"
@@ -43,7 +46,7 @@ export function ChangePasswordForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="newPassword">New Password</Label>
+            <Label htmlFor="newPassword">{auth.newPassword}</Label>
             <Input
               id="newPassword"
               name="newPassword"
@@ -54,7 +57,7 @@ export function ChangePasswordForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm New Password</Label>
+            <Label htmlFor="confirmPassword">{t.confirmNewPassword}</Label>
             <Input
               id="confirmPassword"
               name="confirmPassword"
@@ -65,11 +68,9 @@ export function ChangePasswordForm() {
             />
           </div>
           {state?.error && <div className="text-sm text-destructive">{state.error}</div>}
-          {state?.success && (
-            <div className="text-sm text-green-600">Password updated successfully!</div>
-          )}
+          {state?.success && <div className="text-sm text-success">{t.passwordUpdated}</div>}
           <Button type="submit" disabled={isPending}>
-            {isPending ? "Updating..." : "Update Password"}
+            {isPending ? common.updating : t.updatePassword}
           </Button>
         </CardContent>
       </form>

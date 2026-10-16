@@ -1107,6 +1107,11 @@ input SearchInput {
   skip: Int
   sort: SearchResultSortParameter
   inStock: Boolean
+
+  """
+  Only return variants whose price with tax lies within the range (inclusive).
+  """
+  priceRangeWithTax: SearchPriceRangeInput
 }
 
 input SearchResultSortParameter {
@@ -3705,6 +3710,14 @@ type UpdateMultipleOrderItemsResult {
 input AddItemInput {
   productVariantId: ID!
   quantity: Int!
+}
+
+"""
+Price bounds in minor units (cents), tax included. Either bound may be omitted.
+"""
+input SearchPriceRangeInput {
+  min: Int
+  max: Int
 }
 
 input ProductVariantFilterParameter {

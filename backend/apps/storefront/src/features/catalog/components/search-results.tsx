@@ -2,43 +2,45 @@ import { Suspense } from "react";
 import { FacetFilters } from "@/features/catalog/components/facet-filters";
 import { ProductGridSkeleton } from "@/features/catalog/components/product-grid-skeleton";
 import { ProductGrid } from "@/features/catalog/components/product-grid";
-import { getCurrentPage } from "@/features/catalog/utils/search-helpers";
-import { searchProducts } from "@/features/catalog/services/catalog.service";
+import { getLocale, getT } from "@/lib/i18n/server";
+import {
+  getSearchFilterOptions,
+  searchProducts,
+} from "@/features/catalog/services/catalog.service";
 
 interface SearchResultsProps {
-  searchParams: Promise<{
-    page?: string;
-    q?: string;
-  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export async function SearchResults({ searchParams }: SearchResultsProps) {
-  const searchParamsResolved = await searchParams;
+  const [searchParamsResolved, locale] = await Promise.all([searchParams, getLocale()]);
   const searchTerm = (searchParamsResolved.q as string)?.trim();
 
-  const page = getCurrentPage(searchParamsResolved);
-
-  const productDataPromise = searchProducts(searchParamsResolved);
+  const productDataPromise = searchProducts(searchParamsResolved, locale);
+  const filterOptionsPromise = getSearchFilterOptions(searchParamsResolved, locale);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {!searchTerm ? (
-        <p className="text-sm text-muted-foreground">
-          Browse all products, or use search to narrow by product name, SKU, or keyword.
-        </p>
+        <p className="text-sm text-muted-foreground">{(await getT()).catalog.browseHint}</p>
       ) : null}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[260px_1fr] lg:gap-12">
         {/* Filters Sidebar */}
-        <aside className="lg:col-span-1">
-          <Suspense fallback={<div className="h-64 animate-pulse bg-muted rounded-lg" />}>
-            <FacetFilters productDataPromise={productDataPromise} />
+        <aside className="lg:sticky lg:top-sticky lg:max-h-[calc(100vh-var(--spacing-sticky)-1rem)] lg:self-start lg:overflow-y-auto lg:pr-2">
+          <Suspense
+            fallback={<div className="h-64 animate-pulse rounded-md bg-foreground/[0.04]" />}
+          >
+            <FacetFilters filterOptionsPromise={filterOptionsPromise} />
           </Suspense>
         </aside>
 
         {/* Product Grid */}
-        <div className="lg:col-span-3">
+        <div className="space-y-6">
           <Suspense fallback={<ProductGridSkeleton />}>
-            <ProductGrid productDataPromise={productDataPromise} currentPage={page} take={12} />
+            <ProductGrid
+              productDataPromise={productDataPromise}
+              searchParams={searchParamsResolved}
+            />
           </Suspense>
         </div>
       </div>

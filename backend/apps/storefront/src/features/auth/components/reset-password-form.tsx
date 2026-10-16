@@ -13,7 +13,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/design-system";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
 
 interface ResetPasswordFormProps {
   searchParams: Promise<{ token?: string }>;
@@ -24,18 +25,19 @@ export function ResetPasswordForm({ searchParams }: ResetPasswordFormProps) {
   const token = params.token || null;
 
   const [state, formAction, isPending] = useActionState(resetPasswordAction, undefined);
+  const t = useT().auth;
 
   if (!token) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Invalid reset link</CardTitle>
-          <CardDescription>The password reset link is invalid or has expired.</CardDescription>
+          <CardTitle>{t.reset.invalidTitle}</CardTitle>
+          <CardDescription>{t.reset.invalidText}</CardDescription>
         </CardHeader>
         <CardFooter>
           <Link href="/forgot-password">
             <Button variant="outline" className="w-full">
-              Request a new reset link
+              {t.reset.requestNew}
             </Button>
           </Link>
         </CardFooter>
@@ -46,14 +48,14 @@ export function ResetPasswordForm({ searchParams }: ResetPasswordFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Reset your password</CardTitle>
-        <CardDescription>Enter your new password below.</CardDescription>
+        <CardTitle>{t.reset.title}</CardTitle>
+        <CardDescription>{t.reset.text}</CardDescription>
       </CardHeader>
       <form action={formAction}>
         <input type="hidden" name="token" value={token} />
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="password">New Password</Label>
+            <Label htmlFor="password">{t.newPassword}</Label>
             <Input
               id="password"
               name="password"
@@ -64,7 +66,7 @@ export function ResetPasswordForm({ searchParams }: ResetPasswordFormProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Label htmlFor="confirmPassword">{t.confirmPassword}</Label>
             <Input
               id="confirmPassword"
               name="confirmPassword"
@@ -78,13 +80,13 @@ export function ResetPasswordForm({ searchParams }: ResetPasswordFormProps) {
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <Button type="submit" className="w-full" disabled={isPending}>
-            {isPending ? "Resetting password..." : "Reset password"}
+            {isPending ? t.reset.submitting : t.reset.submit}
           </Button>
           <Link
             href="/sign-in"
             className="text-sm text-center text-muted-foreground hover:text-primary"
           >
-            Back to Sign In
+            {t.backToSignIn}
           </Link>
         </CardFooter>
       </form>

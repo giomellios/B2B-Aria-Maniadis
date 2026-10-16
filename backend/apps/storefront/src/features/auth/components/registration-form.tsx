@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  registrationSchema,
+  createRegistrationSchema,
   type RegistrationFormData,
 } from "@/features/auth/schemas/registration.schema";
 import { registerAction } from "@/features/auth/services/register.actions";
@@ -21,7 +21,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/design-system";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
 
 interface RegistrationFormProps {
   redirectTo?: string;
@@ -30,6 +31,8 @@ interface RegistrationFormProps {
 export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
   const [isPending, startTransition] = useTransition();
   const [serverError, setServerError] = useState<string | null>(null);
+  const t = useT().auth;
+  const registrationSchema = useMemo(() => createRegistrationSchema(t.validation), [t]);
 
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
@@ -79,11 +82,11 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
               name="emailAddress"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mail</FormLabel>
+                  <FormLabel>{t.email}</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder={t.emailPlaceholder}
                       disabled={isPending}
                       {...field}
                     />
@@ -99,9 +102,14 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>First Name</FormLabel>
+                    <FormLabel>{t.firstName}</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="John" disabled={isPending} {...field} />
+                      <Input
+                        type="text"
+                        placeholder={t.firstNamePlaceholder}
+                        disabled={isPending}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -113,9 +121,14 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Last Name</FormLabel>
+                    <FormLabel>{t.lastName}</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="Doe" disabled={isPending} {...field} />
+                      <Input
+                        type="text"
+                        placeholder={t.lastNamePlaceholder}
+                        disabled={isPending}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -128,7 +141,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
               name="company"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Company</FormLabel>
+                  <FormLabel>{t.company}</FormLabel>
                   <FormControl>
                     <Input type="text" disabled={isPending} {...field} />
                   </FormControl>
@@ -142,7 +155,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
               name="vatNumber"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>VAT Number</FormLabel>
+                  <FormLabel>{t.vatNumber}</FormLabel>
                   <FormControl>
                     <Input type="text" disabled={isPending} {...field} />
                   </FormControl>
@@ -156,7 +169,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
               name="mobileNumber"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mobile Number</FormLabel>
+                  <FormLabel>{t.mobileNumber}</FormLabel>
                   <FormControl>
                     <Input type="tel" disabled={isPending} {...field} />
                   </FormControl>
@@ -170,7 +183,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{t.password}</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="••••••••" disabled={isPending} {...field} />
                   </FormControl>
@@ -184,7 +197,7 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
+                  <FormLabel>{t.confirmPassword}</FormLabel>
                   <FormControl>
                     <Input type="password" placeholder="••••••••" disabled={isPending} {...field} />
                   </FormControl>
@@ -196,14 +209,14 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
             {serverError && <div className="text-sm text-destructive">{serverError}</div>}
 
             <Button type="submit" className="w-full" disabled={isPending}>
-              {isPending ? "Creating account..." : "Create Account"}
+              {isPending ? t.register.submitting : t.register.submit}
             </Button>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4 mt-4">
             <div className="text-sm text-center text-muted-foreground">
-              Already have an account?{" "}
+              {t.register.haveAccount}{" "}
               <Link href={signInHref} className="hover:text-primary underline">
-                Sign in
+                {t.register.signIn}
               </Link>
             </div>
           </CardFooter>

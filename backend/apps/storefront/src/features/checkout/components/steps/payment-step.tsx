@@ -1,8 +1,9 @@
 "use client";
 
 import { Button, RadioGroup, RadioGroupItem, Label, Card } from "@/design-system";
-import { CreditCard } from "lucide-react";
+import { CreditCard } from "@/design-system/icons";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
+import { useT } from "@/lib/i18n/provider";
 
 interface PaymentStepProps {
   onComplete: () => void;
@@ -10,6 +11,7 @@ interface PaymentStepProps {
 
 export default function PaymentStep({ onComplete }: PaymentStepProps) {
   const { paymentMethods, selectedPaymentMethodCode, setSelectedPaymentMethodCode } = useCheckout();
+  const t = useT().checkout.payment;
 
   const handleContinue = () => {
     if (!selectedPaymentMethodCode) return;
@@ -19,14 +21,14 @@ export default function PaymentStep({ onComplete }: PaymentStepProps) {
   if (paymentMethods.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-muted-foreground">No payment methods available.</p>
+        <p className="text-muted-foreground">{t.none}</p>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      <h3 className="font-semibold">Select payment method</h3>
+      <h3 className="font-semibold">{t.select}</h3>
 
       <RadioGroup
         value={selectedPaymentMethodCode || ""}
@@ -51,7 +53,7 @@ export default function PaymentStep({ onComplete }: PaymentStepProps) {
       </RadioGroup>
 
       <Button onClick={handleContinue} disabled={!selectedPaymentMethodCode} className="w-full">
-        Continue to review
+        {t.continue}
       </Button>
     </div>
   );

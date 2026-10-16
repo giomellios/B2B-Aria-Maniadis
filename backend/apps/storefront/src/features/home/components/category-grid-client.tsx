@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
 import { motion } from "framer-motion";
+import { useEntranceAnimation } from "@/design-system";
+import { ArrowUpRight } from "@/design-system/icons";
 
 interface Collection {
   id: string;
@@ -13,59 +15,51 @@ interface CategoryGridClientProps {
   collections: Collection[];
 }
 
-// TODO: Replace gradient placeholders with real collection images once Vendure assets are uploaded.
-// In category-grid.tsx, pass featuredAsset.preview from each collection and render with next/image instead.
-const CARD_GRADIENTS = [
-  "from-stone-200 to-stone-300 dark:from-stone-700 dark:to-stone-800",
-  "from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-800",
-  "from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800",
-  "from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800",
-];
+// TODO: Show each collection's featuredAsset once collection images are uploaded in Vendure
+// (add featuredAsset { preview } to GetTopCollectionsQuery and render it with next/image).
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.08 } },
 };
 
 const card = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
 export function CategoryGridClient({ collections }: CategoryGridClientProps) {
+  const entrance = useEntranceAnimation();
   return (
-    <motion.div
+    <motion.ul
       variants={container}
-      initial="hidden"
+      initial={entrance ? "hidden" : false}
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+      className="grid grid-cols-1 border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3"
     >
       {collections.map((collection, i) => (
-        <motion.div key={collection.id} variants={card}>
-          <Link href={`/collection/${collection.slug}`} className="group block">
-            <div
-              className={`relative h-52 rounded-lg bg-gradient-to-br ${
-                CARD_GRADIENTS[i % CARD_GRADIENTS.length]
-              } overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]`}
-            >
-              <div className="absolute inset-0 flex flex-col justify-end p-5">
-                <p className="text-xs tracking-widest uppercase text-foreground/60 mb-1">
-                  Collection
-                </p>
-                <p className="text-xl font-light tracking-tight text-foreground">
-                  {collection.name}
-                </p>
-              </div>
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
+        <motion.li key={collection.id} variants={card} className="border-b border-r border-border">
+          <Link
+            href={`/collection/${collection.slug}`}
+            className="group relative flex h-full min-h-44 flex-col justify-between bg-card p-6 transition-colors duration-300 hover:bg-primary md:min-h-56 md:p-8"
+          >
+            <div className="flex items-start justify-between">
+              <span className="text-xs tabular-nums text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/60">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <ArrowUpRight className="size-5 text-primary transition-[transform,color] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-foreground" />
             </div>
+            <p className="font-serif text-3xl leading-tight text-foreground transition-colors duration-300 group-hover:text-primary-foreground md:text-4xl">
+              {collection.name}
+            </p>
           </Link>
-        </motion.div>
+        </motion.li>
       ))}
-    </motion.div>
+    </motion.ul>
   );
 }

@@ -1,4 +1,5 @@
 import { Price } from "@/components/shared/price";
+import { Msg } from "@/lib/i18n/msg";
 
 export type OrderTotalsData = {
   currencyCode: string;
@@ -25,13 +26,15 @@ export function OrderTotalsBreakdown({
   return (
     <div className={className}>
       <div className="flex justify-between text-sm">
-        <span className="text-muted-foreground">Subtotal</span>
+        <span className="text-muted-foreground">
+          <Msg k="common.subtotal" />
+        </span>
         <span>
           <Price value={order.subTotalWithTax} currencyCode={order.currencyCode} />
         </span>
       </div>
       {order.discounts?.map((discount, index) => (
-        <div key={index} className="flex justify-between text-sm text-green-600">
+        <div key={index} className="flex justify-between text-sm text-success">
           <span>{discount.description}</span>
           <span>
             <Price value={discount.amountWithTax} currencyCode={order.currencyCode} />
@@ -39,7 +42,9 @@ export function OrderTotalsBreakdown({
         </div>
       ))}
       <div className="flex justify-between text-sm">
-        <span className="text-muted-foreground">Shipping</span>
+        <span className="text-muted-foreground">
+          <Msg k="common.shipping" />
+        </span>
         <span>
           {order.shippingWithTax > 0 ? (
             <Price value={order.shippingWithTax} currencyCode={order.currencyCode} />
@@ -54,8 +59,10 @@ export function OrderTotalsBreakdown({
 
 export function OrderGrandTotal({ order }: { order: OrderTotalsData }) {
   return (
-    <div className="flex justify-between font-bold text-lg">
-      <span>Total</span>
+    <div className="flex justify-between font-semibold text-lg">
+      <span>
+        <Msg k="common.total" />
+      </span>
       <span>
         <Price value={order.totalWithTax} currencyCode={order.currencyCode} />
       </span>

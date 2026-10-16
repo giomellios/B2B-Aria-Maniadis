@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 
 interface EditEmailFormProps {
   currentEmail: string;
@@ -19,6 +20,8 @@ interface EditEmailFormProps {
 
 export function EditEmailForm({ currentEmail }: EditEmailFormProps) {
   const [state, formAction, isPending] = useActionState(requestEmailUpdateAction, undefined);
+  const { account, common } = useT();
+  const t = account.profile;
 
   useEffect(() => {
     if (state?.success) {
@@ -30,15 +33,13 @@ export function EditEmailForm({ currentEmail }: EditEmailFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Email Address</CardTitle>
-        <CardDescription>
-          Update your email address. You&apos;ll need to verify the new email.
-        </CardDescription>
+        <CardTitle>{t.emailTitle}</CardTitle>
+        <CardDescription>{t.emailText}</CardDescription>
       </CardHeader>
       <form id="edit-email-form" action={formAction}>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="currentEmail">Current Email</Label>
+            <Label htmlFor="currentEmail">{t.currentEmail}</Label>
             <Input
               id="currentEmail"
               type="email"
@@ -48,18 +49,18 @@ export function EditEmailForm({ currentEmail }: EditEmailFormProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="newEmailAddress">New Email Address</Label>
+            <Label htmlFor="newEmailAddress">{t.newEmail}</Label>
             <Input
               id="newEmailAddress"
               name="newEmailAddress"
               type="email"
-              placeholder="new.email@example.com"
+              placeholder={t.newEmailPlaceholder}
               required
               disabled={isPending}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Current Password</Label>
+            <Label htmlFor="password">{t.currentPassword}</Label>
             <Input
               id="password"
               name="password"
@@ -68,19 +69,12 @@ export function EditEmailForm({ currentEmail }: EditEmailFormProps) {
               required
               disabled={isPending}
             />
-            <p className="text-xs text-muted-foreground">
-              Enter your password to confirm this change.
-            </p>
+            <p className="text-xs text-muted-foreground">{t.confirmWithPassword}</p>
           </div>
           {state?.error && <div className="text-sm text-destructive">{state.error}</div>}
-          {state?.success && (
-            <div className="text-sm text-green-600">
-              Verification email sent! Please check your inbox and click the link to confirm your
-              new email address.
-            </div>
-          )}
+          {state?.success && <div className="text-sm text-success">{t.emailSent}</div>}
           <Button type="submit" disabled={isPending}>
-            {isPending ? "Sending..." : "Update Email"}
+            {isPending ? common.sending : t.updateEmail}
           </Button>
         </CardContent>
       </form>

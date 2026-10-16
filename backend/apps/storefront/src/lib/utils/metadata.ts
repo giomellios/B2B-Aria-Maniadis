@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SITE_URL } from "@/lib/config/env";
+import { DEFAULT_LOCALE, LOCALES, localizePath, type Locale } from "@/lib/i18n/config";
 
 export { SITE_NAME, SITE_URL } from "@/lib/config/env";
 
@@ -24,12 +25,25 @@ export function truncateDescription(text: string | null | undefined, maxLength =
 }
 
 /**
- * Build a canonical URL for a given path.
+ * Build a canonical URL for a given path, in the given locale ("/cart" → "https://…/el/cart").
  */
-export function buildCanonicalUrl(path: string): string {
+export function buildCanonicalUrl(path: string, locale: Locale): string {
   const baseUrl = SITE_URL.replace(/\/$/, ""); // Remove trailing slash
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  return `${baseUrl}${cleanPath}`;
+  return `${baseUrl}${localizePath(cleanPath, locale)}`;
+}
+
+/**
+ * Canonical URL plus hreflang alternates for every locale, for `metadata.alternates`.
+ */
+export function buildAlternates(path: string, locale: Locale): Metadata["alternates"] {
+  return {
+    canonical: buildCanonicalUrl(path, locale),
+    languages: {
+      ...Object.fromEntries(LOCALES.map((l) => [l, buildCanonicalUrl(path, l)])),
+      "x-default": buildCanonicalUrl(path, DEFAULT_LOCALE),
+    },
+  };
 }
 
 /**
@@ -37,14 +51,14 @@ export function buildCanonicalUrl(path: string): string {
  */
 export function buildOgImages(
   imageUrl: string | null | undefined,
-  alt?: string
+  alt = "Product image"
 ): NonNullable<Metadata["openGraph"]>["images"] {
   if (!imageUrl) return undefined;
 
   return [
     {
       url: imageUrl,
-      alt: alt || "Product image",
+      alt,
     },
   ];
 }

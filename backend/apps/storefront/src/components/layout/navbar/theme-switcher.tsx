@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun, Monitor } from "@/design-system/icons";
 import {
   Button,
   DropdownMenu,
@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 
 const subscribeNoop = () => () => {};
 
@@ -21,12 +22,13 @@ export function ThemeSwitcher() {
     () => false
   );
   const { theme, setTheme } = useTheme();
+  const t = useT();
 
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" disabled>
         <Sun className="size-5" />
-        <span className="sr-only">Toggle theme</span>
+        <span className="sr-only">{t.nav.toggleTheme}</span>
       </Button>
     );
   }
@@ -35,25 +37,25 @@ export function ThemeSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Sun className="size-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute size-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <Sun className="size-5 rotate-0 scale-100 transition-transform duration-500 ease-out dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute size-5 rotate-90 scale-0 transition-transform duration-500 ease-out dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">{t.nav.toggleTheme}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <Sun className="size-4" />
-          <span>Light</span>
+          <span>{t.nav.themeLight}</span>
           {theme === "light" && <span className="ml-auto text-xs">✓</span>}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           <Moon className="size-4" />
-          <span>Dark</span>
+          <span>{t.nav.themeDark}</span>
           {theme === "dark" && <span className="ml-auto text-xs">✓</span>}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Monitor className="size-4" />
-          <span>System</span>
+          <span>{t.nav.themeSystem}</span>
           {theme === "system" && <span className="ml-auto text-xs">✓</span>}
         </DropdownMenuItem>
       </DropdownMenuContent>

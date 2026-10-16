@@ -7,8 +7,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/design-system";
-import { Tag } from "lucide-react";
+import { Tag } from "@/design-system/icons";
 import { applyPromotionCode, removePromotionCode } from "@/features/cart/services/cart.actions";
+import { getT } from "@/lib/i18n/server";
 
 type ActiveOrder = {
   id: string;
@@ -16,14 +17,15 @@ type ActiveOrder = {
 };
 
 export async function PromotionCode({ activeOrder }: { activeOrder: ActiveOrder }) {
+  const t = await getT();
   return (
     <Card className="mt-4">
       <CardHeader>
         <CardTitle className="text-lg flex items-center gap-2">
           <Tag className="h-5 w-5" />
-          Promotion Code
+          {t.cart.promoTitle}
         </CardTitle>
-        <CardDescription>Enter your discount code below</CardDescription>
+        <CardDescription>{t.cart.promoText}</CardDescription>
       </CardHeader>
       <CardContent>
         {activeOrder.couponCodes && activeOrder.couponCodes.length > 0 ? (
@@ -31,10 +33,10 @@ export async function PromotionCode({ activeOrder }: { activeOrder: ActiveOrder 
             {activeOrder.couponCodes.map((code) => (
               <div
                 key={code}
-                className="flex items-center justify-between p-3 border rounded-md bg-green-50 dark:bg-green-950/20"
+                className="flex items-center justify-between p-3 border rounded-md bg-success/10"
               >
                 <div className="flex items-center gap-2">
-                  <Tag className="h-4 w-4 text-green-600" />
+                  <Tag className="h-4 w-4 text-success" />
                   <span className="font-medium text-sm">{code}</span>
                 </div>
                 <form action={removePromotionCode}>
@@ -45,7 +47,7 @@ export async function PromotionCode({ activeOrder }: { activeOrder: ActiveOrder 
                     size="sm"
                     className="h-8 text-destructive hover:text-destructive hover:bg-destructive/10"
                   >
-                    Remove
+                    {t.cart.remove}
                   </Button>
                 </form>
               </div>
@@ -53,8 +55,14 @@ export async function PromotionCode({ activeOrder }: { activeOrder: ActiveOrder 
           </div>
         ) : (
           <form action={applyPromotionCode} className="flex gap-2">
-            <Input type="text" name="code" placeholder="Enter code" className="flex-1" required />
-            <Button type="submit">Apply</Button>
+            <Input
+              type="text"
+              name="code"
+              placeholder={t.cart.promoPlaceholder}
+              className="flex-1"
+              required
+            />
+            <Button type="submit">{t.cart.apply}</Button>
           </form>
         )}
       </CardContent>

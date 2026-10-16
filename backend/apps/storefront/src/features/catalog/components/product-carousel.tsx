@@ -7,6 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  useEntranceAnimation,
 } from "@/design-system";
 import { FragmentOf, readFragment } from "@/lib/api/graphql";
 import { ProductCardFragment } from "@/features/catalog/services/fragments";
@@ -14,28 +15,30 @@ import { useId } from "react";
 import { motion } from "framer-motion";
 
 interface ProductCarouselClientProps {
+  eyebrow: string;
   title: string;
   products: Array<FragmentOf<typeof ProductCardFragment>>;
   fallbackImagesBySlug?: Record<string, string>;
 }
 
 export function ProductCarousel({
+  eyebrow,
   title,
   products,
   fallbackImagesBySlug,
 }: ProductCarouselClientProps) {
+  const entrance = useEntranceAnimation();
   const id = useId();
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 40 }}
+      initial={entrance ? { opacity: 0, y: 24 } : false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="py-12 md:py-16"
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="py-20 md:py-28"
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-8">{title}</h2>
         <Carousel
           opts={{
             align: "start",
@@ -43,14 +46,24 @@ export function ProductCarousel({
           }}
           className="w-full"
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <div className="mb-10 flex items-end justify-between gap-6">
+            <div className="space-y-3">
+              <p className="eyebrow">{eyebrow}</p>
+              <h2 className="display text-4xl md:text-5xl">{title}</h2>
+            </div>
+            <div className="hidden items-center gap-2 md:flex">
+              <CarouselPrevious className="static size-10 translate-y-0 hover:-translate-x-0.5" />
+              <CarouselNext className="static size-10 translate-y-0 hover:translate-x-0.5" />
+            </div>
+          </div>
+          <CarouselContent className="-ml-4 md:-ml-6">
             {products.map((product, i) => {
               const productData = readFragment(ProductCardFragment, product);
 
               return (
                 <CarouselItem
                   key={id + i}
-                  className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  className="basis-1/2 pl-4 md:pl-6 lg:basis-1/3 xl:basis-1/4"
                 >
                   <ProductCard
                     product={product}
@@ -60,8 +73,6 @@ export function ProductCarousel({
               );
             })}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
         </Carousel>
       </div>
     </motion.section>

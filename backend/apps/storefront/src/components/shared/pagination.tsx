@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "@/design-system/icons";
 import { Button } from "@/design-system";
 import Link from "next/link";
 
@@ -17,6 +17,7 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
   const createPageUrl = (page: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
+    params.delete("more");
     return `${pathname}?${params.toString()}`;
   };
 

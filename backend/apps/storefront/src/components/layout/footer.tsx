@@ -1,8 +1,11 @@
 import { Suspense } from "react";
 import { getTopCollections } from "@/lib/queries/cached";
-import { getActiveCustomer } from "@/features/auth/server";
-import Link from "next/link";
-import { Instagram, Facebook, Linkedin } from "lucide-react";
+import Image from "next/image";
+import { Link } from "@/lib/i18n/navigation";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { format } from "@/lib/i18n/dictionaries";
+import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
+import { Instagram, Facebook, Linkedin } from "@/design-system/icons";
 
 // TODO: Replace # with real Maniadis social profile URLs
 const SOCIAL_LINKS = [
@@ -14,67 +17,45 @@ const SOCIAL_LINKS = [
 const COPYRIGHT_YEAR = new Date().getFullYear();
 
 async function Copyright() {
+  const t = await getT();
   return (
-    <p className="text-sm text-muted-foreground">
-      © {COPYRIGHT_YEAR} Maniadis. All rights reserved.
+    <p className="text-xs text-muted-foreground">
+      {format(t.footer.copyright, { year: COPYRIGHT_YEAR })}
     </p>
   );
 }
 
-async function FooterAccountLinks() {
-  const customer = await getActiveCustomer();
-
-  return (
-    <>
-      {!customer && (
-        <>
-          <li>
-            <Link
-              href="/sign-in"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Sign In
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/register"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Register
-            </Link>
-          </li>
-        </>
-      )}
-    </>
-  );
-}
-
 export async function Footer() {
-  const collections = await getTopCollections();
+  const [collections, t] = await Promise.all([getTopCollections(await getLocale()), getT()]);
 
   return (
-    <footer className="border-t border-border mt-auto">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="mt-auto border-t border-border bg-secondary">
+      <div className="container mx-auto px-4 pt-16 pb-8">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {/* Brand */}
-          <div className="space-y-3">
-            <p className="text-sm font-medium tracking-widest uppercase">Maniadis</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Premium wholesale bags and hats for retailers across Greece and Europe.
+          <div className="col-span-2 space-y-5 md:col-span-1">
+            <Image
+              src="/logo.png"
+              alt={t.home.hero.crestAlt}
+              width={169}
+              height={210}
+              className="h-20 w-auto dark:brightness-0 dark:invert"
+            />
+            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+              {t.footer.tagline}
             </p>
           </div>
 
           {/* Collections */}
-          <div className="space-y-3">
-            <p className="text-sm font-medium tracking-widest uppercase">Collections</p>
-            <ul className="space-y-2">
+          <div className="space-y-4">
+            <p className="eyebrow">{t.footer.collections}</p>
+            <ul className="space-y-2.5">
               {collections.length > 0 ? (
                 collections.map((c) => (
                   <li key={c.id}>
                     <Link
                       href={`/collection/${c.slug}`}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       {c.name}
                     </Link>
@@ -85,9 +66,9 @@ export async function Footer() {
                   <li>
                     <Link
                       href="/search"
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
-                      All Products
+                      {t.footer.allProducts}
                     </Link>
                   </li>
                 </>
@@ -96,36 +77,38 @@ export async function Footer() {
           </div>
 
           {/* Account */}
-          <div className="space-y-3">
-            <p className="text-sm font-medium tracking-widest uppercase">Account</p>
-            <ul className="space-y-2">
-              <Suspense fallback={null}>
-                <FooterAccountLinks />
-              </Suspense>
+          <div className="space-y-4">
+            <p className="eyebrow">{t.footer.account}</p>
+            <ul className="space-y-2.5">
               <li>
                 <Link
                   href="/account/orders"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
-                  My Orders
+                  {t.footer.myOrders}
                 </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact */}
-          <div className="space-y-3">
-            <p className="text-sm font-medium tracking-widest uppercase">Contact</p>
+          <div className="space-y-4">
+            <p className="eyebrow">{t.footer.contact}</p>
             {/* TODO: Replace with real contact email, phone, and address from Maniadis */}
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>contact@maniadis.gr</li>
-              <li>Greece</li>
+              <li>{t.footer.country}</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Copyright />
+        <div className="mt-14 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col items-center gap-4 sm:flex-row">
+            <Copyright />
+            <Suspense fallback={null}>
+              <LanguageSwitcher />
+            </Suspense>
+          </div>
           <div className="flex items-center gap-4">
             {SOCIAL_LINKS.map(({ icon: Icon, label, href }) => (
               <a
@@ -134,9 +117,9 @@ export async function Footer() {
                 aria-label={label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-[color,border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
               >
-                <Icon className="w-4 h-4" strokeWidth={1.5} />
+                <Icon className="w-4 h-4" />
               </a>
             ))}
           </div>

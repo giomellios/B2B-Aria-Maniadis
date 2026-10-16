@@ -1,74 +1,65 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Tag, RefreshCw, Truck } from "lucide-react";
-import { RevealHeading } from "@/design-system";
-
-// TODO: Update copy with real Maniadis messaging when approved
-const PROPS = [
-  {
-    icon: Layers,
-    title: "Wide Selection",
-    description:
-      "Hundreds of styles across bags and hats, refreshed every season to keep your offer current.",
-  },
-  {
-    icon: Tag,
-    title: "Wholesale Pricing",
-    description:
-      "Competitive tiered pricing for registered retail partners, with volume discounts available.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Reliable Restocking",
-    description: "Consistent stock availability so your shelves are never left empty mid-season.",
-  },
-  {
-    icon: Truck,
-    title: "Pan-European Delivery",
-    description: "Fast, reliable shipping to retailers across Greece and the broader EU.",
-  },
-];
+import { Layers, Tag, Refresh, Truck } from "@/design-system/icons";
+import { RevealHeading, useEntranceAnimation } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
+  show: { transition: { staggerChildren: 0.1 } },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
 export function ValueProps() {
+  const entrance = useEntranceAnimation();
+  const t = useT().home.values;
+  // TODO: Update copy with real Maniadis messaging when approved
+  const props = [
+    { icon: Layers, title: t.selection, description: t.selectionText },
+    { icon: Tag, title: t.pricing, description: t.pricingText },
+    { icon: Refresh, title: t.restocking, description: t.restockingText },
+    { icon: Truck, title: t.delivery, description: t.deliveryText },
+  ];
+
   return (
-    <section className="py-16 md:py-24 bg-muted">
+    <section className="border-y border-border bg-secondary py-20 md:py-28">
       <div className="container mx-auto px-4">
-        <div className="mb-12 space-y-2">
-          <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">Why Maniadis</p>
-          <RevealHeading className="text-3xl md:text-4xl font-light tracking-tight text-foreground">
-            Built for Retailers
-          </RevealHeading>
+        <div className="mb-14 grid gap-6 md:grid-cols-2 md:items-end">
+          <div className="space-y-3">
+            <p className="eyebrow">{t.eyebrow}</p>
+            <RevealHeading className="display text-4xl md:text-5xl">{t.title}</RevealHeading>
+          </div>
+          <p className="max-w-md text-muted-foreground md:justify-self-end">{t.intro}</p>
         </div>
         <motion.div
           variants={container}
-          initial="hidden"
+          initial={entrance ? "hidden" : false}
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0"
         >
-          {PROPS.map(({ icon: Icon, title, description }) => (
-            <motion.div key={title} variants={item} className="space-y-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-md bg-background border border-border">
-                <Icon className="w-5 h-5 text-foreground" strokeWidth={1.5} />
-              </div>
-              <div className="space-y-1.5">
-                <p className="text-sm font-medium text-foreground">{title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+          {props.map(({ icon: Icon, title, description }) => (
+            <motion.div
+              key={title}
+              variants={item}
+              className="group space-y-4 lg:border-l lg:border-border lg:px-8 lg:first:border-l-0 lg:first:pl-0"
+            >
+              <Icon
+                className="size-6 text-primary transition-transform duration-500 ease-out group-hover:-translate-y-0.5"
+                weight="light"
+              />
+              <div className="space-y-2">
+                <p className="font-serif text-xl text-foreground">{title}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
               </div>
             </motion.div>
           ))}

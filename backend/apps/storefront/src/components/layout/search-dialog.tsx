@@ -1,13 +1,16 @@
 "use client";
 
 import { useRef, useState, useTransition, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Search, X } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { useLocaleRouter } from "@/lib/i18n/navigation";
+import { useT } from "@/lib/i18n/provider";
+import { Search, X } from "@/design-system/icons";
 import { Dialog, DialogContent, DialogTitle, DialogClose, Input, Button } from "@/design-system";
 
 export function SearchDialog() {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
+  const router = useLocaleRouter();
+  const t = useT();
   const searchParams = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
   const [isPending, startTransition] = useTransition();
@@ -50,23 +53,23 @@ export function SearchDialog() {
       <Button
         variant="ghost"
         size="icon"
-        aria-label="Open search"
+        aria-label={t.nav.searchOpen}
         onClick={() => handleOpenChange(true)}
       >
-        <Search className="h-5 w-5" />
+        <Search className="size-5" />
       </Button>
 
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className="top-[72px] translate-y-0 sm:max-w-xl p-3" showCloseButton={false}>
-          <DialogTitle className="sr-only">Search products</DialogTitle>
+          <DialogTitle className="sr-only">{t.nav.searchTitle}</DialogTitle>
           <div className="flex items-center gap-2">
             <form onSubmit={handleSubmit} className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
                 ref={inputRef}
                 type="search"
-                placeholder="Search by product name, SKU, or keyword..."
-                className="pl-9 w-full [&::-webkit-search-cancel-button]:hidden"
+                placeholder={t.nav.searchPlaceholderLong}
+                className="pl-9 w-full appearance-none [&::-webkit-search-cancel-button]:hidden"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -74,7 +77,7 @@ export function SearchDialog() {
               />
             </form>
             <DialogClose asChild>
-              <Button variant="ghost" size="icon" aria-label="Close search">
+              <Button variant="ghost" size="icon" aria-label={t.nav.searchClose}>
                 <X className="h-4 w-4" />
               </Button>
             </DialogClose>

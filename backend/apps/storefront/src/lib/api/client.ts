@@ -2,6 +2,8 @@ import "server-only";
 import type { TadaDocumentNode } from "gql.tada";
 import { print } from "graphql";
 import { serverEnv } from "@/lib/config/env.server";
+import type { Locale } from "@/lib/i18n/config";
+import { getRequestLocale } from "@/lib/i18n/server";
 
 const VENDURE_API_URL = serverEnv.shopApiUrl;
 const VENDURE_CHANNEL_TOKEN = serverEnv.channelToken;
@@ -15,6 +17,12 @@ interface VendureRequestOptions {
   fetch?: RequestInit;
   tags?: string[];
   revalidateSeconds?: number;
+  /**
+   * Language for translated fields (product names, collections…). Defaults to the current
+   * request's locale. Must be passed explicitly inside "use cache" functions, where request
+   * headers cannot be read.
+   */
+  languageCode?: Locale;
 }
 
 interface VendureResponse<T> {
@@ -45,7 +53,9 @@ export async function query<TResult, TVariables>(
     fetch: fetchOptions,
     tags,
     revalidateSeconds,
+    languageCode: explicitLanguageCode,
   } = options || {};
+  const languageCode = explicitLanguageCode ?? (await getRequestLocale());
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
@@ -73,7 +83,10 @@ export async function query<TResult, TVariables>(
         }
       : undefined;
 
-  const response = await fetch(VENDURE_API_URL, {
+  const url = new URL(VENDURE_API_URL);
+  url.searchParams.set("languageCode", languageCode);
+
+  const response = await fetch(url, {
     ...fetchOptions,
     method: "POST",
     headers,

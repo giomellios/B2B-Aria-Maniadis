@@ -3,13 +3,15 @@
 import { mutate } from "@/lib/api/client";
 import { LoginMutation, LogoutMutation } from "@/features/auth/services/mutations";
 import { removeAuthToken, setAuthToken } from "@/lib/api/auth-token";
-import { redirect } from "next/navigation";
+import { getRequestT } from "@/lib/i18n/server";
+import { localeRedirect } from "@/lib/i18n/redirect";
 import { revalidatePath } from "next/cache";
 
 export async function loginAction(prevState: { error?: string } | undefined, formData: FormData) {
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
   const redirectTo = formData.get("redirectTo") as string | null;
+  const t = await getRequestT();
 
   const result = await mutate(
     LoginMutation,
@@ -25,9 +27,9 @@ export async function loginAction(prevState: { error?: string } | undefined, for
   if (loginResult.__typename !== "CurrentUser") {
     // EMAIL VERIFICATION DISABLED
     if (loginResult.__typename === "NotVerifiedError") {
-      return { error: "Please wait for admin verification before signing in." };
+      return { error: t.auth.errors.notVerified };
     }
-    return { error: "Invalid email or password." };
+    return { error: t.auth.errors.invalidCredentials };
   }
 
   // Store the token in a cookie if returned
@@ -35,18 +37,18 @@ export async function loginAction(prevState: { error?: string } | undefined, for
     await setAuthToken(result.token);
   }
 
-  revalidatePath("/", "layout");
+  revalidatePath("/[locale]", "layout");
 
   // Validate redirectTo is a safe internal path
   const safeRedirect =
     redirectTo?.startsWith("/") && !redirectTo.startsWith("//") ? redirectTo : "/";
 
-  redirect(safeRedirect);
+  await localeRedirect(safeRedirect);
 }
 
 export async function logoutAction() {
   await mutate(LogoutMutation);
   await removeAuthToken();
 
-  redirect("/");
+  await localeRedirect("/");
 }

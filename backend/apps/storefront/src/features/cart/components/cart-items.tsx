@@ -1,7 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/lib/i18n/navigation";
+import { getT } from "@/lib/i18n/server";
 import { Button } from "@/design-system";
-import { Minus, Plus, X } from "lucide-react";
+import { Minus, Plus, ShoppingBag, X } from "@/design-system/icons";
 import { Price } from "@/components/shared/price";
 import { removeFromCart, adjustQuantity } from "@/features/cart/services/cart.actions";
 
@@ -34,14 +35,16 @@ type ActiveOrder = {
 };
 
 export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | null }) {
+  const t = await getT();
   if (!activeOrder || activeOrder.lines.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Your Cart is Empty</h1>
-          <p className="text-muted-foreground mb-8">Add some items to your cart to get started</p>
+          <ShoppingBag className="mx-auto mb-6 size-10 text-primary" weight="light" />
+          <h2 className="display text-4xl md:text-5xl mb-4">{t.cart.emptyTitle}</h2>
+          <p className="text-muted-foreground mb-8">{t.cart.emptyText}</p>
           <Button asChild>
-            <Link href="/">Continue Shopping</Link>
+            <Link href="/search">{t.cart.browse}</Link>
           </Button>
         </div>
       </div>
@@ -55,7 +58,7 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
         return (
           <div
             key={line.id}
-            className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-card"
+            className="flex flex-col sm:flex-row gap-5 p-4 border rounded-md bg-card animate-in fade-in-0 duration-300"
           >
             {imagePreview && (
               <Link href={`/product/${line.productVariant.product.slug}`} className="flex-shrink-0">
@@ -64,7 +67,7 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
                   alt={line.productVariant.name}
                   width={120}
                   height={120}
-                  className="rounded-md object-cover w-full sm:w-[120px] h-[120px]"
+                  className="rounded-sm border border-border bg-white object-cover w-full sm:w-[120px] h-[120px] transition-opacity hover:opacity-85"
                 />
               </Link>
             )}
@@ -72,16 +75,19 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
             <div className="flex-grow min-w-0">
               <Link
                 href={`/product/${line.productVariant.product.slug}`}
-                className="font-semibold hover:underline block"
+                className="block font-serif text-lg leading-snug transition-colors hover:text-primary"
               >
                 {line.productVariant.product.name}
               </Link>
               {line.productVariant.name !== line.productVariant.product.name && (
                 <p className="text-sm text-muted-foreground mt-1">{line.productVariant.name}</p>
               )}
-              <p className="text-sm text-muted-foreground mt-1">SKU: {line.productVariant.sku}</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                {t.common.sku}: {line.productVariant.sku}
+              </p>
               <p className="text-sm text-muted-foreground mt-2 sm:hidden">
-                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} /> each
+                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} />{" "}
+                {t.common.each}
               </p>
 
               <div className="flex items-center gap-3 mt-4">
@@ -151,7 +157,8 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
                 <Price value={line.linePriceWithTax} currencyCode={activeOrder.currencyCode} />
               </p>
               <p className="text-sm text-muted-foreground mt-1">
-                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} /> each
+                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} />{" "}
+                {t.common.each}
               </p>
             </div>
           </div>

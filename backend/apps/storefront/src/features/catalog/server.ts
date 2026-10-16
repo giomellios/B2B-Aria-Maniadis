@@ -10,5 +10,7 @@ export {
   getCollectionMetadata,
   getCollectionProducts,
   getProductData,
+  getSearchFilterOptions,
 } from "@/features/catalog/services/catalog.service";
+export { ProductCardFragment } from "@/features/catalog/services/fragments";
 export { SearchProductsQuery } from "@/features/catalog/services/queries";

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown } from "@/design-system/icons";
 import { cn } from "@/lib/utils";
 import {
   Button,
@@ -15,6 +15,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/design-system";
+import { useT } from "@/lib/i18n/provider";
 
 interface Country {
   code: string;
@@ -30,6 +31,7 @@ interface CountrySelectProps {
 
 export function CountrySelect({ countries, value, onValueChange, disabled }: CountrySelectProps) {
   const [open, setOpen] = React.useState(false);
+  const t = useT().address;
   const selectedCountry = countries.find((country) => country.code === value);
 
   return (
@@ -42,15 +44,15 @@ export function CountrySelect({ countries, value, onValueChange, disabled }: Cou
           className="w-full justify-between"
           disabled={disabled}
         >
-          {selectedCountry ? selectedCountry.name : "Select country..."}
+          {selectedCountry ? selectedCountry.name : t.selectCountry}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full p-0" align="start">
         <Command>
-          <CommandInput placeholder="Search country..." />
+          <CommandInput placeholder={t.searchCountry} />
           <CommandList>
-            <CommandEmpty>No country found.</CommandEmpty>
+            <CommandEmpty>{t.noCountry}</CommandEmpty>
             <CommandGroup>
               {countries.map((country) => (
                 <CommandItem

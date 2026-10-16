@@ -2,8 +2,9 @@
 
 import { Button, Input, Field, FieldLabel, FieldError, FieldGroup } from "@/design-system";
 import { useForm, Controller } from "react-hook-form";
-import { Loader2 } from "lucide-react";
+import { Spinner } from "@/design-system/icons";
 import { CountrySelect } from "@/components/shared/country-select";
+import { useT } from "@/lib/i18n/provider";
 
 interface Country {
   id: string;
@@ -53,6 +54,7 @@ export function AddressForm({
   onCancel,
   isSubmitting,
 }: AddressFormProps) {
+  const t = useT();
   const {
     register,
     handleSubmit,
@@ -85,71 +87,71 @@ export function AddressForm({
       <FieldGroup className="my-6">
         <div className="grid grid-cols-2 gap-4">
           <Field className="col-span-2">
-            <FieldLabel htmlFor="fullName">Full Name *</FieldLabel>
+            <FieldLabel htmlFor="fullName">{t.address.fullName} *</FieldLabel>
             <Input
               id="fullName"
-              {...register("fullName", { required: "Full name is required" })}
+              {...register("fullName", { required: t.address.fullNameRequired })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.fullName?.message}</FieldError>
           </Field>
 
           <Field className="col-span-2">
-            <FieldLabel htmlFor="company">Company</FieldLabel>
+            <FieldLabel htmlFor="company">{t.address.company}</FieldLabel>
             <Input id="company" {...register("company")} disabled={isSubmitting} />
           </Field>
 
           <Field className="col-span-2">
-            <FieldLabel htmlFor="streetLine1">Street Address *</FieldLabel>
+            <FieldLabel htmlFor="streetLine1">{t.address.streetLine1} *</FieldLabel>
             <Input
               id="streetLine1"
-              {...register("streetLine1", { required: "Street address is required" })}
+              {...register("streetLine1", { required: t.address.streetRequired })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.streetLine1?.message}</FieldError>
           </Field>
 
           <Field className="col-span-2">
-            <FieldLabel htmlFor="streetLine2">Apartment, suite, etc.</FieldLabel>
+            <FieldLabel htmlFor="streetLine2">{t.address.streetLine2}</FieldLabel>
             <Input id="streetLine2" {...register("streetLine2")} disabled={isSubmitting} />
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="city">City *</FieldLabel>
+            <FieldLabel htmlFor="city">{t.address.city} *</FieldLabel>
             <Input
               id="city"
-              {...register("city", { required: "City is required" })}
+              {...register("city", { required: t.address.cityRequired })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.city?.message}</FieldError>
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="province">State/Province *</FieldLabel>
+            <FieldLabel htmlFor="province">{t.address.province} *</FieldLabel>
             <Input
               id="province"
-              {...register("province", { required: "State/Province is required" })}
+              {...register("province", { required: t.address.provinceRequired })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.province?.message}</FieldError>
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="postalCode">Postal Code *</FieldLabel>
+            <FieldLabel htmlFor="postalCode">{t.address.postalCode} *</FieldLabel>
             <Input
               id="postalCode"
-              {...register("postalCode", { required: "Postal code is required" })}
+              {...register("postalCode", { required: t.address.postalCodeRequired })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.postalCode?.message}</FieldError>
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="countryCode">Country *</FieldLabel>
+            <FieldLabel htmlFor="countryCode">{t.address.country} *</FieldLabel>
             <Controller
               name="countryCode"
               control={control}
-              rules={{ required: "Country is required" }}
+              rules={{ required: t.address.countryRequired }}
               render={({ field }) => (
                 <CountrySelect
                   countries={countries}
@@ -163,11 +165,11 @@ export function AddressForm({
           </Field>
 
           <Field className="col-span-2">
-            <FieldLabel htmlFor="phoneNumber">Phone Number *</FieldLabel>
+            <FieldLabel htmlFor="phoneNumber">{t.address.phoneNumber} *</FieldLabel>
             <Input
               id="phoneNumber"
               type="tel"
-              {...register("phoneNumber", { required: "Phone number is required" })}
+              {...register("phoneNumber", { required: t.address.phoneRequired })}
               disabled={isSubmitting}
             />
             <FieldError>{errors.phoneNumber?.message}</FieldError>
@@ -177,11 +179,11 @@ export function AddressForm({
 
       <div className="flex gap-3 justify-end">
         <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting}>
-          Cancel
+          {t.common.cancel}
         </Button>
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {address ? "Update address" : "Save address"}
+          {isSubmitting && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
+          {address ? t.address.update : t.address.save}
         </Button>
       </div>
     </form>

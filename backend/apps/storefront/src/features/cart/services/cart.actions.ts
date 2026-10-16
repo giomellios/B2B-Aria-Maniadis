@@ -10,6 +10,7 @@ import {
 } from "@/features/cart/services/mutations";
 import { updateTag } from "next/cache";
 import { setAuthToken } from "@/lib/api/auth-token";
+import { getRequestT } from "@/lib/i18n/server";
 
 export async function addToCart(variantId: string, quantity: number = 1) {
   try {
@@ -28,7 +29,7 @@ export async function addToCart(variantId: string, quantity: number = 1) {
       return { success: false, error: result.data.addItemToOrder.message };
     }
   } catch {
-    return { success: false, error: "Failed to add item to cart" };
+    return { success: false, error: (await getRequestT()).product.addError };
   }
 }
 

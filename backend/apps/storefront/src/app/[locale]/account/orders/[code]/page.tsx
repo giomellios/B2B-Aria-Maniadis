@@ -1,0 +1,281 @@
+import type { Metadata } from "next";
+import { ChevronLeft } from "@/design-system/icons";
+import { connection } from "next/server";
+import { getOrderDetail } from "@/features/account/server";
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Separator,
+} from "@/design-system";
+import Image from "next/image";
+import { getActiveCustomer } from "@/features/auth/server";
+import { notFound } from "next/navigation";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { localeRedirect } from "@/lib/i18n/redirect";
+import { format } from "@/lib/i18n/dictionaries";
+import { Price } from "@/components/shared/price";
+import { OrderStatusBadge } from "@/features/account";
+import { formatDate } from "@/lib/utils";
+import { Link } from "@/lib/i18n/navigation";
+import { getOrderLineImagePreview } from "@/lib/utils";
+
+type OrderDetailPageProps = PageProps<"/[locale]/account/orders/[code]">;
+
+export async function generateMetadata({ params }: OrderDetailPageProps): Promise<Metadata> {
+  const [{ code }, t] = await Promise.all([params, getT()]);
+  return {
+    title: format(t.account.order.metaTitle, { code }),
+  };
+}
+
+export default async function OrderDetailPage(props: PageProps<"/[locale]/account/orders/[code]">) {
+  await connection();
+  const params = await props.params;
+  const { code } = params;
+  const activeCustomer = await getActiveCustomer();
+  const [locale, dict] = await Promise.all([getLocale(), getT()]);
+  const t = dict.account.order;
+
+  const order = await getOrderDetail(code);
+
+  if (!order) {
+    return localeRedirect("/account/orders");
+  }
+
+  if (order.customer?.id !== activeCustomer?.id) {
+    return notFound();
+  }
+
+  return (
+    <div>
+      <div className="mb-6">
+        <Button variant="ghost" size="sm" asChild className="mb-4">
+          <Link href="/account/orders">
+            <ChevronLeft className="h-4 w-4 mr-2" />
+            {t.back}
+          </Link>
+        </Button>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="display text-3xl md:text-4xl">
+              {format(t.title, { code: order.code })}
+            </h1>
+            <p className="text-muted-foreground mt-1">
+              {format(t.placedOn, { date: formatDate(order.createdAt, "long", locale) })}
+            </p>
+          </div>
+          <OrderStatusBadge state={order.state} />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Left Column - Order Items and Totals */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Order Items */}
+          <Card>
+            <CardHeader>
+              <CardTitle>{t.items}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {order.lines.map((line) => {
+                  const imagePreview = getOrderLineImagePreview(line.productVariant);
+                  return (
+                    <div key={line.id} className="flex gap-4">
+                      <div className="relative h-20 w-20 rounded-md overflow-hidden bg-secondary flex-shrink-0">
+                        {imagePreview && (
+                          <Image
+                            src={imagePreview}
+                            alt={line.productVariant.name}
+                            fill
+                            className="object-cover"
+                          />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <Link
+                          href={`/product/${line.productVariant.product.slug}`}
+                          className="font-medium hover:underline"
+                        >
+                          {line.productVariant.product.name}
+                        </Link>
+                        <p className="text-sm text-muted-foreground">{line.productVariant.name}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {dict.common.sku}: {line.productVariant.sku}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-medium">
+                          <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {dict.common.qty}: {line.quantity} ×{" "}
+                          <Price value={line.unitPriceWithTax} currencyCode={order.currencyCode} />
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Order Totals */}
+          <Card>
+            <CardHeader>
+              <CardTitle>{t.summary}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">{dict.common.subtotal}</span>
+                  <span>
+                    <Price value={order.subTotalWithTax} currencyCode={order.currencyCode} />
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">{dict.common.shipping}</span>
+                  <span>
+                    <Price value={order.shippingWithTax} currencyCode={order.currencyCode} />
+                  </span>
+                </div>
+                {order.discounts.length > 0 && (
+                  <>
+                    {order.discounts.map((discount, idx) => (
+                      <div key={idx} className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">{discount.description}</span>
+                        <span className="text-success">
+                          -
+                          <Price value={discount.amountWithTax} currencyCode={order.currencyCode} />
+                        </span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                <Separator className="my-2" />
+                <div className="flex justify-between font-semibold text-lg">
+                  <span>{dict.common.total}</span>
+                  <span>
+                    <Price value={order.totalWithTax} currencyCode={order.currencyCode} />
+                  </span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Right Column - Shipping, Billing, Payment */}
+        <div className="space-y-6">
+          {/* Shipping Address */}
+          {order.shippingAddress && (
+            <Card>
+              <CardHeader>
+                <CardTitle>{t.shippingAddress}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm">
+                <p className="font-medium">{order.shippingAddress.fullName}</p>
+                {order.shippingAddress.company && <p>{order.shippingAddress.company}</p>}
+                <p>{order.shippingAddress.streetLine1}</p>
+                {order.shippingAddress.streetLine2 && <p>{order.shippingAddress.streetLine2}</p>}
+                <p>
+                  {order.shippingAddress.city}, {order.shippingAddress.province}{" "}
+                  {order.shippingAddress.postalCode}
+                </p>
+                <p>{order.shippingAddress.country}</p>
+                {order.shippingAddress.phoneNumber && (
+                  <p className="mt-2">{order.shippingAddress.phoneNumber}</p>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Billing Address */}
+          {order.billingAddress && (
+            <Card>
+              <CardHeader>
+                <CardTitle>{t.billingAddress}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm">
+                <p className="font-medium">{order.billingAddress.fullName}</p>
+                {order.billingAddress.company && <p>{order.billingAddress.company}</p>}
+                <p>{order.billingAddress.streetLine1}</p>
+                {order.billingAddress.streetLine2 && <p>{order.billingAddress.streetLine2}</p>}
+                <p>
+                  {order.billingAddress.city}, {order.billingAddress.province}{" "}
+                  {order.billingAddress.postalCode}
+                </p>
+                <p>{order.billingAddress.country}</p>
+                {order.billingAddress.phoneNumber && (
+                  <p className="mt-2">{order.billingAddress.phoneNumber}</p>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Payment Information */}
+          {order.payments && order.payments.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle>{t.payment}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {order.payments.map((payment) => (
+                  <div key={payment.id} className="space-y-1 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">{t.method}</span>
+                      <span className="font-medium">{payment.method}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">{t.amount}</span>
+                      <span>
+                        <Price value={payment.amount} currencyCode={order.currencyCode} />
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">{t.status}</span>
+                      <Badge variant="secondary" className="text-xs">
+                        {payment.state}
+                      </Badge>
+                    </div>
+                    {payment.transactionId && (
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">{t.transactionId}</span>
+                        <span className="font-mono text-xs">{payment.transactionId}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Shipping Method */}
+          {order.shippingLines && order.shippingLines.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle>{t.shippingMethod}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {order.shippingLines.map((line, idx) => (
+                  <div key={idx} className="space-y-1 text-sm">
+                    <p className="font-medium">{line.shippingMethod.name}</p>
+                    {line.shippingMethod.description && (
+                      <p className="text-muted-foreground">{line.shippingMethod.description}</p>
+                    )}
+                    <p className="font-medium">
+                      <Price value={line.priceWithTax} currencyCode={order.currencyCode} />
+                    </p>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -9,11 +9,13 @@ import PaymentStep from "@/features/checkout/components/steps/payment-step";
 import ReviewStep from "@/features/checkout/components/steps/review-step";
 import OrderSummary from "@/features/checkout/components/order-summary";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
+import { useT } from "@/lib/i18n/provider";
 
 type CheckoutStep = "contact" | "shipping" | "delivery" | "payment" | "review";
 
 export default function CheckoutFlow() {
   const { order, isGuest } = useCheckout();
+  const t = useT().checkout.steps;
 
   const getStepOrder = (): CheckoutStep[] => {
     if (isGuest) {
@@ -93,21 +95,24 @@ export default function CheckoutFlow() {
           className="space-y-4"
         >
           {isGuest && (
-            <AccordionItem value="contact" className="border rounded-lg px-6">
+            <AccordionItem
+              value="contact"
+              className="rounded-md border bg-card px-6 transition-colors duration-300 data-[state=open]:border-primary/40"
+            >
               <AccordionTrigger className="hover:no-underline">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                    className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold tabular-nums transition-colors duration-300 ${
                       completedSteps.has("contact")
-                        ? "bg-green-500 text-white"
+                        ? "bg-primary text-primary-foreground"
                         : currentStep === "contact"
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground"
+                          ? "border border-primary text-primary"
+                          : "border border-border text-muted-foreground"
                     }`}
                   >
                     {completedSteps.has("contact") ? "✓" : getStepNumber("contact")}
                   </div>
-                  <span className="text-lg font-semibold">Contact Information</span>
+                  <span className="font-serif text-xl">{t.contact}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4">
@@ -118,23 +123,23 @@ export default function CheckoutFlow() {
 
           <AccordionItem
             value="shipping"
-            className="border rounded-lg px-6"
+            className="rounded-md border bg-card px-6 transition-colors duration-300 data-[state=open]:border-primary/40"
             disabled={!canAccessStep("shipping")}
           >
             <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("shipping")}>
               <div className="flex items-center gap-3">
                 <div
-                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold tabular-nums transition-colors duration-300 ${
                     completedSteps.has("shipping")
-                      ? "bg-green-500 text-white"
+                      ? "bg-primary text-primary-foreground"
                       : currentStep === "shipping"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground"
+                        ? "border border-primary text-primary"
+                        : "border border-border text-muted-foreground"
                   }`}
                 >
                   {completedSteps.has("shipping") ? "✓" : getStepNumber("shipping")}
                 </div>
-                <span className="text-lg font-semibold">Shipping Address</span>
+                <span className="font-serif text-xl">{t.shipping}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
@@ -144,23 +149,23 @@ export default function CheckoutFlow() {
 
           <AccordionItem
             value="delivery"
-            className="border rounded-lg px-6"
+            className="rounded-md border bg-card px-6 transition-colors duration-300 data-[state=open]:border-primary/40"
             disabled={!canAccessStep("delivery")}
           >
             <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("delivery")}>
               <div className="flex items-center gap-3">
                 <div
-                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold tabular-nums transition-colors duration-300 ${
                     completedSteps.has("delivery")
-                      ? "bg-green-500 text-white"
+                      ? "bg-primary text-primary-foreground"
                       : currentStep === "delivery"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground"
+                        ? "border border-primary text-primary"
+                        : "border border-border text-muted-foreground"
                   }`}
                 >
                   {completedSteps.has("delivery") ? "✓" : getStepNumber("delivery")}
                 </div>
-                <span className="text-lg font-semibold">Delivery Method</span>
+                <span className="font-serif text-xl">{t.delivery}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
@@ -170,23 +175,23 @@ export default function CheckoutFlow() {
 
           <AccordionItem
             value="payment"
-            className="border rounded-lg px-6"
+            className="rounded-md border bg-card px-6 transition-colors duration-300 data-[state=open]:border-primary/40"
             disabled={!canAccessStep("payment")}
           >
             <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("payment")}>
               <div className="flex items-center gap-3">
                 <div
-                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold tabular-nums transition-colors duration-300 ${
                     completedSteps.has("payment")
-                      ? "bg-green-500 text-white"
+                      ? "bg-primary text-primary-foreground"
                       : currentStep === "payment"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground"
+                        ? "border border-primary text-primary"
+                        : "border border-border text-muted-foreground"
                   }`}
                 >
                   {completedSteps.has("payment") ? "✓" : getStepNumber("payment")}
                 </div>
-                <span className="text-lg font-semibold">Payment Method</span>
+                <span className="font-serif text-xl">{t.payment}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
@@ -196,13 +201,13 @@ export default function CheckoutFlow() {
 
           <AccordionItem
             value="review"
-            className="border rounded-lg px-6"
+            className="rounded-md border bg-card px-6 transition-colors duration-300 data-[state=open]:border-primary/40"
             disabled={!canAccessStep("review")}
           >
             <AccordionTrigger className="hover:no-underline" disabled={!canAccessStep("review")}>
               <div className="flex items-center gap-3">
                 <div
-                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold ${
+                  className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold tabular-nums transition-colors duration-300 ${
                     currentStep === "review"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground"
@@ -210,7 +215,7 @@ export default function CheckoutFlow() {
                 >
                   {getStepNumber("review")}
                 </div>
-                <span className="text-lg font-semibold">Review & Place Order</span>
+                <span className="font-serif text-xl">{t.review}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">

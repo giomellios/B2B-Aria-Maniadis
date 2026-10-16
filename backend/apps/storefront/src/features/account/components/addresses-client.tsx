@@ -27,7 +27,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/design-system";
-import { Plus, MoreVertical, Home, CreditCard, Edit2, Trash2 } from "lucide-react";
+import { Plus, MoreVertical, Home, CreditCard, Edit, Trash } from "@/design-system/icons";
 import type { ComponentProps } from "react";
 import { AddressForm } from "@/features/account/components/address-form";
 import {
@@ -38,6 +38,7 @@ import {
   setDefaultBillingAddress,
 } from "@/features/account/services/address.actions";
 import { useRouter } from "next/navigation";
+import { useT } from "@/lib/i18n/provider";
 
 interface Country {
   id: string;
@@ -67,6 +68,8 @@ interface AddressesClientProps {
 
 export function AddressesClient({ addresses, countries }: AddressesClientProps) {
   const router = useRouter();
+  const { account, common } = useT();
+  const t = account.addresses;
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingAddress, setEditingAddress] = useState<CustomerAddress | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -100,7 +103,7 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
       router.refresh();
     } catch (error) {
       console.error("Error setting default shipping address:", error);
-      alert(`Error: ${error instanceof Error ? error.message : "Unknown error"}`);
+      alert(`${t.saveError}: ${error instanceof Error ? error.message : common.unknownError}`);
     } finally {
       setSettingDefault(null);
     }
@@ -113,7 +116,7 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
       router.refresh();
     } catch (error) {
       console.error("Error setting default billing address:", error);
-      alert(`Error: ${error instanceof Error ? error.message : "Unknown error"}`);
+      alert(`${t.saveError}: ${error instanceof Error ? error.message : common.unknownError}`);
     } finally {
       setSettingDefault(null);
     }
@@ -130,7 +133,7 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
       setAddressToDelete(null);
     } catch (error) {
       console.error("Error deleting address:", error);
-      alert(`Error deleting address: ${error instanceof Error ? error.message : "Unknown error"}`);
+      alert(`${t.deleteError}: ${error instanceof Error ? error.message : common.unknownError}`);
     } finally {
       setIsDeleting(false);
     }
@@ -149,7 +152,7 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
       setEditingAddress(null);
     } catch (error) {
       console.error("Error saving address:", error);
-      alert(`Error saving address: ${error instanceof Error ? error.message : "Unknown error"}`);
+      alert(`${t.saveError}: ${error instanceof Error ? error.message : common.unknownError}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -161,17 +164,17 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
         <div></div>
         <Button onClick={handleAddNew}>
           <Plus className="mr-2 h-4 w-4" />
-          Add new address
+          {t.addNew}
         </Button>
       </div>
 
       {addresses.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-muted-foreground mb-4">No addresses saved yet</p>
+            <p className="text-muted-foreground mb-4">{t.none}</p>
             <Button onClick={handleAddNew}>
               <Plus className="mr-2 h-4 w-4" />
-              Add your first address
+              {t.addFirst}
             </Button>
           </CardContent>
         </Card>
@@ -186,24 +189,24 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
                     {(address.defaultShippingAddress || address.defaultBillingAddress) && (
                       <div className="flex gap-2">
                         {address.defaultShippingAddress && (
-                          <Badge variant="secondary">Default Shipping</Badge>
+                          <Badge variant="secondary">{t.defaultShipping}</Badge>
                         )}
                         {address.defaultBillingAddress && (
-                          <Badge variant="secondary">Default Billing</Badge>
+                          <Badge variant="secondary">{t.defaultBilling}</Badge>
                         )}
                       </div>
                     )}
                   </div>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" aria-label="Address actions">
+                      <Button variant="ghost" size="icon" aria-label={t.actions}>
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem onClick={() => handleEdit(address)}>
-                        <Edit2 className="mr-2 h-4 w-4" />
-                        Edit
+                        <Edit className="mr-2 h-4 w-4" />
+                        {common.edit}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
@@ -214,7 +217,7 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
                         }
                       >
                         <Home className="mr-2 h-4 w-4" />
-                        {address.defaultShippingAddress ? "Default Shipping" : "Set as Shipping"}
+                        {address.defaultShippingAddress ? t.defaultShipping : t.setShipping}
                       </DropdownMenuItem>
                       <DropdownMenuItem
                         onClick={() => handleSetDefaultBilling(address.id)}
@@ -224,15 +227,15 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
                         }
                       >
                         <CreditCard className="mr-2 h-4 w-4" />
-                        {address.defaultBillingAddress ? "Default Billing" : "Set as Billing"}
+                        {address.defaultBillingAddress ? t.defaultBilling : t.setBilling}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
                         onClick={() => handleDelete(address.id)}
                         className="text-destructive focus:text-destructive"
                       >
-                        <Trash2 className="mr-2 h-4 w-4 text-destructive" />
-                        Delete
+                        <Trash className="mr-2 h-4 w-4 text-destructive" />
+                        {common.delete}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -260,12 +263,8 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>{editingAddress ? "Edit address" : "Add new address"}</DialogTitle>
-            <DialogDescription>
-              {editingAddress
-                ? "Update the details of your address"
-                : "Fill in the form below to add a new address"}
-            </DialogDescription>
+            <DialogTitle>{editingAddress ? t.editTitle : t.addNew}</DialogTitle>
+            <DialogDescription>{editingAddress ? t.editText : t.addText}</DialogDescription>
           </DialogHeader>
           <AddressForm
             countries={countries}
@@ -283,15 +282,13 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete this address.
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t.confirmTitle}</AlertDialogTitle>
+            <AlertDialogDescription>{t.confirmText}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel disabled={isDeleting}>{common.cancel}</AlertDialogCancel>
             <AlertDialogAction onClick={confirmDelete} disabled={isDeleting}>
-              {isDeleting ? "Deleting..." : "Delete"}
+              {isDeleting ? common.deleting : common.delete}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

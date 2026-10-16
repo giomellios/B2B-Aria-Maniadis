@@ -35,7 +35,7 @@ export async function createAddress(address: AddressInput) {
     throw new Error("Failed to create address");
   }
 
-  revalidatePath("/account/addresses");
+  revalidatePath("/[locale]/account/addresses", "page");
   return result.data.createCustomerAddress;
 }
 
@@ -65,7 +65,7 @@ export async function updateAddress(address: UpdateAddressInput) {
     throw new Error("Failed to update address");
   }
 
-  revalidatePath("/account/addresses");
+  revalidatePath("/[locale]/account/addresses", "page");
   return result.data.updateCustomerAddress;
 }
 
@@ -76,7 +76,7 @@ export async function deleteAddress(id: string) {
     throw new Error("Failed to delete address");
   }
 
-  revalidatePath("/account/addresses");
+  revalidatePath("/[locale]/account/addresses", "page");
   return result.data.deleteCustomerAddress;
 }
 
@@ -96,7 +96,7 @@ export async function setDefaultShippingAddress(id: string) {
     throw new Error("Failed to set default shipping address");
   }
 
-  revalidatePath("/account/addresses");
+  revalidatePath("/[locale]/account/addresses", "page");
   return result.data.updateCustomerAddress;
 }
 
@@ -116,6 +116,6 @@ export async function setDefaultBillingAddress(id: string) {
     throw new Error("Failed to set default billing address");
   }
 
-  revalidatePath("/account/addresses");
+  revalidatePath("/[locale]/account/addresses", "page");
   return result.data.updateCustomerAddress;
 }
