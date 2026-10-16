@@ -4,7 +4,7 @@ import { useRef, useState, useTransition, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocaleRouter } from "@/lib/i18n/navigation";
 import { useT } from "@/lib/i18n/provider";
-import { Search, X } from "lucide-react";
+import { Search, X } from "@/design-system/icons";
 import { Dialog, DialogContent, DialogTitle, DialogClose, Input, Button } from "@/design-system";
 
 export function SearchDialog() {
@@ -56,7 +56,7 @@ export function SearchDialog() {
         aria-label={t.nav.searchOpen}
         onClick={() => handleOpenChange(true)}
       >
-        <Search className="size-5" strokeWidth={1.5} />
+        <Search className="size-5" />
       </Button>
 
       <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -69,7 +69,7 @@ export function SearchDialog() {
                 ref={inputRef}
                 type="search"
                 placeholder={t.nav.searchPlaceholderLong}
-                className="pl-9 w-full [&::-webkit-search-cancel-button]:hidden"
+                className="pl-9 w-full appearance-none [&::-webkit-search-cancel-button]:hidden"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 onKeyDown={handleKeyDown}

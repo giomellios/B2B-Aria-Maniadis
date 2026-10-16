@@ -1,6 +1,6 @@
 import { getOrderByCode } from "@/features/checkout/services/checkout.service";
 import { Button, Card, CardContent, CardHeader, CardTitle, Separator } from "@/design-system";
-import { Check } from "lucide-react";
+import { Check } from "@/design-system/icons";
 import { Link } from "@/lib/i18n/navigation";
 import { getT } from "@/lib/i18n/server";
 import Image from "next/image";
@@ -26,11 +26,11 @@ export async function OrderConfirmation({
   }
 
   return (
-    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
+    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <span className="mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground animate-in zoom-in-50 fade-in-0 duration-500">
-            <Check className="size-8" strokeWidth={2} />
+            <Check className="size-8" weight="bold" />
           </span>
           <h1 className="display text-4xl md:text-5xl mb-3 animate-in fade-in-0 slide-in-from-bottom-2 fill-mode-both delay-150 duration-500">
             {t.orderConfirmation.title}

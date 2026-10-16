@@ -2,7 +2,7 @@ import { Skeleton } from "@/design-system";
 
 export default function ProductLoading() {
   return (
-    <div className="container mx-auto px-4 py-8 mt-16">
+    <div className="container mx-auto px-4 py-8 mt-header">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         {/* Left Column: Image Carousel Skeleton */}
         <div className="lg:sticky lg:top-20 lg:self-start">

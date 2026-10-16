@@ -5,6 +5,7 @@ import type { Locale } from "@/lib/i18n/config";
 import {
   GetActiveChannelQuery,
   GetAvailableCountriesQuery,
+  GetCategoryTreeQuery,
   GetTopCollectionsQuery,
 } from "@/lib/queries/shared-queries";
 
@@ -79,6 +80,51 @@ export async function getTopCollections(languageCode: Locale) {
   } catch (error) {
     if (isConnectionError(error)) {
       console.warn("Vendure API not reachable — returning empty collections");
+      return [];
+    }
+    throw error;
+  }
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  children: Category[];
+}
+
+/**
+ * The category menu: every public collection, arranged as admins nest and order them in the
+ * Dashboard (hide one with its "Private" switch). Cached for a few minutes so Dashboard changes
+ * show up quickly; revalidate immediately with the "collections" tag.
+ */
+export async function getCategoryTree(languageCode: Locale): Promise<Category[]> {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("collections");
+
+  try {
+    const { data } = await query(GetCategoryTreeQuery, undefined, { languageCode });
+    type Node = {
+      id: string;
+      name: string;
+      slug: string;
+      position: number;
+      children?: Node[] | null;
+    };
+    const toCategories = (nodes: Node[] | null | undefined): Category[] =>
+      [...(nodes ?? [])]
+        .sort((a, b) => a.position - b.position)
+        .map((node) => ({
+          id: node.id,
+          name: node.name,
+          slug: node.slug,
+          children: toCategories(node.children),
+        }));
+    return toCategories(data.collections.items);
+  } catch (error) {
+    if (isConnectionError(error)) {
+      console.warn("Vendure API not reachable — returning empty category menu");
       return [];
     }
     throw error;

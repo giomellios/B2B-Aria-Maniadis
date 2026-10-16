@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
 import { Link } from "@/lib/i18n/navigation";
-import { Award, Leaf, ShieldCheck, ChevronRight } from "lucide-react";
+import { Award, Leaf, ShieldCheck, ChevronRight } from "@/design-system/icons";
 import {
   SITE_NAME,
   truncateDescription,
@@ -102,7 +102,7 @@ export default async function ProductDetailPage({
 
   return (
     <>
-      <div className="container mx-auto mt-16 px-4 pt-6 pb-16 md:pb-24">
+      <div className="container mx-auto mt-header px-4 pt-6 pb-16 md:pb-24">
         {/* Breadcrumb */}
         <nav
           aria-label={t.product.breadcrumb}
@@ -128,7 +128,7 @@ export default async function ProductDetailPage({
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           {/* Left Column: Image Carousel */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="lg:sticky lg:top-sticky lg:self-start">
             <ProductImageCarousel images={productImages} variantImages={variantImages} />
           </div>
 
@@ -164,7 +164,7 @@ export default async function ProductDetailPage({
               key={title}
               className="flex items-start gap-4 border-b border-border py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:first:border-l-0 md:first:pl-0"
             >
-              <Icon className="mt-0.5 size-5 shrink-0 text-primary" strokeWidth={1.5} />
+              <Icon className="mt-0.5 size-5 shrink-0 text-primary" />
               <div className="space-y-1">
                 <h3 className="font-serif text-lg text-foreground">{title}</h3>
                 <p className="text-sm text-muted-foreground">{text}</p>

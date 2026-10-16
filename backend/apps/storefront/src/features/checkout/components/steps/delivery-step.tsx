@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button, RadioGroup, RadioGroupItem, Label, Card } from "@/design-system";
-import { Loader2, Truck } from "lucide-react";
+import { Spinner, Truck } from "@/design-system/icons";
 import { useRouter } from "next/navigation";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
 import { useT } from "@/lib/i18n/provider";
@@ -89,7 +89,7 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
         disabled={!selectedMethodId || submitting}
         className="w-full"
       >
-        {submitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {submitting && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
         {t.checkout.delivery.continue}
       </Button>
     </div>

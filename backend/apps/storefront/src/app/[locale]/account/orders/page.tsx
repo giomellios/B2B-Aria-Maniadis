@@ -25,7 +25,7 @@ import {
   PaginationPrevious,
   Button,
 } from "@/design-system";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRight } from "@/design-system/icons";
 import { Price } from "@/components/shared/price";
 import { OrderStatusBadge } from "@/features/account";
 import { formatDate } from "@/lib/utils";
@@ -83,7 +83,7 @@ export default async function OrdersPage(props: PageProps<"/[locale]/account/ord
                     <TableCell className="font-medium">
                       <Button asChild variant="outline">
                         <Link href={`/account/orders/${order.code}`}>
-                          {order.code} <ArrowRightIcon />
+                          {order.code} <ArrowRight />
                         </Link>
                       </Button>
                     </TableCell>

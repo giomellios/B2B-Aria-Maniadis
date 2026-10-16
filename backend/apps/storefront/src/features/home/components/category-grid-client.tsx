@@ -2,7 +2,8 @@
 
 import { Link } from "@/lib/i18n/navigation";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { useEntranceAnimation } from "@/design-system";
+import { ArrowUpRight } from "@/design-system/icons";
 
 interface Collection {
   id: string;
@@ -32,10 +33,11 @@ const card = {
 };
 
 export function CategoryGridClient({ collections }: CategoryGridClientProps) {
+  const entrance = useEntranceAnimation();
   return (
     <motion.ul
       variants={container}
-      initial="hidden"
+      initial={entrance ? "hidden" : false}
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
       className="grid grid-cols-1 border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3"
@@ -50,10 +52,7 @@ export function CategoryGridClient({ collections }: CategoryGridClientProps) {
               <span className="text-xs tabular-nums text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/60">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <ArrowUpRight
-                className="size-5 text-primary transition-[transform,color] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-foreground"
-                strokeWidth={1.5}
-              />
+              <ArrowUpRight className="size-5 text-primary transition-[transform,color] duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary-foreground" />
             </div>
             <p className="font-serif text-3xl leading-tight text-foreground transition-colors duration-300 group-hover:text-primary-foreground md:text-4xl">
               {collection.name}

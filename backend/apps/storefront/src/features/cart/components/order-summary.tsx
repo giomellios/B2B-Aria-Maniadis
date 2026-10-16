@@ -10,7 +10,7 @@ import {
 export async function OrderSummary({ activeOrder }: { activeOrder: OrderTotalsData }) {
   const t = await getT();
   return (
-    <div className="border rounded-md p-6 bg-card sticky top-24">
+    <div className="border rounded-md p-6 bg-card sticky top-sticky">
       <h2 className="font-serif text-2xl mb-4">{t.cart.summary}</h2>
 
       <OrderTotalsBreakdown

@@ -14,7 +14,7 @@ export default function OrderSummary() {
   const { order } = useCheckout();
   const t = useT();
   return (
-    <Card className="sticky top-24">
+    <Card className="sticky top-sticky">
       <CardHeader>
         <CardTitle>{t.checkout.summary}</CardTitle>
       </CardHeader>

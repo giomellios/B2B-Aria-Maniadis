@@ -2,7 +2,7 @@ import { Skeleton } from "@/design-system";
 
 export default function CheckoutLoading() {
   return (
-    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
+    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
       <Skeleton className="h-9 w-32 mb-8" />
 
       <div className="grid lg:grid-cols-3 gap-8">
@@ -50,7 +50,7 @@ export default function CheckoutLoading() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <div className="border rounded-lg p-6 space-y-4 sticky top-24">
+          <div className="border rounded-lg p-6 space-y-4 sticky top-sticky">
             <Skeleton className="h-6 w-32" />
 
             {/* Order Items */}

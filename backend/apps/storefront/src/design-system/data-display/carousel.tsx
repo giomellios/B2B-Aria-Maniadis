@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useT } from "@/lib/i18n/provider";
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "@/design-system/icons";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/design-system/forms/button";

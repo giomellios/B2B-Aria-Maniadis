@@ -34,3 +34,32 @@ export const GetActiveChannelQuery = graphql(`
     }
   }
 `);
+
+/**
+ * Category menu: top-level collections with two levels of children (private ones are not returned
+ * by the Shop API).
+ */
+export const GetCategoryTreeQuery = graphql(`
+  query GetCategoryTree {
+    collections(options: { topLevelOnly: true, take: 100, sort: { position: ASC } }) {
+      items {
+        id
+        name
+        slug
+        position
+        children {
+          id
+          name
+          slug
+          position
+          children {
+            id
+            name
+            slug
+            position
+          }
+        }
+      }
+    }
+  }
+`);

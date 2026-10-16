@@ -4,7 +4,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { stripLocale } from "@/lib/i18n/config";
 import { useT } from "@/lib/i18n/provider";
 import { usePathname } from "next/navigation";
-import { Package, User, MapPin } from "lucide-react";
+import { Package, User, MapPin } from "@/design-system/icons";
 import { cn } from "@/lib/utils";
 
 /** Account section links; highlights the current page. Render inside <Suspense> (reads the pathname). */
@@ -37,7 +37,7 @@ export function AccountNavList({ pathname }: { pathname: string | null }) {
                 : "text-muted-foreground hover:bg-accent/60 hover:text-foreground"
             )}
           >
-            <item.icon className="size-4" strokeWidth={1.75} />
+            <item.icon className="size-4" />
             {item.label}
             {isActive && (
               <span

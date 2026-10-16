@@ -1,12 +1,11 @@
 import { Suspense } from "react";
 import { getTopCollections } from "@/lib/queries/cached";
-import { getActiveCustomer } from "@/features/auth/server";
 import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
 import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
-import { Instagram, Facebook, Linkedin } from "lucide-react";
+import { Instagram, Facebook, Linkedin } from "@/design-system/icons";
 
 // TODO: Replace # with real Maniadis social profile URLs
 const SOCIAL_LINKS = [
@@ -23,35 +22,6 @@ async function Copyright() {
     <p className="text-xs text-muted-foreground">
       {format(t.footer.copyright, { year: COPYRIGHT_YEAR })}
     </p>
-  );
-}
-
-async function FooterAccountLinks() {
-  const [customer, t] = await Promise.all([getActiveCustomer(), getT()]);
-
-  return (
-    <>
-      {!customer && (
-        <>
-          <li>
-            <Link
-              href="/sign-in"
-              className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              {t.footer.signIn}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/register"
-              className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              {t.footer.register}
-            </Link>
-          </li>
-        </>
-      )}
-    </>
   );
 }
 
@@ -110,9 +80,6 @@ export async function Footer() {
           <div className="space-y-4">
             <p className="eyebrow">{t.footer.account}</p>
             <ul className="space-y-2.5">
-              <Suspense fallback={null}>
-                <FooterAccountLinks />
-              </Suspense>
               <li>
                 <Link
                   href="/account/orders"
@@ -152,7 +119,7 @@ export async function Footer() {
                 rel="noopener noreferrer"
                 className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-[color,border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
               >
-                <Icon className="w-4 h-4" strokeWidth={1.5} />
+                <Icon className="w-4 h-4" />
               </a>
             ))}
           </div>

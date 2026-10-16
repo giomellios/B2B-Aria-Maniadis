@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/design-system";
-import { Tag } from "lucide-react";
+import { Tag } from "@/design-system/icons";
 import { applyPromotionCode, removePromotionCode } from "@/features/cart/services/cart.actions";
 import { getT } from "@/lib/i18n/server";
 

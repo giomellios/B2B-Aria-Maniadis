@@ -22,7 +22,7 @@ import {
   FieldGroup,
 } from "@/design-system";
 import { useForm, Controller } from "react-hook-form";
-import { Loader2 } from "lucide-react";
+import { Spinner } from "@/design-system/icons";
 import { useRouter } from "next/navigation";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
 import {
@@ -268,7 +268,7 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
             </div>
 
             <Button type="submit" disabled={loading} className="w-full mt-4">
-              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {loading && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
               {t.common.continue}
             </Button>
           </FieldGroup>
@@ -329,7 +329,7 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
               disabled={!selectedAddressId || loading}
               className="flex-1"
             >
-              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {loading && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
               {a.continueWithSelected}
             </Button>
 
@@ -427,7 +427,7 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
                       {t.common.cancel}
                     </Button>
                     <Button type="submit" disabled={saving}>
-                      {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      {saving && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
                       {t.address.save}
                     </Button>
                   </DialogFooter>
@@ -520,7 +520,7 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
 
               <DialogFooter>
                 <Button type="submit" disabled={saving} className="w-full">
-                  {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  {saving && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
                   {t.address.save}
                 </Button>
               </DialogFooter>

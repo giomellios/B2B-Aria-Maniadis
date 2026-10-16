@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "@/design-system/icons";
 import { Button } from "@/design-system";
 import { useT } from "@/lib/i18n/provider";
 import { format } from "@/lib/i18n/dictionaries";

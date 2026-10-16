@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag } from "@/design-system/icons";
 import { Button } from "@/design-system";
 import { Link } from "@/lib/i18n/navigation";
 import { useT } from "@/lib/i18n/provider";
@@ -14,10 +14,7 @@ export function CartIcon({ cartItemCount }: CartIconProps) {
   return (
     <Button variant="ghost" size="icon" asChild className="group relative">
       <Link href="/cart">
-        <ShoppingBag
-          className="size-5 transition-transform duration-300 ease-out group-hover:-translate-y-px"
-          strokeWidth={1.5}
-        />
+        <ShoppingBag className="size-5 transition-transform duration-300 ease-out group-hover:-translate-y-px" />
         {cartItemCount > 0 && (
           // Keyed on the count so the pop replays whenever items are added
           <span

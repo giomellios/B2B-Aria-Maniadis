@@ -11,10 +11,10 @@ import {
   PackageCheck,
   Package,
   XCircle,
-  type LucideIcon,
-} from "lucide-react";
+  type Icon as IconComponent,
+} from "@/design-system/icons";
 
-const STATUS_CONFIG: Record<string, { color: string; icon: LucideIcon }> = {
+const STATUS_CONFIG: Record<string, { color: string; icon: IconComponent }> = {
   AddingItems: {
     color: "border-border bg-secondary text-muted-foreground",
     icon: ShoppingCart,

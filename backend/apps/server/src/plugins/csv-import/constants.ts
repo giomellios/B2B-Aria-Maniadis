@@ -17,6 +17,15 @@ export const COLOR_GROUP_PREFIX = "color-";
 export const CHARACTERISTIC_GROUP_PREFIX = "characteristic-";
 
 /**
+ * Shared facets the import tags every variant with (one value per ERP colour / characteristic), so
+ * the storefront search can filter by them across products. Admins may rename/translate the values.
+ */
+export const COLOR_FACET_CODE = "color";
+export const CHARACTERISTIC_FACET_CODE = "characteristic";
+/** Product-level facet: the souvenir destination named in the product name (destinations.ts). */
+export const DESTINATION_FACET_CODE = "destination";
+
+/**
  * Shared groups that one import (Oct 2026) used by mistake. Still recognised so products that are
  * still attached to them can be updated, but never assigned to new products.
  */

@@ -4,8 +4,9 @@ import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import { useT } from "@/lib/i18n/provider";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/design-system";
+import { ArrowRight, ArrowUpRight, BookOpen } from "@/design-system/icons";
+import { Button, useEntranceAnimation } from "@/design-system";
+import { DIGITAL_CATALOGUE_URL } from "@/lib/config/links";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -19,6 +20,7 @@ const rise = {
 };
 
 export function HeroSection() {
+  const entrance = useEntranceAnimation();
   const hero = useT().home.hero;
   // TODO: Confirm these facts with Maniadis (founding year is taken from the crest)
   const facts = [
@@ -28,14 +30,14 @@ export function HeroSection() {
   ];
 
   return (
-    <section aria-label={hero.aria} className="border-b border-border pt-16">
+    <section aria-label={hero.aria} className="border-b border-border pt-header">
       <div className="container mx-auto px-4">
         <div className="grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <div className="space-y-8">
             <motion.p
               variants={rise}
               custom={0.05}
-              initial="hidden"
+              initial={entrance ? "hidden" : false}
               animate="show"
               className="eyebrow"
             >
@@ -46,7 +48,7 @@ export function HeroSection() {
             <motion.h1
               variants={rise}
               custom={0.15}
-              initial="hidden"
+              initial={entrance ? "hidden" : false}
               animate="show"
               className="display text-[2.75rem] leading-[1.05] sm:text-6xl lg:text-7xl"
             >
@@ -59,7 +61,7 @@ export function HeroSection() {
             <motion.p
               variants={rise}
               custom={0.3}
-              initial="hidden"
+              initial={entrance ? "hidden" : false}
               animate="show"
               className="max-w-md text-base leading-relaxed text-muted-foreground md:text-lg"
             >
@@ -69,7 +71,7 @@ export function HeroSection() {
             <motion.div
               variants={rise}
               custom={0.42}
-              initial="hidden"
+              initial={entrance ? "hidden" : false}
               animate="show"
               className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-2"
             >
@@ -78,6 +80,18 @@ export function HeroSection() {
                   {hero.browse}
                   <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="group">
+                <a
+                  href={DIGITAL_CATALOGUE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={hero.digitalCatalogueAria}
+                >
+                  <BookOpen />
+                  {hero.digitalCatalogue}
+                  <ArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
               </Button>
               <Link
                 href="/register"
@@ -90,7 +104,7 @@ export function HeroSection() {
 
           {/* Crest panel */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
+            initial={entrance ? { opacity: 0, scale: 0.97 } : false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: EASE, delay: 0.1 }}
             className="relative mx-auto w-full max-w-sm lg:max-w-none"
@@ -115,7 +129,7 @@ export function HeroSection() {
 
         {/* Facts strip */}
         <motion.dl
-          initial="hidden"
+          initial={entrance ? "hidden" : false}
           animate="show"
           variants={{
             hidden: {},

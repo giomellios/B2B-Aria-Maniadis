@@ -7,4 +7,3 @@ export { ProductImageCarousel } from "@/features/catalog/components/product-imag
 export { ProductInfo } from "@/features/catalog/components/product-info";
 export { SearchResultsSkeleton } from "@/features/catalog/components/search-results-skeleton";
 export { SearchTerm, SearchTermSkeleton } from "@/features/catalog/components/search-term";
-export { getCurrentPage } from "@/features/catalog/utils/search-helpers";

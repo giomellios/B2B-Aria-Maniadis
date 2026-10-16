@@ -27,7 +27,7 @@ export async function generateMetadata({
 
 export default async function SearchPage({ searchParams }: PageProps<"/[locale]/search">) {
   return (
-    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
+    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
       <Suspense fallback={<SearchTermSkeleton />}>
         <SearchTerm searchParams={searchParams} />
       </Suspense>

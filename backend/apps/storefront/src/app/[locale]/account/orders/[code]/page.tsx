@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft } from "@/design-system/icons";
 import { connection } from "next/server";
 import { getOrderDetail } from "@/features/account/server";
 import {

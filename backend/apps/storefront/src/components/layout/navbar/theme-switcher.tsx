@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun, Monitor } from "@/design-system/icons";
 import {
   Button,
   DropdownMenu,
@@ -27,7 +27,7 @@ export function ThemeSwitcher() {
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" disabled>
-        <Sun className="size-5" strokeWidth={1.5} />
+        <Sun className="size-5" />
         <span className="sr-only">{t.nav.toggleTheme}</span>
       </Button>
     );
@@ -37,14 +37,8 @@ export function ThemeSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Sun
-            className="size-5 rotate-0 scale-100 transition-transform duration-500 ease-out dark:-rotate-90 dark:scale-0"
-            strokeWidth={1.5}
-          />
-          <Moon
-            className="absolute size-5 rotate-90 scale-0 transition-transform duration-500 ease-out dark:rotate-0 dark:scale-100"
-            strokeWidth={1.5}
-          />
+          <Sun className="size-5 rotate-0 scale-100 transition-transform duration-500 ease-out dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute size-5 rotate-90 scale-0 transition-transform duration-500 ease-out dark:rotate-0 dark:scale-100" />
           <span className="sr-only">{t.nav.toggleTheme}</span>
         </Button>
       </DropdownMenuTrigger>

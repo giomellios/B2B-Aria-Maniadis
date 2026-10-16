@@ -2,12 +2,17 @@ import { LogicalOperator } from "@vendure/common/lib/generated-types";
 import { RequestContext } from "@vendure/core";
 import { SearchIndexItem } from "@vendure/core/dist/plugin/default-search-plugin/entities/search-index-item.entity";
 // The default search plugin's SearchInput: the generated type plus `inStock`.
-import { SearchInput } from "@vendure/core/dist/plugin/default-search-plugin/types";
+import { SearchInput as DefaultSearchInput } from "@vendure/core/dist/plugin/default-search-plugin/types";
 import { Brackets, SelectQueryBuilder } from "typeorm";
 import {
   applyLanguageConstraints,
   createPlaceholderFromId,
 } from "@vendure/core/dist/plugin/default-search-plugin/search-strategy/search-strategy-utils";
+
+/** Plus `priceRangeWithTax`, added to the Shop API by B2BSearchPlugin. */
+type SearchInput = DefaultSearchInput & {
+  priceRangeWithTax?: { min?: number | null; max?: number | null } | null;
+};
 
 // Use require() to get the base class so TypeScript does not enforce the
 // 'private' access modifier on applyTermAndFilters, allowing us to override it.
@@ -26,6 +31,9 @@ const {
  * fragments via ILIKE. The default strategy uses PostgreSQL full-text search
  * (to_tsvector / to_tsquery) which tokenises e.g. "A1034" as a single token,
  * preventing suffix/contains matches. Typing "1034" now finds SKU "A1034".
+ *
+ * Also applies the optional `priceRangeWithTax` filter (B2BSearchPlugin), on
+ * the variant price, so a grouped product matches if any variant is in range.
  *
  * All other behaviour (facets, collections, stock, pagination, sorting) is
  * identical to the parent — we only add one OR clause inside the existing
@@ -102,6 +110,15 @@ export class B2BPostgresSearchStrategy extends PostgresSearchStrategy {
       } else {
         qb.andWhere("si.inStock = :inStock", { inStock: input.inStock });
       }
+    }
+
+    // B2B: price range filter (minor units, tax included)
+    const priceRange = input.priceRangeWithTax;
+    if (priceRange?.min != null) {
+      qb.andWhere("si.priceWithTax >= :priceMin", { priceMin: priceRange.min });
+    }
+    if (priceRange?.max != null) {
+      qb.andWhere("si.priceWithTax <= :priceMax", { priceMax: priceRange.max });
     }
 
     if (facetValueIds?.length) {

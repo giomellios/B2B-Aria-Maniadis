@@ -2,7 +2,7 @@
 
 import { Button, Input, Field, FieldLabel, FieldError, FieldGroup } from "@/design-system";
 import { useForm, Controller } from "react-hook-form";
-import { Loader2 } from "lucide-react";
+import { Spinner } from "@/design-system/icons";
 import { CountrySelect } from "@/components/shared/country-select";
 import { useT } from "@/lib/i18n/provider";
 
@@ -182,7 +182,7 @@ export function AddressForm({
           {t.common.cancel}
         </Button>
         <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {isSubmitting && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
           {address ? t.address.update : t.address.save}
         </Button>
       </div>

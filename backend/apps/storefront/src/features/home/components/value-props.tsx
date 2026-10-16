@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Tag, RefreshCw, Truck } from "lucide-react";
-import { RevealHeading } from "@/design-system";
+import { Layers, Tag, Refresh, Truck } from "@/design-system/icons";
+import { RevealHeading, useEntranceAnimation } from "@/design-system";
 import { useT } from "@/lib/i18n/provider";
 
 const container = {
@@ -20,12 +20,13 @@ const item = {
 };
 
 export function ValueProps() {
+  const entrance = useEntranceAnimation();
   const t = useT().home.values;
   // TODO: Update copy with real Maniadis messaging when approved
   const props = [
     { icon: Layers, title: t.selection, description: t.selectionText },
     { icon: Tag, title: t.pricing, description: t.pricingText },
-    { icon: RefreshCw, title: t.restocking, description: t.restockingText },
+    { icon: Refresh, title: t.restocking, description: t.restockingText },
     { icon: Truck, title: t.delivery, description: t.deliveryText },
   ];
 
@@ -41,7 +42,7 @@ export function ValueProps() {
         </div>
         <motion.div
           variants={container}
-          initial="hidden"
+          initial={entrance ? "hidden" : false}
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0"
@@ -54,7 +55,7 @@ export function ValueProps() {
             >
               <Icon
                 className="size-6 text-primary transition-transform duration-500 ease-out group-hover:-translate-y-0.5"
-                strokeWidth={1.25}
+                weight="light"
               />
               <div className="space-y-2">
                 <p className="font-serif text-xl text-foreground">{title}</p>

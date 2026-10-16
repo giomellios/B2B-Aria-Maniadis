@@ -7,15 +7,18 @@ import { readFragment } from "@/lib/api/graphql";
 import {
   GetCollectionProductsQuery,
   GetProductDetailQuery,
+  SearchFilterOptionsQuery,
   SearchProductsQuery,
 } from "@/features/catalog/services/queries";
 import { ProductCardFragment } from "@/features/catalog/services/fragments";
 import { getProductCardImageFallbacks } from "@/features/catalog/services/product-card-images.service";
-import { buildSearchInput } from "@/features/catalog/utils/search-helpers";
+import { buildBaseSearchInput, buildSearchInput } from "@/features/catalog/utils/search-helpers";
+
+type SearchParams = { [key: string]: string | string[] | undefined };
 
 export async function getCollectionProducts(
   slug: string,
-  searchParams: { [key: string]: string | string[] | undefined },
+  searchParams: SearchParams,
   languageCode: Locale
 ) {
   "use cache";
@@ -130,10 +133,7 @@ export async function getRelatedProducts(
  * Search results for the /search page. Search is anonymous (no auth token), so results are
  * shared across visitors and revalidated every minute.
  */
-export async function searchProducts(
-  searchParams: { page?: string; q?: string },
-  languageCode: Locale
-) {
+export async function searchProducts(searchParams: SearchParams, languageCode: Locale) {
   "use cache";
   cacheLife("minutes");
   cacheTag("search");
@@ -143,4 +143,30 @@ export async function searchProducts(
     { input: buildSearchInput({ searchParams }) },
     { languageCode }
   );
+}
+
+/**
+ * Options for the filter sidebar (facet values, categories, price bounds) for what is being
+ * browsed — a search term and/or a collection — independent of the selected filters.
+ */
+export async function getSearchFilterOptions(
+  searchParams: SearchParams,
+  languageCode: Locale,
+  collectionSlug?: string
+) {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag(collectionSlug ? `collection-${collectionSlug}` : "search");
+
+  const base = buildBaseSearchInput({ searchParams, collectionSlug });
+  const result = await query(
+    SearchFilterOptionsQuery,
+    {
+      input: { ...base, take: 0, groupByProduct: true },
+      cheapestInput: { ...base, take: 1, groupByProduct: false, sort: { price: "ASC" } },
+      priciestInput: { ...base, take: 1, groupByProduct: false, sort: { price: "DESC" } },
+    },
+    { languageCode }
+  );
+  return result.data;
 }

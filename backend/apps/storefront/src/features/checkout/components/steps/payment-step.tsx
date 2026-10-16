@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, RadioGroup, RadioGroupItem, Label, Card } from "@/design-system";
-import { CreditCard } from "lucide-react";
+import { CreditCard } from "@/design-system/icons";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
 import { useT } from "@/lib/i18n/provider";
 

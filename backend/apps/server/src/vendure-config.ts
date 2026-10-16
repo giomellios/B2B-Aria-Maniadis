@@ -23,6 +23,8 @@ import { CustomerApprovalPlugin } from "./plugins/customer-approval/customer-app
 import { TranslationSyncPlugin } from "./plugins/translation-sync/translation-sync.plugin";
 import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
 import { B2BPostgresSearchStrategy } from "./plugins/search/b2b-search-strategy";
+import { B2BSearchPlugin } from "./plugins/search/b2b-search.plugin";
+import { CategoryFiltersPlugin } from "./plugins/category-filters/category-filters.plugin";
 import "dotenv/config";
 import path from "path";
 
@@ -205,6 +207,8 @@ export const config: VendureConfig = {
       indexStockStatus: true,
       searchStrategy: new B2BPostgresSearchStrategy() as unknown as SearchStrategy,
     }),
+    B2BSearchPlugin,
+    CategoryFiltersPlugin,
     EmailPlugin.init(emailPluginOptions),
     DashboardPlugin.init({
       route: "dashboard",

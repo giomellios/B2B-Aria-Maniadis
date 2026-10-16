@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { RevealHeading } from "@/design-system";
+import { RevealHeading, useEntranceAnimation } from "@/design-system";
 import { useT } from "@/lib/i18n/provider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function HowItWorks() {
+  const entrance = useEntranceAnimation();
   const t = useT().home.steps;
   // TODO: Confirm the actual ordering/approval process with Maniadis and update step descriptions accordingly
   const steps = [
@@ -24,7 +25,7 @@ export function HowItWorks() {
         </div>
 
         <motion.ol
-          initial="hidden"
+          initial={entrance ? "hidden" : false}
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15 } } }}

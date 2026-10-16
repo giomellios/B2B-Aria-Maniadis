@@ -26,6 +26,7 @@ export * from "@/design-system/forms/select";
 
 // motion
 export * from "@/design-system/motion/reveal-heading";
+export * from "@/design-system/motion/use-entrance-animation";
 
 // navigation
 export * from "@/design-system/navigation/navigation-menu";

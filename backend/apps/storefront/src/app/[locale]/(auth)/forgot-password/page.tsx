@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ForgotPasswordPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 pt-24 pb-16">
+    <div className="flex min-h-screen items-center justify-center px-4 pt-sticky pb-16">
       <div className="w-full max-w-md animate-in fade-in-0 slide-in-from-bottom-3 duration-500 ease-out">
         <ForgotPasswordForm />
       </div>

@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import { User } from "@/design-system/icons";
 import {
   Button,
   DropdownMenu,
@@ -27,7 +27,7 @@ export async function NavbarUser() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="gap-2 px-2">
-          <User className="size-5" strokeWidth={1.5} />
+          <User className="size-5" />
           <span className="hidden sm:inline">{customer.firstName}</span>
         </Button>
       </DropdownMenuTrigger>

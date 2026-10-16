@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { PlusIcon } from "lucide-react";
+import { Plus } from "@/design-system/icons";
 
 import { cn } from "@/lib/utils";
 
@@ -39,7 +39,7 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <PlusIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-1 transition-transform duration-300 ease-out" />
+        <Plus className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-1 transition-transform duration-300 ease-out" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );

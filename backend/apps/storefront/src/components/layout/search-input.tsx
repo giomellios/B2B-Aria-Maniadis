@@ -5,7 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useLocaleRouter } from "@/lib/i18n/navigation";
 import { stripLocale } from "@/lib/i18n/config";
 import { useT } from "@/lib/i18n/provider";
-import { Search, X } from "lucide-react";
+import { Search, X } from "@/design-system/icons";
 import { Input } from "@/design-system";
 
 export function SearchInput() {
@@ -63,7 +63,7 @@ export function SearchInput() {
         ref={inputRef}
         type="search"
         placeholder={t.nav.searchPlaceholder}
-        className="h-9 pl-9 pr-8 w-56 bg-secondary/60 border-transparent hover:border-input focus-visible:bg-card focus-visible:w-72 xl:w-64 xl:focus-visible:w-80 transition-[width,background-color,border-color,box-shadow] duration-300 [&::-webkit-search-cancel-button]:hidden"
+        className="h-9 pl-9 pr-8 w-56 appearance-none rounded-full bg-secondary/60 border-transparent hover:border-input focus-visible:bg-card focus-visible:w-72 xl:w-64 xl:focus-visible:w-80 transition-[width,background-color,border-color,box-shadow] duration-300 [&::-webkit-search-cancel-button]:hidden"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -73,7 +73,7 @@ export function SearchInput() {
         <button
           type="button"
           onClick={handleClear}
-          className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-0.5 text-muted-foreground hover:text-foreground transition-colors"
+          className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-0.5 text-muted-foreground hover:text-foreground transition-colors"
           aria-label={t.nav.searchClear}
         >
           <X className="h-3.5 w-3.5" />

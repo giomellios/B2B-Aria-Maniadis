@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/design-system";
-import { Loader2, MapPin, Truck, CreditCard, Edit, Mail } from "lucide-react";
+import { Spinner, MapPin, Truck, CreditCard, Edit, Mail } from "@/design-system/icons";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
 import { placeOrder as placeOrderAction } from "@/features/checkout/services/checkout.actions";
 import { Price } from "@/components/shared/price";
@@ -163,7 +163,7 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
         size="lg"
         className="w-full"
       >
-        {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {loading && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
         {r.placeOrder}
       </Button>
 

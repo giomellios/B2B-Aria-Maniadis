@@ -3,15 +3,16 @@
 import { Link } from "@/lib/i18n/navigation";
 import { useT } from "@/lib/i18n/provider";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/design-system";
+import { ArrowRight } from "@/design-system/icons";
+import { Button, useEntranceAnimation } from "@/design-system";
 
 export function CtaBannerContent({ isLoggedIn }: { isLoggedIn: boolean }) {
+  const entrance = useEntranceAnimation();
   const t = useT().home.cta;
   return (
     <section className="bg-primary text-primary-foreground dark:bg-card dark:text-foreground">
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={entrance ? { opacity: 0, y: 24 } : false}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}

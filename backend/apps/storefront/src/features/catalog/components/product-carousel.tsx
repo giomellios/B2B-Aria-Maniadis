@@ -7,6 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  useEntranceAnimation,
 } from "@/design-system";
 import { FragmentOf, readFragment } from "@/lib/api/graphql";
 import { ProductCardFragment } from "@/features/catalog/services/fragments";
@@ -26,11 +27,12 @@ export function ProductCarousel({
   products,
   fallbackImagesBySlug,
 }: ProductCarouselClientProps) {
+  const entrance = useEntranceAnimation();
   const id = useId();
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 24 }}
+      initial={entrance ? { opacity: 0, y: 24 } : false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}

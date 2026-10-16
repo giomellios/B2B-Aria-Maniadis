@@ -124,6 +124,17 @@ export const GetCollectionProductsQuery = graphql(
           id
           preview
         }
+        breadcrumbs {
+          id
+          name
+          slug
+        }
+        children {
+          id
+          name
+          slug
+          position
+        }
       }
       search(input: $input) {
         totalItems
@@ -135,3 +146,62 @@ export const GetCollectionProductsQuery = graphql(
   `,
   [ProductCardFragment]
 );
+
+/**
+ * Everything the filter sidebar offers for the products being browsed (see buildBaseSearchInput):
+ * facet values and categories with product counts, plus the cheapest / priciest variant price
+ * for the price bands.
+ */
+export const SearchFilterOptionsQuery = graphql(`
+  query SearchFilterOptions(
+    $input: SearchInput!
+    $cheapestInput: SearchInput!
+    $priciestInput: SearchInput!
+  ) {
+    search(input: $input) {
+      totalItems
+      facetValues {
+        count
+        facetValue {
+          id
+          code
+          name
+          facet {
+            id
+            code
+            name
+          }
+        }
+      }
+      collections {
+        count
+        collection {
+          id
+          name
+          slug
+        }
+      }
+    }
+    cheapest: search(input: $cheapestInput) {
+      items {
+        currencyCode
+        priceWithTax {
+          __typename
+          ... on SinglePrice {
+            value
+          }
+        }
+      }
+    }
+    priciest: search(input: $priciestInput) {
+      items {
+        priceWithTax {
+          __typename
+          ... on SinglePrice {
+            value
+          }
+        }
+      }
+    }
+  }
+`);

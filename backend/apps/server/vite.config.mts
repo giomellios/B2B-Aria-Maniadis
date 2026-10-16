@@ -6,6 +6,8 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   base: "/dashboard",
+  // Our own public dir (instead of the package's) so the Dashboard uses the ARIA favicon.
+  publicDir: join(__dirname, "dashboard-public"),
   build: {
     outDir: join(__dirname, "dist/dashboard"),
     rollupOptions: {

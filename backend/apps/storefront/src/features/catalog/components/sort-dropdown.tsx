@@ -22,21 +22,30 @@ export function SortDropdown() {
     const params = new URLSearchParams(searchParams);
     params.set("sort", value);
     params.delete("page"); // Reset to page 1 when sort changes
-    router.push(`${pathname}?${params.toString()}`);
+    params.delete("more");
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   return (
-    <Select value={currentSort} onValueChange={handleSortChange}>
-      <SelectTrigger className="w-[190px] border-transparent bg-transparent hover:border-input">
-        <SelectValue placeholder={t.sortBy} />
-      </SelectTrigger>
-      <SelectContent>
-        {sortOptions.map((option) => (
-          <SelectItem key={option.value} value={option.value}>
-            {option.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <div className="flex items-center gap-2">
+      <span className="hidden text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:inline">
+        {t.sortBy}
+      </span>
+      <Select value={currentSort} onValueChange={handleSortChange}>
+        <SelectTrigger
+          aria-label={t.sortBy}
+          className="h-9 w-[190px] text-xs font-semibold uppercase tracking-[0.08em]"
+        >
+          <SelectValue placeholder={t.sortBy} />
+        </SelectTrigger>
+        <SelectContent>
+          {sortOptions.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }

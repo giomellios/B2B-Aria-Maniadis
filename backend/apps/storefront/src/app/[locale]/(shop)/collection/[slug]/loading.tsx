@@ -2,7 +2,7 @@ import { ProductGridSkeleton } from "@/features/catalog";
 
 export default function CollectionLoading() {
   return (
-    <div className="container mx-auto px-4 py-8 mt-16">
+    <div className="container mx-auto px-4 py-8 mt-header">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Filters Sidebar Skeleton */}
         <aside className="lg:col-span-1">

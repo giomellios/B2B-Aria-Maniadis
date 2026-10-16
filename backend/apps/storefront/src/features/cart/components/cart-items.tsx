@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import { getT } from "@/lib/i18n/server";
 import { Button } from "@/design-system";
-import { Minus, Plus, ShoppingBag, X } from "lucide-react";
+import { Minus, Plus, ShoppingBag, X } from "@/design-system/icons";
 import { Price } from "@/components/shared/price";
 import { removeFromCart, adjustQuantity } from "@/features/cart/services/cart.actions";
 
@@ -40,7 +40,7 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
     return (
       <div className="container mx-auto px-4 py-16">
         <div className="text-center">
-          <ShoppingBag className="mx-auto mb-6 size-10 text-primary" strokeWidth={1.25} />
+          <ShoppingBag className="mx-auto mb-6 size-10 text-primary" weight="light" />
           <h2 className="display text-4xl md:text-5xl mb-4">{t.cart.emptyTitle}</h2>
           <p className="text-muted-foreground mb-8">{t.cart.emptyText}</p>
           <Button asChild>

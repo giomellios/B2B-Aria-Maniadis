@@ -16,7 +16,7 @@ export default async function OrderConfirmationPage(
   return (
     <Suspense
       fallback={
-        <div className="container mx-auto mt-16 max-w-3xl space-y-6 px-4 pt-16">
+        <div className="container mx-auto mt-header max-w-3xl space-y-6 px-4 pt-16">
           <Skeleton className="mx-auto size-16 rounded-full" />
           <Skeleton className="mx-auto h-12 w-80" />
           <Skeleton className="h-64 w-full" />

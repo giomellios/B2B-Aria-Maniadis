@@ -12,7 +12,7 @@ import {
   AlertDescription,
 } from "@/design-system";
 import { useForm } from "react-hook-form";
-import { Loader2, AlertCircle } from "lucide-react";
+import { Spinner, AlertCircle } from "@/design-system/icons";
 import { useRouter } from "next/navigation";
 import { Link } from "@/lib/i18n/navigation";
 import { useT } from "@/lib/i18n/provider";
@@ -153,7 +153,7 @@ export default function ContactStep({ onComplete }: ContactStepProps) {
           </div>
 
           <Button type="submit" disabled={loading} className="w-full mt-4">
-            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {loading && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
             {t.common.continue}
           </Button>
         </FieldGroup>

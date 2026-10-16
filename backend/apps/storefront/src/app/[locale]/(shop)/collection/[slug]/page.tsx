@@ -7,8 +7,9 @@ import {
   CollectionHeader,
   getCollectionMetadata,
   getCollectionProducts,
+  getSearchFilterOptions,
 } from "@/features/catalog/server";
-import { FacetFilters, ProductGridSkeleton, getCurrentPage } from "@/features/catalog";
+import { FacetFilters, ProductGridSkeleton } from "@/features/catalog";
 import {
   SITE_NAME,
   truncateDescription,
@@ -62,31 +63,35 @@ export default async function CollectionPage({
 }: PageProps<"/[locale]/collection/[slug]">) {
   const { slug } = await params;
   const searchParamsResolved = await searchParams;
-  const page = getCurrentPage(searchParamsResolved);
 
-  const productDataPromise = getCollectionProducts(slug, searchParamsResolved, await getLocale());
+  const locale = await getLocale();
+  const productDataPromise = getCollectionProducts(slug, searchParamsResolved, locale);
+  const filterOptionsPromise = getSearchFilterOptions(searchParamsResolved, locale, slug);
 
   return (
-    <div className="container mx-auto mt-16 px-4 pt-12 pb-20 md:pt-16">
+    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
       <Suspense
         fallback={<div className="mb-10 h-40 animate-pulse rounded-md bg-foreground/[0.04]" />}
       >
         <CollectionHeader slug={slug} />
       </Suspense>
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[220px_1fr] lg:gap-12">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[260px_1fr] lg:gap-12">
         {/* Filters Sidebar */}
-        <aside className="lg:sticky lg:top-24 lg:self-start">
+        <aside className="lg:sticky lg:top-sticky lg:max-h-[calc(100vh-var(--spacing-sticky)-1rem)] lg:self-start lg:overflow-y-auto lg:pr-2">
           <Suspense
             fallback={<div className="h-64 animate-pulse rounded-md bg-foreground/[0.04]" />}
           >
-            <FacetFilters productDataPromise={productDataPromise} />
+            <FacetFilters filterOptionsPromise={filterOptionsPromise} showCategories={false} />
           </Suspense>
         </aside>
 
         {/* Product Grid */}
-        <div>
+        <div className="space-y-6">
           <Suspense fallback={<ProductGridSkeleton />}>
-            <ProductGrid productDataPromise={productDataPromise} currentPage={page} take={12} />
+            <ProductGrid
+              productDataPromise={productDataPromise}
+              searchParams={searchParamsResolved}
+            />
           </Suspense>
         </div>
       </div>

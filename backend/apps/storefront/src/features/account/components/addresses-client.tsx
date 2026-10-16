@@ -27,7 +27,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/design-system";
-import { Plus, MoreVertical, Home, CreditCard, Edit2, Trash2 } from "lucide-react";
+import { Plus, MoreVertical, Home, CreditCard, Edit, Trash } from "@/design-system/icons";
 import type { ComponentProps } from "react";
 import { AddressForm } from "@/features/account/components/address-form";
 import {
@@ -205,7 +205,7 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem onClick={() => handleEdit(address)}>
-                        <Edit2 className="mr-2 h-4 w-4" />
+                        <Edit className="mr-2 h-4 w-4" />
                         {common.edit}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
@@ -234,7 +234,7 @@ export function AddressesClient({ addresses, countries }: AddressesClientProps) 
                         onClick={() => handleDelete(address.id)}
                         className="text-destructive focus:text-destructive"
                       >
-                        <Trash2 className="mr-2 h-4 w-4 text-destructive" />
+                        <Trash className="mr-2 h-4 w-4 text-destructive" />
                         {common.delete}
                       </DropdownMenuItem>
                     </DropdownMenuContent>

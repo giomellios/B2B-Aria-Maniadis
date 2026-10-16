@@ -3,7 +3,7 @@
 import { useState, useMemo, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button, Input, Label, RadioGroup, RadioGroupItem } from "@/design-system";
-import { ShoppingBag, Check, Loader2, Minus, Plus } from "lucide-react";
+import { ShoppingBag, Check, Spinner, Minus, Plus } from "@/design-system/icons";
 import { addToCart } from "@/features/cart";
 import { toast } from "sonner";
 import { Price } from "@/components/shared/price";
@@ -292,9 +292,9 @@ export function ProductInfo({ product, searchParams }: ProductInfoProps) {
           ) : (
             <span key="add" className="flex items-center gap-2 animate-in fade-in-0 duration-300">
               {isPending ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
+                <Spinner className="h-5 w-5 animate-spin" />
               ) : (
-                <ShoppingBag className="h-5 w-5" strokeWidth={1.75} />
+                <ShoppingBag className="h-5 w-5" />
               )}
               {isPending
                 ? t.product.adding
