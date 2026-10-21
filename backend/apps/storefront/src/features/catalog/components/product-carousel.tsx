@@ -15,7 +15,7 @@ import { useId } from "react";
 import { motion } from "framer-motion";
 
 interface ProductCarouselClientProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   products: Array<FragmentOf<typeof ProductCardFragment>>;
   fallbackImagesBySlug?: Record<string, string>;
@@ -38,7 +38,7 @@ export function ProductCarousel({
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="py-20 md:py-28"
     >
-      <div className="container mx-auto px-4">
+      <div className="frame">
         <Carousel
           opts={{
             align: "start",
@@ -48,8 +48,8 @@ export function ProductCarousel({
         >
           <div className="mb-10 flex items-end justify-between gap-6">
             <div className="space-y-3">
-              <p className="eyebrow">{eyebrow}</p>
-              <h2 className="display text-4xl md:text-5xl">{title}</h2>
+              {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+              <h2 className="display text-2xl">{title}</h2>
             </div>
             <div className="hidden items-center gap-2 md:flex">
               <CarouselPrevious className="static size-10 translate-y-0 hover:-translate-x-0.5" />

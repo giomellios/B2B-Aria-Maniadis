@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { Moon, Sun, Monitor } from "@/design-system/icons";
+import { Check, Moon, Sun, Monitor } from "@/design-system/icons";
 import {
   Button,
   DropdownMenu,
@@ -37,8 +37,8 @@ export function ThemeSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          <Sun className="size-5 rotate-0 scale-100 transition-transform duration-500 ease-out dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute size-5 rotate-90 scale-0 transition-transform duration-500 ease-out dark:rotate-0 dark:scale-100" />
+          <Sun className="size-5 rotate-0 scale-100 opacity-100 transition-[transform,opacity] duration-500 ease-out dark:-rotate-90 dark:scale-75 dark:opacity-0" />
+          <Moon className="absolute size-5 rotate-90 scale-75 opacity-0 transition-[transform,opacity] duration-500 ease-out dark:rotate-0 dark:scale-100 dark:opacity-100" />
           <span className="sr-only">{t.nav.toggleTheme}</span>
         </Button>
       </DropdownMenuTrigger>
@@ -46,17 +46,17 @@ export function ThemeSwitcher() {
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <Sun className="size-4" />
           <span>{t.nav.themeLight}</span>
-          {theme === "light" && <span className="ml-auto text-xs">✓</span>}
+          {theme === "light" && <Check className="ml-auto size-4" />}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
           <Moon className="size-4" />
           <span>{t.nav.themeDark}</span>
-          {theme === "dark" && <span className="ml-auto text-xs">✓</span>}
+          {theme === "dark" && <Check className="ml-auto size-4" />}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
           <Monitor className="size-4" />
           <span>{t.nav.themeSystem}</span>
-          {theme === "system" && <span className="ml-auto text-xs">✓</span>}
+          {theme === "system" && <Check className="ml-auto size-4" />}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

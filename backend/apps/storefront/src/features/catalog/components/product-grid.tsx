@@ -27,10 +27,8 @@ export async function ProductGrid({ productDataPromise, searchParams }: ProductG
   const shown = Math.min(searchResult.totalItems, view.skip + searchResult.items.length);
 
   const toolbar = (
-    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
-      <p className="text-sm tabular-nums text-muted-foreground">
-        {t.catalog.productCount(searchResult.totalItems)}
-      </p>
+    <div className="flex flex-wrap items-center justify-between gap-4">
+      <p className="text-base tabular-nums">{t.catalog.productCount(searchResult.totalItems)}</p>
       <div className="flex flex-wrap items-center gap-5">
         <ListingViewControls perPage={view.perPage} grid={view.grid} />
         <SortDropdown />
@@ -42,8 +40,8 @@ export async function ProductGrid({ productDataPromise, searchParams }: ProductG
     return (
       <div className="space-y-8">
         {toolbar}
-        <div className="space-y-2 border border-dashed border-border py-20 text-center">
-          <p className="font-serif text-2xl text-foreground">{t.catalog.noMatches}</p>
+        <div className="space-y-2 rounded-xl bg-card px-6 py-12">
+          <p className="text-2xl font-semibold text-foreground">{t.catalog.noMatches}</p>
           <p className="text-sm text-muted-foreground">{t.catalog.noMatchesHint}</p>
         </div>
       </div>
@@ -71,16 +69,12 @@ export async function ProductGrid({ productDataPromise, searchParams }: ProductG
 
       <div
         className={cn(
-          "grid grid-cols-2 gap-x-4 gap-y-10 lg:gap-x-6",
+          "grid grid-cols-2 gap-x-4 gap-y-8 lg:gap-x-5",
           view.grid === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
         )}
       >
-        {productsWithData.map(({ item, data }, i) => (
-          <div
-            key={data.productId}
-            className="animate-in fade-in-0 slide-in-from-bottom-3 fill-mode-both duration-500 ease-out"
-            style={{ animationDelay: `${Math.min(i % view.perPage, 8) * 45}ms` }}
-          >
+        {productsWithData.map(({ item, data }) => (
+          <div key={data.productId}>
             <ProductCard
               product={item}
               fallbackImageUrl={fallbackImagesBySlug.get(data.slug) ?? null}
@@ -89,7 +83,7 @@ export async function ProductGrid({ productDataPromise, searchParams }: ProductG
         ))}
       </div>
 
-      <div className="space-y-8 border-t border-border pt-10">
+      <div className="space-y-8 pt-6">
         <LoadMore
           shown={shown}
           total={searchResult.totalItems}

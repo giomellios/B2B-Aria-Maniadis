@@ -112,7 +112,7 @@ export default function CheckoutFlow() {
                   >
                     {completedSteps.has("contact") ? "✓" : getStepNumber("contact")}
                   </div>
-                  <span className="font-serif text-xl">{t.contact}</span>
+                  <span className="text-xl">{t.contact}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4">
@@ -139,7 +139,7 @@ export default function CheckoutFlow() {
                 >
                   {completedSteps.has("shipping") ? "✓" : getStepNumber("shipping")}
                 </div>
-                <span className="font-serif text-xl">{t.shipping}</span>
+                <span className="text-xl">{t.shipping}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
@@ -165,7 +165,7 @@ export default function CheckoutFlow() {
                 >
                   {completedSteps.has("delivery") ? "✓" : getStepNumber("delivery")}
                 </div>
-                <span className="font-serif text-xl">{t.delivery}</span>
+                <span className="text-xl">{t.delivery}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
@@ -191,7 +191,7 @@ export default function CheckoutFlow() {
                 >
                   {completedSteps.has("payment") ? "✓" : getStepNumber("payment")}
                 </div>
-                <span className="font-serif text-xl">{t.payment}</span>
+                <span className="text-xl">{t.payment}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
@@ -215,7 +215,7 @@ export default function CheckoutFlow() {
                 >
                   {getStepNumber("review")}
                 </div>
-                <span className="font-serif text-xl">{t.review}</span>
+                <span className="text-xl">{t.review}</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-4">

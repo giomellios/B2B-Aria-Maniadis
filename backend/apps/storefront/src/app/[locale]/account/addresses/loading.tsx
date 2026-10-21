@@ -6,7 +6,7 @@ export default async function AddressesLoading() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="display text-3xl md:text-4xl">{t.title}</h1>
+        <h1 className="display text-2xl">{t.title}</h1>
         <p className="text-muted-foreground mt-2">{t.subtitle}</p>
       </div>
 

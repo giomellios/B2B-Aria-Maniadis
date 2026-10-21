@@ -2,7 +2,7 @@ import { SearchTermSkeleton, SearchResultsSkeleton } from "@/features/catalog";
 
 export default function SearchLoading() {
   return (
-    <div className="container mx-auto px-4 py-8 mt-header">
+    <div className="frame mt-header pt-8 pb-20">
       <SearchTermSkeleton />
       <SearchResultsSkeleton />
     </div>

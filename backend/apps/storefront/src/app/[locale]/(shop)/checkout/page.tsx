@@ -29,7 +29,7 @@ export default async function CheckoutPage() {
   }
 
   return (
-    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
+    <div className="frame mt-header pt-8 pb-20">
       <h1 className="display text-4xl md:text-5xl mb-8">{(await getT()).checkout.title}</h1>
       <CheckoutProvider
         order={activeOrder}

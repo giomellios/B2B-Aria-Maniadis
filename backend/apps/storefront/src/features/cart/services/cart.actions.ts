@@ -1,6 +1,7 @@
 "use server";
 
-import { mutate } from "@/lib/api/client";
+import { mutate, query } from "@/lib/api/client";
+import { ProductByCodeQuery } from "@/features/cart/services/queries";
 import {
   AddToCartMutation,
   RemoveFromCartMutation,
@@ -57,4 +58,23 @@ export async function removePromotionCode(formData: FormData) {
 
   await mutate(RemovePromotionCodeMutation, { couponCode: code }, { useAuthToken: true });
   updateTag("cart");
+}
+
+/**
+ * Quick order by catalogue code: the product's page (its order matrix) when the code is a product,
+ * otherwise the catalogue search for it (partial codes match SKUs there too).
+ */
+export async function findByCode(code: string): Promise<string> {
+  const clean = code
+    .trim()
+    .split("-")[0]
+    .replace(/[^\p{L}\p{N}]/gu, "");
+  if (!clean) return "/search";
+  try {
+    const { data } = await query(ProductByCodeQuery, { slug: clean.toLowerCase() });
+    if (data.product) return `/product/${data.product.slug}`;
+  } catch {
+    // Fall through to the search.
+  }
+  return `/search?q=${encodeURIComponent(code.trim())}`;
 }

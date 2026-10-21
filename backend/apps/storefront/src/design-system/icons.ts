@@ -32,6 +32,7 @@ export {
   HouseIcon as Home,
   InstagramLogoIcon as Instagram,
   LeafIcon as Leaf,
+  ListIcon as Menu,
   LinkedinLogoIcon as Linkedin,
   MagnifyingGlassIcon as Search,
   MapPinIcon as MapPin,

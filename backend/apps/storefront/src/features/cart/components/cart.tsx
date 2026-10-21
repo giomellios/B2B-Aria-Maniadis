@@ -14,7 +14,7 @@ export async function Cart() {
   }
 
   return (
-    <div className="grid lg:grid-cols-3 gap-8">
+    <div className="grid gap-8 lg:grid-cols-3 lg:gap-10">
       <CartItems activeOrder={activeOrder} />
 
       <div className="lg:col-span-1">

@@ -69,7 +69,7 @@ export default async function CollectionPage({
   const filterOptionsPromise = getSearchFilterOptions(searchParamsResolved, locale, slug);
 
   return (
-    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
+    <div className="frame mt-header pt-8 pb-20">
       <Suspense
         fallback={<div className="mb-10 h-40 animate-pulse rounded-md bg-foreground/[0.04]" />}
       >

@@ -19,7 +19,7 @@ export function CartIcon({ cartItemCount }: CartIconProps) {
           // Keyed on the count so the pop replays whenever items are added
           <span
             key={cartItemCount}
-            className="absolute -top-0.5 -right-0.5 flex h-[18px] min-w-[18px] animate-[badge-pop_0.4s_var(--ease-out-quint)] items-center justify-center rounded-full bg-primary px-1 text-[0.625rem] font-bold tabular-nums text-primary-foreground ring-2 ring-background"
+            className="absolute -top-0.5 -right-0.5 flex h-[18px] min-w-[18px] animate-[badge-pop_0.4s_var(--ease-out-quint)] items-center justify-center rounded-full bg-gold px-1 text-sm font-semibold tabular-nums text-gold-foreground"
           >
             {cartItemCount}
           </span>

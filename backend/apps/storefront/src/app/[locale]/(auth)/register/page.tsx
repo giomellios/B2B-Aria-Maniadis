@@ -61,30 +61,60 @@ async function RegisterContent({
     await localeRedirect("/");
   }
   const redirectTo = resolvedParams?.redirectTo as string | undefined;
+  const text = (value: unknown) => (typeof value === "string" ? value.slice(0, 200) : undefined);
 
-  return <RegistrationForm redirectTo={redirectTo} />;
+  return (
+    <RegistrationForm
+      redirectTo={redirectTo}
+      initial={{
+        company: text(resolvedParams?.company),
+        emailAddress: text(resolvedParams?.email),
+      }}
+    />
+  );
 }
 
 export default async function RegisterPage({ searchParams }: PageProps<"/[locale]/register">) {
   const t = await getT();
+  const r = t.auth.register;
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 pt-sticky pb-16">
-      <div className="w-full max-w-md space-y-8 animate-in fade-in-0 slide-in-from-bottom-3 duration-500 ease-out">
-        <div className="space-y-2 text-center">
-          <Image
-            src="/logo.png"
-            alt=""
-            width={169}
-            height={210}
-            className="mx-auto mb-4 h-16 w-auto dark:brightness-0 dark:invert"
-          />
-          <h1 className="display text-4xl">{t.auth.register.title}</h1>
-          <p className="text-muted-foreground">{t.auth.register.subtitle}</p>
+    <div className="frame mt-header grid gap-10 pt-8 pb-20 lg:grid-cols-12 lg:gap-5">
+      <div className="lg:col-span-7 lg:pr-10">
+        <h1 className="display text-[1.75rem] md:text-[2rem]">{r.title}</h1>
+        <p className="mt-2 text-base text-muted-foreground">{r.subtitle}</p>
+        <div className="mt-8">
+          <Suspense fallback={<RegistrationFormSkeleton />}>
+            <RegisterContent searchParams={searchParams} />
+          </Suspense>
         </div>
-        <Suspense fallback={<RegistrationFormSkeleton />}>
-          <RegisterContent searchParams={searchParams} />
-        </Suspense>
       </div>
+
+      <aside className="lg:col-span-5">
+        <div className="space-y-2 lg:sticky lg:top-sticky">
+          <Image
+            src="/catalogue/scenes/p193.jpg"
+            alt={r.photoAlt}
+            width={1394}
+            height={1900}
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            priority
+            className="hidden aspect-[4/3] w-full rounded-xl object-cover object-[50%_35%] lg:block"
+          />
+          <div className="rounded-xl bg-card p-5 sm:p-6">
+            <h2 className="text-base font-semibold">{r.nextTitle}</h2>
+            <ol className="mt-4 space-y-4">
+              {r.next.map((step, i) => (
+                <li key={step} className="grid grid-cols-[2rem_1fr] gap-2 text-base">
+                  <span aria-hidden className="font-semibold tabular-nums text-gold">
+                    {i + 1}.
+                  </span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </aside>
     </div>
   );
 }

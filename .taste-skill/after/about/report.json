@@ -1,0 +1,1840 @@
+{
+ "url": "http://localhost:3001/en/about",
+ "at": "2026-10-20T10:48:28.718Z",
+ "allow": [
+  "font-not-dealt"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.65,
+    0.53,
+    0.61,
+    0.6,
+    0.72,
+    0.75
+   ],
+   "motion": {
+    "elements": 13,
+    "css": 12,
+    "transitions": 0,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 4556,
+     "screens": 5.1,
+     "words": 327,
+     "img": 16,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 15,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fscenes%2Fp1.jpg&w=384&q",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp193.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp242.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp291.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp297.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp109.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp316.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp147.jpg&w=384"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "E. Maniadis, Heraklion",
+     "words": 3,
+     "chars": 22,
+     "lines": 2,
+     "size": 109.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.64,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "E. Maniadis, Heraklion",
+     "words": 3,
+     "lines": 2,
+     "size": 109.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "E. Maniadis, Heraklion",
+      "words": 3,
+      "chars": 22,
+      "lines": 2,
+      "size": 109.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.64,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Sixty years of summer stock",
+      "words": 5,
+      "chars": 27,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 1401,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Your town on the cap",
+      "words": 5,
+      "chars": 20,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 1993,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Stands that sell",
+      "words": 3,
+      "chars": 16,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.31,
+      "top": 2830,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Destinations",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 3668,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "13:48",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.13,
+      "top": 4132,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "ARIA",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 158.4,
+      "vw": 11,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.65,
+      "top": 4224,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 7,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      24,
+      64,
+      109,
+      158
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 24,
+      "leading": 1.25,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 19.8
+     },
+     "measureChars": 53,
+     "max": {
+      "size": 158.4,
+      "vw": 11,
+      "font": "Geologica",
+      "text": "ARIA"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.87
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.11
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.01
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 0,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 14,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 4556,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.px-4.pt-8",
+      "tag": "section",
+      "top": 72,
+      "height": 1121,
+      "words": 27,
+      "media": 10,
+      "middle": 0,
+      "heading": {
+       "text": "E. Maniadis, Heraklion",
+       "size": 109,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1401,
+      "height": 384,
+      "words": 101,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 496,
+      "right": 113,
+      "textLeft": 496,
+      "textRight": 113,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1993,
+      "height": 629,
+      "words": 30,
+      "media": 2,
+      "middle": 35,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 981,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 2830,
+      "height": 629,
+      "words": 47,
+      "media": 2,
+      "middle": 20,
+      "heading": null,
+      "left": 20,
+      "right": 27,
+      "textLeft": 967,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 3668,
+      "height": 166,
+      "words": 32,
+      "media": 0,
+      "middle": 140,
+      "heading": null,
+      "left": 493,
+      "right": 40,
+      "textLeft": 493,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.px-2",
+      "tag": "footer",
+      "top": 3834,
+      "height": 723,
+      "words": 57,
+      "media": 1,
+      "middle": 106,
+      "heading": {
+       "text": "ARIA",
+       "size": 158,
+       "tag": "span"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 54,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "E. Maniadis, Heraklion",
+      "size": 109,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 6
+     },
+     {
+      "x": 496,
+      "n": 3
+     },
+     {
+      "x": 967,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 24,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.17,
+    "voidBox": {
+     "x": 660,
+     "y": 120,
+     "w": 600,
+     "h": 360
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.7,
+    0.84,
+    0.46,
+    0.47,
+    0.66,
+    0.9
+   ],
+   "motion": {
+    "elements": 15,
+    "css": 15,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 5534,
+     "screens": 5.4,
+     "words": 323,
+     "img": 16,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 14,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fscenes%2Fp1.jpg&w=256&q",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp193.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp242.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp291.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp297.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp109.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp316.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp147.jpg&w=256"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "E. Maniadis, Heraklion",
+     "words": 3,
+     "chars": 22,
+     "lines": 2,
+     "size": 58.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.62,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "E. Maniadis, Heraklion",
+     "words": 3,
+     "lines": 2,
+     "size": 58.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "E. Maniadis, Heraklion",
+      "words": 3,
+      "chars": 22,
+      "lines": 2,
+      "size": 58.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.62,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Sixty years of summer stock",
+      "words": 5,
+      "chars": 27,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 2389,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Your town on the cap",
+      "words": 5,
+      "chars": 20,
+      "lines": 2,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 2962,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Stands that sell",
+      "words": 3,
+      "chars": 16,
+      "lines": 2,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.3,
+      "top": 3492,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Destinations",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 4096,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "ARIA",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 84.5,
+      "vw": 11,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.98,
+      "top": 4568,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "13:48",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.93,
+      "top": 5460,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 7,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      24,
+      45,
+      58,
+      85
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 19,
+      "leading": 1.4,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 19.8
+     },
+     "measureChars": 27,
+     "max": {
+      "size": 84.5,
+      "vw": 11,
+      "font": "Geologica",
+      "text": "ARIA"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.87
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.11
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.02
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 0,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 14,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.16
+     },
+     {
+      "type": "img",
+      "ratio": 0.16
+     },
+     {
+      "type": "img",
+      "ratio": 0.13
+     },
+     {
+      "type": "img",
+      "ratio": 0.13
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 5534,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "div.grid.gap-8",
+      "tag": "div",
+      "top": 128,
+      "height": 197,
+      "words": 24,
+      "media": 0,
+      "middle": 133,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "ul.mt-12.flex",
+      "tag": "ul",
+      "top": 389,
+      "height": 1792,
+      "words": 0,
+      "media": 10,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 2389,
+      "height": 365,
+      "words": 101,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 22,
+      "textLeft": 20,
+      "textRight": 22,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 2962,
+      "height": 323,
+      "words": 30,
+      "media": 2,
+      "middle": 27,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 526,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 3492,
+      "height": 395,
+      "words": 47,
+      "media": 2,
+      "middle": 20,
+      "heading": null,
+      "left": 20,
+      "right": 23,
+      "textLeft": 519,
+      "textRight": 23,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 4096,
+      "height": 345,
+      "words": 32,
+      "media": 0,
+      "middle": 49,
+      "heading": null,
+      "left": 269,
+      "right": 48,
+      "textLeft": 269,
+      "textRight": 48,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.px-2",
+      "tag": "footer",
+      "top": 4440,
+      "height": 1093,
+      "words": 57,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "ARIA",
+       "size": 84,
+       "tag": "span"
+      },
+      "left": 28,
+      "right": 28,
+      "textLeft": 28,
+      "textRight": 75,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "E. Maniadis, Heraklion",
+      "size": 58,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 9
+     },
+     {
+      "x": 519,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 19,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.6,
+    0.73,
+    0.54,
+    0.66,
+    0.37,
+    0.89,
+    0.89
+   ],
+   "motion": {
+    "elements": 16,
+    "css": 15,
+    "transitions": 0,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 5313,
+     "screens": 6.3,
+     "words": 316,
+     "img": 16,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 14,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fscenes%2Fp1.jpg&w=256&q",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp193.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp242.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp291.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp297.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp109.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp316.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp147.jpg&w=256"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "E. Maniadis, Heraklion",
+     "words": 3,
+     "chars": 22,
+     "lines": 2,
+     "size": 44,
+     "vw": 11.3,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 104,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "E. Maniadis, Heraklion",
+     "words": 3,
+     "lines": 2,
+     "size": 44,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "E. Maniadis, Heraklion",
+      "words": 3,
+      "chars": 22,
+      "lines": 2,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 104,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Wholesale bags and hats for the shops of the Greek islands, since 1965.",
+      "words": 13,
+      "chars": 71,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 215,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Sixty years of summer stock",
+      "words": 5,
+      "chars": 27,
+      "lines": 2,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1752,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Your town on the cap",
+      "words": 5,
+      "chars": 20,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2468,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Stands that sell",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3069,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Destinations",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3721,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "ARIA",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 72,
+      "vw": 18.5,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 4334,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Apply for an account",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 4500,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "maniadibags@gmail.com",
+      "words": 1,
+      "chars": 21,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 4830,
+      "tag": "a",
+      "kind": "statement"
+     },
+     {
+      "text": "Bags and hats for the shops of the Greek islands, from Heraklion since 1965.",
+      "words": 14,
+      "chars": 76,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 4972,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "13:48",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 5251,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 11,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      24,
+      33,
+      44,
+      72
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 19,
+      "leading": 1.4,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 19.8
+     },
+     "measureChars": 42,
+     "max": {
+      "size": 72,
+      "vw": 18.5,
+      "font": "Geologica",
+      "text": "ARIA"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.87
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.1
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.01
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 0,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.12
+     },
+     {
+      "type": "img",
+      "ratio": 0.12
+     },
+     {
+      "type": "img",
+      "ratio": 0.08
+     },
+     {
+      "type": "img",
+      "ratio": 0.08
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 5313,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "div.grid.gap-8",
+      "tag": "div",
+      "top": 104,
+      "height": 304,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 20,
+      "textLeft": 16,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "ul.mt-12.flex",
+      "tag": "ul",
+      "top": 456,
+      "height": 1152,
+      "words": 0,
+      "media": 10,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1752,
+      "height": 572,
+      "words": 101,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 21,
+      "textLeft": 16,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 2468,
+      "height": 457,
+      "words": 30,
+      "media": 2,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 29,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 3069,
+      "height": 508,
+      "words": 47,
+      "media": 2,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 3721,
+      "height": 517,
+      "words": 32,
+      "media": 0,
+      "middle": 76,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.px-2",
+      "tag": "footer",
+      "top": 4238,
+      "height": 1075,
+      "words": 57,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "ARIA",
+       "size": 72,
+       "tag": "span"
+      },
+      "left": 28,
+      "right": 28,
+      "textLeft": 28,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "E. Maniadis, Heraklion",
+      "size": 44,
+      "top": 104,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 11
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 19,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Little motion: 13 element(s) moved while the page loaded and scrolled.",
+   "fix": "Give every section an entrance for its parts (not one fade of the whole block) and add one moving picture: a looping clip or a slow move on a photograph."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/about/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/about/desktop-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/about/desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/about/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/about/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/about/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/about/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

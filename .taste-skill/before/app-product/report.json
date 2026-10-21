@@ -1,0 +1,2050 @@
+{
+ "url": "http://localhost:3001/en/product/a1001",
+ "at": "2026-10-20T09:27:58.741Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.5,
+    0.28,
+    0.78
+   ],
+   "motion": {
+    "elements": 25,
+    "css": 19,
+    "transitions": 0,
+    "scripted": 6,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2660,
+     "screens": 3,
+     "words": 306,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 24,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 2,
+     "size": 48,
+     "vw": 3.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.1,
+     "top": 182,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "lines": 2,
+     "size": 48,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "words": 3,
+      "chars": 18,
+      "lines": 2,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 182,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Frequently asked questions",
+      "words": 3,
+      "chars": 26,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 1208,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "You may also like",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 1693,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 3,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.94,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.06,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      36,
+      48
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 6.6
+     },
+     "measureChars": 46,
+     "max": {
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 8,
+     "microLabelShare": 0.048,
+     "microSamples": [
+      "No images available",
+      "Χρώμα",
+      "Χαρακτηριστικό",
+      "Good to know",
+      "Selected pieces",
+      "Collections"
+     ],
+     "upperShare": 0.37,
+     "centerShare": 0.01,
+     "smallText": 32
+    },
+    "eyebrows": [
+     {
+      "text": "Good to know",
+      "above": "Frequently asked questions",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1179
+     },
+     {
+      "text": "Selected pieces",
+      "above": "You may also like",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1664
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 182,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.65
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.29
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.04
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#9db2f0",
+      "hsl": {
+       "h": 225,
+       "s": 0.73,
+       "l": 0.78
+      },
+      "fg": "#0a0f1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 4,
+     "height": 32,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Select options"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 13,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 11,
+     "hairlineSamples": [
+      "header.fixed.top-0 1440px",
+      "nav.relative.border-t 1440px",
+      "div.space-y-4.border-b 533px",
+      "section.border-y.border-border 1440px",
+      "div.w-full.border-t 710px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 1,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 2660,
+    "margins": {
+     "left": 96,
+     "right": 96
+    },
+    "sections": [
+     {
+      "sel": "div.container.mx-auto",
+      "tag": "div",
+      "top": 110,
+      "height": 819,
+      "words": 24,
+      "media": 0,
+      "middle": 313,
+      "heading": {
+       "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+       "size": 48,
+       "tag": "h1"
+      },
+      "left": 96,
+      "right": 96,
+      "textLeft": 96,
+      "textRight": 222,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "section.border-y.border-border",
+      "tag": "section",
+      "top": 929,
+      "height": 138,
+      "words": 23,
+      "media": 0,
+      "middle": 171,
+      "heading": {
+       "text": "Premium quality",
+       "size": 18,
+       "tag": "h3"
+      },
+      "left": 132,
+      "right": 210,
+      "textLeft": 132,
+      "textRight": 210,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1067,
+      "height": 485,
+      "words": 27,
+      "media": 0,
+      "middle": 103,
+      "heading": {
+       "text": "Frequently asked questions",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 96,
+      "right": 96,
+      "textLeft": 96,
+      "textRight": 540,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1552,
+      "height": 748,
+      "words": 174,
+      "media": 1,
+      "middle": 2409,
+      "heading": {
+       "text": "You may also like",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 96,
+      "right": 0,
+      "textLeft": 96,
+      "textRight": -2448,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 2300,
+      "height": 360,
+      "words": 37,
+      "media": 0,
+      "middle": 229,
+      "heading": null,
+      "left": 96,
+      "right": 214,
+      "textLeft": 96,
+      "textRight": 214,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "size": 48,
+      "top": 182,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [
+     {
+      "text": "US$3.44",
+      "side": "right",
+      "px": 6
+     }
+    ],
+    "edges": [
+     {
+      "x": 634,
+      "n": 4
+     },
+     {
+      "x": 96,
+      "n": 3
+     },
+     {
+      "x": 132,
+      "n": 1
+     },
+     {
+      "x": 414,
+      "n": 1
+     },
+     {
+      "x": 581,
+      "n": 1
+     },
+     {
+      "x": 732,
+      "n": 1
+     },
+     {
+      "x": 811,
+      "n": 1
+     },
+     {
+      "x": 997,
+      "n": 1
+     },
+     {
+      "x": 1050,
+      "n": 1
+     },
+     {
+      "x": 1368,
+      "n": 1
+     },
+     {
+      "x": 1686,
+      "n": 1
+     },
+     {
+      "x": 2004,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 22,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.27,
+    "voidBox": {
+     "x": 0,
+     "y": 660,
+     "w": 1440,
+     "h": 240
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": true,
+    "ground": "#0a0f1f",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 96,
+     "right": -2312
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 2,
+     "size": 48,
+     "vw": 3.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.1,
+     "top": 182,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 13,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": [
+      {
+       "gap": 317,
+       "at": 516,
+       "panel": "NO IMAGES AVAILABLE"
+      }
+     ]
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 24,
+     "radii": [
+      [
+       0,
+       23
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 11,
+     "softShadows": 0,
+     "shadowSamples": [
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.55,
+     "tiny": 1,
+     "tinySamples": [
+      "E. Maniadis 10px"
+     ],
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      36,
+      48
+     ]
+    },
+    "title": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "size": 48,
+     "top": 182
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.82,
+    0.42,
+    0.68,
+    0.84
+   ],
+   "motion": {
+    "elements": 6,
+    "css": 2,
+    "transitions": 0,
+    "scripted": 4,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3302,
+     "screens": 3.2,
+     "words": 306,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 24,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 48,
+     "vw": 6.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.1,
+     "top": 958,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "lines": 1,
+     "size": 48,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 958,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Frequently asked questions",
+      "words": 3,
+      "chars": 26,
+      "lines": 2,
+      "size": 36,
+      "vw": 4.7,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 1765,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "You may also like",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.49,
+      "top": 2250,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 3,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.94,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.06,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      36,
+      48
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 6.6
+     },
+     "measureChars": 28,
+     "max": {
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 8,
+     "microLabelShare": 0.048,
+     "microSamples": [
+      "No images available",
+      "Χρώμα",
+      "Χαρακτηριστικό",
+      "Good to know",
+      "Selected pieces",
+      "Collections"
+     ],
+     "upperShare": 0.37,
+     "centerShare": 0.01,
+     "smallText": 32
+    },
+    "eyebrows": [
+     {
+      "text": "Good to know",
+      "above": "Frequently asked questions",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1737
+     },
+     {
+      "text": "Selected pieces",
+      "above": "You may also like",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2222
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 182,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.65
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.29
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.04
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#9db2f0",
+      "hsl": {
+       "h": 225,
+       "s": 0.73,
+       "l": 0.78
+      },
+      "fg": "#0a0f1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 4,
+     "height": 32,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 13,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 11,
+     "hairlineSamples": [
+      "header.fixed.top-0 768px",
+      "nav.relative.border-t 768px",
+      "div.space-y-4.border-b 736px",
+      "section.border-y.border-border 768px",
+      "div.w-full.border-t 403px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 1,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 3302,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "div.container.mx-auto",
+      "tag": "div",
+      "top": 110,
+      "height": 1349,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 212,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.border-y.border-border",
+      "tag": "section",
+      "top": 1459,
+      "height": 166,
+      "words": 23,
+      "media": 0,
+      "middle": 114,
+      "heading": {
+       "text": "Premium quality",
+       "size": 18,
+       "tag": "h3"
+      },
+      "left": 52,
+      "right": 71,
+      "textLeft": 52,
+      "textRight": 71,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1625,
+      "height": 485,
+      "words": 27,
+      "media": 0,
+      "middle": 83,
+      "heading": {
+       "text": "Frequently asked questions",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 153,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 2110,
+      "height": 810,
+      "words": 174,
+      "media": 1,
+      "middle": 3745,
+      "heading": {
+       "text": "You may also like",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": -3784,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 2920,
+      "height": 382,
+      "words": 37,
+      "media": 0,
+      "middle": 113,
+      "heading": null,
+      "left": 16,
+      "right": 18,
+      "textLeft": 16,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 152,
+      "height": 388
+     },
+     {
+      "top": 560,
+      "height": 392
+     }
+    ],
+    "h1s": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "size": 48,
+      "top": 958,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 4
+     },
+     {
+      "x": 349,
+      "n": 4
+     },
+     {
+      "x": 52,
+      "n": 1
+     },
+     {
+      "x": 330,
+      "n": 1
+     },
+     {
+      "x": 396,
+      "n": 1
+     },
+     {
+      "x": 576,
+      "n": 1
+     },
+     {
+      "x": 776,
+      "n": 1
+     },
+     {
+      "x": 1156,
+      "n": 1
+     },
+     {
+      "x": 1536,
+      "n": 1
+     },
+     {
+      "x": 1916,
+      "n": 1
+     },
+     {
+      "x": 2296,
+      "n": 1
+     },
+     {
+      "x": 2676,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 22,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": true,
+    "ground": "#0a0f1f",
+    "sidebar": null,
+    "topbar": {
+     "h": 64
+    },
+    "canvas": {
+     "left": 16,
+     "right": -3586
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 48,
+     "vw": 6.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.1,
+     "top": 958,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 13,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": [
+      {
+       "gap": 359,
+       "at": 558,
+       "panel": "NO IMAGES AVAILABLE"
+      }
+     ]
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 24,
+     "radii": [
+      [
+       0,
+       23
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 11,
+     "softShadows": 0,
+     "shadowSamples": [
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.55,
+     "tiny": 1,
+     "tinySamples": [
+      "E. Maniadis 10px"
+     ],
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      36,
+      48
+     ]
+    },
+    "title": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "size": 48,
+     "top": 958
+    },
+    "colourShare": 0.001
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.69,
+    0.69,
+    0.52,
+    0.93
+   ],
+   "motion": {
+    "elements": 6,
+    "css": 2,
+    "transitions": 0,
+    "scripted": 4,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3296,
+     "screens": 3.9,
+     "words": 299,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 24,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 2,
+     "size": 36,
+     "vw": 9.2,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.1,
+     "top": 580,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "lines": 2,
+     "size": 36,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "words": 3,
+      "chars": 18,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 580,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Frequently asked questions",
+      "words": 3,
+      "chars": 26,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1556,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "You may also like",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.73,
+      "top": 2125,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 3,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.94,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.06,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      18,
+      36
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 6.6
+     },
+     "measureChars": 46,
+     "max": {
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 8,
+     "microLabelShare": 0.048,
+     "microSamples": [
+      "No images available",
+      "Χρώμα",
+      "Χαρακτηριστικό",
+      "Good to know",
+      "Selected pieces",
+      "Collections"
+     ],
+     "upperShare": 0.36,
+     "centerShare": 0.01,
+     "smallText": 32
+    },
+    "eyebrows": [
+     {
+      "text": "Good to know",
+      "above": "Frequently asked questions",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1527
+     },
+     {
+      "text": "Selected pieces",
+      "above": "You may also like",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2097
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 182,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.65
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.29
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.04
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#9db2f0",
+      "hsl": {
+       "h": 225,
+       "s": 0.73,
+       "l": 0.78
+      },
+      "fg": "#0a0f1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": 4,
+     "height": 32,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 13,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 13,
+     "hairlineSamples": [
+      "header.fixed.top-0 390px",
+      "nav.relative.border-t 390px",
+      "div.space-y-4.border-b 358px",
+      "section.border-y.border-border 390px",
+      "div.flex.items-start 358px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 3296,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "div.container.mx-auto",
+      "tag": "div",
+      "top": 110,
+      "height": 965,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 54,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.border-y.border-border",
+      "tag": "section",
+      "top": 1075,
+      "height": 372,
+      "words": 23,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Premium quality",
+       "size": 18,
+       "tag": "h3"
+      },
+      "left": 52,
+      "right": 60,
+      "textLeft": 52,
+      "textRight": 60,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1447,
+      "height": 570,
+      "words": 27,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Frequently asked questions",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 108,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 2017,
+      "height": 589,
+      "words": 174,
+      "media": 1,
+      "middle": 1824,
+      "heading": {
+       "text": "You may also like",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": -1853,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 2606,
+      "height": 691,
+      "words": 37,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 35,
+      "textLeft": 16,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "size": 36,
+      "top": 580,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 8
+     },
+     {
+      "x": 52,
+      "n": 3
+     },
+     {
+      "x": 203,
+      "n": 1
+     },
+     {
+      "x": 390,
+      "n": 1
+     },
+     {
+      "x": 577,
+      "n": 1
+     },
+     {
+      "x": 764,
+      "n": 1
+     },
+     {
+      "x": 951,
+      "n": 1
+     },
+     {
+      "x": 1138,
+      "n": 1
+     },
+     {
+      "x": 1325,
+      "n": 1
+     },
+     {
+      "x": 1512,
+      "n": 1
+     },
+     {
+      "x": 1699,
+      "n": 1
+     },
+     {
+      "x": 1886,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 22,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": true,
+    "ground": "#0a0f1f",
+    "sidebar": null,
+    "topbar": {
+     "h": 64
+    },
+    "canvas": {
+     "left": 16,
+     "right": -1787
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 2,
+     "size": 36,
+     "vw": 9.2,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.1,
+     "top": 580,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 14,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": [
+      {
+       "gap": 170,
+       "at": 369,
+       "panel": "NO IMAGES AVAILABLE"
+      }
+     ]
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 25,
+     "radii": [
+      [
+       0,
+       24
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 11,
+     "softShadows": 0,
+     "shadowSamples": [
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.55,
+     "tiny": 1,
+     "tinySamples": [
+      "E. Maniadis 10px"
+     ],
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      36
+     ]
+    },
+    "title": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "size": 36,
+     "top": 580
+    },
+    "colourShare": 0.002
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "8 tiny uppercase letter-spaced labels (e.g. \"No images available\", \"Χρώμα\", \"Χαρακτηριστικό\", \"Good to know\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (text #f1eee9, text #f2eeea).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "edge-text",
+   "width": 1440,
+   "message": "1 text block(s) sit within 16px of the screen edge: \"US$3.44\" (6px from the right)",
+   "fix": "Keep text inside the page margin (16–32px or more). Only display type deliberately bled past the edge may touch it."
+  },
+  {
+   "level": "FAIL",
+   "id": "heavy-shadow",
+   "width": 1440,
+   "message": "11 panel shadow(s) heavy enough to read as floating: oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px | oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px | oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+   "fix": "Panels sit on the ground: separate them with a fill one step from the ground or a quiet 1px border. A shadow, if any, is under 8% black with a small blur. Real overlays (menus, dialogs, popovers) may float.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "tiny-text",
+   "width": 1440,
+   "message": "55% of the text is under 13px.",
+   "fix": "Data and labels read at 13–14px; keep 11–12px for sublines and axis ticks.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "below-fold",
+   "width": 1440,
+   "message": "Only 1 of 13 blocks start on the first 1440px screen.",
+   "fix": "Every block the brief names shows its header and first rows on the first desktop screen: size the headline block to its question, cap long lists with \"View all\", and put time-sensitive blocks before long tables."
+  },
+  {
+   "level": "WARN",
+   "id": "panel-void",
+   "width": 1440,
+   "message": "1 card(s) hold a blank band inside: 317px in \"NO IMAGES AVAILABLE\".",
+   "fix": "A card stretches to its neighbour only when it has content to fill. Keep a legend or a note directly under its chart (only an action or a total may sit at a stretched card's foot), let a short card keep its own height (align-items: start), and let a filtered block shrink to its rows."
+  },
+  {
+   "level": "WARN",
+   "id": "app-title-size",
+   "width": 1440,
+   "message": "The h1 is 48px (\"ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ\").",
+   "fix": "An app screen is not a landing page: the title is 18-32px (20-24px on a phone).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-product/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-product/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-product/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-product/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-product/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-product/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

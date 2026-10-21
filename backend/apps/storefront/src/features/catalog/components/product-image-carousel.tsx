@@ -9,6 +9,8 @@ import { useT } from "@/lib/i18n/provider";
 import { format } from "@/lib/i18n/dictionaries";
 
 interface ProductImageCarouselProps {
+  /** Catalogue code, shown in place of a photograph when there is none. */
+  code?: string;
   images: Array<{
     id: string;
     preview: string;
@@ -21,7 +23,11 @@ interface ProductImageCarouselProps {
   }>;
 }
 
-export function ProductImageCarousel({ images, variantImages = [] }: ProductImageCarouselProps) {
+export function ProductImageCarousel({
+  images,
+  variantImages = [],
+  code,
+}: ProductImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const t = useT().product;
   const searchParams = useSearchParams();
@@ -91,10 +97,10 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
 
   if (!images || images.length === 0) {
     return (
-      <div className="flex aspect-square items-center justify-center rounded-md border border-border bg-secondary">
-        <span className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
-          {t.noImages}
-        </span>
+      // No photograph yet: the catalogue code stands in, as on the product cards.
+      <div className="flex aspect-[4/3] flex-col justify-between rounded-xl bg-card p-6">
+        <span className="text-[2.5rem] font-semibold leading-none tracking-[-0.02em]">{code}</span>
+        <span className="text-base text-muted-foreground">{t.noImages}</span>
       </div>
     );
   }
@@ -128,7 +134,7 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
               variant="outline"
               size="icon"
               aria-label={t.previousImage}
-              className="absolute left-3 top-1/2 size-10 -translate-x-2 -translate-y-1/2 rounded-full border-border bg-background/90 opacity-0 backdrop-blur transition-[opacity,transform,color,border-color] duration-300 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
+              className="absolute left-3 top-1/2 size-10 -translate-x-2 -translate-y-1/2 bg-background opacity-0 transition-[opacity,transform,color,border-color] duration-300 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
               onClick={goToPrevious}
             >
               <ChevronLeft className="h-5 w-5" />
@@ -137,7 +143,7 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
               variant="outline"
               size="icon"
               aria-label={t.nextImage}
-              className="absolute right-3 top-1/2 size-10 translate-x-2 -translate-y-1/2 rounded-full border-border bg-background/90 opacity-0 backdrop-blur transition-[opacity,transform,color,border-color] duration-300 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
+              className="absolute right-3 top-1/2 size-10 translate-x-2 -translate-y-1/2 bg-background opacity-0 transition-[opacity,transform,color,border-color] duration-300 group-hover:translate-x-0 group-hover:opacity-100 focus-visible:translate-x-0 focus-visible:opacity-100"
               onClick={goToNext}
             >
               <ChevronRight className="h-5 w-5" />
@@ -147,7 +153,7 @@ export function ProductImageCarousel({ images, variantImages = [] }: ProductImag
 
         {/* Image Counter */}
         {images.length > 1 && (
-          <div className="absolute bottom-3 right-3 rounded-sm bg-background/90 px-2 py-1 text-[0.6875rem] font-medium tabular-nums text-muted-foreground backdrop-blur">
+          <div className="absolute bottom-3 right-3 bg-background px-2 py-1 text-sm font-medium tabular-nums text-muted-foreground">
             {currentIndex + 1} / {images.length}
           </div>
         )}

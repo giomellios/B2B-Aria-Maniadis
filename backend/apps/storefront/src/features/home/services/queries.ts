@@ -1,21 +1,17 @@
 import { graphql } from "@/lib/api/graphql";
 
-/** Where each product's picture is (product, its gallery, or only on a variant). */
-export const ProductImagesQuery = graphql(`
-  query FeaturedProductImages($options: ProductListOptions) {
-    products(options: $options) {
-      totalItems
-      items {
-        slug
-        featuredAsset {
-          preview
-        }
-        assets {
-          preview
-        }
-        variants {
-          featuredAsset {
-            preview
+/** How many products each destination (island) facet value has, for the island sheet. */
+export const DestinationCountsQuery = graphql(`
+  query DestinationCounts {
+    search(input: { take: 0, groupByProduct: true }) {
+      facetValues {
+        count
+        facetValue {
+          id
+          code
+          facet {
+            id
+            code
           }
         }
       }

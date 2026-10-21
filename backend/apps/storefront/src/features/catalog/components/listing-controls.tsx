@@ -33,9 +33,7 @@ export function ListingViewControls({ perPage, grid }: { perPage: number; grid: 
   return (
     <div className="flex items-center gap-5">
       <div className="hidden items-center gap-1 md:flex">
-        <span className="mr-1 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-          {t.perPage}
-        </span>
+        <span className="mr-1 text-sm font-semibold text-muted-foreground">{t.perPage}</span>
         {PER_PAGE_OPTIONS.map((option) => (
           <Link
             key={option}
@@ -59,7 +57,7 @@ export function ListingViewControls({ perPage, grid }: { perPage: number; grid: 
       </div>
       <div className="hidden items-center gap-1 lg:flex">
         {GRID_OPTIONS.map((option) => {
-          const Icon = option === 3 ? GridNine : GridFour;
+          const Icon = option === 4 ? GridNine : GridFour;
           return (
             <Link
               key={option}
@@ -109,7 +107,7 @@ export function LoadMore({
         <Link
           href={hrefWith({ more: String(more + 1) })}
           scroll={false}
-          className="inline-flex h-11 w-full items-center justify-center border border-foreground px-6 text-xs font-semibold uppercase tracking-[0.16em] transition-colors hover:bg-foreground hover:text-background"
+          className="inline-flex h-11 w-full items-center justify-center border border-foreground px-6 text-xs font-semibold transition-colors hover:bg-foreground hover:text-background"
         >
           {t.loadMore}
         </Link>

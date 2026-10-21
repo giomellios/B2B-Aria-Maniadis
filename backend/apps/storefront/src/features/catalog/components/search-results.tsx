@@ -22,9 +22,9 @@ export async function SearchResults({ searchParams }: SearchResultsProps) {
   return (
     <div className="space-y-8">
       {!searchTerm ? (
-        <p className="text-sm text-muted-foreground">{(await getT()).catalog.browseHint}</p>
+        <p className="-mt-4 text-base text-muted-foreground">{(await getT()).catalog.browseHint}</p>
       ) : null}
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[260px_1fr] lg:gap-12">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[240px_1fr] lg:gap-10">
         {/* Filters Sidebar */}
         <aside className="lg:sticky lg:top-sticky lg:max-h-[calc(100vh-var(--spacing-sticky)-1rem)] lg:self-start lg:overflow-y-auto lg:pr-2">
           <Suspense

@@ -1,0 +1,50 @@
+[
+  {
+    "file": "backend/apps/storefront/public/world/crete-admiralty-chart-1858.jpg",
+    "media": "image",
+    "ref": "commons:84288155",
+    "title": "Admiralty Chart No 2536b Eastern part of Candia or Crete, Greece, Published 1858",
+    "creator": "United Kingdom Hydrographic Office",
+    "creatorUrl": null,
+    "date": "1858-04-17",
+    "license": "public domain",
+    "licenseCode": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "creditRequired": false,
+    "page": "https://commons.wikimedia.org/wiki/File:Admiralty_Chart_No_2536b_Eastern_part_of_Candia_or_Crete,_Greece,_Published_1858.jpg",
+    "via": "Wikimedia Commons",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Admiralty_Chart_No_2536b_Eastern_part_of_Candia_or_Crete%2C_Greece%2C_Published_1858.jpg/3840px-Admiralty_Chart_No_2536b_Eastern_part_of_Candia_or_Crete%2C_Greece%2C_Published_1858.jpg",
+    "width": 3840,
+    "height": 2584,
+    "bytes": 2671330,
+    "credit": "\"Admiralty Chart No 2536b Eastern part of Candia or Crete, Greece, Published 1858\" by United Kingdom Hydrographic Office, public domain, via Wikimedia Commons",
+    "notes": [],
+    "saved": "2026-10-20T10:01:34.018Z"
+  },
+  {
+    "file": "backend/apps/storefront/public/world/heraklion-2013.webm",
+    "media": "video",
+    "poster": "backend/apps/storefront/public/world/heraklion-2013-poster.jpg",
+    "ref": "commons:26220437",
+    "title": "Heraklion, Crete - no audio",
+    "creator": "Klapi",
+    "creatorUrl": null,
+    "date": "2013-05-21",
+    "license": "CC BY-SA 3.0",
+    "licenseCode": "by-sa",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "creditRequired": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Heraklion,_Crete_-_no_audio.webm",
+    "via": "Wikimedia Commons",
+    "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/67/Heraklion%2C_Crete_-_no_audio.webm/Heraklion%2C_Crete_-_no_audio.webm.480p.vp9.webm",
+    "width": 640,
+    "height": 480,
+    "duration": 21.3,
+    "bytes": 3093106,
+    "credit": "\"Heraklion, Crete - no audio\" by Klapi, CC BY-SA 3.0, via Wikimedia Commons",
+    "notes": [
+      "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+    ],
+    "saved": "2026-10-20T10:09:13.905Z"
+  }
+]

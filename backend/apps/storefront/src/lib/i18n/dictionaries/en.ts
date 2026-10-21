@@ -26,7 +26,7 @@ export const en = {
     qty: "Qty",
     sku: "SKU",
     each: "each",
-    noImage: "No image",
+    noImage: "Photo to follow",
     unexpectedError: "An unexpected error occurred. Please try again.",
     unknownError: "Unknown error",
     required: "required",
@@ -71,9 +71,22 @@ export const en = {
     allProducts: "All products",
     viewAllIn: "All of {name}",
     digitalCatalogue: "Digital catalogue",
+    catalogue: "Catalogue",
+    about: "About",
+    contact: "Contact",
+    menu: "Menu",
   },
 
   footer: {
+    shop: "Shop",
+    company: "Company",
+    signIn: "Already a customer? Sign in",
+    statement: "Bags and hats for the shops of the Greek islands, from Heraklion since 1965.",
+    apply: "Apply for an account",
+    about: "About",
+    contactPage: "Contact",
+    catalogue: "Online catalogue 2026",
+    phone: "Phone",
     tagline: "Wholesale bags and hats for retailers across Greece and Europe. Since 1965.",
     collections: "Collections",
     allProducts: "All products",
@@ -86,70 +99,212 @@ export const en = {
 
   home: {
     hero: {
-      aria: "Welcome to ARIA Maniadis",
-      eyebrow: "E. Maniadis · Wholesale",
-      titleLine1: "Bags & hats,",
-      titleLine2: "made for every season.",
-      subtitle:
-        "Curated wholesale accessories for retailers who value quality and distinction, from a Greek house established in 1965.",
-      browse: "Browse products",
-      digitalCatalogue: "Digital catalogue 2026",
-      digitalCatalogueAria: "Digital catalogue 2026 (opens in a new tab)",
-      becomePartner: "Become a wholesale partner",
+      rangesLabel: "In the 2026 catalogue",
+      ranges: [
+        "Caps stitched by island",
+        "Women's straw hats",
+        "Panama & trilby hats",
+        "Beach & canvas bags",
+        "Straw & woven bags",
+        "Leather wallets",
+      ],
+      apply: "Apply for an account",
+      signIn: "Sign in",
+      title: "Island caps & bags, wholesale",
+      lead: "Bags and hats for the tourist shops of Greece, from Heraklion since 1965. Trade accounts only.",
+      sheetLabel: "Caps by island, from the 2026 catalogue",
+      pages: "pp. {from}–{to}",
+      page: "p. {from}",
+      designs: (n: number) => `${n} ${n === 1 ? "design" : "designs"} online`,
+      seeAll: "See all {name}",
+      searchFor: "Search {name}",
+      islandsTitle: "Caps by island",
+      pickIsland: "Every island has its own pages in the 2026 catalogue. Pick one to see its caps.",
       crestAlt: "ARIA — E. Maniadis, from 1965",
-      crestCaption: "Bags & Hats · Greece",
-      facts: {
-        established: "Established",
-        b2bValue: "B2B",
-        b2b: "Approved retailers only",
-        deliveryValue: "GR · EU",
-        delivery: "Delivery coverage",
+    },
+    town: {
+      title: "Your town on the cap",
+      photoAlt: "Canvas bags with the Greek key pattern, from the 2026 catalogue (code K1206)",
+      name: "Any place name, embroidered or as a PVC patch, in one of 18 fonts, or your own logo.",
+      stands:
+        "Display stands for caps, bags and wallets, free to partners under our terms of cooperation.",
+      registered: "Designs marked * are registered to Evangelos Maniadis. Only ARIA sells them.",
+      open: "Open the 2026 catalogue",
+    },
+    range: {
+      title: "The whole range",
+      hats: "Hats",
+      bags: "Bags",
+      more: "Display & index",
+      rows: {
+        caps: "Caps by island, nautical, safari",
+        kids: "Kids' hats and bags",
+        women: "Women's hats: visors, cloches, wide brims",
+        men: "Men's hats: trilby, cowboy",
+        panama: "Panama-style hats",
+        original: "Original panama and raffia",
+        straw: "Straw and boho bags",
+        beach: "Beach bags",
+        canvas: "Canvas bags and pouches",
+        knitted: "Knitted and macramé bags",
+        leatherBags: "Leather bags",
+        wallets: "Leather wallets",
+        backpacks: "Backpacks, belt bags, suitcases",
+        stands: "Display stands",
+        index: "Code index",
       },
-    },
-    categories: {
-      eyebrow: "The collections",
-      title: "Browse by category",
-    },
-    values: {
-      eyebrow: "Why Maniadis",
-      title: "Built for retailers",
-      intro:
-        "Everything about the way we work is set up for shops that buy in volume and need stock they can rely on.",
-      selection: "Wide selection",
-      selectionText:
-        "Hundreds of styles across bags and hats, refreshed every season to keep your offer current.",
-      pricing: "Wholesale pricing",
-      pricingText:
-        "Competitive tiered pricing for registered retail partners, with volume discounts available.",
-      restocking: "Reliable restocking",
-      restockingText:
-        "Consistent stock availability so your shelves are never left empty mid-season.",
-      delivery: "Delivery across Europe",
-      deliveryText: "Fast, reliable shipping to retailers across Greece and the broader EU.",
-    },
-    featured: {
-      eyebrow: "Selected pieces",
-      title: "From the collection",
+      opensAt: "Opens the online catalogue at page {page}",
     },
     steps: {
-      eyebrow: "Getting started",
-      title: "How it works",
-      register: "Register",
-      registerText:
-        "Create a wholesale account with your company and VAT details. Our team reviews and approves new partners promptly.",
-      browse: "Browse the catalogue",
-      browseText: "Explore the full range of bags and hats, filtered by category, style or season.",
-      order: "Place your order",
-      orderText:
-        "Order online at any time. We handle packing and dispatch so your stock arrives on time.",
+      title: "From sign-up to shelf",
+      progress: "How far the row has scrolled",
+      items: [
+        {
+          title: "You apply",
+          text: "Company name, VAT number and the shop's address, in one short form.",
+        },
+        {
+          title: "We approve you",
+          text: "Every account is checked by hand in Heraklion. Ordering opens as soon as it is approved.",
+        },
+        {
+          title: "Find it by code",
+          text: "Every product carries its catalogue code: A1034 for a cap, K1206 for a bag. Search the code and you are on it.",
+        },
+        {
+          title: "Pick colours and finish",
+          text: "Plain, embroidered or printed. Each colour is its own line, so a mixed order is one basket.",
+        },
+        {
+          title: "Sent from Heraklion",
+          text: "Orders are packed in Heraklion and sent by courier to your shop.",
+        },
+        {
+          title: "On your shelf",
+          text: "Every order stays in your account, so next season starts from the last one.",
+        },
+      ],
     },
-    cta: {
-      eyebrow: "Wholesale partnership",
-      title: "Ready to stock ARIA in your store?",
-      text: "Register your business and our team will set up your wholesale account.",
-      apply: "Apply for an account",
-      browse: "Browse the catalogue",
+    about: {
+      title: "Heraklion, since 1965",
+      founded: "Founded",
+      based: "Based in",
+      basedValue: "Gazi, Heraklion",
+      catalogue: "Catalogue 2026",
+      catalogueValue: "378 pages",
+      text: "E. Maniadis has sold bags and hats to shops from Heraklion since 1965. ARIA is the house range: caps stitched with the names of the islands, straw and panama hats, beach, canvas and woven bags, and leather wallets. It is printed once a year as a catalogue and kept up to date here, where approved shops order it by code.",
+      destinations: "Destinations",
+      more: "More about us",
     },
+    faq: {
+      title: "Trade terms",
+      items: [
+        {
+          q: "Who can order?",
+          a: "Businesses with a Greek or EU VAT number: tourist shops, kiosks, hotel boutiques. Register with your company details and we approve the account by hand.",
+        },
+        {
+          q: "How long does approval take?",
+          a: "Usually one working day. You get an email as soon as you can sign in.",
+        },
+        {
+          q: "Is there a minimum order?",
+          a: "Caps and bags are ordered per piece in any colour mix. Place names stitched to order have a minimum per design; ask us for the quantity.",
+        },
+        {
+          q: "Can I get my own place name?",
+          a: "Yes. Choose a cap and one of 18 fonts, embroidered or as a PVC patch, and we make it with your town, beach or hotel name. We can also stitch your own logo.",
+        },
+        {
+          q: "What about display stands?",
+          a: "Stands for caps, bags and wallets are given free to partners, under our terms of cooperation. The catalogue shows each stand and how many designs and pieces it holds.",
+        },
+        {
+          q: "How do I find a product from the printed catalogue?",
+          a: "Type its code in the search, for example A1034. Every colour and finish of that code is listed together.",
+        },
+        {
+          q: "How do I pay?",
+          a: "By bank transfer, or as agreed on your account. Your invoice carries your VAT details.",
+        },
+        {
+          q: "Where do you deliver?",
+          a: "Everywhere in Greece, islands included, by courier from Heraklion. Ask us about delivery elsewhere in the EU.",
+        },
+      ],
+    },
+    apply: {
+      title: "Open a trade account",
+      company: "Company name",
+      email: "Email",
+      submit: "Continue",
+      note: "Next you add your VAT number and address.",
+      call: "Or call (2810) 319618",
+    },
+  },
+
+  about: {
+    customTitle: "Your town on the cap",
+    customText:
+      "Two pages of the catalogue are an order form for caps with your own place name: pick a cap, pick one of 18 fonts, embroidered or as a PVC patch, or send us your logo.",
+    customAlt: "Catalogue pages 13 and 46: create your own cap",
+    founded: "Founded",
+    based: "Based in",
+    basedValue: "Gazi, Heraklion",
+    catalogueLabel: "Catalogue 2026",
+    catalogueValue: "378 pages",
+    metaTitle: "About E. Maniadis",
+    metaDescription:
+      "E. Maniadis, Heraklion: wholesale bags and hats for the tourist shops of the Greek islands since 1965.",
+    title: "E.\u00a0Maniadis, Heraklion",
+    lead: "Wholesale bags and hats for the shops of the Greek islands, since 1965.",
+    coverAlt: "The cover of the ARIA 2026 catalogue",
+    storyTitle: "Sixty years of summer stock",
+    story: [
+      "E. Maniadis has worked from Heraklion since 1965, selling bags and hats to shops, never to the public. It works today from Ελ. Βενιζέλου 129 in Gazi.",
+      "ARIA is the house range. Its caps carry the names of the islands, stitched or printed, and the catalogue is ordered the way an island shop thinks: first the caps for your island, then hats, then bags, then the wallets and small things that sell at the till.",
+      "Designs marked with an asterisk in the catalogue are registered with the Hellenic Industrial Property Organisation (Ο.Β.Ι.) to Evangelos Maniadis. Only ARIA sells them.",
+    ],
+    standsTitle: "Stands that sell",
+    standsText:
+      "Most ranges have a stand built for them: caps on wall and spinning stands, bags on wheeled racks with adjustable shelves, wallets in counter trays. Stands are given free to partners, under our terms of cooperation, and the wheeled rack is a registered ARIA design.",
+    standsAlt: "Display stands for caps and bags, from the 2026 catalogue",
+    rangeTitle: "Shot on the coast",
+    photoAlt: "From the ARIA 2026 catalogue: {code}",
+    cta: "Apply for an account",
+    catalogue: "Open the 2026 catalogue",
+  },
+
+  contact: {
+    videoCaption:
+      "Lions Square, Heraklion, in May. Video: Klapi, CC BY-SA 3.0, via Wikimedia Commons.",
+    panoramaCaption:
+      "Megalo Kastro, today Heraklion, seen from the anchorage. From the Admiralty chart of Crete, 1858.",
+    chartCaption: "Admiralty chart of eastern Crete, surveyed by Capt. T. Spratt, published 1858.",
+    credit:
+      "Chart: United Kingdom Hydrographic Office, 1858, public domain, via Wikimedia Commons.",
+    metaTitle: "Contact",
+    metaDescription: "E. Maniadis, Ελ. Βενιζέλου 129, Gazi, Heraklion. Phone (2810) 319618.",
+    title: "Contact E.\u00a0Maniadis",
+    lead: "Call or write to us in Gazi, Heraklion. Trade customers only.",
+    address: "Address",
+    addressValue: ["Ελ. Βενιζέλου 129", "Γάζι, Ηράκλειο", "Κρήτη, Greece"],
+    phone: "Phone",
+    fax: "Fax",
+    email: "Email",
+    directions: "Directions",
+    openMap: "Open in a map",
+    formTitle: "Write to us",
+    name: "Your name",
+    company: "Shop or company",
+    message: "Message",
+    send: "Write the email",
+    sendNote: "Opens your email app with the message filled in.",
+    subject: "Enquiry from {company}",
+    accountTitle: "Not a customer yet?",
+    accountText: "Trade accounts are opened online. We check every one by hand.",
+    apply: "Apply for an account",
+    mapAlt: "Map of Heraklion and the coast around it",
   },
 
   catalog: {
@@ -201,6 +356,31 @@ export const en = {
   },
 
   product: {
+    matrix: {
+      estimate: "Estimate: tax is rounded per line, the cart shows the exact total",
+      title: "Order by colour and finish",
+      hint: "Type a quantity in each cell you want. Every cell is its own line in the order.",
+      colour: "Colour",
+      perPiece: "per piece",
+      fromPerPiece: "from {price} per piece",
+      unavailable: "Not made in this combination",
+      out: "Out of stock",
+      cellLabel: "{colour}, {finish}: quantity",
+      summary: (pieces: number, lines: number) =>
+        `${pieces} ${pieces === 1 ? "piece" : "pieces"} in ${lines} ${lines === 1 ? "line" : "lines"}`,
+      empty: "No quantities yet",
+      add: (pieces: number) =>
+        pieces
+          ? `Add ${pieces} ${pieces === 1 ? "piece" : "pieces"} to the order`
+          : "Add to the order",
+      skus: (n: number) => `${n} ${n === 1 ? "colour and finish" : "colours and finishes"}`,
+      adding: "Adding…",
+      added: (pieces: number) =>
+        `${pieces} ${pieces === 1 ? "piece" : "pieces"} added to the order`,
+      partial: "Some lines could not be added",
+      clear: "Clear",
+      code: "Code",
+    },
     selectOptionsForPrice: "Select options to see the price",
     selectOptions: "Select options",
     addToCart: "Add to cart",
@@ -217,34 +397,21 @@ export const en = {
     previousImage: "Previous image",
     nextImage: "Next image",
     breadcrumb: "Breadcrumb",
-    // TODO: Placeholder copy from the starter template — replace with Maniadis's real terms
-    benefits: {
-      quality: "Premium quality",
-      qualityText: "Crafted with care using the finest materials",
-      eco: "Eco-friendly",
-      ecoText: "Sustainably sourced and environmentally conscious",
-      guarantee: "Satisfaction guaranteed",
-      guaranteeText: "100% happiness or your money back",
-    },
-    faq: {
-      eyebrow: "Good to know",
-      title: "Frequently asked questions",
-      shippingQ: "What are your shipping options?",
-      shippingA:
-        "We offer standard shipping (5–7 business days), express shipping (2–3 business days), and next-day delivery for select areas. Free standard shipping is available on orders over $50.",
-      returnsQ: "What is your return policy?",
-      returnsA:
-        "We accept returns within 30 days of purchase. Items must be unused and in their original packaging. Simply contact our support team to initiate a return and receive a prepaid shipping label.",
-      trackingQ: "How can I track my order?",
-      trackingA:
-        "Once your order ships, you'll receive an email with a tracking number. You can also view your order status anytime by logging into your account and visiting the order history section.",
-      internationalQ: "Do you offer international shipping?",
-      internationalA:
-        "Yes! We ship to over 50 countries worldwide. International shipping rates and delivery times vary by location. You can see the exact cost at checkout before completing your purchase.",
-    },
   },
 
   cart: {
+    quick: {
+      title: "Quick order",
+      label: "Catalogue code",
+      placeholder: "e.g. A1034",
+      go: "Open",
+      hint: "Type a code from the printed catalogue to open its colours and finishes.",
+    },
+    lineCount: (lines: number, pieces: number) =>
+      `${lines} ${lines === 1 ? "line" : "lines"} · ${pieces} ${pieces === 1 ? "piece" : "pieces"}`,
+    product: "Product",
+    unit: "Unit price",
+    lineTotal: "Line total",
     title: "Shopping cart",
     emptyTitle: "Your cart is empty",
     emptyText: "Add some items to your cart to get started",
@@ -358,13 +525,16 @@ export const en = {
     vatNumber: "VAT number",
     mobileNumber: "Mobile number",
     emailPlaceholder: "you@example.com",
-    firstNamePlaceholder: "John",
-    lastNamePlaceholder: "Doe",
+    firstNamePlaceholder: "Eleni",
+    lastNamePlaceholder: "Markaki",
     backToSignIn: "Back to sign in",
     signIn: {
+      photoAlt: "From the ARIA 2026 catalogue, page 206",
+      photoCaption:
+        "Trade accounts are for shops only, and each one is approved by hand in Heraklion.",
       metaTitle: "Sign in",
       metaDescription: "Sign in to your account to access your orders and more.",
-      title: "Welcome back",
+      title: "Sign in to your trade account",
       subtitle: "Enter your credentials to access your account",
       forgot: "Forgot password?",
       submit: "Sign in",
@@ -373,6 +543,16 @@ export const en = {
       register: "Register",
     },
     register: {
+      business: "Your business",
+      person: "Contact person",
+      login: "Sign-in details",
+      nextTitle: "What happens next",
+      next: [
+        "We check your company and VAT number by hand in Heraklion, usually within a working day.",
+        "You get an email as soon as your account is approved.",
+        "Sign in and order the whole catalogue by code, island or colour.",
+      ],
+      photoAlt: "From the ARIA 2026 catalogue, page 192",
       metaTitle: "Create account",
       metaDescription: "Apply for a wholesale account.",
       title: "Apply for a wholesale account",
@@ -438,6 +618,14 @@ export const en = {
       profile: "Profile",
     },
     orders: {
+      lines: (n: number) => `${n} ${n === 1 ? "line" : "lines"}`,
+      orderCount: (n: number) => `${n} ${n === 1 ? "order" : "orders"}`,
+      again: "Order again",
+      againAdding: "Adding…",
+      againDone: (pieces: number) =>
+        `${pieces} ${pieces === 1 ? "piece" : "pieces"} added to your cart`,
+      againPartial: "Some lines are no longer available",
+      pieces: (n: number) => `${n} ${n === 1 ? "piece" : "pieces"}`,
       title: "My orders",
       empty: "You haven't placed any orders yet.",
       orderNumber: "Order number",

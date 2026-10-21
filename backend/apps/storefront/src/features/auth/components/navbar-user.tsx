@@ -17,7 +17,7 @@ export async function NavbarUser() {
 
   if (!customer) {
     return (
-      <Button variant="outline" size="sm" className="ml-1" asChild>
+      <Button variant="secondary" size="sm" className="ml-1" asChild>
         <LoginButton isLoggedIn={false} />
       </Button>
     );

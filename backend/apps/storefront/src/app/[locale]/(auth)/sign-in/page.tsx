@@ -52,23 +52,30 @@ async function SignInContent({
 export default async function SignInPage({ searchParams }: PageProps<"/[locale]/sign-in">) {
   const t = await getT();
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 pt-sticky pb-16">
-      <div className="w-full max-w-md space-y-8 animate-in fade-in-0 slide-in-from-bottom-3 duration-500 ease-out">
-        <div className="space-y-2 text-center">
-          <Image
-            src="/logo.png"
-            alt=""
-            width={169}
-            height={210}
-            className="mx-auto mb-4 h-16 w-auto dark:brightness-0 dark:invert"
-          />
-          <h1 className="display text-4xl">{t.auth.signIn.title}</h1>
-          <p className="text-muted-foreground">{t.auth.signIn.subtitle}</p>
+    <div className="frame mt-header grid gap-10 pt-8 pb-20 lg:grid-cols-12 lg:gap-5">
+      <div className="lg:col-span-5 lg:pr-10 lg:pt-10">
+        <h1 className="display text-[1.75rem] md:text-[2rem]">{t.auth.signIn.title}</h1>
+        <p className="mt-2 text-base text-muted-foreground">{t.auth.signIn.subtitle}</p>
+        <div className="mt-8">
+          <Suspense fallback={<LoginFormSkeleton />}>
+            <SignInContent searchParams={searchParams} />
+          </Suspense>
         </div>
-        <Suspense fallback={<LoginFormSkeleton />}>
-          <SignInContent searchParams={searchParams} />
-        </Suspense>
       </div>
+      <figure className="relative hidden lg:col-span-7 lg:block">
+        <Image
+          src="/catalogue/scenes/p207.jpg"
+          alt={t.auth.signIn.photoAlt}
+          width={1394}
+          height={1900}
+          sizes="58vw"
+          priority
+          className="h-[calc(100svh-var(--spacing-header)-5rem)] min-h-[32rem] w-full rounded-xl object-cover"
+        />
+        <figcaption className="absolute bottom-3 left-3 max-w-sm rounded-lg bg-background p-5 text-base">
+          {t.auth.signIn.photoCaption}
+        </figcaption>
+      </figure>
     </div>
   );
 }

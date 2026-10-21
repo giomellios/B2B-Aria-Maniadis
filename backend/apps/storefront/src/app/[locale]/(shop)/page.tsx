@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { HeroSection, ValueProps, HowItWorks } from "@/features/home";
-import { CategoryGrid, FeaturedProducts, CtaBanner } from "@/features/home/server";
+import {
+  HomeHero,
+  TownMosaic,
+  RangeList,
+  OrderStepsSection,
+  AboutFacts,
+  TradeFaq,
+  ApplyStrip,
+} from "@/features/home/server";
 import { SITE_NAME, buildAlternates, buildCanonicalUrl } from "@/lib/utils";
 import { getLocale, getT } from "@/lib/i18n/server";
 
-// TODO: Replace title, description, and OpenGraph copy with final approved text from Maniadis
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const t = await getT();
@@ -25,19 +31,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   return (
-    <div className="min-h-screen">
-      <HeroSection />
+    <main className="pt-header">
       <Suspense>
-        <CategoryGrid />
+        <HomeHero />
       </Suspense>
-      <ValueProps />
-      <Suspense>
-        <FeaturedProducts />
-      </Suspense>
-      <HowItWorks />
-      <Suspense>
-        <CtaBanner />
-      </Suspense>
-    </div>
+      <TownMosaic />
+      <RangeList />
+      <OrderStepsSection />
+      <AboutFacts />
+      <TradeFaq />
+      <ApplyStrip />
+    </main>
   );
 }

@@ -15,7 +15,7 @@ export async function CollectionHeader({ slug }: CollectionHeaderProps) {
   if (!collection) {
     return (
       <div className="mb-10 border-b border-border pb-10">
-        <h1 className="display text-4xl md:text-5xl">{t.catalog.collectionNotFound}</h1>
+        <h1 className="display text-[1.75rem] md:text-[2rem]">{t.catalog.collectionNotFound}</h1>
       </div>
     );
   }
@@ -26,7 +26,7 @@ export async function CollectionHeader({ slug }: CollectionHeaderProps) {
   const children = [...(collection.children ?? [])].sort((a, b) => a.position - b.position);
 
   return (
-    <div className="mb-8 space-y-5 border-b border-border pb-8">
+    <div className="mb-6 space-y-3">
       <Breadcrumb
         label={t.product.breadcrumb}
         items={[
@@ -35,7 +35,7 @@ export async function CollectionHeader({ slug }: CollectionHeaderProps) {
           { label: collection.name },
         ]}
       />
-      <h1 className="display text-4xl leading-[1.05] md:text-5xl">{collection.name}</h1>
+      <h1 className="display text-[1.75rem] leading-[1.1] md:text-[2rem]">{collection.name}</h1>
       {collection.description ? (
         <div
           className="max-w-2xl text-sm leading-relaxed text-muted-foreground"
@@ -48,7 +48,7 @@ export async function CollectionHeader({ slug }: CollectionHeaderProps) {
             <li key={child.id}>
               <Link
                 href={`/collection/${child.slug}`}
-                className="inline-flex h-9 items-center border border-border px-4 text-xs font-semibold uppercase tracking-[0.1em] transition-colors hover:border-primary hover:text-primary"
+                className="inline-flex h-9 items-center border border-border px-4 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
               >
                 {child.name}
               </Link>

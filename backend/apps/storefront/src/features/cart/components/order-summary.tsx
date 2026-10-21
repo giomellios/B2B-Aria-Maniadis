@@ -10,8 +10,8 @@ import {
 export async function OrderSummary({ activeOrder }: { activeOrder: OrderTotalsData }) {
   const t = await getT();
   return (
-    <div className="border rounded-md p-6 bg-card sticky top-sticky">
-      <h2 className="font-serif text-2xl mb-4">{t.cart.summary}</h2>
+    <div className="sticky top-sticky rounded-xl bg-card p-5">
+      <h2 className="mb-4 text-base font-semibold">{t.cart.summary}</h2>
 
       <OrderTotalsBreakdown
         order={activeOrder}
@@ -19,7 +19,7 @@ export async function OrderSummary({ activeOrder }: { activeOrder: OrderTotalsDa
         className="space-y-2 mb-4"
       />
 
-      <div className="border-t pt-4 mb-6">
+      <div className="mb-6 border-t border-border pt-4">
         <OrderGrandTotal order={activeOrder} />
       </div>
 
@@ -27,8 +27,8 @@ export async function OrderSummary({ activeOrder }: { activeOrder: OrderTotalsDa
         <Link href="/checkout">{t.cart.checkout}</Link>
       </Button>
 
-      <Button variant="outline" className="w-full mt-2" asChild>
-        <Link href="/">{t.cart.continueShopping}</Link>
+      <Button variant="ghost" className="mt-2 w-full" asChild>
+        <Link href="/search">{t.cart.continueShopping}</Link>
       </Button>
     </div>
   );

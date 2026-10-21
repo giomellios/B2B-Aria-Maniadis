@@ -25,9 +25,8 @@ import {
   PaginationPrevious,
   Button,
 } from "@/design-system";
-import { ArrowRight } from "@/design-system/icons";
 import { Price } from "@/components/shared/price";
-import { OrderStatusBadge } from "@/features/account";
+import { OrderStatusBadge, ReorderButton } from "@/features/account";
 import { formatDate } from "@/lib/utils";
 import { Link } from "@/lib/i18n/navigation";
 
@@ -58,48 +57,86 @@ export default async function OrdersPage(props: PageProps<"/[locale]/account/ord
 
   return (
     <div>
-      <h1 className="display text-3xl md:text-4xl mb-6">{t.title}</h1>
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2">
+        <h1 className="display text-2xl">{t.title}</h1>
+        {totalItems > 0 && (
+          <p className="text-sm text-muted-foreground tabular-nums">{t.orderCount(totalItems)}</p>
+        )}
+      </div>
 
       {orders.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">{t.empty}</p>
+        <div className="rounded-xl bg-card px-5 py-8">
+          <p className="text-base">{t.empty}</p>
+          <Button className="mt-5" asChild>
+            <Link href="/search">{dict.cart.browse}</Link>
+          </Button>
         </div>
       ) : (
         <>
-          <div className="border rounded-lg">
-            <Table>
-              <TableHeader className="bg-muted">
-                <TableRow>
-                  <TableHead>{t.orderNumber}</TableHead>
-                  <TableHead>{t.date}</TableHead>
-                  <TableHead>{t.status}</TableHead>
-                  <TableHead>{t.items}</TableHead>
-                  <TableHead className="text-right">{t.total}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {orders.map((order) => (
-                  <TableRow key={order.id} className="hover:bg-muted/50">
-                    <TableCell className="font-medium">
-                      <Button asChild variant="outline">
-                        <Link href={`/account/orders/${order.code}`}>
-                          {order.code} <ArrowRight />
-                        </Link>
-                      </Button>
+          <Table>
+            <TableHeader>
+              <TableRow className="border-b-0 hover:bg-transparent">
+                <TableHead className="text-sm font-normal text-muted-foreground">
+                  {t.orderNumber}
+                </TableHead>
+                <TableHead className="text-sm font-normal text-muted-foreground">
+                  {t.date}
+                </TableHead>
+                <TableHead className="text-sm font-normal text-muted-foreground">
+                  {t.status}
+                </TableHead>
+                <TableHead className="text-right text-sm font-normal text-muted-foreground">
+                  {t.items}
+                </TableHead>
+                <TableHead className="text-right text-sm font-normal text-muted-foreground">
+                  {t.total}
+                </TableHead>
+                <TableHead className="w-0">
+                  <span className="sr-only">{t.again}</span>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {orders.map((order) => {
+                const pieces = order.lines.reduce((sum, line) => sum + line.quantity, 0);
+                return (
+                  <TableRow key={order.id} className="h-14">
+                    <TableCell>
+                      <Link
+                        href={`/account/orders/${order.code}`}
+                        className="font-medium tabular-nums hover:underline hover:decoration-gold hover:decoration-2 hover:underline-offset-4"
+                      >
+                        {order.code}
+                      </Link>
                     </TableCell>
-                    <TableCell>{formatDate(order.createdAt, "short", locale)}</TableCell>
+                    <TableCell className="tabular-nums">
+                      {formatDate(order.createdAt, "short", locale)}
+                    </TableCell>
                     <TableCell>
                       <OrderStatusBadge state={order.state} />
                     </TableCell>
-                    <TableCell>{t.itemCount(order.lines.length)}</TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-right tabular-nums">
+                      {t.pieces(pieces)}
+                      <span className="block text-sm text-muted-foreground">
+                        {t.lines(order.lines.length)}
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-right font-semibold tabular-nums">
                       <Price value={order.totalWithTax} currencyCode={order.currencyCode} />
                     </TableCell>
+                    <TableCell className="text-right">
+                      <ReorderButton
+                        lines={order.lines.map((line) => ({
+                          variantId: line.productVariant.id,
+                          quantity: line.quantity,
+                        }))}
+                      />
+                    </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+                );
+              })}
+            </TableBody>
+          </Table>
 
           {totalPages > 1 && (
             <div className="mt-6">

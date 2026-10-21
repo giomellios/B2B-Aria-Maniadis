@@ -22,7 +22,7 @@ export function AccountNavList({ pathname }: { pathname: string | null }) {
   ];
 
   return (
-    <nav className="flex gap-1 overflow-x-auto border-b border-border md:flex-col md:gap-0.5 md:border-b-0">
+    <nav className="flex gap-1 overflow-x-auto md:flex-col md:gap-0.5">
       {navItems.map((item) => {
         const isActive = pathname?.startsWith(item.href) ?? false;
         return (
@@ -31,20 +31,12 @@ export function AccountNavList({ pathname }: { pathname: string | null }) {
             href={item.href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "relative flex shrink-0 items-center gap-3 px-3 py-2.5 text-sm font-medium transition-colors duration-200 md:rounded-md",
-              isActive
-                ? "text-primary md:bg-accent"
-                : "text-muted-foreground hover:bg-accent/60 hover:text-foreground"
+              "relative flex h-11 shrink-0 items-center gap-3 rounded-md px-3 text-base transition-colors duration-200",
+              isActive ? "bg-card text-foreground" : "text-muted-foreground hover:text-foreground"
             )}
           >
             <item.icon className="size-4" />
             {item.label}
-            {isActive && (
-              <span
-                aria-hidden
-                className="absolute inset-x-3 -bottom-px h-0.5 bg-primary animate-in fade-in-0 md:inset-x-auto md:inset-y-2 md:left-0 md:bottom-auto md:h-auto md:w-0.5"
-              />
-            )}
           </Link>
         );
       })}

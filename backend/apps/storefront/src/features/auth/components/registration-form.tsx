@@ -26,9 +26,11 @@ import { useT } from "@/lib/i18n/provider";
 
 interface RegistrationFormProps {
   redirectTo?: string;
+  /** Prefill from the home page's "Open a trade account" bar. */
+  initial?: { company?: string; emailAddress?: string };
 }
 
-export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
+export function RegistrationForm({ redirectTo, initial }: RegistrationFormProps) {
   const [isPending, startTransition] = useTransition();
   const [serverError, setServerError] = useState<string | null>(null);
   const t = useT().auth;
@@ -37,11 +39,11 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
-      emailAddress: "",
+      emailAddress: initial?.emailAddress ?? "",
       firstName: "",
       lastName: "",
       vatNumber: "",
-      company: "",
+      company: initial?.company ?? "",
       mobileNumber: "",
       password: "",
       confirmPassword: "",
@@ -76,37 +78,105 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
     <Card>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <CardContent className="space-y-4">
-            <FormField
-              control={form.control}
-              name="emailAddress"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t.email}</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder={t.emailPlaceholder}
-                      disabled={isPending}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <CardContent className="space-y-8 px-5 sm:px-6">
+            <fieldset className="space-y-4">
+              <legend className="mb-4 text-base font-semibold">{t.register.business}</legend>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.company}</FormLabel>
+                      <FormControl>
+                        <Input type="text" disabled={isPending} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="vatNumber"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.vatNumber}</FormLabel>
+                      <FormControl>
+                        <Input type="text" disabled={isPending} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </fieldset>
+            <fieldset className="space-y-4">
+              <legend className="mb-4 text-base font-semibold">{t.register.person}</legend>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.firstName}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder={t.firstNamePlaceholder}
+                          disabled={isPending}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-            <div className="grid grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.lastName}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder={t.lastNamePlaceholder}
+                          disabled={isPending}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormField
                 control={form.control}
-                name="firstName"
+                name="mobileNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t.firstName}</FormLabel>
+                    <FormLabel>{t.mobileNumber}</FormLabel>
+                    <FormControl>
+                      <Input type="tel" disabled={isPending} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </fieldset>
+            <fieldset className="space-y-4">
+              <legend className="mb-4 text-base font-semibold">{t.register.login}</legend>
+              <FormField
+                control={form.control}
+                name="emailAddress"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t.email}</FormLabel>
                     <FormControl>
                       <Input
-                        type="text"
-                        placeholder={t.firstNamePlaceholder}
+                        type="email"
+                        placeholder={t.emailPlaceholder}
                         disabled={isPending}
                         {...field}
                       />
@@ -115,107 +185,59 @@ export function RegistrationForm({ redirectTo }: RegistrationFormProps) {
                   </FormItem>
                 )}
               />
-
-              <FormField
-                control={form.control}
-                name="lastName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t.lastName}</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        placeholder={t.lastNamePlaceholder}
-                        disabled={isPending}
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <FormField
-              control={form.control}
-              name="company"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t.company}</FormLabel>
-                  <FormControl>
-                    <Input type="text" disabled={isPending} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="vatNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t.vatNumber}</FormLabel>
-                  <FormControl>
-                    <Input type="text" disabled={isPending} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="mobileNumber"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t.mobileNumber}</FormLabel>
-                  <FormControl>
-                    <Input type="tel" disabled={isPending} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t.password}</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="••••••••" disabled={isPending} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="confirmPassword"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t.confirmPassword}</FormLabel>
-                  <FormControl>
-                    <Input type="password" placeholder="••••••••" disabled={isPending} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.password}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="••••••••"
+                          disabled={isPending}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t.confirmPassword}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="••••••••"
+                          disabled={isPending}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </fieldset>
 
             {serverError && <div className="text-sm text-destructive">{serverError}</div>}
 
-            <Button type="submit" className="w-full" disabled={isPending}>
+            <Button type="submit" variant="gold" size="lg" className="w-full" disabled={isPending}>
               {isPending ? t.register.submitting : t.register.submit}
             </Button>
           </CardContent>
-          <CardFooter className="flex flex-col space-y-4 mt-4">
-            <div className="text-sm text-center text-muted-foreground">
+          <CardFooter className="px-5 pt-2 sm:px-6">
+            <div className="text-sm text-muted-foreground">
               {t.register.haveAccount}{" "}
-              <Link href={signInHref} className="hover:text-primary underline">
+              <Link
+                href={signInHref}
+                className="text-foreground underline underline-offset-4 hover:decoration-gold"
+              >
                 {t.register.signIn}
               </Link>
             </div>
