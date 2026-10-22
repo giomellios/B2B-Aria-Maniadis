@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getT } from "@/lib/i18n/server";
 import { Suspense } from "react";
-import Image from "next/image";
+import { PhotoPlaceholder } from "@/components/shared/photo-placeholder";
 import { localeRedirect } from "@/lib/i18n/redirect";
 import { LoginForm } from "@/features/auth";
 import { Card, CardContent, CardFooter, Skeleton } from "@/design-system";
@@ -62,20 +62,15 @@ export default async function SignInPage({ searchParams }: PageProps<"/[locale]/
           </Suspense>
         </div>
       </div>
-      <figure className="relative hidden lg:col-span-7 lg:block">
-        <Image
-          src="/catalogue/scenes/p207.jpg"
-          alt={t.auth.signIn.photoAlt}
-          width={1394}
-          height={1900}
-          sizes="58vw"
-          priority
-          className="h-[calc(100svh-var(--spacing-header)-5rem)] min-h-[32rem] w-full rounded-xl object-cover"
+      <div className="relative hidden lg:col-span-7 lg:block">
+        <PhotoPlaceholder
+          label={t.common.photoPlaceholder}
+          className="h-[calc(100svh-var(--spacing-header)-5rem)] min-h-[32rem] w-full"
         />
-        <figcaption className="absolute bottom-3 left-3 max-w-sm rounded-lg bg-background p-5 text-base">
+        <p className="absolute bottom-3 left-3 max-w-sm rounded-lg bg-background p-5 text-base">
           {t.auth.signIn.photoCaption}
-        </figcaption>
-      </figure>
+        </p>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { getT } from "@/lib/i18n/server";
 import { DIGITAL_CATALOGUE_URL } from "@/lib/config/links";
 import { format } from "@/lib/i18n/dictionaries";
-import { cataloguePageUrl, ISLAND_RUNS, RANGE_RUNS } from "@/features/home/data/catalogue";
+import { cataloguePageUrl } from "@/features/home/data/catalogue";
 import { pagesLabel } from "@/features/home/components/home-hero";
 
 type RowKey =
@@ -22,29 +21,26 @@ type RowKey =
   | "stands"
   | "index";
 
-const frameOf = (code: string) =>
-  [...ISLAND_RUNS, ...RANGE_RUNS].find((run) => run.code === code)?.frames[0];
-
 // Printed page ranges from the contents page of the 2026 catalogue (knitted, woven and leather
 // ranges checked against the pages themselves).
-const GROUPS: { key: "hats" | "bags" | "more"; rows: [RowKey, [number, number], string?][] }[] = [
+const GROUPS: { key: "hats" | "bags" | "more"; rows: [RowKey, [number, number]][] }[] = [
   {
     key: "hats",
     rows: [
-      ["caps", [3, 89], "mykonos"],
+      ["caps", [3, 89]],
       ["kids", [90, 99]],
-      ["women", [100, 145], "straw-hats"],
+      ["women", [100, 145]],
       ["men", [146, 157]],
-      ["panama", [158, 164], "panama"],
+      ["panama", [158, 164]],
       ["original", [165, 173]],
     ],
   },
   {
     key: "bags",
     rows: [
-      ["straw", [174, 183], "straw-bags"],
-      ["beach", [184, 199], "beach-bags"],
-      ["canvas", [200, 241], "canvas"],
+      ["straw", [174, 183]],
+      ["beach", [184, 199]],
+      ["canvas", [200, 241]],
       ["knitted", [242, 267]],
       ["leatherBags", [310, 314]],
       ["wallets", [315, 341]],
@@ -79,8 +75,7 @@ export async function RangeList() {
           <div key={group.key} data-reveal style={{ "--i": groupIndex } as React.CSSProperties}>
             <h3 className="text-base text-muted-foreground">{range[group.key]}</h3>
             <ul className="mt-3">
-              {group.rows.map(([key, pages, frameCode]) => {
-                const frame = frameCode ? frameOf(frameCode) : undefined;
+              {group.rows.map(([key, pages]) => {
                 return (
                   <li key={key}>
                     <a
@@ -90,17 +85,6 @@ export async function RangeList() {
                       title={format(range.opensAt, { page: pages[0] })}
                       className="group flex min-h-11 items-center gap-3 py-1.5 md:min-h-10"
                     >
-                      <span className="relative size-7 shrink-0 overflow-hidden rounded-full">
-                        {frame && (
-                          <Image
-                            src={frame.src}
-                            alt=""
-                            fill
-                            sizes="28px"
-                            className="bg-white object-cover"
-                          />
-                        )}
-                      </span>
                       <span className="text-base transition-colors group-hover:text-gold">
                         {range.rows[key]}
                       </span>

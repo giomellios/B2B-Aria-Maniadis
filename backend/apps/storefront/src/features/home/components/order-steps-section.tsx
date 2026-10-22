@@ -1,29 +1,35 @@
 import { getT } from "@/lib/i18n/server";
-import { format } from "@/lib/i18n/dictionaries";
-import { OrderSteps } from "@/features/home/components/order-steps";
 
-// Location shots from the 2026 catalogue (printed page numbers), one per step.
-const PHOTOS = [
-  { src: "/catalogue/scenes/p101.jpg", page: 100 },
-  { src: "/catalogue/scenes/p201.jpg", page: 200 },
-  { src: "/catalogue/scenes/p185.jpg", page: 184 },
-  { src: "/catalogue/scenes/p207.jpg", page: 206 },
-  { src: "/catalogue/scenes/p169.jpg", page: 168 },
-  { src: "/catalogue/scenes/p211.jpg", page: 210 },
-];
-
+/** The ordering story, from application to the shop's shelf, as six steps in order. */
 export async function OrderStepsSection() {
   const t = await getT();
   const steps = t.home.steps;
+
   return (
-    <OrderSteps
-      title={steps.title}
-      labels={{ progress: steps.progress }}
-      steps={steps.items.map((item, i) => ({
-        ...item,
-        photo: PHOTOS[i].src,
-        alt: format(t.about.photoAlt, { code: format(t.home.hero.page, { from: PHOTOS[i].page }) }),
-      }))}
-    />
+    <section aria-labelledby="steps-title" className="mt-36 px-4 sm:px-5 md:mt-52">
+      <h2
+        id="steps-title"
+        data-reveal
+        className="text-[clamp(2rem,1.3rem+3.2vw,4rem)] font-semibold leading-none tracking-[-0.02em]"
+      >
+        {steps.title}
+      </h2>
+      <ol className="mt-10 grid gap-3 md:mt-14 md:grid-cols-3 md:gap-4 lg:grid-cols-6">
+        {steps.items.map((item, i) => (
+          <li
+            key={item.title}
+            data-reveal
+            style={{ "--i": i } as React.CSSProperties}
+            className="flex flex-col rounded-xl bg-card p-5"
+          >
+            <span aria-hidden className="text-2xl font-semibold tabular-nums text-gold">
+              {i + 1}
+            </span>
+            <h3 className="mt-6 text-base font-semibold leading-tight">{item.title}</h3>
+            <p className="mt-2 text-base leading-[1.45]">{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 }

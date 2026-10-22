@@ -66,7 +66,10 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
               key={line.id}
               className="grid grid-cols-[56px_1fr_auto] items-center gap-x-4 gap-y-3 border-t border-border py-4 sm:grid-cols-[64px_1fr_auto_auto]"
             >
-              <Link href={href} className="block size-14 overflow-hidden rounded-md bg-white sm:size-16">
+              <Link
+                href={href}
+                className="block size-14 overflow-hidden rounded-md bg-white sm:size-16"
+              >
                 {imagePreview ? (
                   <Image
                     src={imagePreview}

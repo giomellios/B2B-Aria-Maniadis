@@ -32,7 +32,6 @@ function toSheetRun(
       ? `/search?facets=${encodeURIComponent(destination.filter)}`
       : `/search?q=${encodeURIComponent(run.name.en)}`,
     linkLabel: format(destination ? t.home.hero.seeAll : t.home.hero.searchFor, { name }),
-    frames: run.frames,
   };
 }
 

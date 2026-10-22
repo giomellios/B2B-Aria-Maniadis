@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
-import { format } from "@/lib/i18n/dictionaries";
 import { Button } from "@/design-system";
 import { DIGITAL_CATALOGUE_URL } from "@/lib/config/links";
 import { buildAlternates } from "@/lib/utils";
@@ -18,20 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// Location shots from the 2026 catalogue: file name and printed page.
-const SHOTS = [
-  ["p1", 0],
-  ["p193", 192],
-  ["p242", 241],
-  ["p291", 290],
-  ["p297", 296],
-  ["p109", 108],
-  ["p316", 315],
-  ["p147", 146],
-  ["p250", 249],
-  ["p342", 341],
-] as const;
-
 const sectionHead =
   "text-[clamp(2rem,1.3rem+3.2vw,4rem)] font-semibold leading-none tracking-[-0.02em]";
 
@@ -43,6 +27,10 @@ export default async function AboutPage() {
     [about.based, about.basedValue],
     [about.catalogueLabel, about.catalogueValue],
   ];
+  const offers = [
+    { id: "custom", title: about.customTitle, text: about.customText },
+    { id: "stands", title: about.standsTitle, text: about.standsText },
+  ];
 
   return (
     <main className="pt-header">
@@ -52,7 +40,7 @@ export default async function AboutPage() {
             <h1
               id="about-title"
               data-reveal-load
-              className="text-[clamp(2.75rem,7.6vw,9rem)] font-bold leading-[0.9] tracking-[-0.03em]"
+              className="text-[clamp(2.25rem,7.6vw,9rem)] font-bold leading-[0.9] tracking-[-0.03em]"
             >
               {about.title}
             </h1>
@@ -67,43 +55,16 @@ export default async function AboutPage() {
           <dl
             data-reveal-load
             style={{ "--i": 2 } as React.CSSProperties}
-            className="grid grid-cols-3 gap-5 self-end md:col-span-4 md:grid-cols-1 md:justify-items-end md:text-right"
+            className="grid grid-cols-3 gap-3 self-end md:col-span-4 md:grid-cols-1"
           >
             {facts.map(([label, value]) => (
-              <div key={label}>
+              <div key={label} className="rounded-xl bg-card p-4 md:p-5">
                 <dt className="text-sm text-muted-foreground">{label}</dt>
-                <dd className="text-base">{value}</dd>
+                <dd className="mt-1 text-lg font-semibold md:text-2xl">{value}</dd>
               </div>
             ))}
           </dl>
         </div>
-
-        <h2 className="sr-only">{about.rangeTitle}</h2>
-        <ul className="mt-12 flex flex-wrap gap-2 md:mt-16">
-          {SHOTS.map(([file, page], i) => (
-            <li
-              key={file}
-              className="group relative grow overflow-hidden rounded-lg"
-              data-reveal
-              style={{ "--i": i % 5 } as React.CSSProperties}
-            >
-              <Image
-                src={`/catalogue/scenes/${file}.jpg`}
-                alt={
-                  page === 0
-                    ? about.coverAlt
-                    : format(about.photoAlt, { code: format(t.home.hero.page, { from: page }) })
-                }
-                width={1394}
-                height={1900}
-                sizes="(min-width: 768px) 20vw, 45vw"
-                priority={i < 5}
-                className="h-56 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] md:h-[22rem]"
-              />
-            </li>
-          ))}
-          <li aria-hidden className="h-0 grow-[40]" />
-        </ul>
       </section>
 
       <section aria-labelledby="story-title" className="mt-36 px-4 sm:px-5 md:mt-52">
@@ -126,59 +87,21 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="custom-title" className="mt-36 px-4 sm:px-5 md:mt-52">
-        <div className="grid gap-8 md:grid-cols-12 md:gap-5">
-          <div className="md:col-span-4">
-            <h2 id="custom-title" data-reveal className={sectionHead}>
-              {about.customTitle}
-            </h2>
-            <p data-reveal style={{ "--i": 1 } as React.CSSProperties} className="mt-6 text-base">
-              {about.customText}
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-2 md:col-span-8">
-            {[14, 47].map((page, i) => (
-              <Image
-                key={page}
-                src={`/catalogue/scenes/page-${page}.jpg`}
-                alt={i === 0 ? about.customAlt : ""}
-                width={1095}
-                height={1500}
-                sizes="(min-width: 768px) 33vw, 50vw"
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-                className="w-full rounded-lg"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="stands-title" className="mt-36 px-4 sm:px-5 md:mt-52">
-        <div className="grid gap-8 md:grid-cols-12 md:gap-5">
-          <div className="order-2 grid grid-cols-2 gap-2 md:order-1 md:col-span-8">
-            {[262, 358].map((page, i) => (
-              <Image
-                key={page}
-                src={`/catalogue/scenes/page-${page}.jpg`}
-                alt={i === 0 ? about.standsAlt : ""}
-                width={1095}
-                height={1500}
-                sizes="(min-width: 768px) 33vw, 50vw"
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-                className="w-full rounded-lg"
-              />
-            ))}
-          </div>
-          <div className="order-1 md:order-2 md:col-span-4">
-            <h2 id="stands-title" data-reveal className={sectionHead}>
-              {about.standsTitle}
-            </h2>
-            <p data-reveal style={{ "--i": 1 } as React.CSSProperties} className="mt-6 text-base">
-              {about.standsText}
-            </p>
-          </div>
+      <section aria-label={about.customTitle} className="mt-36 px-4 sm:px-5 md:mt-52">
+        <div className="grid gap-3 md:grid-cols-2 md:gap-4">
+          {offers.map((offer, i) => (
+            <article
+              key={offer.id}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+              className="flex min-h-72 flex-col justify-between rounded-2xl bg-card p-6 md:p-10"
+            >
+              <h2 className="text-[clamp(1.75rem,1.2rem+2vw,2.75rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
+                {offer.title}
+              </h2>
+              <p className="mt-8 max-w-[52ch] text-lg leading-snug">{offer.text}</p>
+            </article>
+          ))}
         </div>
       </section>
 

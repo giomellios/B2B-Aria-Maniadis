@@ -10,6 +10,7 @@ export const en = {
   },
 
   common: {
+    photoPlaceholder: "Photo placeholder",
     cancel: "Cancel",
     continue: "Continue",
     edit: "Edit",
@@ -124,7 +125,6 @@ export const en = {
     },
     town: {
       title: "Your town on the cap",
-      photoAlt: "Canvas bags with the Greek key pattern, from the 2026 catalogue (code K1206)",
       name: "Any place name, embroidered or as a PVC patch, in one of 18 fonts, or your own logo.",
       stands:
         "Display stands for caps, bags and wallets, free to partners under our terms of cooperation.",
@@ -157,7 +157,6 @@ export const en = {
     },
     steps: {
       title: "From sign-up to shelf",
-      progress: "How far the row has scrolled",
       items: [
         {
           title: "You apply",
@@ -247,7 +246,6 @@ export const en = {
     customTitle: "Your town on the cap",
     customText:
       "Two pages of the catalogue are an order form for caps with your own place name: pick a cap, pick one of 18 fonts, embroidered or as a PVC patch, or send us your logo.",
-    customAlt: "Catalogue pages 13 and 46: create your own cap",
     founded: "Founded",
     based: "Based in",
     basedValue: "Gazi, Heraklion",
@@ -258,7 +256,6 @@ export const en = {
       "E. Maniadis, Heraklion: wholesale bags and hats for the tourist shops of the Greek islands since 1965.",
     title: "E.\u00a0Maniadis, Heraklion",
     lead: "Wholesale bags and hats for the shops of the Greek islands, since 1965.",
-    coverAlt: "The cover of the ARIA 2026 catalogue",
     storyTitle: "Sixty years of summer stock",
     story: [
       "E. Maniadis has worked from Heraklion since 1965, selling bags and hats to shops, never to the public. It works today from Ελ. Βενιζέλου 129 in Gazi.",
@@ -268,21 +265,11 @@ export const en = {
     standsTitle: "Stands that sell",
     standsText:
       "Most ranges have a stand built for them: caps on wall and spinning stands, bags on wheeled racks with adjustable shelves, wallets in counter trays. Stands are given free to partners, under our terms of cooperation, and the wheeled rack is a registered ARIA design.",
-    standsAlt: "Display stands for caps and bags, from the 2026 catalogue",
-    rangeTitle: "Shot on the coast",
-    photoAlt: "From the ARIA 2026 catalogue: {code}",
     cta: "Apply for an account",
     catalogue: "Open the 2026 catalogue",
   },
 
   contact: {
-    videoCaption:
-      "Lions Square, Heraklion, in May. Video: Klapi, CC BY-SA 3.0, via Wikimedia Commons.",
-    panoramaCaption:
-      "Megalo Kastro, today Heraklion, seen from the anchorage. From the Admiralty chart of Crete, 1858.",
-    chartCaption: "Admiralty chart of eastern Crete, surveyed by Capt. T. Spratt, published 1858.",
-    credit:
-      "Chart: United Kingdom Hydrographic Office, 1858, public domain, via Wikimedia Commons.",
     metaTitle: "Contact",
     metaDescription: "E. Maniadis, Ελ. Βενιζέλου 129, Gazi, Heraklion. Phone (2810) 319618.",
     title: "Contact E.\u00a0Maniadis",
@@ -304,7 +291,6 @@ export const en = {
     accountTitle: "Not a customer yet?",
     accountText: "Trade accounts are opened online. We check every one by hand.",
     apply: "Apply for an account",
-    mapAlt: "Map of Heraklion and the coast around it",
   },
 
   catalog: {
@@ -529,7 +515,6 @@ export const en = {
     lastNamePlaceholder: "Markaki",
     backToSignIn: "Back to sign in",
     signIn: {
-      photoAlt: "From the ARIA 2026 catalogue, page 206",
       photoCaption:
         "Trade accounts are for shops only, and each one is approved by hand in Heraklion.",
       metaTitle: "Sign in",
@@ -552,7 +537,6 @@ export const en = {
         "You get an email as soon as your account is approved.",
         "Sign in and order the whole catalogue by code, island or colour.",
       ],
-      photoAlt: "From the ARIA 2026 catalogue, page 192",
       metaTitle: "Create account",
       metaDescription: "Apply for a wholesale account.",
       title: "Apply for a wholesale account",

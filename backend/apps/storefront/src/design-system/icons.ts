@@ -30,6 +30,7 @@ export {
   FacebookLogoIcon as Facebook,
   GridNineIcon as GridNine,
   HouseIcon as Home,
+  ImageIcon as ImageIcon,
   InstagramLogoIcon as Instagram,
   LeafIcon as Leaf,
   ListIcon as Menu,

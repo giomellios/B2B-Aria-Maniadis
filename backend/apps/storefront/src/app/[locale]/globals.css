@@ -209,7 +209,7 @@
 }
 
 /*
- * Entrance (motion layer). First-screen parts (`data-reveal-load`) rise once on load; parts further down
+ * Entrance (motion layer): first-screen parts (`data-reveal-load`) rise once on load; parts further down
  * (`data-reveal`) are animated by components/shared/reveal-observer.tsx as they scroll in.
  */
 @keyframes reveal {
@@ -226,12 +226,6 @@
 }
 html[data-locale-switch] [data-reveal-load] {
   animation: none !important;
-}
-
-@keyframes strip {
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 @keyframes badge-pop {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getT } from "@/lib/i18n/server";
 import { Suspense } from "react";
-import Image from "next/image";
+import { PhotoPlaceholder } from "@/components/shared/photo-placeholder";
 import { localeRedirect } from "@/lib/i18n/redirect";
 import { RegistrationForm } from "@/features/auth";
 import { Card, CardContent, CardFooter, Skeleton } from "@/design-system";
@@ -91,14 +91,9 @@ export default async function RegisterPage({ searchParams }: PageProps<"/[locale
 
       <aside className="lg:col-span-5">
         <div className="space-y-2 lg:sticky lg:top-sticky">
-          <Image
-            src="/catalogue/scenes/p193.jpg"
-            alt={r.photoAlt}
-            width={1394}
-            height={1900}
-            sizes="(min-width: 1024px) 40vw, 100vw"
-            priority
-            className="hidden aspect-[4/3] w-full rounded-xl object-cover object-[50%_35%] lg:block"
+          <PhotoPlaceholder
+            label={t.common.photoPlaceholder}
+            className="hidden aspect-[4/3] w-full lg:flex"
           />
           <div className="rounded-xl bg-card p-5 sm:p-6">
             <h2 className="text-base font-semibold">{r.nextTitle}</h2>
