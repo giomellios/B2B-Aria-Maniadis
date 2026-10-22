@@ -1,0 +1,1494 @@
+{
+ "url": "http://localhost:3001/en/contact",
+ "at": "2026-10-20T13:02:56.357Z",
+ "allow": [
+  "font-not-dealt"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.59,
+    0.54,
+    0.49,
+    0.64
+   ],
+   "motion": {
+    "elements": 9,
+    "css": 8,
+    "transitions": 0,
+    "scripted": 1,
+    "videos": 1,
+    "playingVideos": 1
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3053,
+     "screens": 3.4,
+     "words": 218,
+     "img": 5,
+     "video": 1,
+     "canvas": 0,
+     "svg": 6,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fworld%2Fmegalo-kastron-1858.jpg&w=1",
+      "image?url=%2Fworld%2Fcrete-admiralty-chart-1858.",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp242.jpg&w=640"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Contact E. Maniadis",
+     "words": 3,
+     "chars": 19,
+     "lines": 2,
+     "size": 109.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.56,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Contact E. Maniadis",
+     "words": 3,
+     "lines": 2,
+     "size": 109.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Contact E. Maniadis",
+      "words": 3,
+      "chars": 19,
+      "lines": 2,
+      "size": 109.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.56,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Write to us",
+      "words": 3,
+      "chars": 11,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 1511,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      64,
+      109
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.4
+     },
+     "measureChars": 76,
+     "max": {
+      "size": 109.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "text": "Contact E. Maniadis"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 2641,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#a39d96",
+       "share": 0.49
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.47
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#c9a45a",
+      "hsl": {
+       "h": 40,
+       "s": 0.51,
+       "l": 0.57
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Search name or SKU…",
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 6,
+     "boxRadius": 12,
+     "squareMedia": 0,
+     "roundedMedia": 4,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 653
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.19
+     }
+    ],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 3053,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.px-4.pt-8",
+      "tag": "section",
+      "top": 72,
+      "height": 796,
+      "words": 54,
+      "media": 1,
+      "middle": 161,
+      "heading": {
+       "text": "Contact E. Maniadis",
+       "size": 109,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "figure.mt-36.px-4",
+      "tag": "figure",
+      "top": 1076,
+      "height": 227,
+      "words": 16,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 784,
+      "textLeft": 20,
+      "textRight": 784,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1511,
+      "height": 1002,
+      "words": 63,
+      "media": 2,
+      "middle": 52,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 2513,
+      "height": 540,
+      "words": 71,
+      "media": 0,
+      "middle": 141,
+      "heading": {
+       "text": "Bags and hats for the shops of the Greek islands, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 118,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Contact E. Maniadis",
+      "size": 109,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 2
+     },
+     {
+      "x": 900,
+      "n": 2
+     },
+     {
+      "x": 880,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 5,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.16,
+    "voidBox": {
+     "x": 0,
+     "y": 420,
+     "w": 840,
+     "h": 240
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.52,
+    0.63,
+    0.69,
+    0.76
+   ],
+   "motion": {
+    "elements": 7,
+    "css": 7,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 1,
+    "playingVideos": 1
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3747,
+     "screens": 3.7,
+     "words": 210,
+     "img": 5,
+     "video": 1,
+     "canvas": 0,
+     "svg": 6,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fworld%2Fcrete-admiralty-chart-1858.",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp242.jpg&w=828"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Contact E. Maniadis",
+     "words": 3,
+     "chars": 19,
+     "lines": 2,
+     "size": 58.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.54,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Contact E. Maniadis",
+     "words": 3,
+     "lines": 2,
+     "size": 58.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Contact E. Maniadis",
+      "words": 3,
+      "chars": 19,
+      "lines": 2,
+      "size": 58.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.54,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Write to us",
+      "words": 3,
+      "chars": 11,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 1887,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      45,
+      58
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.4
+     },
+     "measureChars": 76,
+     "max": {
+      "size": 58.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "text": "Contact E. Maniadis"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 2367,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.48
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.47
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.05
+      }
+     ],
+     "button": {
+      "bg": "#c9a45a",
+      "hsl": {
+       "h": 40,
+       "s": 0.51,
+       "l": 0.57
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 1,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 7,
+     "boxRadius": 12,
+     "squareMedia": 0,
+     "roundedMedia": 3,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 483
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.08
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 3747,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.px-4.pt-8",
+      "tag": "section",
+      "top": 72,
+      "height": 659,
+      "words": 54,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Contact E. Maniadis",
+       "size": 58,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 54,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "figure.mt-36.px-4",
+      "tag": "figure",
+      "top": 939,
+      "height": 148,
+      "words": 16,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 112,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1296,
+      "height": 1655,
+      "words": 66,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Write to us",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 119,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 2950,
+      "height": 797,
+      "words": 71,
+      "media": 0,
+      "middle": 18,
+      "heading": {
+       "text": "Bags and hats for the shops of the Greek islands, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 118,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Contact E. Maniadis",
+      "size": 58,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 3
+     },
+     {
+      "x": 40,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 5,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.6,
+    0.38,
+    0.68,
+    0.69,
+    0.91
+   ],
+   "motion": {
+    "elements": 8,
+    "css": 8,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 1,
+    "playingVideos": 1
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 4137,
+     "screens": 4.9,
+     "words": 206,
+     "img": 5,
+     "video": 1,
+     "canvas": 0,
+     "svg": 6,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fworld%2Fcrete-admiralty-chart-1858.",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp242.jpg&w=640"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Contact E. Maniadis",
+     "words": 3,
+     "chars": 19,
+     "lines": 2,
+     "size": 44,
+     "vw": 11.3,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 104,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Contact E. Maniadis",
+     "words": 3,
+     "lines": 2,
+     "size": 44,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Contact E. Maniadis",
+      "words": 3,
+      "chars": 19,
+      "lines": 2,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 104,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Call or write to us in Gazi, Heraklion. Trade customers only.",
+      "words": 11,
+      "chars": 61,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 215,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Ελ. Βενιζέλου 129",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 767,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "Γάζι, Ηράκλειο",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 800,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "Κρήτη, Greece",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 833,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "(2810) 319618",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 991,
+      "tag": "a",
+      "kind": "statement"
+     },
+     {
+      "text": "(2810) 319702",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 1024,
+      "tag": "a",
+      "kind": "statement"
+     },
+     {
+      "text": "(2810) 824111",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 1057,
+      "tag": "a",
+      "kind": "statement"
+     },
+     {
+      "text": "maniadibags@gmail.com",
+      "words": 1,
+      "chars": 21,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.73,
+      "top": 1214,
+      "tag": "a",
+      "kind": "statement"
+     },
+     {
+      "text": "Write to us",
+      "words": 3,
+      "chars": 11,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2072,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Not a customer yet?",
+      "words": 4,
+      "chars": 19,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 2879,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Bags and hats for the shops of the Greek islands, from Heraklion since 1965.",
+      "words": 14,
+      "chars": 76,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 3264,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 9,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      33,
+      44
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.4
+     },
+     "measureChars": 42,
+     "max": {
+      "size": 44,
+      "vw": 11.3,
+      "font": "Geologica",
+      "text": "Contact E. Maniadis"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 2658,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.49
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.47
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.05
+      }
+     ],
+     "button": {
+      "bg": "#c9a45a",
+      "hsl": {
+       "h": 40,
+       "s": 0.51,
+       "l": 0.57
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 1,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 6,
+     "boxRadius": 12,
+     "squareMedia": 0,
+     "roundedMedia": 3,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.29
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 4137,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section.px-4.pt-8",
+      "tag": "section",
+      "top": 72,
+      "height": 1194,
+      "words": 54,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Contact E. Maniadis",
+       "size": 44,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "figure.mt-36.px-4",
+      "tag": "figure",
+      "top": 1410,
+      "height": 130,
+      "words": 16,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1684,
+      "height": 1374,
+      "words": 66,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Write to us",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 3058,
+      "height": 1079,
+      "words": 71,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Bags and hats for the shops of the Greek islands, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 40,
+      "right": 41,
+      "textLeft": 40,
+      "textRight": 41,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Contact E. Maniadis",
+      "size": 44,
+      "top": 104,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 3
+     },
+     {
+      "x": 36,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 5,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Little motion: 9 element(s) moved while the page loaded and scrolled.",
+   "fix": "Give every section an entrance for its parts (not one fade of the whole block) and add one moving picture: a looping clip or a slow move on a photograph."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/contact/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/contact/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/contact/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/contact/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/contact/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/contact/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

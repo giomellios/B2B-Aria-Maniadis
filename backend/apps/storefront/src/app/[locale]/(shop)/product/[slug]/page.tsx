@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { ProductImageCarousel, ProductInfo } from "@/features/catalog";
 import { RelatedProducts, getProductData } from "@/features/catalog/server";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/design-system";
 import { notFound } from "next/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
 import { Link } from "@/lib/i18n/navigation";
-import { Award, Leaf, ShieldCheck, ChevronRight } from "@/design-system/icons";
+import { ChevronRight } from "@/design-system/icons";
+import { TradeFaq } from "@/features/home/server";
 import {
   SITE_NAME,
   truncateDescription,
@@ -102,11 +102,11 @@ export default async function ProductDetailPage({
 
   return (
     <>
-      <div className="container mx-auto mt-header px-4 pt-6 pb-16 md:pb-24">
+      <div className="frame mt-header pt-6 pb-16 md:pb-24">
         {/* Breadcrumb */}
         <nav
           aria-label={t.product.breadcrumb}
-          className="mb-8 flex items-center gap-1.5 text-xs text-muted-foreground"
+          className="mb-6 flex items-center gap-1.5 text-sm text-muted-foreground"
         >
           <Link href="/" className="transition-colors hover:text-primary">
             {t.nav.home}
@@ -126,79 +126,25 @@ export default async function ProductDetailPage({
           <span className="line-clamp-1 text-foreground">{product.name}</span>
         </nav>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          {/* Left Column: Image Carousel */}
-          <div className="lg:sticky lg:top-sticky lg:self-start">
-            <ProductImageCarousel images={productImages} variantImages={variantImages} />
+        {productImages.length > 0 ? (
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-5">
+            <div className="lg:sticky lg:top-sticky lg:col-span-6 lg:self-start">
+              <ProductImageCarousel
+                images={productImages}
+                variantImages={variantImages}
+                code={product.variants[0]?.sku.split("-")[0]}
+              />
+            </div>
+            <div className="lg:col-span-6 lg:pl-8">
+              <ProductInfo product={product} searchParams={searchParamsResolved} />
+            </div>
           </div>
-
-          {/* Right Column: Product Info */}
-          <div>
-            <ProductInfo product={product} searchParams={searchParamsResolved} />
-          </div>
-        </div>
+        ) : (
+          <ProductInfo product={product} searchParams={searchParamsResolved} layout="split" />
+        )}
       </div>
 
-      {/* Product Benefits Section */}
-      {/* TODO: Placeholder copy from the starter template — replace with Maniadis's real terms */}
-      <section className="border-y border-border bg-secondary">
-        <div className="container mx-auto grid grid-cols-1 px-4 md:grid-cols-3">
-          {[
-            {
-              icon: Award,
-              title: t.product.benefits.quality,
-              text: t.product.benefits.qualityText,
-            },
-            {
-              icon: Leaf,
-              title: t.product.benefits.eco,
-              text: t.product.benefits.ecoText,
-            },
-            {
-              icon: ShieldCheck,
-              title: t.product.benefits.guarantee,
-              text: t.product.benefits.guaranteeText,
-            },
-          ].map(({ icon: Icon, title, text }) => (
-            <div
-              key={title}
-              className="flex items-start gap-4 border-b border-border py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:first:border-l-0 md:first:pl-0"
-            >
-              <Icon className="mt-0.5 size-5 shrink-0 text-primary" />
-              <div className="space-y-1">
-                <h3 className="font-serif text-lg text-foreground">{title}</h3>
-                <p className="text-sm text-muted-foreground">{text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Store FAQ Section */}
-      {/* TODO: Placeholder copy from the starter template — replace with Maniadis's real terms */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto grid gap-10 px-4 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
-          <div className="space-y-3">
-            <p className="eyebrow">{t.product.faq.eyebrow}</p>
-            <h2 className="display text-4xl">{t.product.faq.title}</h2>
-          </div>
-          <Accordion type="single" collapsible className="w-full border-t border-border">
-            {(
-              [
-                ["shipping", t.product.faq.shippingQ, t.product.faq.shippingA],
-                ["returns", t.product.faq.returnsQ, t.product.faq.returnsA],
-                ["tracking", t.product.faq.trackingQ, t.product.faq.trackingA],
-                ["international", t.product.faq.internationalQ, t.product.faq.internationalA],
-              ] as const
-            ).map(([value, question, answer]) => (
-              <AccordionItem key={value} value={value}>
-                <AccordionTrigger>{question}</AccordionTrigger>
-                <AccordionContent>{answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+      <TradeFaq compact />
 
       {primaryCollection && (
         <RelatedProducts collectionSlug={primaryCollection.slug} currentProductId={product.id} />

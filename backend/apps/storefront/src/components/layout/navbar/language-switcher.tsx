@@ -52,19 +52,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       onPointerEnter={() => setIntent(true)}
       onFocus={() => setIntent(true)}
       onTouchStart={() => setIntent(true)}
-      className={cn(
-        "relative flex h-8 items-center rounded-full border border-border p-0.5 text-[0.6875rem] font-semibold tracking-wide",
-        className
-      )}
+      className={cn("flex h-9 items-center text-sm font-medium", className)}
     >
-      {/* Sliding pill behind the active language */}
-      <span
-        aria-hidden
-        className={cn(
-          "absolute top-0.5 bottom-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-primary transition-transform duration-300 ease-out",
-          shownLocale === LOCALES[1] && "translate-x-full"
-        )}
-      />
       {LOCALES.map((target) => {
         const isActive = target === locale;
         const isShown = target === shownLocale;
@@ -81,8 +70,10 @@ export function LanguageSwitcher({ className }: { className?: string }) {
             prefetch={isActive ? false : intent ? true : null}
             onClick={(event) => handleClick(event, target)}
             className={cn(
-              "relative z-10 flex h-full w-9 items-center justify-center rounded-full transition-colors duration-300",
-              isShown ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+              "flex h-full items-center px-1.5 underline-offset-[6px] transition-colors duration-200",
+              isShown
+                ? "text-foreground underline decoration-gold decoration-2"
+                : "text-muted-foreground hover:text-foreground"
             )}
           >
             {t.short}

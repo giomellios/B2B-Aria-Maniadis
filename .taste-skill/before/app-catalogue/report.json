@@ -1,0 +1,1450 @@
+{
+ "url": "http://localhost:3001/en/search",
+ "at": "2026-10-20T09:27:39.657Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.49,
+    0.6,
+    0.57,
+    0.61
+   ],
+   "motion": {
+    "elements": 66,
+    "css": 66,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2905,
+     "screens": 3.2,
+     "words": 324,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 23,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "All products",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 48,
+     "vw": 3.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "top": 210,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "All products",
+     "words": 2,
+     "lines": 1,
+     "size": 48,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "All products",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.87,
+      "top": 210,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.99,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      20,
+      48
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.7
+     },
+     "measureChars": 178,
+     "max": {
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "text": "All products"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 6,
+     "microLabelShare": 0.024,
+     "microSamples": [
+      "Filter",
+      "Per page",
+      "Sort by",
+      "Collections",
+      "Account",
+      "Contact"
+     ],
+     "upperShare": 0.54,
+     "centerShare": 0.04,
+     "smallText": 30
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 2546,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.67
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.24
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.04
+      },
+      {
+       "color": "#f1efe9",
+       "share": 0.04
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      }
+     ],
+     "button": null,
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 4,
+     "height": 32,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 2,
+     "heroLabels": [
+      "Sign in",
+      "NAME: A TO Z"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 13,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.border-input.data-[placeholder]:text-muted-foreground → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 14,
+     "hairlineSamples": [
+      "header.fixed.top-0 1440px",
+      "nav.relative.border-t 1440px",
+      "div.mb-8.space-y-5 1248px",
+      "div.flex.items-center 252px",
+      "div.border-b.border-border 252px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 2905,
+    "margins": {
+     "left": 96,
+     "right": 96
+    },
+    "sections": [
+     {
+      "sel": "div.container.mx-auto",
+      "tag": "div",
+      "top": 110,
+      "height": 2436,
+      "words": 260,
+      "media": 0,
+      "middle": 24,
+      "heading": {
+       "text": "All products",
+       "size": 48,
+       "tag": "h1"
+      },
+      "left": 96,
+      "right": 96,
+      "textLeft": 96,
+      "textRight": 96,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": true
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 2546,
+      "height": 360,
+      "words": 37,
+      "media": 0,
+      "middle": 229,
+      "heading": null,
+      "left": 96,
+      "right": 214,
+      "textLeft": 96,
+      "textRight": 214,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "All products",
+      "size": 48,
+      "top": 210,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 96,
+      "n": 9
+     },
+     {
+      "x": 404,
+      "n": 4
+     },
+     {
+      "x": 725,
+      "n": 4
+     },
+     {
+      "x": 1047,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 21,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.15,
+    "voidBox": {
+     "x": 360,
+     "y": 120,
+     "w": 1080,
+     "h": 180
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": true,
+    "ground": "#0a0f1f",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 96,
+     "right": 96
+    },
+    "hero": {
+     "text": "All products",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 48,
+     "vw": 3.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "top": 210,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 13,
+     "firstScreen": 3,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 25,
+     "radii": [
+      [
+       0,
+       25
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 12,
+     "softShadows": 0,
+     "shadowSamples": [
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 4,
+     "tabularShare": 0.75,
+     "kpiMax": 14
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.57,
+     "tiny": 1,
+     "tinySamples": [
+      "E. Maniadis 10px"
+     ],
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      20,
+      48
+     ]
+    },
+    "title": {
+     "text": "All products",
+     "size": 48,
+     "top": 210
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.55,
+    0.79,
+    0.77,
+    0.66,
+    0.66
+   ],
+   "motion": {
+    "elements": 63,
+    "css": 63,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 4282,
+     "screens": 4.2,
+     "words": 281,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 23,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "All products",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 48,
+     "vw": 6.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "top": 210,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "All products",
+     "words": 2,
+     "lines": 1,
+     "size": 48,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "All products",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 210,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.99,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      20,
+      48
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.7
+     },
+     "measureChars": 105,
+     "max": {
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "text": "All products"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 5,
+     "microLabelShare": 0.024,
+     "microSamples": [
+      "Per page",
+      "Sort by",
+      "Collections",
+      "Account",
+      "Contact"
+     ],
+     "upperShare": 0.61,
+     "centerShare": 0.04,
+     "smallText": 29
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 3900,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.72
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.23
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.04
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0
+      }
+     ],
+     "button": null,
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 3,
+     "radius": 4,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 3,
+     "heroLabels": [
+      "Sign in",
+      "FILTERS",
+      "NAME: A TO Z"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 13,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.border-input.data-[placeholder]:text-muted-foreground → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "header.fixed.top-0 768px",
+      "nav.relative.border-t 768px",
+      "div.mb-8.space-y-5 736px",
+      "div.flex.flex-wrap 736px",
+      "div.space-y-8.border-t 736px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 4282,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "div.container.mx-auto",
+      "tag": "div",
+      "top": 110,
+      "height": 3790,
+      "words": 228,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "All products",
+       "size": 48,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 3900,
+      "height": 382,
+      "words": 37,
+      "media": 0,
+      "middle": 113,
+      "heading": null,
+      "left": 16,
+      "right": 18,
+      "textLeft": 16,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "All products",
+      "size": 48,
+      "top": 210,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 8
+     },
+     {
+      "x": 392,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 14,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": true,
+    "ground": "#0a0f1f",
+    "sidebar": null,
+    "topbar": {
+     "h": 64
+    },
+    "canvas": {
+     "left": 16,
+     "right": 16
+    },
+    "hero": {
+     "text": "All products",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 48,
+     "vw": 6.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "top": 210,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 13,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 25,
+     "radii": [
+      [
+       0,
+       25
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 12,
+     "softShadows": 0,
+     "shadowSamples": [
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 4,
+     "tabularShare": 0.75,
+     "kpiMax": 14
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.57,
+     "tiny": 1,
+     "tinySamples": [
+      "E. Maniadis 10px"
+     ],
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      20,
+      48
+     ]
+    },
+    "title": {
+     "text": "All products",
+     "size": 48,
+     "top": 210
+    },
+    "colourShare": 0.001
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.55,
+    0.8,
+    0.69,
+    0.7,
+    0.93
+   ],
+   "motion": {
+    "elements": 63,
+    "css": 63,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3605,
+     "screens": 4.3,
+     "words": 271,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 23,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "All products",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 36,
+     "vw": 9.2,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "top": 194,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "All products",
+     "words": 2,
+     "lines": 1,
+     "size": 36,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "All products",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 194,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.99,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      36
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.7
+     },
+     "measureChars": 51,
+     "max": {
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "text": "All products"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 3,
+     "microLabelShare": 0.015,
+     "microSamples": [
+      "Collections",
+      "Account",
+      "Contact"
+     ],
+     "upperShare": 0.61,
+     "centerShare": 0.04,
+     "smallText": 29
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 2915,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.72
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.24
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.03
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0
+      }
+     ],
+     "button": null,
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 3,
+     "radius": 4,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 3,
+     "heroLabels": [
+      "Sign in",
+      "FILTERS",
+      "NAME: A TO Z"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 13,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "button.border-input.data-[placeholder]:text-muted-foreground → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "header.fixed.top-0 390px",
+      "nav.relative.border-t 390px",
+      "div.mb-8.space-y-5 358px",
+      "div.flex.flex-wrap 358px",
+      "div.space-y-8.border-t 358px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 3605,
+    "margins": {
+     "left": 16,
+     "right": 17
+    },
+    "sections": [
+     {
+      "sel": "div.container.mx-auto",
+      "tag": "div",
+      "top": 110,
+      "height": 2805,
+      "words": 221,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "All products",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 2915,
+      "height": 691,
+      "words": 37,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 35,
+      "textLeft": 16,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "All products",
+      "size": 36,
+      "top": 194,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 8
+     },
+     {
+      "x": 203,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 14,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": true,
+    "ground": "#0a0f1f",
+    "sidebar": null,
+    "topbar": {
+     "h": 64
+    },
+    "canvas": {
+     "left": 16,
+     "right": 16
+    },
+    "hero": {
+     "text": "All products",
+     "words": 2,
+     "chars": 12,
+     "lines": 1,
+     "size": 36,
+     "vw": 9.2,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "top": 194,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 14,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 26,
+     "radii": [
+      [
+       0,
+       26
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 12,
+     "softShadows": 0,
+     "shadowSamples": [
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+      "oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px"
+     ],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 1,
+     "tabularShare": 0,
+     "kpiMax": 14
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.57,
+     "tiny": 1,
+     "tinySamples": [
+      "E. Maniadis 10px"
+     ],
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      20,
+      36
+     ]
+    },
+    "title": {
+     "text": "All products",
+     "size": 36,
+     "top": 194
+    },
+    "colourShare": 0.002
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "6 tiny uppercase letter-spaced labels (e.g. \"Filter\", \"Per page\", \"Sort by\", \"Collections\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (text #f1eee9, text #f1efe9, text #f2eeea).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "heavy-shadow",
+   "width": 1440,
+   "message": "12 panel shadow(s) heavy enough to read as floating: oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px | oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px | oklab(0.295998 0.000722066 -0.0519856 / 0.6) 0px 0px 0px 1px",
+   "fix": "Panels sit on the ground: separate them with a fill one step from the ground or a quiet 1px border. A shadow, if any, is under 8% black with a small blur. Real overlays (menus, dialogs, popovers) may float.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "tiny-text",
+   "width": 1440,
+   "message": "57% of the text is under 13px.",
+   "fix": "Data and labels read at 13–14px; keep 11–12px for sublines and axis ticks.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "below-fold",
+   "width": 1440,
+   "message": "Only 3 of 13 blocks start on the first 1440px screen.",
+   "fix": "Every block the brief names shows its header and first rows on the first desktop screen: size the headline block to its question, cap long lists with \"View all\", and put time-sensitive blocks before long tables."
+  },
+  {
+   "level": "WARN",
+   "id": "app-title-size",
+   "width": 1440,
+   "message": "The h1 is 48px (\"All products\").",
+   "fix": "An app screen is not a landing page: the title is 18-32px (20-24px on a phone).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-catalogue/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-catalogue/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-catalogue/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-catalogue/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-catalogue/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/app-catalogue/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

@@ -7,7 +7,8 @@ import { useT } from "@/lib/i18n/provider";
 import { Search, X } from "@/design-system/icons";
 import { Dialog, DialogContent, DialogTitle, DialogClose, Input, Button } from "@/design-system";
 
-export function SearchDialog() {
+/** `field`: a search-box-shaped button with its label (desktop header); `icon`: just the icon. */
+export function SearchDialog({ trigger = "icon" }: { trigger?: "icon" | "field" }) {
   const [open, setOpen] = useState(false);
   const router = useLocaleRouter();
   const t = useT();
@@ -50,14 +51,25 @@ export function SearchDialog() {
 
   return (
     <>
-      <Button
-        variant="ghost"
-        size="icon"
-        aria-label={t.nav.searchOpen}
-        onClick={() => handleOpenChange(true)}
-      >
-        <Search className="size-5" />
-      </Button>
+      {trigger === "field" ? (
+        <button
+          type="button"
+          onClick={() => handleOpenChange(true)}
+          className="flex h-10 w-64 items-center gap-2.5 rounded-md bg-field px-3 text-left text-base text-muted-foreground transition-colors hover:bg-field-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+        >
+          <Search className="size-4 shrink-0" />
+          <span className="truncate">{t.nav.searchPlaceholder}</span>
+        </button>
+      ) : (
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label={t.nav.searchOpen}
+          onClick={() => handleOpenChange(true)}
+        >
+          <Search className="size-5" />
+        </Button>
+      )}
 
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className="top-[72px] translate-y-0 sm:max-w-xl p-3" showCloseButton={false}>

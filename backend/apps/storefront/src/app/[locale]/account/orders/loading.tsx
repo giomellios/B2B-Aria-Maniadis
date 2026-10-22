@@ -13,7 +13,7 @@ export default async function OrdersLoading() {
   const t = (await getT()).account.orders;
   return (
     <div>
-      <h1 className="display text-3xl md:text-4xl mb-6">{t.title}</h1>
+      <h1 className="display text-2xl mb-6">{t.title}</h1>
 
       <div className="border rounded-lg">
         <Table>

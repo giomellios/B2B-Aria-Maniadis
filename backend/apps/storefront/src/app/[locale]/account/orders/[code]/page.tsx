@@ -61,9 +61,7 @@ export default async function OrderDetailPage(props: PageProps<"/[locale]/accoun
         </Button>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="display text-3xl md:text-4xl">
-              {format(t.title, { code: order.code })}
-            </h1>
+            <h1 className="display text-2xl">{format(t.title, { code: order.code })}</h1>
             <p className="text-muted-foreground mt-1">
               {format(t.placedOn, { date: formatDate(order.createdAt, "long", locale) })}
             </p>

@@ -71,6 +71,7 @@ export const GetProductDetailQuery = graphql(`
         id
         name
         sku
+        currencyCode
         featuredAsset {
           id
           preview

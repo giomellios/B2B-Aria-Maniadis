@@ -1,0 +1,2180 @@
+{
+ "url": "http://localhost:3001/en",
+ "at": "2026-10-20T10:54:59.558Z",
+ "allow": [
+  "font-not-dealt"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 8,
+   "filled": [
+    0.56,
+    0.73,
+    0.91,
+    0.27,
+    0.49,
+    0.25,
+    0.69,
+    0.84
+   ],
+   "motion": {
+    "elements": 20,
+    "css": 20,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 7101,
+     "screens": 7.9,
+     "words": 786,
+     "img": 113,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 50,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fscenes%2Fp101.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp201.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp185.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp207.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp169.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp211.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fframes%2Fstraw-hats-1.j",
+      "image?url=%2Fcatalogue%2Fframes%2Fgreece-2.jpg&w"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Island caps & bags, wholesale",
+     "words": 5,
+     "chars": 29,
+     "lines": 2,
+     "size": 109.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Island caps & bags, wholesale",
+     "words": 5,
+     "lines": 2,
+     "size": 109.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Island caps & bags, wholesale",
+      "words": 5,
+      "chars": 29,
+      "lines": 2,
+      "size": 109.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "The whole range",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.97,
+      "top": 2832,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "From sign-up to shelf",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 3460,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Heraklion, since 1965",
+      "words": 3,
+      "chars": 21,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.58,
+      "top": 4331,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Trade terms",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 5144,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Open a trade account",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.97,
+      "top": 6051,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "13:55",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.13,
+      "top": 6677,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "ARIA",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 158.4,
+      "vw": 11,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.65,
+      "top": 6769,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      24,
+      25,
+      64,
+      109,
+      158
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.38,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 18.2
+     },
+     "measureChars": 51,
+     "max": {
+      "size": 158.4,
+      "vw": 11,
+      "font": "Geologica",
+      "text": "ARIA"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 5781,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.83
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.13
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Apply for an account"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 33,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 5,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1693
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 7101,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.px-4.pt-8",
+      "tag": "section",
+      "top": 72,
+      "height": 1413,
+      "words": 96,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Island caps & bags, wholesale",
+       "size": 109,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1693,
+      "height": 931,
+      "words": 54,
+      "media": 19,
+      "middle": 8,
+      "heading": {
+       "text": "Your town on the cap",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 36,
+      "textRight": 39,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 2832,
+      "height": 421,
+      "words": 86,
+      "media": 0,
+      "middle": 87,
+      "heading": {
+       "text": "Hats",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.md:mt-52",
+      "tag": "section",
+      "top": 3460,
+      "height": 663,
+      "words": 105,
+      "media": 6,
+      "middle": 20,
+      "heading": {
+       "text": "You apply",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 4331,
+      "height": 605,
+      "words": 94,
+      "media": 0,
+      "middle": 354,
+      "heading": {
+       "text": "E. Maniadis has sold bags and hats to shops from H",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 20,
+      "right": 117,
+      "textLeft": 20,
+      "textRight": 117,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 5144,
+      "height": 429,
+      "words": 217,
+      "media": 0,
+      "middle": 57,
+      "heading": null,
+      "left": 493,
+      "right": 21,
+      "textLeft": 493,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.overflow-hidden",
+      "tag": "section",
+      "top": 5781,
+      "height": 598,
+      "words": 17,
+      "media": 24,
+      "middle": 4070,
+      "heading": {
+       "text": "Open a trade account",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": 20,
+      "textRight": 224,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.px-2",
+      "tag": "footer",
+      "top": 6379,
+      "height": 723,
+      "words": 57,
+      "media": 1,
+      "middle": 106,
+      "heading": {
+       "text": "ARIA",
+       "size": 158,
+       "tag": "span"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 54,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Island caps & bags, wholesale",
+      "size": 109,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 9
+     },
+     {
+      "x": 493,
+      "n": 7
+     },
+     {
+      "x": 985,
+      "n": 5
+     },
+     {
+      "x": 36,
+      "n": 2
+     },
+     {
+      "x": 271,
+      "n": 1
+     },
+     {
+      "x": 1209,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 25,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.11,
+    "voidBox": {
+     "x": 840,
+     "y": 120,
+     "w": 600,
+     "h": 240
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 11,
+   "filled": [
+    0.58,
+    0.79,
+    0.68,
+    0.89,
+    0.3,
+    0.42,
+    0.53,
+    0.28,
+    0.61,
+    0.84,
+    0.9
+   ],
+   "motion": {
+    "elements": 17,
+    "css": 17,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 10455,
+     "screens": 10.2,
+     "words": 782,
+     "img": 113,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 47,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fframes%2Fgreece-7.jpg&w",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp101.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp201.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp185.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp207.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp169.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp211.jpg&w=256",
+      "image?url=%2Fcatalogue%2Fframes%2Fstraw-hats-1.j"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Island caps & bags, wholesale",
+     "words": 5,
+     "chars": 29,
+     "lines": 2,
+     "size": 58.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Island caps & bags, wholesale",
+     "words": 5,
+     "lines": 2,
+     "size": 58.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Island caps & bags, wholesale",
+      "words": 5,
+      "chars": 29,
+      "lines": 2,
+      "size": 58.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "The whole range",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 4524,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "From sign-up to shelf",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.6,
+      "top": 5423,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Heraklion, since 1965",
+      "words": 3,
+      "chars": 21,
+      "lines": 2,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.56,
+      "top": 6857,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Trade terms",
+      "words": 2,
+      "chars": 11,
+      "lines": 2,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 7737,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Open a trade account",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 9032,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "ARIA",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 84.5,
+      "vw": 11,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.98,
+      "top": 9490,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "13:55",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.93,
+      "top": 10382,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      24,
+      45,
+      58,
+      85
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.38,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 18.2
+     },
+     "measureChars": 46,
+     "max": {
+      "size": 84.5,
+      "vw": 11,
+      "font": "Geologica",
+      "text": "ARIA"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 8762,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.83
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.13
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Apply for an account"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 32,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 10455,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "div.mt-8.grid",
+      "tag": "div",
+      "top": 273,
+      "height": 192,
+      "words": 51,
+      "media": 0,
+      "middle": 46,
+      "heading": {
+       "text": "Bags and hats for the tourist shops of Greece, fro",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.mt-4",
+      "tag": "div",
+      "top": 585,
+      "height": 1672,
+      "words": 24,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": 32,
+      "textRight": 85,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 2465,
+      "height": 1851,
+      "words": 54,
+      "media": 18,
+      "middle": 0,
+      "heading": {
+       "text": "Your town on the cap",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 36,
+      "textRight": 46,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 4524,
+      "height": 691,
+      "words": 86,
+      "media": 0,
+      "middle": 48,
+      "heading": {
+       "text": "Hats",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.md:mt-52",
+      "tag": "section",
+      "top": 5423,
+      "height": 1226,
+      "words": 105,
+      "media": 6,
+      "middle": 20,
+      "heading": {
+       "text": "You apply",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 6857,
+      "height": 671,
+      "words": 94,
+      "media": 0,
+      "middle": 126,
+      "heading": {
+       "text": "Destinations",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 7737,
+      "height": 818,
+      "words": 217,
+      "media": 0,
+      "middle": 60,
+      "heading": null,
+      "left": 269,
+      "right": 21,
+      "textLeft": 269,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.overflow-hidden",
+      "tag": "section",
+      "top": 8762,
+      "height": 599,
+      "words": 17,
+      "media": 24,
+      "middle": 4662,
+      "heading": {
+       "text": "Open a trade account",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": 20,
+      "textRight": 112,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.px-2",
+      "tag": "footer",
+      "top": 9362,
+      "height": 1093,
+      "words": 57,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "ARIA",
+       "size": 84,
+       "tag": "span"
+      },
+      "left": 28,
+      "right": 28,
+      "textLeft": 28,
+      "textRight": 75,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Island caps & bags, wholesale",
+      "size": 58,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 10
+     },
+     {
+      "x": 268,
+      "n": 6
+     },
+     {
+      "x": 36,
+      "n": 4
+     },
+     {
+      "x": 537,
+      "n": 4
+     },
+     {
+      "x": 408,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 25,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.47,
+    0.77,
+    0.78,
+    0.67,
+    0.87,
+    0.45,
+    0.56,
+    0.63,
+    0.25,
+    0.67,
+    0.72,
+    0.84
+   ],
+   "motion": {
+    "elements": 13,
+    "css": 13,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 10530,
+     "screens": 12.5,
+     "words": 775,
+     "img": 113,
+     "video": 0,
+     "canvas": 0,
+     "svg": 7,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fscenes%2Fp101.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp201.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp185.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fscenes%2Fp207.jpg&w=384",
+      "image?url=%2Fcatalogue%2Fframes%2Fpanama-3.jpg&w",
+      "image?url=%2Fcatalogue%2Fframes%2Fpanama-3.jpg&w"
+     ],
+     "blendText": 0,
+     "sideScrollers": 1,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Island caps & bags, wholesale",
+     "words": 5,
+     "chars": 29,
+     "lines": 2,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 104,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Island caps & bags, wholesale",
+     "words": 5,
+     "lines": 2,
+     "size": 36,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Island caps & bags, wholesale",
+      "words": 5,
+      "chars": 29,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 104,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Bags and hats for the tourist shops of Greece, from Heraklion since 1965. Trade accounts only.",
+      "words": 16,
+      "chars": 94,
+      "lines": 4,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 201,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Your town on the cap",
+      "words": 5,
+      "chars": 20,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 3145,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "→",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 500,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.07,
+      "top": 4308,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "The whole range",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4500,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "From sign-up to shelf",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 5703,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Heraklion, since 1965",
+      "words": 3,
+      "chars": 21,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6501,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Trade terms",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7583,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Open a trade account",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 9062,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "ARIA",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 72,
+      "vw": 18.5,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 9552,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Apply for an account",
+      "words": 4,
+      "chars": 20,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 9718,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "maniadibags@gmail.com",
+      "words": 1,
+      "chars": 21,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 10048,
+      "tag": "a",
+      "kind": "statement"
+     },
+     {
+      "text": "Bags and hats for the shops of the Greek islands, from Heraklion since 1965.",
+      "words": 14,
+      "chars": 76,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 10190,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "13:55",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 10469,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 14,
+     "maxLines": 4,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      24,
+      33,
+      36,
+      72
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.38,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 18.2
+     },
+     "measureChars": 38,
+     "max": {
+      "size": 72,
+      "vw": 18.5,
+      "font": "Geologica",
+      "text": "ARIA"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 8848,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.83
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.13
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 0,
+     "height": 36,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Apply for an account"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 10530,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "div.mt-8.grid",
+      "tag": "div",
+      "top": 201,
+      "height": 464,
+      "words": 51,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Bags and hats for the tourist shops of Greece, fro",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 16,
+      "right": 46,
+      "textLeft": 16,
+      "textRight": 46,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.mt-4",
+      "tag": "div",
+      "top": 785,
+      "height": 2200,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 28,
+      "textRight": 47,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 3129,
+      "height": 1228,
+      "words": 54,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Your town on the cap",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 32,
+      "textRight": 58,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 4500,
+      "height": 1059,
+      "words": 86,
+      "media": 0,
+      "middle": 37,
+      "heading": {
+       "text": "Hats",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.md:mt-52",
+      "tag": "section",
+      "top": 5703,
+      "height": 654,
+      "words": 105,
+      "media": 6,
+      "middle": 1110,
+      "heading": {
+       "text": "You apply",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": -1384,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 6501,
+      "height": 938,
+      "words": 94,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 7583,
+      "height": 1121,
+      "words": 217,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.overflow-hidden",
+      "tag": "section",
+      "top": 8848,
+      "height": 607,
+      "words": 17,
+      "media": 2,
+      "middle": 3638,
+      "heading": {
+       "text": "Open a trade account",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.px-2",
+      "tag": "footer",
+      "top": 9456,
+      "height": 1075,
+      "words": 57,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "ARIA",
+       "size": 72,
+       "tag": "span"
+      },
+      "left": 28,
+      "right": 28,
+      "textLeft": 28,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Island caps & bags, wholesale",
+      "size": 36,
+      "top": 104,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 21
+     },
+     {
+      "x": 32,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 25,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "empty-middle",
+   "width": 1440,
+   "message": "1 section(s) have content at both edges and 4070px of nothing between: \"Open a trade account\"",
+   "fix": "Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "side-scroll",
+   "width": 390,
+   "message": "1 row(s) scroll sideways with content past their edge.",
+   "fix": "Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/desktop-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/tablet-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/mobile-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-en/mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

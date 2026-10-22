@@ -1,0 +1,2040 @@
+{
+ "url": "http://localhost:3001/el",
+ "at": "2026-10-20T13:02:22.795Z",
+ "allow": [
+  "font-not-dealt"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 8,
+   "filled": [
+    0.56,
+    0.62,
+    0.65,
+    0.37,
+    0.53,
+    0.33,
+    0.69,
+    0.82
+   ],
+   "motion": {
+    "elements": 23,
+    "css": 22,
+    "transitions": 0,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 6816,
+     "screens": 7.6,
+     "words": 768,
+     "img": 22,
+     "video": 0,
+     "canvas": 0,
+     "svg": 6,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 33,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fframes%2Fgreece-1.jpg&w",
+      "image?url=%2Fcatalogue%2Fframes%2Fcrete-1.jpg&w=",
+      "image?url=%2Fcatalogue%2Fframes%2Fsantorini-1.jp",
+      "image?url=%2Fcatalogue%2Fframes%2Fmykonos-1.jpg&",
+      "image?url=%2Fcatalogue%2Fframes%2Frhodes-1.jpg&w",
+      "image?url=%2Fcatalogue%2Fframes%2Fcorfu-1.jpg&w=",
+      "image?url=%2Fcatalogue%2Fframes%2Fkos-1.jpg&w=38",
+      "image?url=%2Fcatalogue%2Fframes%2Fnaxos-1.jpg&w="
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Χονδρική καπέλων & τσαντών",
+     "words": 4,
+     "chars": 26,
+     "lines": 2,
+     "size": 109.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Χονδρική καπέλων & τσαντών",
+     "words": 4,
+     "lines": 2,
+     "size": 109.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Χονδρική καπέλων & τσαντών",
+      "words": 4,
+      "chars": 26,
+      "lines": 2,
+      "size": 109.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Όλη η γκάμα",
+      "words": 3,
+      "chars": 11,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.97,
+      "top": 2691,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Από την εγγραφή στο ράφι",
+      "words": 5,
+      "chars": 24,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.56,
+      "top": 3342,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ηράκλειο, από το 1965",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.58,
+      "top": 4219,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Όροι χονδρικής",
+      "words": 2,
+      "chars": 14,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 5064,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Λογαριασμός χονδρικής",
+      "words": 2,
+      "chars": 21,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.97,
+      "top": 5948,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 6,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      24,
+      25,
+      64,
+      109
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.4
+     },
+     "measureChars": 51,
+     "max": {
+      "size": 109.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "text": "Χονδρική καπέλων & τσαντών"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 5780,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#181512",
+       "top": 6404,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.79
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.18
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#c9a45a",
+      "hsl": {
+       "h": 40,
+       "s": 0.51,
+       "l": 0.57
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 3,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Όνομα ή κωδικός…",
+      "Σύνδεση",
+      "Αίτηση λογαριασμού"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 17,
+     "boxRadius": 12,
+     "squareMedia": 0,
+     "roundedMedia": 33,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 5,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1552
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 6816,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.px-4.pt-8",
+      "tag": "section",
+      "top": 72,
+      "height": 1272,
+      "words": 113,
+      "media": 8,
+      "middle": 0,
+      "heading": {
+       "text": "Χονδρική καπέλων & τσαντών",
+       "size": 109,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1552,
+      "height": 931,
+      "words": 56,
+      "media": 19,
+      "middle": 8,
+      "heading": {
+       "text": "Το μέρος σας στο καπέλο",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 36,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 2691,
+      "height": 444,
+      "words": 81,
+      "media": 0,
+      "middle": 88,
+      "heading": {
+       "text": "Καπέλα",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.md:mt-52",
+      "tag": "section",
+      "top": 3342,
+      "height": 669,
+      "words": 101,
+      "media": 6,
+      "middle": 20,
+      "heading": {
+       "text": "Κάνετε αίτηση",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 4219,
+      "height": 638,
+      "words": 95,
+      "media": 0,
+      "middle": 356,
+      "heading": {
+       "text": "Η Ε. Μανιαδής πουλά τσάντες και καπέλα σε καταστήμ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 20,
+      "right": 115,
+      "textLeft": 20,
+      "textRight": 115,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 5064,
+      "height": 508,
+      "words": 216,
+      "media": 0,
+      "middle": 61,
+      "heading": null,
+      "left": 493,
+      "right": 28,
+      "textLeft": 493,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.overflow-hidden",
+      "tag": "section",
+      "top": 5780,
+      "height": 496,
+      "words": 14,
+      "media": 0,
+      "middle": 8,
+      "heading": {
+       "text": "Λογαριασμός χονδρικής",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 225,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 6276,
+      "height": 540,
+      "words": 71,
+      "media": 0,
+      "middle": 78,
+      "heading": {
+       "text": "Τσάντες και καπέλα για τα καταστήματα των νησιών, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 118,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 5572,
+      "height": 368
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Χονδρική καπέλων & τσαντών",
+      "size": 109,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 9
+     },
+     {
+      "x": 493,
+      "n": 7
+     },
+     {
+      "x": 985,
+      "n": 5
+     },
+     {
+      "x": 36,
+      "n": 2
+     },
+     {
+      "x": 271,
+      "n": 1
+     },
+     {
+      "x": 624,
+      "n": 1
+     },
+     {
+      "x": 1209,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 26,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.08,
+    "voidBox": {
+     "x": 1020,
+     "y": 120,
+     "w": 420,
+     "h": 240
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.38,
+    0.7,
+    0.83,
+    0.41,
+    0.48,
+    0.49,
+    0.34,
+    0.37,
+    0.75,
+    0.78
+   ],
+   "motion": {
+    "elements": 19,
+    "css": 19,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 9404,
+     "screens": 9.2,
+     "words": 760,
+     "img": 22,
+     "video": 0,
+     "canvas": 0,
+     "svg": 6,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 32,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fframes%2Fgreece-1.jpg&w",
+      "image?url=%2Fcatalogue%2Fframes%2Fcrete-1.jpg&w=",
+      "image?url=%2Fcatalogue%2Fframes%2Fsantorini-1.jp",
+      "image?url=%2Fcatalogue%2Fframes%2Fmykonos-1.jpg&",
+      "image?url=%2Fcatalogue%2Fframes%2Frhodes-1.jpg&w",
+      "image?url=%2Fcatalogue%2Fframes%2Fcorfu-1.jpg&w=",
+      "image?url=%2Fcatalogue%2Fframes%2Fkos-1.jpg&w=25",
+      "image?url=%2Fcatalogue%2Fframes%2Fnaxos-1.jpg&w="
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Χονδρική καπέλων & τσαντών",
+     "words": 4,
+     "chars": 26,
+     "lines": 2,
+     "size": 58.4,
+     "vw": 7.6,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 128,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Χονδρική καπέλων & τσαντών",
+     "words": 4,
+     "lines": 2,
+     "size": 58.4,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Χονδρική καπέλων & τσαντών",
+      "words": 4,
+      "chars": 26,
+      "lines": 2,
+      "size": 58.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 128,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Όλη η γκάμα",
+      "words": 3,
+      "chars": 11,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 3557,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Από την εγγραφή στο ράφι",
+      "words": 5,
+      "chars": 24,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.75,
+      "top": 4504,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ηράκλειο, από το 1965",
+      "words": 4,
+      "chars": 21,
+      "lines": 2,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.56,
+      "top": 5988,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Όροι χονδρικής",
+      "words": 2,
+      "chars": 14,
+      "lines": 2,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 6893,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Λογαριασμός χονδρικής",
+      "words": 2,
+      "chars": 21,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 8277,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 6,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      24,
+      45,
+      58
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.4
+     },
+     "measureChars": 46,
+     "max": {
+      "size": 58.4,
+      "vw": 7.6,
+      "font": "Geologica",
+      "text": "Χονδρική καπέλων & τσαντών"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 8109,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#181512",
+       "top": 8735,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.8
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.16
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#c9a45a",
+      "hsl": {
+       "h": 40,
+       "s": 0.51,
+       "l": 0.57
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Σύνδεση",
+      "Αίτηση λογαριασμού"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 13,
+     "boxRadius": 12,
+     "squareMedia": 0,
+     "roundedMedia": 24,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 9404,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.px-4.pt-8",
+      "tag": "section",
+      "top": 72,
+      "height": 1171,
+      "words": 113,
+      "media": 8,
+      "middle": 0,
+      "heading": {
+       "text": "Χονδρική καπέλων & τσαντών",
+       "size": 58,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1451,
+      "height": 1897,
+      "words": 56,
+      "media": 18,
+      "middle": 0,
+      "heading": {
+       "text": "Το μέρος σας στο καπέλο",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 36,
+      "textRight": 38,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 3557,
+      "height": 740,
+      "words": 81,
+      "media": 0,
+      "middle": 48,
+      "heading": {
+       "text": "Καπέλα",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.md:mt-52",
+      "tag": "section",
+      "top": 4504,
+      "height": 1276,
+      "words": 101,
+      "media": 6,
+      "middle": 20,
+      "heading": {
+       "text": "Κάνετε αίτηση",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 5988,
+      "height": 697,
+      "words": 95,
+      "media": 0,
+      "middle": 128,
+      "heading": null,
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 6893,
+      "height": 1008,
+      "words": 216,
+      "media": 0,
+      "middle": 61,
+      "heading": null,
+      "left": 269,
+      "right": 21,
+      "textLeft": 269,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.overflow-hidden",
+      "tag": "section",
+      "top": 8109,
+      "height": 497,
+      "words": 14,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Λογαριασμός χονδρικής",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 66,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 8607,
+      "height": 797,
+      "words": 71,
+      "media": 0,
+      "middle": 18,
+      "heading": {
+       "text": "Τσάντες και καπέλα για τα καταστήματα των νησιών, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 118,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 7900,
+      "height": 368
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Χονδρική καπέλων & τσαντών",
+      "size": 58,
+      "top": 128,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 11
+     },
+     {
+      "x": 268,
+      "n": 6
+     },
+     {
+      "x": 36,
+      "n": 4
+     },
+     {
+      "x": 537,
+      "n": 4
+     },
+     {
+      "x": 408,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 26,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.48,
+    0.67,
+    0.75,
+    0.58,
+    0.49,
+    0.54,
+    0.39,
+    0.45,
+    0.74,
+    0.68,
+    0.91,
+    0.88
+   ],
+   "motion": {
+    "elements": 16,
+    "css": 16,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 9391,
+     "screens": 11.1,
+     "words": 756,
+     "img": 22,
+     "video": 0,
+     "canvas": 0,
+     "svg": 6,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 12,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fcatalogue%2Fframes%2Fgreece-1.jpg&w",
+      "image?url=%2Fcatalogue%2Fframes%2Fcrete-1.jpg&w=",
+      "image?url=%2Fcatalogue%2Fframes%2Fsantorini-1.jp",
+      "image?url=%2Fcatalogue%2Fframes%2Fmykonos-1.jpg&",
+      "image?url=%2Fcatalogue%2Fframes%2Frhodes-1.jpg&w",
+      "image?url=%2Fcatalogue%2Fframes%2Fcorfu-1.jpg&w=",
+      "image?url=%2Fcatalogue%2Fframes%2Fkos-1.jpg&w=25",
+      "image?url=%2Fcatalogue%2Fframes%2Fnaxos-1.jpg&w="
+     ],
+     "blendText": 0,
+     "sideScrollers": 1,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Χονδρική καπέλων & τσαντών",
+     "words": 4,
+     "chars": 26,
+     "lines": 2,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Geologica",
+     "weight": 700,
+     "tracking": -0.03,
+     "leading": 0.9,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 104,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Χονδρική καπέλων & τσαντών",
+     "words": 4,
+     "lines": 2,
+     "size": 36,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "Χονδρική καπέλων & τσαντών",
+      "words": 4,
+      "chars": 26,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Geologica",
+      "weight": 700,
+      "tracking": -0.03,
+      "leading": 0.9,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 104,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Για τουριστικά καταστήματα, από το Ηράκλειο από το 1965. Μόνο για επαγγελματίες.",
+      "words": 12,
+      "chars": 80,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 201,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Καπέλα ανά νησί",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.51,
+      "top": 699,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Το μέρος σας στο καπέλο",
+      "words": 5,
+      "chars": 23,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 1800,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "→",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 500,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.07,
+      "top": 2987,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Όλη η γκάμα",
+      "words": 3,
+      "chars": 11,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3179,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Από την εγγραφή στο ράφι",
+      "words": 5,
+      "chars": 24,
+      "lines": 2,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4401,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ηράκλειο, από το 1965",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5232,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Όροι χονδρικής",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6366,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Λογαριασμός χονδρικής",
+      "words": 2,
+      "chars": 21,
+      "lines": 2,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7826,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Τσάντες και καπέλα για τα καταστήματα των νησιών, από το Ηράκλειο από το 1965.",
+      "words": 14,
+      "chars": 78,
+      "lines": 4,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 8459,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 11,
+     "maxLines": 4,
+     "over2Lines": 0,
+     "statements": 2,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      24,
+      33,
+      36
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.4
+     },
+     "measureChars": 38,
+     "max": {
+      "size": 36,
+      "vw": 9.2,
+      "font": "Geologica",
+      "text": "Χονδρική καπέλων & τσαντών"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 7762,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#181512",
+       "top": 8349,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.8
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.16
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#c9a45a",
+      "hsl": {
+       "h": 40,
+       "s": 0.51,
+       "l": 0.57
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 2,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Σύνδεση",
+      "Αίτηση λογαριασμού"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 13,
+     "boxRadius": 12,
+     "squareMedia": 0,
+     "roundedMedia": 6,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 9391,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "div.mt-8.grid",
+      "tag": "div",
+      "top": 201,
+      "height": 434,
+      "words": 44,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Για τουριστικά καταστήματα, από το Ηράκλειο από το",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 16,
+      "right": 30,
+      "textLeft": 16,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.mt-6",
+      "tag": "div",
+      "top": 839,
+      "height": 801,
+      "words": 45,
+      "media": 8,
+      "middle": 12,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 1784,
+      "height": 1251,
+      "words": 56,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Το μέρος σας στο καπέλο",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 32,
+      "textRight": 38,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 3179,
+      "height": 1078,
+      "words": 81,
+      "media": 0,
+      "middle": 20,
+      "heading": {
+       "text": "Καπέλα",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.md:mt-52",
+      "tag": "section",
+      "top": 4401,
+      "height": 687,
+      "words": 101,
+      "media": 6,
+      "middle": 1110,
+      "heading": {
+       "text": "Κάνετε αίτηση",
+       "size": 17,
+       "tag": "h3"
+      },
+      "left": 16,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": -1375,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 5232,
+      "height": 989,
+      "words": 95,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.px-4",
+      "tag": "section",
+      "top": 6366,
+      "height": 1253,
+      "words": 216,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.mt-36.overflow-hidden",
+      "tag": "section",
+      "top": 7762,
+      "height": 491,
+      "words": 14,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Λογαριασμός χονδρικής",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 45,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 8253,
+      "height": 1138,
+      "words": 71,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Τσάντες και καπέλα για τα καταστήματα των νησιών, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 40,
+      "right": 48,
+      "textLeft": 40,
+      "textRight": 48,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Χονδρική καπέλων & τσαντών",
+      "size": 36,
+      "top": 104,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 22
+     },
+     {
+      "x": 32,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 26,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "side-scroll",
+   "width": 390,
+   "message": "1 row(s) scroll sideways with content past their edge.",
+   "fix": "Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/desktop-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/tablet-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/mobile-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/home-el/mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

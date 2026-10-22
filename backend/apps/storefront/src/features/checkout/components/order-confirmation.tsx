@@ -26,13 +26,13 @@ export async function OrderConfirmation({
   }
 
   return (
-    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
+    <div className="frame mt-header pt-8 pb-20">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <span className="mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground animate-in zoom-in-50 fade-in-0 duration-500">
             <Check className="size-8" weight="bold" />
           </span>
-          <h1 className="display text-4xl md:text-5xl mb-3 animate-in fade-in-0 slide-in-from-bottom-2 fill-mode-both delay-150 duration-500">
+          <h1 className="display text-[1.75rem] md:text-[2rem] mb-3 animate-in fade-in-0 slide-in-from-bottom-2 fill-mode-both delay-150 duration-500">
             {t.orderConfirmation.title}
           </h1>
           <p className="text-muted-foreground">

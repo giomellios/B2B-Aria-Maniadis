@@ -28,14 +28,11 @@ export function SortDropdown() {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="hidden text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:inline">
+      <span className="hidden text-sm font-semibold text-muted-foreground sm:inline">
         {t.sortBy}
       </span>
       <Select value={currentSort} onValueChange={handleSortChange}>
-        <SelectTrigger
-          aria-label={t.sortBy}
-          className="h-9 w-[190px] text-xs font-semibold uppercase tracking-[0.08em]"
-        >
+        <SelectTrigger aria-label={t.sortBy} className="h-9 w-[190px] text-xs font-semibold">
           <SelectValue placeholder={t.sortBy} />
         </SelectTrigger>
         <SelectContent>

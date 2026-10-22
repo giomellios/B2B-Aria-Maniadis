@@ -20,7 +20,7 @@ export function ProductCard({ product: productProp, fallbackImageUrl }: ProductC
 
   return (
     <Link href={`/product/${product.slug}`} className="group block">
-      <div className="relative aspect-square overflow-hidden bg-white ring-1 ring-border/60 transition-shadow duration-300 group-hover:shadow-[0_10px_30px_-12px_rgb(0_0_0/0.25)]">
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-white">
         {productImageUrl ? (
           <Image
             src={productImageUrl}
@@ -30,51 +30,55 @@ export function ProductCard({ product: productProp, fallbackImageUrl }: ProductC
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-secondary text-xs uppercase tracking-[0.14em] text-muted-foreground">
-            <Msg k="common.noImage" />
+          // No photograph yet: the catalogue code, as it is printed in the catalogue.
+          <div className="flex h-full w-full flex-col justify-between bg-card p-4 transition-colors duration-300 group-hover:bg-accent">
+            <span className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-semibold leading-none tracking-[-0.02em]">
+              {product.sku.split("-")[0]}
+            </span>
+            <span className="text-sm text-muted-foreground">
+              <Msg k="common.noImage" />
+            </span>
           </div>
         )}
         {!product.inStock && (
-          <span className="absolute left-0 top-3 bg-foreground px-2 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.12em] text-background">
+          <span className="absolute left-0 top-3 bg-foreground px-2 py-1 text-sm font-medium text-background">
             <Msg k="catalog.outOfStock" />
           </span>
         )}
       </div>
       <div className="space-y-1.5 pt-4">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-            {product.sku}
-          </p>
+          <p className="text-sm tabular-nums text-muted-foreground">{product.sku}</p>
           {product.inStock && (
-            <span className="flex items-center gap-1.5 text-[0.6875rem] text-muted-foreground">
+            <span className="flex shrink-0 items-center gap-1.5 text-sm text-muted-foreground">
               <span className="size-1.5 rounded-full bg-success" aria-hidden />
               <Msg k="catalog.inStock" />
             </span>
           )}
         </div>
-        <h3 className="line-clamp-2 text-sm font-medium leading-snug text-foreground">
-          <span className="underline decoration-transparent decoration-1 underline-offset-4 transition-[color,text-decoration-color] duration-300 group-hover:text-primary group-hover:decoration-primary/40">
+        <h3 className="line-clamp-2 text-base font-medium leading-snug text-foreground">
+          <span className="underline decoration-transparent decoration-2 underline-offset-4 transition-[text-decoration-color] duration-300 group-hover:decoration-gold">
             {product.productName}
           </span>
         </h3>
         {product.productVariantName && product.productVariantName !== product.productName ? (
-          <p className="line-clamp-1 text-xs text-muted-foreground">{product.productVariantName}</p>
+          <p className="line-clamp-1 text-sm text-muted-foreground">{product.productVariantName}</p>
         ) : null}
         <Suspense fallback={<div className="h-6 w-24 rounded bg-muted"></div>}>
-          <p className="pt-1 text-base font-bold tabular-nums text-foreground">
+          <p className="pt-1 text-base font-semibold tabular-nums text-foreground">
             {product.priceWithTax.__typename === "PriceRange" ? (
               product.priceWithTax.min !== product.priceWithTax.max ? (
                 <>
-                  <span className="text-xs font-normal text-muted-foreground">
+                  <span className="text-sm font-normal text-muted-foreground">
                     <Msg k="catalog.from" />{" "}
                   </span>
-                  <Price value={product.priceWithTax.min} />
+                  <Price value={product.priceWithTax.min} currencyCode={product.currencyCode} />
                 </>
               ) : (
-                <Price value={product.priceWithTax.min} />
+                <Price value={product.priceWithTax.min} currencyCode={product.currencyCode} />
               )
             ) : product.priceWithTax.__typename === "SinglePrice" ? (
-              <Price value={product.priceWithTax.value} />
+              <Price value={product.priceWithTax.value} currencyCode={product.currencyCode} />
             ) : null}
           </p>
         </Suspense>

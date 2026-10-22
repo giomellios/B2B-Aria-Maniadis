@@ -12,7 +12,7 @@ export async function SearchTerm({ searchParams }: SearchTermProps) {
   const searchTerm = (searchParamsResolved.q as string) || "";
 
   return (
-    <div className="mb-8 space-y-5 border-b border-border pb-8">
+    <div className="mb-6 space-y-3">
       <Breadcrumb
         label={t.product.breadcrumb}
         items={[
@@ -21,7 +21,7 @@ export async function SearchTerm({ searchParams }: SearchTermProps) {
           ...(searchTerm ? [{ label: t.catalog.searchResults }] : []),
         ]}
       />
-      <h1 className="display text-4xl leading-[1.05] md:text-5xl">
+      <h1 className="display text-[1.75rem] leading-[1.1] md:text-[2rem]">
         {searchTerm ? <>&ldquo;{searchTerm}&rdquo;</> : t.catalog.allProducts}
       </h1>
     </div>

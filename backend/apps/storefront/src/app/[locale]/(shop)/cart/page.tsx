@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cart } from "@/features/cart/server";
 import { Suspense } from "react";
-import { CartSkeleton } from "@/features/cart";
+import { CartSkeleton, QuickOrder } from "@/features/cart";
 import { noIndexRobots } from "@/lib/utils";
 import { getT } from "@/lib/i18n/server";
 
@@ -13,8 +13,14 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function CartPage() {
   const t = await getT();
   return (
-    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
-      <h1 className="display text-4xl md:text-5xl mb-8">{t.cart.title}</h1>
+    <div className="frame mt-header pt-8 pb-20">
+      <div className="mb-8 grid gap-6 lg:grid-cols-3 lg:gap-10">
+        <h1 className="display text-[1.75rem] md:text-[2rem] lg:col-span-1">{t.cart.title}</h1>
+        <div className="lg:col-span-2">
+          <h2 className="sr-only">{t.cart.quick.title}</h2>
+          <QuickOrder />
+        </div>
+      </div>
 
       <Suspense fallback={<CartSkeleton />}>
         <Cart />

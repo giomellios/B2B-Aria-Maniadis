@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { GFS_Didot, Manrope } from "next/font/google";
+import { Geologica } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { LOCALES, OG_LOCALE, isLocale } from "@/lib/i18n/config";
 import { dictionaries } from "@/lib/i18n/dictionaries";
@@ -9,17 +10,12 @@ import { Toaster } from "@/design-system";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { RevealObserver } from "@/components/shared/reveal-observer";
 import { SITE_NAME, SITE_URL } from "@/lib/utils";
 
-// Both families include Greek glyphs. GFS Didot is by the Greek Font Society.
-const bodyFont = Manrope({
+// One family for display and text; it includes Greek glyphs.
+const bodyFont = Geologica({
   variable: "--font-body",
-  subsets: ["latin", "greek"],
-});
-
-const displayFont = GFS_Didot({
-  variable: "--font-display",
-  weight: "400",
   subsets: ["latin", "greek"],
 });
 
@@ -66,8 +62,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAF8F3" },
-    { media: "(prefers-color-scheme: dark)", color: "#0A0F1F" },
+    { media: "(prefers-color-scheme: light)", color: "#f3f1ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0a08" },
   ],
 };
 
@@ -77,15 +73,19 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body
-        className={`${bodyFont.variable} ${displayFont.variable} font-sans antialiased flex flex-col min-h-screen`}
-      >
+      <body className={`${bodyFont.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <LocaleProvider locale={locale}>
           <ThemeProvider>
             <Navbar />
             {children}
-            <Footer />
+            {/* The footer reads the request's locale and the collections. */}
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
             <Toaster />
+            <Suspense fallback={null}>
+              <RevealObserver />
+            </Suspense>
           </ThemeProvider>
         </LocaleProvider>
       </body>

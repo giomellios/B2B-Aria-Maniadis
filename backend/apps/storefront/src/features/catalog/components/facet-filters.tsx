@@ -74,7 +74,7 @@ export function FacetFilters({ filterOptionsPromise, showCategories = true }: Fa
     <>
       <Button
         variant="outline"
-        className="w-full justify-center gap-2 uppercase tracking-[0.12em] text-xs font-semibold lg:hidden"
+        className="w-full justify-center gap-2 text-xs font-semibold lg:hidden"
         onClick={() => setDrawerOpen(true)}
       >
         <Faders className="size-4" />
@@ -86,9 +86,7 @@ export function FacetFilters({ filterOptionsPromise, showCategories = true }: Fa
           className="top-0 left-0 flex h-dvh max-w-full translate-x-0 translate-y-0 flex-col gap-0 rounded-none border-0 p-0 sm:max-w-md data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left data-[state=open]:zoom-in-100 data-[state=closed]:zoom-out-100"
         >
           <div className="flex items-center justify-between border-b border-border px-5 py-4">
-            <DialogTitle className="text-sm font-semibold uppercase tracking-[0.14em]">
-              {t.filter}
-            </DialogTitle>
+            <DialogTitle className="text-sm font-semibold">{t.filter}</DialogTitle>
             <button
               type="button"
               onClick={() => setDrawerOpen(false)}
@@ -104,14 +102,11 @@ export function FacetFilters({ filterOptionsPromise, showCategories = true }: Fa
               variant="outline"
               onClick={navigation.clearFilters}
               disabled={activeCount === 0}
-              className="uppercase tracking-[0.12em] text-xs"
+              className="text-xs"
             >
               {t.clearAll}
             </Button>
-            <Button
-              onClick={() => setDrawerOpen(false)}
-              className="uppercase tracking-[0.12em] text-xs"
-            >
+            <Button onClick={() => setDrawerOpen(false)} className="text-xs">
               {navigation.isPending && <Spinner className="animate-spin" />}
               {t.applyPrice}
             </Button>
@@ -227,7 +222,7 @@ function FilterPanel({
     <div className="space-y-2">
       <SelectedFilters options={options} filters={filters} navigation={navigation} />
       <div className="flex items-center gap-2 border-b border-foreground pb-3">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.14em]">{t.filter}</h2>
+        <h2 className="text-sm font-semibold">{t.filter}</h2>
         {isPending && <Spinner className="size-3.5 animate-spin text-muted-foreground" />}
       </div>
       <Accordion type="multiple" defaultValue={defaultOpen}>
@@ -351,7 +346,7 @@ function SelectedFilters({
   return (
     <div className="mb-4 space-y-3 bg-secondary/60 p-4">
       <div className="flex items-center justify-between gap-2">
-        <h2 className="text-xs font-semibold uppercase tracking-[0.14em]">{t.youSelected}</h2>
+        <h2 className="text-xs font-semibold">{t.youSelected}</h2>
         <button
           type="button"
           onClick={clearFilters}

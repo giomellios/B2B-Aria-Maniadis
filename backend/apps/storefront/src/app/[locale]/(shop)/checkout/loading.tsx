@@ -2,7 +2,7 @@ import { Skeleton } from "@/design-system";
 
 export default function CheckoutLoading() {
   return (
-    <div className="container mx-auto mt-header px-4 pt-12 pb-20 md:pt-16">
+    <div className="frame mt-header pt-8 pb-20">
       <Skeleton className="h-9 w-32 mb-8" />
 
       <div className="grid lg:grid-cols-3 gap-8">

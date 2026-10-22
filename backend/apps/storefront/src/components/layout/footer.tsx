@@ -1,127 +1,139 @@
+import Image from "next/image";
 import { Suspense } from "react";
 import { getTopCollections } from "@/lib/queries/cached";
-import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
+import { Button } from "@/design-system";
+import { DIGITAL_CATALOGUE_URL } from "@/lib/config/links";
 import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
-import { Instagram, Facebook, Linkedin } from "@/design-system/icons";
-
-// TODO: Replace # with real Maniadis social profile URLs
-const SOCIAL_LINKS = [
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Facebook, label: "Facebook", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-];
+import { ThemeSwitcher } from "@/components/layout/navbar/theme-switcher";
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
+const EMAIL = "maniadibags@gmail.com";
+const PHONES = ["319618", "319702", "824111"];
 
-async function Copyright() {
-  const t = await getT();
-  return (
-    <p className="text-xs text-muted-foreground">
-      {format(t.footer.copyright, { year: COPYRIGHT_YEAR })}
-    </p>
-  );
-}
+const groupTitle = "text-sm text-muted-foreground";
+const navLink = "link-underline text-base";
 
+/** The close of every page: one quiet panel with who we are, where to go and how to reach us. */
 export async function Footer() {
-  const [collections, t] = await Promise.all([getTopCollections(await getLocale()), getT()]);
+  const locale = await getLocale();
+  const [collections, t] = await Promise.all([getTopCollections(locale), getT()]);
 
   return (
-    <footer className="mt-auto border-t border-border bg-secondary">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          {/* Brand */}
-          <div className="col-span-2 space-y-5 md:col-span-1">
-            <Image
-              src="/logo.png"
-              alt={t.home.hero.crestAlt}
-              width={169}
-              height={210}
-              className="h-20 w-auto dark:brightness-0 dark:invert"
-            />
-            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-              {t.footer.tagline}
-            </p>
+    <footer className="frame mt-auto pt-24 pb-4 md:pt-32 md:pb-5">
+      <div className="rounded-2xl bg-card p-6 md:p-10">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+          <div className="md:col-span-2 lg:col-span-5 lg:pr-12">
+            <Link href="/" aria-label={t.nav.homeAria} className="inline-flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt=""
+                width={169}
+                height={210}
+                className="h-14 w-auto rounded-md bg-white p-1"
+              />
+              <span className="text-base font-semibold leading-tight">
+                ARIA
+                <span className="block text-sm font-normal text-muted-foreground">
+                  E. Maniadis · 1965
+                </span>
+              </span>
+            </Link>
+            <p className="mt-6 max-w-[30ch] text-2xl leading-snug">{t.footer.statement}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Button variant="gold" size="lg" asChild>
+                <Link href="/register">{t.footer.apply}</Link>
+              </Button>
+              <Link href="/sign-in" className="link-underline text-base text-muted-foreground">
+                {t.footer.signIn}
+              </Link>
+            </div>
           </div>
 
-          {/* Collections */}
-          <div className="space-y-4">
-            <p className="eyebrow">{t.footer.collections}</p>
-            <ul className="space-y-2.5">
-              {collections.length > 0 ? (
-                collections.map((c) => (
+          <nav aria-label={t.footer.collections} className="grid grid-cols-2 gap-5 lg:col-span-4">
+            <div>
+              <h2 className={groupTitle}>{t.footer.shop}</h2>
+              <ul className="mt-3 space-y-2">
+                <li>
+                  <Link href="/search" className={navLink}>
+                    {t.footer.allProducts}
+                  </Link>
+                </li>
+                {collections.map((c) => (
                   <li key={c.id}>
-                    <Link
-                      href={`/collection/${c.slug}`}
-                      className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
-                    >
+                    <Link href={`/collection/${c.slug}`} className={navLink}>
                       {c.name}
                     </Link>
                   </li>
-                ))
-              ) : (
-                <>
-                  <li>
-                    <Link
-                      href="/search"
-                      className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      {t.footer.allProducts}
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
+                ))}
+                <li>
+                  <a
+                    href={DIGITAL_CATALOGUE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={navLink}
+                  >
+                    {t.footer.catalogue} ↗
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className={groupTitle}>{t.footer.company}</h2>
+              <ul className="mt-3 space-y-2">
+                <li>
+                  <Link href="/about" className={navLink}>
+                    {t.footer.about}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className={navLink}>
+                    {t.footer.contactPage}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/account/orders" className={navLink}>
+                    {t.footer.myOrders}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
 
-          {/* Account */}
-          <div className="space-y-4">
-            <p className="eyebrow">{t.footer.account}</p>
-            <ul className="space-y-2.5">
-              <li>
-                <Link
-                  href="/account/orders"
-                  className="link-underline text-sm text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {t.footer.myOrders}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-4">
-            <p className="eyebrow">{t.footer.contact}</p>
-            {/* TODO: Replace with real contact email, phone, and address from Maniadis */}
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>contact@maniadis.gr</li>
-              <li>{t.footer.country}</li>
-            </ul>
-          </div>
+          <address className="not-italic lg:col-span-3">
+            <h2 className={groupTitle}>{t.footer.contact}</h2>
+            <p className="mt-3 text-base">
+              Ελ. Βενιζέλου 129
+              <br />
+              Γάζι, Ηράκλειο
+            </p>
+            <p className="mt-4 text-base tabular-nums">
+              {PHONES.map((phone) => (
+                <a key={phone} href={`tel:+302810${phone}`} className="link-underline block w-fit">
+                  (2810) {phone}
+                </a>
+              ))}
+            </p>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="link-underline mt-4 inline-block break-all text-base"
+            >
+              {EMAIL}
+            </a>
+          </address>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col items-center gap-4 sm:flex-row">
-            <Copyright />
+        <div className="mt-12 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-muted-foreground">
+            {format(t.footer.copyright, { year: COPYRIGHT_YEAR })}
+          </p>
+          <div className="flex items-center gap-3">
             <Suspense fallback={null}>
-              <LanguageSwitcher />
+              <LanguageSwitcher className="w-fit" />
             </Suspense>
-          </div>
-          <div className="flex items-center gap-4">
-            {SOCIAL_LINKS.map(({ icon: Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-[color,border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
-              >
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
+            <ThemeSwitcher />
           </div>
         </div>
       </div>

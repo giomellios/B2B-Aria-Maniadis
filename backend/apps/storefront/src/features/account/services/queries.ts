@@ -42,6 +42,7 @@ export const GetCustomerOrdersQuery = graphql(`
           updatedAt
           lines {
             id
+            quantity
             productVariant {
               id
               name

@@ -21,7 +21,6 @@ export async function RelatedProducts({ collectionSlug, currentProductId }: Rela
 
   return (
     <ProductCarousel
-      eyebrow={t.home.featured.eyebrow}
       title={t.catalog.youMayAlsoLike}
       products={products}
       fallbackImagesBySlug={fallbackImagesBySlug}

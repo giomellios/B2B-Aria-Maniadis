@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getT } from "@/lib/i18n/server";
 import { Suspense } from "react";
-import Image from "next/image";
+import { PhotoPlaceholder } from "@/components/shared/photo-placeholder";
 import { localeRedirect } from "@/lib/i18n/redirect";
 import { LoginForm } from "@/features/auth";
 import { Card, CardContent, CardFooter, Skeleton } from "@/design-system";
@@ -52,22 +52,24 @@ async function SignInContent({
 export default async function SignInPage({ searchParams }: PageProps<"/[locale]/sign-in">) {
   const t = await getT();
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 pt-sticky pb-16">
-      <div className="w-full max-w-md space-y-8 animate-in fade-in-0 slide-in-from-bottom-3 duration-500 ease-out">
-        <div className="space-y-2 text-center">
-          <Image
-            src="/logo.png"
-            alt=""
-            width={169}
-            height={210}
-            className="mx-auto mb-4 h-16 w-auto dark:brightness-0 dark:invert"
-          />
-          <h1 className="display text-4xl">{t.auth.signIn.title}</h1>
-          <p className="text-muted-foreground">{t.auth.signIn.subtitle}</p>
+    <div className="frame mt-header grid gap-10 pt-8 pb-20 lg:grid-cols-12 lg:gap-5">
+      <div className="lg:col-span-5 lg:pr-10 lg:pt-10">
+        <h1 className="display text-[1.75rem] md:text-[2rem]">{t.auth.signIn.title}</h1>
+        <p className="mt-2 text-base text-muted-foreground">{t.auth.signIn.subtitle}</p>
+        <div className="mt-8">
+          <Suspense fallback={<LoginFormSkeleton />}>
+            <SignInContent searchParams={searchParams} />
+          </Suspense>
         </div>
-        <Suspense fallback={<LoginFormSkeleton />}>
-          <SignInContent searchParams={searchParams} />
-        </Suspense>
+      </div>
+      <div className="relative hidden lg:col-span-7 lg:block">
+        <PhotoPlaceholder
+          label={t.common.photoPlaceholder}
+          className="h-[calc(100svh-var(--spacing-header)-5rem)] min-h-[32rem] w-full"
+        />
+        <p className="absolute bottom-3 left-3 max-w-sm rounded-lg bg-background p-5 text-base">
+          {t.auth.signIn.photoCaption}
+        </p>
       </div>
     </div>
   );

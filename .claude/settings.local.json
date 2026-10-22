@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "vendure-docs"
+  ],
+  "enableAllProjectMcpServers": true
+}

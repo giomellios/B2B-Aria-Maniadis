@@ -1,0 +1,2465 @@
+{
+ "url": "http://localhost:3001/en/product/a1001",
+ "at": "2026-10-20T12:52:44.322Z",
+ "allow": [
+  "font-not-dealt"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.28,
+    0.5,
+    0.63
+   ],
+   "motion": {
+    "elements": 7,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 6,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2473,
+     "screens": 2.7,
+     "words": 568,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 10,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Geologica",
+     "weight": 600,
+     "tracking": -0.02,
+     "leading": 1.1,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "lines": 1,
+     "size": 32,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 140,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "A1001",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 265,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1002",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1004",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1005",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1057",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1008",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1011",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1012",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1014",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A10141",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A10142",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1020",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1336,
+      "tag": "span",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      32,
+      40
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 19.8
+     },
+     "measureChars": 51,
+     "max": {
+      "size": 40,
+      "vw": 2.8,
+      "font": "Geologica",
+      "text": "A1001"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.07,
+     "centerShare": 0.01,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 2019,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.59
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.39
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.01
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Add to the order"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.mt-10.flex 1320px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 15,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 2473,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "div.frame.mt-header",
+      "tag": "div",
+      "top": 72,
+      "height": 499,
+      "words": 54,
+      "media": 0,
+      "middle": 261,
+      "heading": {
+       "text": "A1001",
+       "size": 40,
+       "tag": "span"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.frame.mt-24",
+      "tag": "section",
+      "top": 699,
+      "height": 429,
+      "words": 219,
+      "media": 0,
+      "middle": 333,
+      "heading": {
+       "text": "Trade terms",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 21,
+      "textLeft": 20,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1128,
+      "height": 763,
+      "words": 194,
+      "media": 1,
+      "middle": 2775,
+      "heading": {
+       "text": "A1002",
+       "size": 40,
+       "tag": "span"
+      },
+      "left": 20,
+      "right": 0,
+      "textLeft": 20,
+      "textRight": -2828,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 1891,
+      "height": 582,
+      "words": 75,
+      "media": 0,
+      "middle": 141,
+      "heading": {
+       "text": "Bags and hats for the shops of the Greek islands, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 60,
+      "right": 72,
+      "textLeft": 60,
+      "textRight": 72,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 1780,
+      "height": 276
+     }
+    ],
+    "h1s": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "size": 32,
+      "top": 140,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 4
+     },
+     {
+      "x": 493,
+      "n": 4
+     },
+     {
+      "x": 985,
+      "n": 4
+     },
+     {
+      "x": 612,
+      "n": 2
+     },
+     {
+      "x": 376,
+      "n": 1
+     },
+     {
+      "x": 732,
+      "n": 1
+     },
+     {
+      "x": 1088,
+      "n": 1
+     },
+     {
+      "x": 1444,
+      "n": 1
+     },
+     {
+      "x": 1800,
+      "n": 1
+     },
+     {
+      "x": 2156,
+      "n": 1
+     },
+     {
+      "x": 2512,
+      "n": 1
+     },
+     {
+      "x": 2868,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 25,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.2,
+    "voidBox": {
+     "x": 0,
+     "y": 480,
+     "w": 1440,
+     "h": 180
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": true,
+    "ground": "#0c0a08",
+    "sidebar": null,
+    "topbar": {
+     "h": 72
+    },
+    "canvas": {
+     "left": 20,
+     "right": -2634
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Geologica",
+     "weight": 600,
+     "tracking": -0.02,
+     "leading": 1.1,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 14,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 25,
+     "radii": [
+      [
+       8,
+       11
+      ],
+      [
+       0,
+       11
+      ],
+      [
+       12,
+       2
+      ],
+      [
+       16,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 6,
+     "tabularShare": 1,
+     "kpiMax": 17
+    },
+    "rows": {
+     "count": 2,
+     "median": 61
+    },
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      32,
+      40
+     ]
+    },
+    "title": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "size": 32,
+     "top": 140
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.4,
+    0.41,
+    0.57,
+    0.71
+   ],
+   "motion": {
+    "elements": 5,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 4,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3434,
+     "screens": 3.4,
+     "words": 564,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 10,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Geologica",
+     "weight": 600,
+     "tracking": -0.02,
+     "leading": 1.1,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "lines": 1,
+     "size": 32,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 140,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "A1001",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 5.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 265,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1002",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1004",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1005",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1057",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1008",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1011",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1012",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1014",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A10141",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A10142",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1020",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.42,
+      "top": 2013,
+      "tag": "span",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      28,
+      32,
+      40
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 19.8
+     },
+     "measureChars": 25,
+     "max": {
+      "size": 40,
+      "vw": 5.2,
+      "font": "Geologica",
+      "text": "A1001"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.07,
+     "centerShare": 0.01,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 2716,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.59
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.4
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.01
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Add to the order"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.mt-10.flex 648px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 15,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 3434,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "div.frame.mt-header",
+      "tag": "div",
+      "top": 72,
+      "height": 788,
+      "words": 54,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "A1001",
+       "size": 40,
+       "tag": "span"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.frame.mt-24",
+      "tag": "section",
+      "top": 988,
+      "height": 818,
+      "words": 219,
+      "media": 0,
+      "middle": 109,
+      "heading": {
+       "text": "Trade terms",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 21,
+      "textLeft": 20,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1805,
+      "height": 783,
+      "words": 194,
+      "media": 1,
+      "middle": 3687,
+      "heading": {
+       "text": "A1002",
+       "size": 28,
+       "tag": "span"
+      },
+      "left": 20,
+      "right": 0,
+      "textLeft": 20,
+      "textRight": -3740,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 2588,
+      "height": 846,
+      "words": 75,
+      "media": 0,
+      "middle": 30,
+      "heading": {
+       "text": "Bags and hats for the shops of the Greek islands, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 60,
+      "right": 72,
+      "textLeft": 60,
+      "textRight": 72,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "size": 32,
+      "top": 140,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 6
+     },
+     {
+      "x": 269,
+      "n": 4
+     },
+     {
+      "x": 537,
+      "n": 4
+     },
+     {
+      "x": 396,
+      "n": 1
+     },
+     {
+      "x": 772,
+      "n": 1
+     },
+     {
+      "x": 1148,
+      "n": 1
+     },
+     {
+      "x": 1524,
+      "n": 1
+     },
+     {
+      "x": 1900,
+      "n": 1
+     },
+     {
+      "x": 2276,
+      "n": 1
+     },
+     {
+      "x": 2652,
+      "n": 1
+     },
+     {
+      "x": 3028,
+      "n": 1
+     },
+     {
+      "x": 3404,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 25,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": true,
+    "ground": "#0c0a08",
+    "sidebar": null,
+    "topbar": {
+     "h": 72
+    },
+    "canvas": {
+     "left": 20,
+     "right": -3526
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Geologica",
+     "weight": 600,
+     "tracking": -0.02,
+     "leading": 1.1,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 14,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 25,
+     "radii": [
+      [
+       8,
+       11
+      ],
+      [
+       0,
+       11
+      ],
+      [
+       12,
+       2
+      ],
+      [
+       16,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 6,
+     "tabularShare": 1,
+     "kpiMax": 17
+    },
+    "rows": {
+     "count": 2,
+     "median": 61
+    },
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      28,
+      32,
+      40
+     ]
+    },
+    "title": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "size": 32,
+     "top": 140
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.46,
+    0.49,
+    0.6,
+    0.68,
+    0.87
+   ],
+   "motion": {
+    "elements": 7,
+    "css": 2,
+    "transitions": 0,
+    "scripted": 5,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3846,
+     "screens": 4.6,
+     "words": 553,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 10,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 28,
+     "vw": 7.2,
+     "font": "Geologica",
+     "weight": 600,
+     "tracking": -0.02,
+     "leading": 1.1,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "lines": 1,
+     "size": 28,
+     "font": "Geologica"
+    },
+    "headings": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 140,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "A1001",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 40,
+      "vw": 10.3,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 260,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Trade terms",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1005,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "You may also like",
+      "words": 4,
+      "chars": 17,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.49,
+      "top": 2204,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A1002",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1004",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1005",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1057",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1008",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1011",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1012",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1014",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A10141",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A10142",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "A1020",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Geologica",
+      "weight": 600,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 2292,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Bags and hats for the shops of the Greek islands, from Heraklion since 1965.",
+      "words": 14,
+      "chars": 76,
+      "lines": 3,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Geologica",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 2924,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 16,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geologica",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      28,
+      40
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Geologica",
+      "size": 17,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 19.8
+     },
+     "measureChars": 42,
+     "max": {
+      "size": 40,
+      "vw": 10.3,
+      "font": "Geologica",
+      "text": "A1001"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.07,
+     "centerShare": 0.01,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 2814,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#ffffff",
+       "share": 0.59
+      },
+      {
+       "color": "#a39d96",
+       "share": 0.4
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.01
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#181512",
+      "hsl": {
+       "h": 30,
+       "s": 0.14,
+       "l": 0.08
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 6,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Add to the order"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.mt-10.flex 310px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 15,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 2,
+     "fixed": true,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geologica",
+     "geologica fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 3846,
+    "margins": {
+     "left": 16,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "div.frame.mt-header",
+      "tag": "div",
+      "top": 72,
+      "height": 837,
+      "words": 54,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "A1001",
+       "size": 40,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 20,
+      "textLeft": 16,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.frame.mt-24",
+      "tag": "section",
+      "top": 1005,
+      "height": 1120,
+      "words": 219,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Trade terms",
+       "size": 24,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 17,
+      "textLeft": 16,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 2124,
+      "height": 593,
+      "words": 194,
+      "media": 1,
+      "middle": 1801,
+      "heading": {
+       "text": "A1002",
+       "size": 28,
+       "tag": "span"
+      },
+      "left": 16,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": -1854,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.frame.mt-auto",
+      "tag": "footer",
+      "top": 2718,
+      "height": 1128,
+      "words": 75,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Bags and hats for the shops of the Greek islands, ",
+       "size": 24,
+       "tag": "p"
+      },
+      "left": 40,
+      "right": 41,
+      "textLeft": 40,
+      "textRight": 41,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+      "size": 28,
+      "top": 140,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 14
+     },
+     {
+      "x": 203,
+      "n": 1
+     },
+     {
+      "x": 390,
+      "n": 1
+     },
+     {
+      "x": 577,
+      "n": 1
+     },
+     {
+      "x": 764,
+      "n": 1
+     },
+     {
+      "x": 951,
+      "n": 1
+     },
+     {
+      "x": 1138,
+      "n": 1
+     },
+     {
+      "x": 1325,
+      "n": 1
+     },
+     {
+      "x": 1512,
+      "n": 1
+     },
+     {
+      "x": 1699,
+      "n": 1
+     },
+     {
+      "x": 1886,
+      "n": 1
+     },
+     {
+      "x": 2073,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 25,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": true,
+    "ground": "#0c0a08",
+    "sidebar": null,
+    "topbar": {
+     "h": 72
+    },
+    "canvas": {
+     "left": 16,
+     "right": -1801
+    },
+    "hero": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "words": 3,
+     "chars": 18,
+     "lines": 1,
+     "size": 28,
+     "vw": 7.2,
+     "font": "Geologica",
+     "weight": 600,
+     "tracking": -0.02,
+     "leading": 1.1,
+     "top": 140,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 14,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 26,
+     "radii": [
+      [
+       0,
+       12
+      ],
+      [
+       8,
+       11
+      ],
+      [
+       12,
+       2
+      ],
+      [
+       16,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 6,
+     "tabularShare": 1,
+     "kpiMax": 17
+    },
+    "rows": {
+     "count": 2,
+     "median": 61
+    },
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      14,
+      15,
+      17,
+      24,
+      28,
+      40
+     ]
+    },
+    "title": {
+     "text": "ΤΖΟΚΕΪ ΤΖΙΝ ΚΑΠΕΛΟ",
+     "size": 28,
+     "top": 140
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "below-fold",
+   "width": 1440,
+   "message": "Only 2 of 14 blocks start on the first 1440px screen.",
+   "fix": "Every block the brief names shows its header and first rows on the first desktop screen: size the headline block to its question, cap long lists with \"View all\", and put time-sensitive blocks before long tables."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/app-product/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/app-product/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/app-product/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/app-product/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/app-product/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/after/app-product/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

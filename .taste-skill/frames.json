@@ -1,0 +1,702 @@
+{
+ "greece": [
+  {
+   "src": "/catalogue/frames/greece-1.jpg",
+   "w": 480,
+   "h": 431,
+   "page": 15
+  },
+  {
+   "src": "/catalogue/frames/greece-2.jpg",
+   "w": 480,
+   "h": 421,
+   "page": 15
+  },
+  {
+   "src": "/catalogue/frames/greece-3.jpg",
+   "w": 480,
+   "h": 418,
+   "page": 15
+  },
+  {
+   "src": "/catalogue/frames/greece-4.jpg",
+   "w": 413,
+   "h": 480,
+   "page": 15
+  },
+  {
+   "src": "/catalogue/frames/greece-5.jpg",
+   "w": 405,
+   "h": 480,
+   "page": 15
+  },
+  {
+   "src": "/catalogue/frames/greece-6.jpg",
+   "w": 397,
+   "h": 480,
+   "page": 16
+  },
+  {
+   "src": "/catalogue/frames/greece-7.jpg",
+   "w": 480,
+   "h": 350,
+   "page": 19
+  },
+  {
+   "src": "/catalogue/frames/greece-8.jpg",
+   "w": 480,
+   "h": 421,
+   "page": 19
+  }
+ ],
+ "crete": [
+  {
+   "src": "/catalogue/frames/crete-1.jpg",
+   "w": 480,
+   "h": 362,
+   "page": 20
+  },
+  {
+   "src": "/catalogue/frames/crete-2.jpg",
+   "w": 480,
+   "h": 355,
+   "page": 20
+  },
+  {
+   "src": "/catalogue/frames/crete-3.jpg",
+   "w": 480,
+   "h": 447,
+   "page": 20
+  },
+  {
+   "src": "/catalogue/frames/crete-4.jpg",
+   "w": 480,
+   "h": 405,
+   "page": 20
+  },
+  {
+   "src": "/catalogue/frames/crete-5.jpg",
+   "w": 398,
+   "h": 480,
+   "page": 21
+  },
+  {
+   "src": "/catalogue/frames/crete-6.jpg",
+   "w": 480,
+   "h": 416,
+   "page": 23
+  },
+  {
+   "src": "/catalogue/frames/crete-7.jpg",
+   "w": 480,
+   "h": 373,
+   "page": 23
+  },
+  {
+   "src": "/catalogue/frames/crete-8.jpg",
+   "w": 480,
+   "h": 401,
+   "page": 24
+  }
+ ],
+ "santorini": [
+  {
+   "src": "/catalogue/frames/santorini-1.jpg",
+   "w": 480,
+   "h": 417,
+   "page": 30
+  },
+  {
+   "src": "/catalogue/frames/santorini-2.jpg",
+   "w": 480,
+   "h": 406,
+   "page": 30
+  },
+  {
+   "src": "/catalogue/frames/santorini-3.jpg",
+   "w": 383,
+   "h": 480,
+   "page": 31
+  },
+  {
+   "src": "/catalogue/frames/santorini-4.jpg",
+   "w": 480,
+   "h": 408,
+   "page": 31
+  },
+  {
+   "src": "/catalogue/frames/santorini-5.jpg",
+   "w": 480,
+   "h": 403,
+   "page": 34
+  },
+  {
+   "src": "/catalogue/frames/santorini-6.jpg",
+   "w": 480,
+   "h": 480,
+   "page": 34
+  },
+  {
+   "src": "/catalogue/frames/santorini-7.jpg",
+   "w": 480,
+   "h": 390,
+   "page": 35
+  },
+  {
+   "src": "/catalogue/frames/santorini-8.jpg",
+   "w": 461,
+   "h": 480,
+   "page": 37
+  }
+ ],
+ "mykonos": [
+  {
+   "src": "/catalogue/frames/mykonos-1.jpg",
+   "w": 414,
+   "h": 480,
+   "page": 48
+  },
+  {
+   "src": "/catalogue/frames/mykonos-2.jpg",
+   "w": 480,
+   "h": 471,
+   "page": 48
+  },
+  {
+   "src": "/catalogue/frames/mykonos-3.jpg",
+   "w": 480,
+   "h": 389,
+   "page": 48
+  },
+  {
+   "src": "/catalogue/frames/mykonos-4.jpg",
+   "w": 444,
+   "h": 480,
+   "page": 48
+  },
+  {
+   "src": "/catalogue/frames/mykonos-5.jpg",
+   "w": 480,
+   "h": 450,
+   "page": 51
+  },
+  {
+   "src": "/catalogue/frames/mykonos-6.jpg",
+   "w": 464,
+   "h": 458,
+   "page": 56
+  },
+  {
+   "src": "/catalogue/frames/mykonos-7.jpg",
+   "w": 420,
+   "h": 480,
+   "page": 56
+  },
+  {
+   "src": "/catalogue/frames/mykonos-8.jpg",
+   "w": 480,
+   "h": 453,
+   "page": 56
+  }
+ ],
+ "rhodes": [
+  {
+   "src": "/catalogue/frames/rhodes-1.jpg",
+   "w": 403,
+   "h": 480,
+   "page": 60
+  },
+  {
+   "src": "/catalogue/frames/rhodes-2.jpg",
+   "w": 429,
+   "h": 480,
+   "page": 60
+  },
+  {
+   "src": "/catalogue/frames/rhodes-3.jpg",
+   "w": 448,
+   "h": 480,
+   "page": 60
+  },
+  {
+   "src": "/catalogue/frames/rhodes-4.jpg",
+   "w": 387,
+   "h": 480,
+   "page": 61
+  },
+  {
+   "src": "/catalogue/frames/rhodes-5.jpg",
+   "w": 480,
+   "h": 469,
+   "page": 61
+  },
+  {
+   "src": "/catalogue/frames/rhodes-6.jpg",
+   "w": 480,
+   "h": 454,
+   "page": 61
+  },
+  {
+   "src": "/catalogue/frames/rhodes-7.jpg",
+   "w": 480,
+   "h": 453,
+   "page": 61
+  },
+  {
+   "src": "/catalogue/frames/rhodes-8.jpg",
+   "w": 480,
+   "h": 437,
+   "page": 61
+  }
+ ],
+ "corfu": [
+  {
+   "src": "/catalogue/frames/corfu-1.jpg",
+   "w": 422,
+   "h": 480,
+   "page": 63
+  },
+  {
+   "src": "/catalogue/frames/corfu-2.jpg",
+   "w": 403,
+   "h": 480,
+   "page": 63
+  },
+  {
+   "src": "/catalogue/frames/corfu-3.jpg",
+   "w": 462,
+   "h": 480,
+   "page": 63
+  },
+  {
+   "src": "/catalogue/frames/corfu-4.jpg",
+   "w": 480,
+   "h": 411,
+   "page": 63
+  },
+  {
+   "src": "/catalogue/frames/corfu-5.jpg",
+   "w": 468,
+   "h": 480,
+   "page": 63
+  },
+  {
+   "src": "/catalogue/frames/corfu-6.jpg",
+   "w": 470,
+   "h": 446,
+   "page": 63
+  },
+  {
+   "src": "/catalogue/frames/corfu-7.jpg",
+   "w": 476,
+   "h": 428,
+   "page": 64
+  },
+  {
+   "src": "/catalogue/frames/corfu-8.jpg",
+   "w": 480,
+   "h": 400,
+   "page": 65
+  }
+ ],
+ "kos": [
+  {
+   "src": "/catalogue/frames/kos-1.jpg",
+   "w": 420,
+   "h": 480,
+   "page": 68
+  },
+  {
+   "src": "/catalogue/frames/kos-2.jpg",
+   "w": 480,
+   "h": 468,
+   "page": 68
+  },
+  {
+   "src": "/catalogue/frames/kos-3.jpg",
+   "w": 472,
+   "h": 480,
+   "page": 68
+  },
+  {
+   "src": "/catalogue/frames/kos-4.jpg",
+   "w": 434,
+   "h": 480,
+   "page": 68
+  },
+  {
+   "src": "/catalogue/frames/kos-5.jpg",
+   "w": 452,
+   "h": 356,
+   "page": 69
+  },
+  {
+   "src": "/catalogue/frames/kos-6.jpg",
+   "w": 480,
+   "h": 379,
+   "page": 69
+  },
+  {
+   "src": "/catalogue/frames/kos-7.jpg",
+   "w": 480,
+   "h": 366,
+   "page": 69
+  },
+  {
+   "src": "/catalogue/frames/kos-8.jpg",
+   "w": 480,
+   "h": 377,
+   "page": 69
+  }
+ ],
+ "naxos": [
+  {
+   "src": "/catalogue/frames/naxos-1.jpg",
+   "w": 480,
+   "h": 404,
+   "page": 71
+  },
+  {
+   "src": "/catalogue/frames/naxos-2.jpg",
+   "w": 480,
+   "h": 421,
+   "page": 71
+  },
+  {
+   "src": "/catalogue/frames/naxos-3.jpg",
+   "w": 480,
+   "h": 412,
+   "page": 71
+  },
+  {
+   "src": "/catalogue/frames/naxos-4.jpg",
+   "w": 480,
+   "h": 362,
+   "page": 71
+  },
+  {
+   "src": "/catalogue/frames/naxos-5.jpg",
+   "w": 480,
+   "h": 403,
+   "page": 71
+  },
+  {
+   "src": "/catalogue/frames/naxos-6.jpg",
+   "w": 480,
+   "h": 386,
+   "page": 71
+  },
+  {
+   "src": "/catalogue/frames/naxos-7.jpg",
+   "w": 480,
+   "h": 396,
+   "page": 71
+  }
+ ],
+ "straw-bags": [
+  {
+   "src": "/catalogue/frames/straw-bags-1.jpg",
+   "w": 283,
+   "h": 480,
+   "page": 169
+  },
+  {
+   "src": "/catalogue/frames/straw-bags-2.jpg",
+   "w": 380,
+   "h": 480,
+   "page": 169
+  },
+  {
+   "src": "/catalogue/frames/straw-bags-3.jpg",
+   "w": 379,
+   "h": 480,
+   "page": 169
+  },
+  {
+   "src": "/catalogue/frames/straw-bags-4.jpg",
+   "w": 343,
+   "h": 480,
+   "page": 174
+  },
+  {
+   "src": "/catalogue/frames/straw-bags-5.jpg",
+   "w": 294,
+   "h": 480,
+   "page": 174
+  },
+  {
+   "src": "/catalogue/frames/straw-bags-6.jpg",
+   "w": 336,
+   "h": 480,
+   "page": 177
+  },
+  {
+   "src": "/catalogue/frames/straw-bags-7.jpg",
+   "w": 305,
+   "h": 480,
+   "page": 177
+  },
+  {
+   "src": "/catalogue/frames/straw-bags-8.jpg",
+   "w": 317,
+   "h": 480,
+   "page": 180
+  }
+ ],
+ "beach-bags": [
+  {
+   "src": "/catalogue/frames/beach-bags-1.jpg",
+   "w": 388,
+   "h": 480,
+   "page": 190
+  },
+  {
+   "src": "/catalogue/frames/beach-bags-2.jpg",
+   "w": 403,
+   "h": 480,
+   "page": 190
+  },
+  {
+   "src": "/catalogue/frames/beach-bags-3.jpg",
+   "w": 429,
+   "h": 480,
+   "page": 190
+  },
+  {
+   "src": "/catalogue/frames/beach-bags-4.jpg",
+   "w": 349,
+   "h": 480,
+   "page": 190
+  },
+  {
+   "src": "/catalogue/frames/beach-bags-5.jpg",
+   "w": 385,
+   "h": 480,
+   "page": 196
+  },
+  {
+   "src": "/catalogue/frames/beach-bags-6.jpg",
+   "w": 426,
+   "h": 480,
+   "page": 196
+  },
+  {
+   "src": "/catalogue/frames/beach-bags-7.jpg",
+   "w": 412,
+   "h": 480,
+   "page": 196
+  },
+  {
+   "src": "/catalogue/frames/beach-bags-8.jpg",
+   "w": 422,
+   "h": 480,
+   "page": 185
+  }
+ ],
+ "canvas": [
+  {
+   "src": "/catalogue/frames/canvas-1.jpg",
+   "w": 288,
+   "h": 480,
+   "page": 202
+  },
+  {
+   "src": "/catalogue/frames/canvas-2.jpg",
+   "w": 418,
+   "h": 480,
+   "page": 204
+  },
+  {
+   "src": "/catalogue/frames/canvas-3.jpg",
+   "w": 385,
+   "h": 480,
+   "page": 204
+  },
+  {
+   "src": "/catalogue/frames/canvas-4.jpg",
+   "w": 303,
+   "h": 480,
+   "page": 208
+  },
+  {
+   "src": "/catalogue/frames/canvas-5.jpg",
+   "w": 392,
+   "h": 480,
+   "page": 216
+  },
+  {
+   "src": "/catalogue/frames/canvas-6.jpg",
+   "w": 385,
+   "h": 480,
+   "page": 216
+  },
+  {
+   "src": "/catalogue/frames/canvas-7.jpg",
+   "w": 314,
+   "h": 480,
+   "page": 301
+  },
+  {
+   "src": "/catalogue/frames/canvas-8.jpg",
+   "w": 313,
+   "h": 480,
+   "page": 301
+  },
+  {
+   "src": "/catalogue/frames/canvas-9.jpg",
+   "w": 314,
+   "h": 480,
+   "page": 302
+  },
+  {
+   "src": "/catalogue/frames/canvas-10.jpg",
+   "w": 317,
+   "h": 480,
+   "page": 302
+  }
+ ],
+ "straw-hats": [
+  {
+   "src": "/catalogue/frames/straw-hats-1.jpg",
+   "w": 480,
+   "h": 473,
+   "page": 103
+  },
+  {
+   "src": "/catalogue/frames/straw-hats-2.jpg",
+   "w": 480,
+   "h": 463,
+   "page": 103
+  },
+  {
+   "src": "/catalogue/frames/straw-hats-3.jpg",
+   "w": 416,
+   "h": 308,
+   "page": 109
+  },
+  {
+   "src": "/catalogue/frames/straw-hats-4.jpg",
+   "w": 480,
+   "h": 386,
+   "page": 109
+  },
+  {
+   "src": "/catalogue/frames/straw-hats-5.jpg",
+   "w": 480,
+   "h": 364,
+   "page": 109
+  },
+  {
+   "src": "/catalogue/frames/straw-hats-6.jpg",
+   "w": 480,
+   "h": 377,
+   "page": 117
+  },
+  {
+   "src": "/catalogue/frames/straw-hats-7.jpg",
+   "w": 480,
+   "h": 297,
+   "page": 117
+  },
+  {
+   "src": "/catalogue/frames/straw-hats-8.jpg",
+   "w": 480,
+   "h": 295,
+   "page": 117
+  }
+ ],
+ "panama": [
+  {
+   "src": "/catalogue/frames/panama-1.jpg",
+   "w": 480,
+   "h": 303,
+   "page": 127
+  },
+  {
+   "src": "/catalogue/frames/panama-2.jpg",
+   "w": 480,
+   "h": 352,
+   "page": 127
+  },
+  {
+   "src": "/catalogue/frames/panama-3.jpg",
+   "w": 480,
+   "h": 294,
+   "page": 149
+  },
+  {
+   "src": "/catalogue/frames/panama-4.jpg",
+   "w": 480,
+   "h": 321,
+   "page": 149
+  },
+  {
+   "src": "/catalogue/frames/panama-5.jpg",
+   "w": 480,
+   "h": 300,
+   "page": 149
+  },
+  {
+   "src": "/catalogue/frames/panama-6.jpg",
+   "w": 480,
+   "h": 382,
+   "page": 149
+  },
+  {
+   "src": "/catalogue/frames/panama-7.jpg",
+   "w": 480,
+   "h": 299,
+   "page": 159
+  }
+ ],
+ "bucket": [
+  {
+   "src": "/catalogue/frames/bucket-1.jpg",
+   "w": 480,
+   "h": 386,
+   "page": 80
+  },
+  {
+   "src": "/catalogue/frames/bucket-2.jpg",
+   "w": 480,
+   "h": 386,
+   "page": 80
+  },
+  {
+   "src": "/catalogue/frames/bucket-3.jpg",
+   "w": 480,
+   "h": 431,
+   "page": 80
+  },
+  {
+   "src": "/catalogue/frames/bucket-4.jpg",
+   "w": 480,
+   "h": 423,
+   "page": 80
+  },
+  {
+   "src": "/catalogue/frames/bucket-5.jpg",
+   "w": 480,
+   "h": 410,
+   "page": 80
+  },
+  {
+   "src": "/catalogue/frames/bucket-6.jpg",
+   "w": 480,
+   "h": 275,
+   "page": 84
+  },
+  {
+   "src": "/catalogue/frames/bucket-7.jpg",
+   "w": 456,
+   "h": 480,
+   "page": 84
+  },
+  {
+   "src": "/catalogue/frames/bucket-8.jpg",
+   "w": 467,
+   "h": 480,
+   "page": 84
+  }
+ ]
+}

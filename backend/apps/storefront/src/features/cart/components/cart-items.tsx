@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import { getT } from "@/lib/i18n/server";
 import { Button } from "@/design-system";
-import { Minus, Plus, ShoppingBag, X } from "@/design-system/icons";
+import { Minus, Plus, X } from "@/design-system/icons";
 import { Price } from "@/components/shared/price";
 import { removeFromCart, adjustQuantity } from "@/features/cart/services/cart.actions";
 
@@ -38,96 +38,104 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
   const t = await getT();
   if (!activeOrder || activeOrder.lines.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center">
-          <ShoppingBag className="mx-auto mb-6 size-10 text-primary" weight="light" />
-          <h2 className="display text-4xl md:text-5xl mb-4">{t.cart.emptyTitle}</h2>
-          <p className="text-muted-foreground mb-8">{t.cart.emptyText}</p>
-          <Button asChild>
-            <Link href="/search">{t.cart.browse}</Link>
-          </Button>
-        </div>
+      <div className="rounded-xl bg-card px-6 py-10">
+        <h2 className="text-2xl font-semibold tracking-[-0.01em]">{t.cart.emptyTitle}</h2>
+        <p className="mt-2 text-base text-muted-foreground">{t.cart.emptyText}</p>
+        <Button className="mt-6" asChild>
+          <Link href="/search">{t.cart.browse}</Link>
+        </Button>
       </div>
     );
   }
 
+  const pieces = activeOrder.lines.reduce((sum, line) => sum + line.quantity, 0);
+
   return (
-    <div className="lg:col-span-2 space-y-4">
-      {activeOrder.lines.map((line) => {
-        const imagePreview = getOrderLineImagePreview(line.productVariant);
-        return (
-          <div
-            key={line.id}
-            className="flex flex-col sm:flex-row gap-5 p-4 border rounded-md bg-card animate-in fade-in-0 duration-300"
-          >
-            {imagePreview && (
-              <Link href={`/product/${line.productVariant.product.slug}`} className="flex-shrink-0">
-                <Image
-                  src={imagePreview}
-                  alt={line.productVariant.name}
-                  width={120}
-                  height={120}
-                  className="rounded-sm border border-border bg-white object-cover w-full sm:w-[120px] h-[120px] transition-opacity hover:opacity-85"
-                />
-              </Link>
-            )}
-
-            <div className="flex-grow min-w-0">
+    <section className="lg:col-span-2" aria-label={t.cart.title}>
+      <div className="flex items-baseline justify-between pb-3 text-sm text-muted-foreground">
+        <span>{t.cart.product}</span>
+        <span className="tabular-nums">{t.cart.lineCount(activeOrder.lines.length, pieces)}</span>
+      </div>
+      <ul>
+        {activeOrder.lines.map((line) => {
+          const imagePreview = getOrderLineImagePreview(line.productVariant);
+          const href = `/product/${line.productVariant.product.slug}`;
+          const code = line.productVariant.sku.split("-")[0];
+          return (
+            <li
+              key={line.id}
+              className="grid grid-cols-[56px_1fr_auto] items-center gap-x-4 gap-y-3 border-t border-border py-4 sm:grid-cols-[64px_1fr_auto_auto]"
+            >
               <Link
-                href={`/product/${line.productVariant.product.slug}`}
-                className="block font-serif text-lg leading-snug transition-colors hover:text-primary"
+                href={href}
+                className="block size-14 overflow-hidden rounded-md bg-white sm:size-16"
               >
-                {line.productVariant.product.name}
+                {imagePreview ? (
+                  <Image
+                    src={imagePreview}
+                    alt={line.productVariant.name}
+                    width={64}
+                    height={64}
+                    className="size-full object-cover"
+                  />
+                ) : (
+                  <span className="flex size-full items-center justify-center bg-card text-sm font-semibold">
+                    {code}
+                  </span>
+                )}
               </Link>
-              {line.productVariant.name !== line.productVariant.product.name && (
-                <p className="text-sm text-muted-foreground mt-1">{line.productVariant.name}</p>
-              )}
-              <p className="text-sm text-muted-foreground mt-1">
-                {t.common.sku}: {line.productVariant.sku}
-              </p>
-              <p className="text-sm text-muted-foreground mt-2 sm:hidden">
-                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} />{" "}
-                {t.common.each}
-              </p>
 
-              <div className="flex items-center gap-3 mt-4">
-                <div className="flex items-center gap-2 border rounded-md">
-                  <form
-                    action={async () => {
-                      "use server";
-                      await adjustQuantity(line.id, Math.max(1, line.quantity - 1));
-                    }}
+              <div className="min-w-0">
+                <Link
+                  href={href}
+                  className="block truncate text-base font-medium hover:underline hover:decoration-gold hover:decoration-2 hover:underline-offset-4"
+                >
+                  {line.productVariant.product.name}
+                </Link>
+                <p className="truncate text-sm tabular-nums text-muted-foreground">
+                  {line.productVariant.sku} ·{" "}
+                  <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} />{" "}
+                  {t.common.each}
+                </p>
+              </div>
+
+              <div className="col-start-2 flex items-center gap-1 sm:col-start-auto">
+                <form
+                  action={async () => {
+                    "use server";
+                    await adjustQuantity(line.id, Math.max(1, line.quantity - 1));
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    variant="secondary"
+                    size="icon"
+                    className="size-10"
+                    aria-label={t.product.decrease}
+                    disabled={line.quantity <= 1}
                   >
-                    <Button
-                      type="submit"
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 rounded-none"
-                      disabled={line.quantity <= 1}
-                    >
-                      <Minus className="h-4 w-4" />
-                    </Button>
-                  </form>
-
-                  <span className="w-12 text-center font-medium">{line.quantity}</span>
-
-                  <form
-                    action={async () => {
-                      "use server";
-                      await adjustQuantity(line.id, line.quantity + 1);
-                    }}
+                    <Minus className="size-4" />
+                  </Button>
+                </form>
+                <span className="w-12 text-center text-base font-semibold tabular-nums">
+                  {line.quantity}
+                </span>
+                <form
+                  action={async () => {
+                    "use server";
+                    await adjustQuantity(line.id, line.quantity + 1);
+                  }}
+                >
+                  <Button
+                    type="submit"
+                    variant="secondary"
+                    size="icon"
+                    className="size-10"
+                    aria-label={t.product.increase}
                   >
-                    <Button
-                      type="submit"
-                      variant="ghost"
-                      size="icon"
-                      className="h-9 w-9 rounded-none"
-                    >
-                      <Plus className="h-4 w-4" />
-                    </Button>
-                  </form>
-                </div>
-
+                    <Plus className="size-4" />
+                  </Button>
+                </form>
                 <form
                   action={async () => {
                     "use server";
@@ -138,32 +146,21 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
                     type="submit"
                     variant="ghost"
                     size="icon"
-                    className="h-9 w-9 text-destructive hover:text-destructive hover:bg-destructive/10"
+                    className="ml-2 size-10 text-muted-foreground hover:text-destructive"
+                    aria-label={t.cart.remove}
                   >
-                    <X className="h-5 w-5" />
+                    <X className="size-5" />
                   </Button>
                 </form>
-
-                <div className="sm:hidden ml-auto">
-                  <p className="font-semibold text-lg">
-                    <Price value={line.linePriceWithTax} currencyCode={activeOrder.currencyCode} />
-                  </p>
-                </div>
               </div>
-            </div>
 
-            <div className="hidden sm:block text-right flex-shrink-0">
-              <p className="font-semibold text-lg">
+              <p className="row-start-1 col-start-3 text-right text-base font-semibold tabular-nums sm:col-start-auto sm:row-start-auto sm:min-w-24">
                 <Price value={line.linePriceWithTax} currencyCode={activeOrder.currencyCode} />
               </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} />{" "}
-                {t.common.each}
-              </p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }

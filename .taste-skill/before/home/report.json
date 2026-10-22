@@ -1,0 +1,2929 @@
+{
+ "url": "http://localhost:3001/en",
+ "at": "2026-10-20T09:29:00.803Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.51,
+    0.49,
+    0.65,
+    0.41,
+    0.99
+   ],
+   "motion": {
+    "elements": 31,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 30,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 4254,
+     "screens": 4.7,
+     "words": 468,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 22,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 2,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Flogo.png&w=256&q=75",
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Bags & hats, made for every season.",
+     "words": 7,
+     "chars": 35,
+     "lines": 3,
+     "size": 72,
+     "vw": 5,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.47,
+     "top": 307,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Bags & hats, made for every season.",
+     "words": 7,
+     "lines": 3,
+     "size": 72,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "Bags & hats, made for every season.",
+      "words": 7,
+      "chars": 35,
+      "lines": 3,
+      "size": 72,
+      "vw": 5,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 307,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "1965",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.27,
+      "top": 948,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "B2B",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.24,
+      "top": 948,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "GR · EU",
+      "words": 3,
+      "chars": 7,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.24,
+      "top": 948,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "Browse by category",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 1170,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Καπέλα",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 1414,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "tsantes",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.24,
+      "top": 1414,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Built for retailers",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 1759,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "From the collection",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 2247,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How it works",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.87,
+      "top": 2995,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "1",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.27,
+      "top": 3131,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "2",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.27,
+      "top": 3131,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "3",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.27,
+      "top": 3131,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Ready to stock ARIA in your store?",
+      "words": 7,
+      "chars": 34,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 3572,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 14,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 8,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      24,
+      30,
+      36,
+      48,
+      60,
+      72
+     ],
+     "sizeCount": 13,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 6.6
+     },
+     "measureChars": 50,
+     "max": {
+      "size": 72,
+      "vw": 5,
+      "font": "GFS Didot",
+      "text": "Bags & hats,"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 13,
+     "microLabelShare": 0.07,
+     "microSamples": [
+      "E. Maniadis · Wholesale",
+      "Bags & Hats · Greece",
+      "Established",
+      "Approved retailers only",
+      "Delivery coverage",
+      "The collections"
+     ],
+     "upperShare": 0.28,
+     "centerShare": 0.01,
+     "smallText": 36
+    },
+    "eyebrows": [
+     {
+      "text": "E. Maniadis · Wholesale",
+      "above": "Bags & hats, made for every season.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 259
+     },
+     {
+      "text": "The collections",
+      "above": "Browse by category",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1141
+     },
+     {
+      "text": "Why Maniadis",
+      "above": "Built for retailers",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1717
+     },
+     {
+      "text": "Selected pieces",
+      "above": "From the collection",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2218
+     },
+     {
+      "text": "Getting started",
+      "above": "How it works",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2967
+     },
+     {
+      "text": "Wholesale partnership",
+      "above": "Ready to stock ARIA in your store?",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 3535
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 12,
+      "top": 1299
+     },
+     {
+      "text": "02",
+      "size": 12,
+      "top": 1299
+     }
+    ],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 1604,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      },
+      {
+       "color": "#111832",
+       "top": 3423,
+       "hsl": {
+        "h": 227,
+        "s": 0.49,
+        "l": 0.13
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.68
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.24
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.06
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0.01
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#9db2f0",
+      "hsl": {
+       "h": 225,
+       "s": 0.73,
+       "l": 0.78
+      },
+      "fg": "#0a0f1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 3,
+     "radius": 4,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Browse products",
+      "Digital catalogue 2026"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "a.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 13,
+     "hairlineSamples": [
+      "header.fixed.top-0 1440px",
+      "nav.relative.border-t 1440px",
+      "section.border-b.border-border 1440px",
+      "dl.grid.grid-cols-3 1248px",
+      "ul.grid.grid-cols-1 1248px"
+     ],
+     "outlinedBoxes": 2,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 1,
+     "boxRadius": 6,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 4254,
+    "margins": {
+     "left": 96,
+     "right": 96
+    },
+    "sections": [
+     {
+      "sel": "section.border-b.border-border",
+      "tag": "section",
+      "top": 0,
+      "height": 1029,
+      "words": 54,
+      "media": 1,
+      "middle": 240,
+      "heading": {
+       "text": "Bags & hats,",
+       "size": 72,
+       "tag": "h1"
+      },
+      "left": 96,
+      "right": 241,
+      "textLeft": 96,
+      "textRight": 263,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1029,
+      "height": 575,
+      "words": 9,
+      "media": 0,
+      "middle": 33,
+      "heading": {
+       "text": "Browse by category",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 96,
+      "right": 786,
+      "textLeft": 96,
+      "textRight": 786,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.border-y.border-border",
+      "tag": "section",
+      "top": 1604,
+      "height": 503,
+      "words": 83,
+      "media": 0,
+      "middle": 78,
+      "heading": null,
+      "left": 96,
+      "right": 123,
+      "textLeft": 96,
+      "textRight": 123,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 2106,
+      "height": 748,
+      "words": 175,
+      "media": 1,
+      "middle": 2409,
+      "heading": {
+       "text": "From the collection",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 96,
+      "right": 0,
+      "textLeft": 96,
+      "textRight": -2448,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 2855,
+      "height": 569,
+      "words": 63,
+      "media": 0,
+      "middle": 125,
+      "heading": {
+       "text": "How it works",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 96,
+      "right": 179,
+      "textLeft": 96,
+      "textRight": 179,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-primary.text-primary-foreground",
+      "tag": "section",
+      "top": 3423,
+      "height": 471,
+      "words": 30,
+      "media": 0,
+      "middle": 300,
+      "heading": {
+       "text": "Ready to stock ARIA in your store?",
+       "size": 60,
+       "tag": "h2"
+      },
+      "left": 96,
+      "right": 125,
+      "textLeft": 96,
+      "textRight": 125,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 3894,
+      "height": 360,
+      "words": 37,
+      "media": 0,
+      "middle": 229,
+      "heading": null,
+      "left": 96,
+      "right": 214,
+      "textLeft": 96,
+      "textRight": 214,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Bags & hats, made for every season.",
+      "size": 72,
+      "top": 307,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 96,
+      "n": 10
+     },
+     {
+      "x": 414,
+      "n": 1
+     },
+     {
+      "x": 441,
+      "n": 1
+     },
+     {
+      "x": 732,
+      "n": 1
+     },
+     {
+      "x": 753,
+      "n": 1
+     },
+     {
+      "x": 896,
+      "n": 1
+     },
+     {
+      "x": 1050,
+      "n": 1
+     },
+     {
+      "x": 1065,
+      "n": 1
+     },
+     {
+      "x": 1368,
+      "n": 1
+     },
+     {
+      "x": 1686,
+      "n": 1
+     },
+     {
+      "x": 2004,
+      "n": 1
+     },
+     {
+      "x": 2322,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 25,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.22,
+    "voidBox": {
+     "x": 600,
+     "y": 120,
+     "w": 360,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.44,
+    0.7,
+    0.72,
+    0.54,
+    1
+   ],
+   "motion": {
+    "elements": 30,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 29,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 4897,
+     "screens": 4.8,
+     "words": 468,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 22,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 2,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Flogo.png&w=256&q=75",
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Bags & hats, made for every season.",
+     "words": 7,
+     "chars": 35,
+     "lines": 2,
+     "size": 60,
+     "vw": 7.8,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.96,
+     "top": 255,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Bags & hats, made for every season.",
+     "words": 7,
+     "lines": 2,
+     "size": 60,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "Bags & hats, made for every season.",
+      "words": 7,
+      "chars": 35,
+      "lines": 2,
+      "size": 60,
+      "vw": 7.8,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 255,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "1965",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 1060,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "B2B",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.23,
+      "top": 1060,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "GR · EU",
+      "words": 3,
+      "chars": 7,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.23,
+      "top": 1060,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "Browse by category",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.75,
+      "top": 1282,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Καπέλα",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 1526,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "tsantes",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 36,
+      "vw": 4.7,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.39,
+      "top": 1526,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Built for retailers",
+      "words": 3,
+      "chars": 19,
+      "lines": 2,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 1858,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "From the collection",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.53,
+      "top": 2546,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How it works",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 3357,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "1",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 3493,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "2",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.28,
+      "top": 3493,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "3",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.28,
+      "top": 3493,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Ready to stock ARIA in your store?",
+      "words": 7,
+      "chars": 34,
+      "lines": 5,
+      "size": 60,
+      "vw": 7.8,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 3965,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 14,
+     "maxLines": 5,
+     "over2Lines": 1,
+     "statements": 8,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      20,
+      24,
+      30,
+      36,
+      48,
+      60
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 6.6
+     },
+     "measureChars": 50,
+     "max": {
+      "size": 60,
+      "vw": 7.8,
+      "font": "GFS Didot",
+      "text": "Bags & hats,"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 13,
+     "microLabelShare": 0.07,
+     "microSamples": [
+      "E. Maniadis · Wholesale",
+      "Bags & Hats · Greece",
+      "Established",
+      "Approved retailers only",
+      "Delivery coverage",
+      "The collections"
+     ],
+     "upperShare": 0.28,
+     "centerShare": 0.01,
+     "smallText": 36
+    },
+    "eyebrows": [
+     {
+      "text": "E. Maniadis · Wholesale",
+      "above": "Bags & hats, made for every season.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 206
+     },
+     {
+      "text": "The collections",
+      "above": "Browse by category",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1254
+     },
+     {
+      "text": "Why Maniadis",
+      "above": "Built for retailers",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1829
+     },
+     {
+      "text": "Selected pieces",
+      "above": "From the collection",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2518
+     },
+     {
+      "text": "Getting started",
+      "above": "How it works",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 3328
+     },
+     {
+      "text": "Wholesale partnership",
+      "above": "Ready to stock ARIA in your store?",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 3929
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 12,
+      "top": 1411
+     },
+     {
+      "text": "02",
+      "size": 12,
+      "top": 1411
+     }
+    ],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 1716,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      },
+      {
+       "color": "#111832",
+       "top": 3817,
+       "hsl": {
+        "h": 227,
+        "s": 0.49,
+        "l": 0.13
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.68
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.24
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.06
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0.01
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#9db2f0",
+      "hsl": {
+       "h": 225,
+       "s": 0.73,
+       "l": 0.78
+      },
+      "fg": "#0a0f1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 3,
+     "radius": 4,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Browse products",
+      "Digital catalogue 2026"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "a.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 13,
+     "hairlineSamples": [
+      "header.fixed.top-0 768px",
+      "nav.relative.border-t 768px",
+      "section.border-b.border-border 768px",
+      "dl.grid.grid-cols-3 736px",
+      "ul.grid.grid-cols-1 736px"
+     ],
+     "outlinedBoxes": 2,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 1,
+     "boxRadius": 6,
+     "squareMedia": 1,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 4897,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section.border-b.border-border",
+      "tag": "section",
+      "top": 0,
+      "height": 1142,
+      "words": 54,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Bags & hats,",
+       "size": 60,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 78,
+      "textLeft": 16,
+      "textRight": 78,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1142,
+      "height": 575,
+      "words": 9,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Browse by category",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 243,
+      "textLeft": 16,
+      "textRight": 243,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.border-y.border-border",
+      "tag": "section",
+      "top": 1716,
+      "height": 690,
+      "words": 86,
+      "media": 0,
+      "middle": 35,
+      "heading": {
+       "text": "Built for retailers",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 29,
+      "textLeft": 16,
+      "textRight": 29,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 2406,
+      "height": 810,
+      "words": 175,
+      "media": 1,
+      "middle": 3745,
+      "heading": {
+       "text": "From the collection",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": -3784,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 3216,
+      "height": 601,
+      "words": 63,
+      "media": 0,
+      "middle": 45,
+      "heading": {
+       "text": "How it works",
+       "size": 48,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 32,
+      "textLeft": 16,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-primary.text-primary-foreground",
+      "tag": "section",
+      "top": 3817,
+      "height": 698,
+      "words": 30,
+      "media": 0,
+      "middle": 85,
+      "heading": {
+       "text": "Ready to stock ARIA in your store?",
+       "size": 60,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 45,
+      "textLeft": 16,
+      "textRight": 45,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 4515,
+      "height": 382,
+      "words": 37,
+      "media": 0,
+      "middle": 113,
+      "heading": null,
+      "left": 16,
+      "right": 18,
+      "textLeft": 16,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Bags & hats, made for every season.",
+      "size": 60,
+      "top": 255,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 12
+     },
+     {
+      "x": 396,
+      "n": 4
+     },
+     {
+      "x": 776,
+      "n": 1
+     },
+     {
+      "x": 1156,
+      "n": 1
+     },
+     {
+      "x": 1536,
+      "n": 1
+     },
+     {
+      "x": 1916,
+      "n": 1
+     },
+     {
+      "x": 2296,
+      "n": 1
+     },
+     {
+      "x": 2676,
+      "n": 1
+     },
+     {
+      "x": 3056,
+      "n": 1
+     },
+     {
+      "x": 3436,
+      "n": 1
+     },
+     {
+      "x": 3816,
+      "n": 1
+     },
+     {
+      "x": 4196,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 26,
+    "bodySize": 14,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.58,
+    0.54,
+    1,
+    0.59,
+    0.36,
+    1,
+    0.99
+   ],
+   "motion": {
+    "elements": 30,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 29,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 5526,
+     "screens": 6.5,
+     "words": 461,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 22,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=http%3A%2F%2Flocalhost%3A3000%2Fassets"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Bags & hats, made for every season.",
+     "words": 7,
+     "chars": 35,
+     "lines": 3,
+     "size": 44,
+     "vw": 11.3,
+     "font": "GFS Didot",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.05,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 223,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Bags & hats, made for every season.",
+     "words": 7,
+     "lines": 3,
+     "size": 44,
+     "font": "GFS Didot"
+    },
+    "headings": [
+     {
+      "text": "Bags & hats, made for every season.",
+      "words": 7,
+      "chars": 35,
+      "lines": 3,
+      "size": 44,
+      "vw": 11.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.05,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 223,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "B2B",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.24,
+      "top": 1057,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "GR · EU",
+      "words": 3,
+      "chars": 7,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.33,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.24,
+      "top": 1073,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "1965",
+      "words": 1,
+      "chars": 4,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 1090,
+      "tag": "dd",
+      "kind": "statement"
+     },
+     {
+      "text": "Browse by category",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1276,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Καπέλα",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 1479,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "tsantes",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 1656,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Built for retailers",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1908,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "From the collection",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 2896,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How it works",
+      "words": 3,
+      "chars": 12,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.11,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3485,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "1",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3613,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Register",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3677,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "2",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3873,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Browse the catalogue",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3937,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "3",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 48,
+      "vw": 12.3,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4110,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Place your order",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4174,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Ready to stock ARIA in your store?",
+      "words": 7,
+      "chars": 34,
+      "lines": 2,
+      "size": 36,
+      "vw": 9.2,
+      "font": "GFS Didot",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4464,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 17,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 11,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Manrope",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "GFS Didot",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      14,
+      16,
+      20,
+      24,
+      30,
+      36,
+      44,
+      48
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Manrope",
+      "size": 14,
+      "leading": 1.63,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 6.6
+     },
+     "measureChars": 45,
+     "max": {
+      "size": 48,
+      "vw": 12.3,
+      "font": "GFS Didot",
+      "text": "1"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 13,
+     "microLabelShare": 0.07,
+     "microSamples": [
+      "E. Maniadis · Wholesale",
+      "Bags & Hats · Greece",
+      "Established",
+      "Approved retailers only",
+      "Delivery coverage",
+      "The collections"
+     ],
+     "upperShare": 0.28,
+     "centerShare": 0.01,
+     "smallText": 36
+    },
+    "eyebrows": [
+     {
+      "text": "E. Maniadis · Wholesale",
+      "above": "Bags & hats, made for every season.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 174
+     },
+     {
+      "text": "The collections",
+      "above": "Browse by category",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1247
+     },
+     {
+      "text": "Why Maniadis",
+      "above": "Built for retailers",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 1880
+     },
+     {
+      "text": "Selected pieces",
+      "above": "From the collection",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 2867
+     },
+     {
+      "text": "Getting started",
+      "above": "How it works",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 3456
+     },
+     {
+      "text": "Wholesale partnership",
+      "above": "Ready to stock ARIA in your store?",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 11,
+      "top": 4428
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 12,
+      "top": 1389
+     },
+     {
+      "text": "02",
+      "size": 12,
+      "top": 1566
+     }
+    ],
+    "color": {
+     "bodyBg": "#0a0f1f",
+     "bodyBgHsl": {
+      "h": 226,
+      "s": 0.51,
+      "l": 0.08
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#171e35",
+       "top": 1799,
+       "hsl": {
+        "h": 226,
+        "s": 0.39,
+        "l": 0.15
+       }
+      },
+      {
+       "color": "#111832",
+       "top": 4348,
+       "hsl": {
+        "h": 227,
+        "s": 0.49,
+        "l": 0.13
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#9ea4b5",
+       "share": 0.68
+      },
+      {
+       "color": "#f1eee9",
+       "share": 0.24
+      },
+      {
+       "color": "#9db2f0",
+       "share": 0.06
+      },
+      {
+       "color": "#0a0f1f",
+       "share": 0.01
+      },
+      {
+       "color": "#f2eeea",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#9db2f0",
+      "hsl": {
+       "h": 225,
+       "s": 0.73,
+       "l": 0.78
+      },
+      "fg": "#0a0f1f"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 3,
+     "radius": 4,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Sign in",
+      "Browse products",
+      "Digital catalogue 2026"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "a.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 13,
+     "hairlineSamples": [
+      "header.fixed.top-0 390px",
+      "nav.relative.border-t 390px",
+      "section.border-b.border-border 390px",
+      "dl.grid.grid-cols-3 358px",
+      "ul.grid.grid-cols-1 358px"
+     ],
+     "outlinedBoxes": 2,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 1,
+     "boxRadius": 6,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 8,
+     "fixed": true,
+     "height": 110,
+     "floatingPill": false,
+     "blur": true
+    },
+    "fontsLoaded": [
+     "manrope",
+     "gfs didot"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 5526,
+    "margins": {
+     "left": 16,
+     "right": 18
+    },
+    "sections": [
+     {
+      "sel": "section.border-b.border-border",
+      "tag": "section",
+      "top": 0,
+      "height": 1167,
+      "words": 54,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Bags & hats,",
+       "size": 44,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 18,
+      "textLeft": 16,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 1167,
+      "height": 632,
+      "words": 9,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Browse by category",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 62,
+      "textLeft": 16,
+      "textRight": 62,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.border-y.border-border",
+      "tag": "section",
+      "top": 1799,
+      "height": 989,
+      "words": 86,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Built for retailers",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 18,
+      "textLeft": 16,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 2787,
+      "height": 589,
+      "words": 175,
+      "media": 1,
+      "middle": 1822,
+      "heading": {
+       "text": "From the collection",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 0,
+      "textLeft": 16,
+      "textRight": -1850,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.py-20.md:py-28",
+      "tag": "section",
+      "top": 3376,
+      "height": 972,
+      "words": 63,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "How it works",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 57,
+      "textLeft": 16,
+      "textRight": 57,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-primary.text-primary-foreground",
+      "tag": "section",
+      "top": 4348,
+      "height": 488,
+      "words": 30,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Ready to stock ARIA in your store?",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 30,
+      "textLeft": 16,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.mt-auto.border-t",
+      "tag": "footer",
+      "top": 4836,
+      "height": 691,
+      "words": 37,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 35,
+      "textLeft": 16,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Bags & hats, made for every season.",
+      "size": 44,
+      "top": 223,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 15
+     },
+     {
+      "x": 203,
+      "n": 1
+     },
+     {
+      "x": 390,
+      "n": 1
+     },
+     {
+      "x": 577,
+      "n": 1
+     },
+     {
+      "x": 764,
+      "n": 1
+     },
+     {
+      "x": 951,
+      "n": 1
+     },
+     {
+      "x": 1138,
+      "n": 1
+     },
+     {
+      "x": 1325,
+      "n": 1
+     },
+     {
+      "x": 1512,
+      "n": 1
+     },
+     {
+      "x": 1699,
+      "n": 1
+     },
+     {
+      "x": 1886,
+      "n": 1
+     },
+     {
+      "x": 2073,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 26,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"Bags & hats, made for every season.\" → 3 lines (7 words, 72px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "6 eyebrow/kicker label(s) above headings: \"E. Maniadis · Wholesale\" above \"Bags & hats, made for every season.\"; \"The collections\" above \"Browse by category\"; \"Why Maniadis\" above \"Built for retailers\"; \"Selected pieces\" above \"From the collection\"; \"Getting started\" above \"How it works\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "numbering",
+   "width": 1440,
+   "message": "Decorative index numbers: \"01\", \"02\"",
+   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "13 tiny uppercase letter-spaced labels (e.g. \"E. Maniadis · Wholesale\", \"Bags & Hats · Greece\", \"Established\", \"Approved retailers only\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "14 box-shadow(s) on elements at rest: a.inline-flex.items-center → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0 | div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0 | div.relative.aspect-square → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "13 thin rule(s)/divider line(s): header.fixed.top-0 1440px | nav.relative.border-t 1440px | section.border-b.border-border 1440px | dl.grid.grid-cols-3 1248px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "2 box(es) drawn with a 1px outline.",
+   "fix": "Prefer a filled surface or no box.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (text #f1eee9, text #f2eeea).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "13 different font sizes (10, 11, 12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "body-size",
+   "width": 1440,
+   "message": "Body text is 14px (the size most of the running text is set in).",
+   "fix": "Body copy 16–20px. Map small sizes from blueprints onto your body step.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "grey-body",
+   "width": 1440,
+   "message": "The running text is a soft grey on its ground (6.6:1).",
+   "fix": "Set body copy in the full ink (7:1 or more). Keep the muted ink for secondary notes; pages read thin and unfinished when everything is grey.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 2 picture(s) on the page (2 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "36 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "empty-middle",
+   "width": 1440,
+   "message": "1 section(s) have content at both edges and 2409px of nothing between: \"From the collection\"",
+   "fix": "Bring the two parts together on the grid, or put the picture or figure of the section in the middle. An empty middle third reads as a hole, the same as an empty half.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "ragged-edges",
+   "width": 1440,
+   "message": "Left-aligned text starts at 12 different lines (96px, 414px, 441px, 732px, 753px, 896px, 1050px); the three most used hold only 48% of it.",
+   "fix": "Pick two or three anchor lines from the grid and start every heading and paragraph on one of them."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"Ready to stock ARIA in your store?\" → 5 lines (7 words, 60px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"Bags & hats, made for every season.\" → 3 lines (7 words, 44px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "reduced-hidden",
+   "width": 1440,
+   "message": "With reduced motion requested, 3 text block(s) on the first screen stay invisible: \"Τζόκεϊ\", \"Κώνοι\", \"All of Καπέλα\"",
+   "fix": "Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8)."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/home/desktop-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/home/desktop-page-01.jpg",
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/home/desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/home/tablet-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/home/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/home/mobile-fold.jpg",
+   "pages": [
+    "/Users/georgemellios/Dev/B2B-Aria-Maniadis/.taste-skill/before/home/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

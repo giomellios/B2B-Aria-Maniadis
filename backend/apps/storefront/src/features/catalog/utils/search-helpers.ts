@@ -141,8 +141,9 @@ export function searchParamsToObject(params: URLSearchParams): SearchParams {
   return result;
 }
 
-export const PER_PAGE_OPTIONS = [12, 24, 48] as const;
-export const GRID_OPTIONS = [3, 4] as const;
+export const PER_PAGE_OPTIONS = [24, 48, 96] as const;
+// The first option is the default (no query parameter).
+export const GRID_OPTIONS = [4, 3] as const;
 
 export interface ListingView {
   /** Page the listing starts at (1-based). */
@@ -166,7 +167,7 @@ export function getListingView(searchParams: SearchParams): ListingView {
     ? perPageValue
     : PER_PAGE_OPTIONS[0];
   const more = Math.min(20, Math.max(0, Math.floor(Number(first(searchParams.more))) || 0));
-  const grid = first(searchParams.grid) === "4" ? 4 : 3;
+  const grid = first(searchParams.grid) === "3" ? 3 : 4;
   return {
     page,
     perPage,
