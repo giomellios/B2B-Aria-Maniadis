@@ -6,7 +6,7 @@ import { DEFAULT_LOCALE, INTL_LOCALE, type Locale } from "@/lib/i18n/config";
  */
 export function formatPrice(
   price: number,
-  currencyCode = "USD",
+  currencyCode = "EUR",
   locale: Locale = DEFAULT_LOCALE
 ): string {
   return new Intl.NumberFormat(INTL_LOCALE[locale], {
