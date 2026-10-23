@@ -26,6 +26,8 @@ declare global {
       SMTP_SECURE?: string;
       SMTP_USER?: string;
       SMTP_PASSWORD?: string;
+      /** Job queue poll interval in ms (default: 200 in dev, 10 min elsewhere — set 200 at go-live) */
+      JOB_QUEUE_POLL_INTERVAL_MS?: string;
     }
   }
 }
