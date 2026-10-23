@@ -293,14 +293,20 @@ a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
   shows "wait for admin verification"). Never re-enable the `emailVerificationHandler`, and never
   make `approved` writable through the API. Unapproved customers cannot complete a password reset.
 - **CSV import** runs on the worker: in dev the worker is started by `npm run dev:server`; in
-  production the worker process must be deployed too, or imports stay PENDING. New products use
-  the shared option groups `color` / `characteristic`; products imported before Sept 2026 keep
-  their per-product `color-<code>` groups (still recognised). SKU format:
-  `<code>-<color>-<characteristic>` — changing it breaks re-import matching. The import also tags
-  every variant with the shared facets `color` / `characteristic` (storefront search filters);
-  re-importing a CSV back-fills them, and hand-assigned facet values are kept.
+  production the worker process must be deployed too, or imports stay PENDING. **Every product has
+  its OWN option groups** `color-<slug>` / `characteristic-<slug>` (e.g. `color-m1204`) holding only
+  that product's options. Never attach a shared option group to products: the storefront lists
+  every option of a product's groups, so a shared group shows all colours of all products (this
+  happened in Oct 2026 with a shared `color` group; those products were moved to their own groups).
+  SKU format: `<code>-<color>-<characteristic>`, each part via `cleanForSku` (non-letters → `-`,
+  cut to 20 chars) — changing it breaks re-import matching. The import also tags every variant
+  with the shared **facets** `color` / `characteristic` (storefront search filters — facets, not
+  option groups); re-importing a CSV back-fills them, and hand-assigned facet values are kept.
 - `vatNumber` / `company` are intentionally editable by customers (storefront profile page).
 - Only `dummyPaymentHandler` is configured — don't ship to production without a real
   payment method (e.g. invoice/bank-transfer handler, see skill backend §9).
+- **GO-LIVE: job queue polls slowly.** To let Neon scale to zero before launch, `vendure-config.ts` polls the
+  job queue (and the scheduler's manual-trigger check) every **10 min** outside dev, so emails, search-index
+  updates and CSV imports start up to 10 min late. At go-live set `JOB_QUEUE_POLL_INTERVAL_MS=200` on Render. Tracked in issue #69.
 - `README.md` mentions Meilisearch, but Vendure currently uses the Postgres search strategy.
 - Secrets live in `.env` / `.env.local` (git-ignored). Never print, copy or commit their values.

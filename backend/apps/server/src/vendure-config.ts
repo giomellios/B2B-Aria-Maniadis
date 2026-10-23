@@ -31,6 +31,12 @@ import path from "path";
 const IS_DEV = process.env.APP_ENV === "dev";
 const IS_WORKER = process.env.VENDURE_ROLE === "worker";
 const serverPort = +process.env.PORT || 3000;
+// Background jobs (search index, emails, CSV import) are picked up by polling the DB. Before go-live we poll
+// every 10 min outside dev so Neon can scale to zero when idle. GO-LIVE: set JOB_QUEUE_POLL_INTERVAL_MS=200
+// (Vendure's default), otherwise emails and search updates wait up to 10 min.
+// TODO(#69): remove this override before go-live.
+const jobQueuePollInterval =
+  Number(process.env.JOB_QUEUE_POLL_INTERVAL_MS) || (IS_DEV ? 200 : 10 * 60 * 1000);
 const useS3AssetStorage = !IS_DEV;
 const assetUrlPrefix = process.env.ASSET_URL_PREFIX?.trim()
   ? process.env.ASSET_URL_PREFIX!.endsWith("/")
@@ -200,8 +206,8 @@ export const config: VendureConfig = {
       // to be set manually to match your production url.
       assetUrlPrefix: IS_DEV ? undefined : assetUrlPrefix,
     }),
-    DefaultSchedulerPlugin.init(),
-    DefaultJobQueuePlugin.init({ useDatabaseForBuffer: true }),
+    DefaultSchedulerPlugin.init({ manualTriggerCheckInterval: jobQueuePollInterval }),
+    DefaultJobQueuePlugin.init({ useDatabaseForBuffer: true, pollInterval: jobQueuePollInterval }),
     DefaultSearchPlugin.init({
       bufferUpdates: false,
       indexStockStatus: true,
