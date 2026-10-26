@@ -7,17 +7,22 @@ import {
   getSearchFilterOptions,
   searchProducts,
 } from "@/features/catalog/services/catalog.service";
+import { getAuthToken } from "@/lib/api/auth-token";
 
 interface SearchResultsProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export async function SearchResults({ searchParams }: SearchResultsProps) {
-  const [searchParamsResolved, locale] = await Promise.all([searchParams, getLocale()]);
+  const [searchParamsResolved, locale, token] = await Promise.all([
+    searchParams,
+    getLocale(),
+    getAuthToken(),
+  ]);
   const searchTerm = (searchParamsResolved.q as string)?.trim();
 
-  const productDataPromise = searchProducts(searchParamsResolved, locale);
-  const filterOptionsPromise = getSearchFilterOptions(searchParamsResolved, locale);
+  const productDataPromise = searchProducts(searchParamsResolved, locale, token);
+  const filterOptionsPromise = getSearchFilterOptions(searchParamsResolved, locale, token);
 
   return (
     <div className="space-y-8">

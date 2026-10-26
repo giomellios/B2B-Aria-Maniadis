@@ -1,6 +1,7 @@
 import "server-only";
-import { query } from "@/lib/api/client";
+import { ForbiddenError, query } from "@/lib/api/client";
 import { GetActiveOrderQuery } from "@/features/cart/services/queries";
+import { getAuthToken } from "@/lib/api/auth-token";
 
 export async function getActiveOrder() {
   const { data } = await query(
@@ -13,8 +14,9 @@ export async function getActiveOrder() {
   return data.activeOrder;
 }
 
-/** Number of items in the active order; 0 when the Vendure API is unreachable. */
+/** Number of items in the active order; 0 when not signed in or the Vendure API is unreachable. */
 export async function getCartItemCount() {
+  if (!(await getAuthToken())) return 0;
   try {
     const orderResult = await query(GetActiveOrderQuery, undefined, {
       useAuthToken: true,
@@ -22,6 +24,9 @@ export async function getCartItemCount() {
     });
     return orderResult.data.activeOrder?.totalQuantity || 0;
   } catch (error) {
+    if (error instanceof ForbiddenError) {
+      return 0;
+    }
     if (error instanceof TypeError && error.message === "fetch failed") {
       return 0;
     }

@@ -4,6 +4,7 @@ import { SearchResults } from "@/features/catalog/server";
 import { SearchTerm, SearchTermSkeleton, SearchResultsSkeleton } from "@/features/catalog";
 import { SITE_NAME, noIndexRobots } from "@/lib/utils";
 import { getT } from "@/lib/i18n/server";
+import { requireActiveCustomer } from "@/features/auth/server";
 import { format } from "@/lib/i18n/dictionaries";
 
 export async function generateMetadata({
@@ -26,6 +27,7 @@ export async function generateMetadata({
 }
 
 export default async function SearchPage({ searchParams }: PageProps<"/[locale]/search">) {
+  await requireActiveCustomer("/search");
   return (
     <div className="frame mt-header pt-8 pb-20">
       <Suspense fallback={<SearchTermSkeleton />}>

@@ -4,7 +4,8 @@
  * Server-only values live in `env.server.ts`.
  */
 
-export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "Vendure Store";
+/** The shop's name in browser tab titles, metadata and OpenGraph. */
+export const SITE_NAME = "ARIA Maniadis";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
 
 /**

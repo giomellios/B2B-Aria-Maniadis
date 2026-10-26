@@ -1,5 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
-import { query } from "@/lib/api/client";
+import { ForbiddenError, query } from "@/lib/api/client";
 import type { Locale } from "@/lib/i18n/config";
 
 import {
@@ -69,15 +69,20 @@ export async function getAvailableCountriesCached(languageCode: Locale) {
 /**
  * Get top-level collections with caching enabled.
  * Collections rarely change, so we cache them for 1 day.
+ * Empty for visitors who are not signed in (`token`: the customer's auth token): the Shop API
+ * only answers signed-in customers.
  */
-export async function getTopCollections(languageCode: Locale) {
+export async function getTopCollections(languageCode: Locale, token: string | undefined) {
+  if (!token) return [];
   try {
     const result = await query(GetTopCollectionsQuery, undefined, {
       revalidateSeconds: 60 * 60 * 24,
       languageCode,
+      token,
     });
     return result.data.collections.items;
   } catch (error) {
+    if (error instanceof ForbiddenError) return [];
     if (isConnectionError(error)) {
       console.warn("Vendure API not reachable — returning empty collections");
       return [];
@@ -97,14 +102,20 @@ export interface Category {
  * The category menu: every public collection, arranged as admins nest and order them in the
  * Dashboard (hide one with its "Private" switch). Cached for a few minutes so Dashboard changes
  * show up quickly; revalidate immediately with the "collections" tag.
+ * Empty for visitors who are not signed in (`token`: the customer's auth token): the Shop API
+ * only answers signed-in customers.
  */
-export async function getCategoryTree(languageCode: Locale): Promise<Category[]> {
+export async function getCategoryTree(
+  languageCode: Locale,
+  token: string | undefined
+): Promise<Category[]> {
   "use cache";
   cacheLife("minutes");
   cacheTag("collections");
 
+  if (!token) return [];
   try {
-    const { data } = await query(GetCategoryTreeQuery, undefined, { languageCode });
+    const { data } = await query(GetCategoryTreeQuery, undefined, { languageCode, token });
     type Node = {
       id: string;
       name: string;
@@ -123,6 +134,7 @@ export async function getCategoryTree(languageCode: Locale): Promise<Category[]>
         }));
     return toCategories(data.collections.items);
   } catch (error) {
+    if (error instanceof ForbiddenError) return [];
     if (isConnectionError(error)) {
       console.warn("Vendure API not reachable — returning empty category menu");
       return [];

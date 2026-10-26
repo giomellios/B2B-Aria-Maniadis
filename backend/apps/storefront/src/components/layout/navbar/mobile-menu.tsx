@@ -10,10 +10,9 @@ import {
   DropdownMenuTrigger,
 } from "@/design-system";
 import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
-import { ThemeSwitcher } from "@/components/layout/navbar/theme-switcher";
 import { Link } from "@/lib/i18n/navigation";
 
-/** Phone and tablet navigation: the same links as the desktop bar, plus language and theme. */
+/** Phone and tablet navigation: the same links as the desktop bar, plus the language. */
 export function MobileMenu({
   label,
   links,
@@ -36,9 +35,8 @@ export function MobileMenu({
           </DropdownMenuItem>
         ))}
         <DropdownMenuSeparator />
-        <div className="flex items-center justify-between px-2 py-1.5">
+        <div className="px-2 py-1.5">
           <LanguageSwitcher />
-          <ThemeSwitcher />
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -71,7 +71,11 @@ export async function findByCode(code: string): Promise<string> {
     .replace(/[^\p{L}\p{N}]/gu, "");
   if (!clean) return "/search";
   try {
-    const { data } = await query(ProductByCodeQuery, { slug: clean.toLowerCase() });
+    const { data } = await query(
+      ProductByCodeQuery,
+      { slug: clean.toLowerCase() },
+      { useAuthToken: true }
+    );
     if (data.product) return `/product/${data.product.slug}`;
   } catch {
     // Fall through to the search.

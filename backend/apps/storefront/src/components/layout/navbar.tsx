@@ -10,14 +10,14 @@ import { NavbarUser } from "@/features/auth/server";
 import { SearchDialog } from "@/components/layout/search-dialog";
 import { NavbarUserSkeleton } from "@/features/auth";
 import { getCategoryTree } from "@/lib/queries/cached";
+import { getAuthToken } from "@/lib/api/auth-token";
 
 const linkClass =
   "inline-flex h-10 items-center rounded-md px-3 text-base text-muted-foreground transition-colors duration-200 hover:text-foreground aria-[current=page]:text-foreground aria-[current=page]:underline aria-[current=page]:decoration-gold aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8";
 
 /**
  * One calm bar: the crest and name on the left, the shop's few destinations in the middle, and on
- * the right only what a buyer reaches for (search, language, cart, account). The theme switch
- * lives in the footer and the phone menu.
+ * the right only what a buyer reaches for (search, language, cart, account).
  */
 export async function Navbar() {
   const t = await getT();
@@ -76,7 +76,10 @@ export async function Navbar() {
 }
 
 async function PrimaryLinks() {
-  const [categories, t] = await Promise.all([getCategoryTree(await getLocale()), getT()]);
+  const [categories, t] = await Promise.all([
+    getCategoryTree(await getLocale(), await getAuthToken()),
+    getT(),
+  ]);
   return (
     <nav aria-label={t.nav.categories} className="hidden lg:block">
       <ul className="flex items-center gap-1">
@@ -108,7 +111,10 @@ async function PrimaryLinks() {
 }
 
 async function MobileLinks() {
-  const [categories, t] = await Promise.all([getCategoryTree(await getLocale()), getT()]);
+  const [categories, t] = await Promise.all([
+    getCategoryTree(await getLocale(), await getAuthToken()),
+    getT(),
+  ]);
   return (
     <MobileMenu
       label={t.nav.menu}

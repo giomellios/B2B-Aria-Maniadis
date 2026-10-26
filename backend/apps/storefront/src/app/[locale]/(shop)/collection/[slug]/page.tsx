@@ -10,6 +10,8 @@ import {
   getSearchFilterOptions,
 } from "@/features/catalog/server";
 import { FacetFilters, ProductGridSkeleton } from "@/features/catalog";
+import { getActiveCustomer, requireActiveCustomer } from "@/features/auth/server";
+import { getAuthToken } from "@/lib/api/auth-token";
 import {
   SITE_NAME,
   truncateDescription,
@@ -22,9 +24,11 @@ export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/collection/[slug]">): Promise<Metadata> {
   const { slug } = await params;
+  // The catalogue is for signed-in customers only, including the collection's image in the page head
+  if (!(await getActiveCustomer())) return {};
   const locale = await getLocale();
   const t = await getT();
-  const result = await getCollectionMetadata(slug, locale);
+  const result = await getCollectionMetadata(slug, locale, await getAuthToken());
   const collection = result.data.collection;
 
   if (!collection) {
@@ -63,10 +67,11 @@ export default async function CollectionPage({
 }: PageProps<"/[locale]/collection/[slug]">) {
   const { slug } = await params;
   const searchParamsResolved = await searchParams;
+  await requireActiveCustomer(`/collection/${slug}`);
 
-  const locale = await getLocale();
-  const productDataPromise = getCollectionProducts(slug, searchParamsResolved, locale);
-  const filterOptionsPromise = getSearchFilterOptions(searchParamsResolved, locale, slug);
+  const [locale, token] = await Promise.all([getLocale(), getAuthToken()]);
+  const productDataPromise = getCollectionProducts(slug, searchParamsResolved, locale, token);
+  const filterOptionsPromise = getSearchFilterOptions(searchParamsResolved, locale, token, slug);
 
   return (
     <div className="frame mt-header pt-8 pb-20">

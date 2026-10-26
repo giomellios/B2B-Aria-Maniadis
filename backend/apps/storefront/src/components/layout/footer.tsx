@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Suspense } from "react";
 import { getTopCollections } from "@/lib/queries/cached";
+import { getAuthToken } from "@/lib/api/auth-token";
 import { Link } from "@/lib/i18n/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
 import { Button } from "@/design-system";
 import { DIGITAL_CATALOGUE_URL } from "@/lib/config/links";
 import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
-import { ThemeSwitcher } from "@/components/layout/navbar/theme-switcher";
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
 const EMAIL = "maniadibags@gmail.com";
@@ -19,7 +19,10 @@ const navLink = "link-underline text-base";
 /** The close of every page: one quiet panel with who we are, where to go and how to reach us. */
 export async function Footer() {
   const locale = await getLocale();
-  const [collections, t] = await Promise.all([getTopCollections(locale), getT()]);
+  const [collections, t] = await Promise.all([
+    getTopCollections(locale, await getAuthToken()),
+    getT(),
+  ]);
 
   return (
     <footer className="frame mt-auto pt-24 pb-4 md:pt-32 md:pb-5">
@@ -129,12 +132,9 @@ export async function Footer() {
           <p className="text-sm text-muted-foreground">
             {format(t.footer.copyright, { year: COPYRIGHT_YEAR })}
           </p>
-          <div className="flex items-center gap-3">
-            <Suspense fallback={null}>
-              <LanguageSwitcher className="w-fit" />
-            </Suspense>
-            <ThemeSwitcher />
-          </div>
+          <Suspense fallback={null}>
+            <LanguageSwitcher className="w-fit" />
+          </Suspense>
         </div>
       </div>
     </footer>
