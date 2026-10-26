@@ -50,7 +50,7 @@ B2B-Aria-Maniadis/
 | Customer custom fields | `vatNumber`, `company` (in `vendure-config.ts`, editable by the customer in the storefront profile) and `approved` (readonly, admin-only, defined by the customer-approval plugin). |
 | Payments | `dummyPaymentHandler` only (no real payment method yet). |
 | Email | Dev: files + `/mailbox`. Elsewhere: SMTP when `SMTP_HOST` is set, otherwise no emails. Links use `STOREFRONT_URL`. Env vars typed in `src/environment.d.ts`. |
-| Custom plugins (`src/plugins/`) | `csv-import` (upload → job queue on the **worker** → creates/updates products; permission `ImportProductsFromCsv`; Admin API `startCsvProductImport` / `csvProductImportJob`) · `customer-approval` (`Customer.approved` flag, `approveCustomer` / `revokeCustomerApproval` mutations, login gate, Dashboard button + bulk action) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (fills missing product/variant translations for all channel languages) · `search/b2b-search-strategy.ts` (SearchStrategy: partial-SKU `ILIKE` + `priceRangeWithTax` filter) with `search/b2b-search.plugin.ts` (`B2BSearchPlugin`, only extends the Shop API `SearchInput` with `priceRangeWithTax`). |
+| Custom plugins (`src/plugins/`) | `csv-import` (upload → job queue on the **worker** → creates/updates products; permission `ImportProductsFromCsv`; Admin API `startCsvProductImport` / `csvProductImportJob`) · `customer-approval` (`Customer.approved` flag, `approveCustomer` / `revokeCustomerApproval` mutations, login gate, Dashboard button + bulk action) · `members-only` (global interceptor: the **Shop API answers signed-in users only**, except the operations in `PUBLIC_SHOP_OPERATIONS` — sign-in, registration, password reset, `activeChannel`, `availableCountries`) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (fills missing product/variant translations for all channel languages) · `search/b2b-search-strategy.ts` (SearchStrategy: partial-SKU `ILIKE` + `priceRangeWithTax` filter) with `search/b2b-search.plugin.ts` (`B2BSearchPlugin`, only extends the Shop API `SearchInput` with `priceRangeWithTax`). |
 | Migrations | `src/migrations/` (Postgres). In **dev** (`APP_ENV=dev`) the server uses `synchronize: true` and does **not** run migrations; outside dev, `src/index.ts` runs `runMigrations` before bootstrap. `1790605810464-vendure-3-7-3-upgrade.ts` is the 3.5.3→3.7.3 upgrade (with the 3.6 data helpers); the first migration uses `IF NOT EXISTS` so it is safe on databases created by `synchronize`. |
 
 ---
@@ -299,6 +299,14 @@ a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
   `<code>-<color>-<characteristic>` — changing it breaks re-import matching. The import also tags
   every variant with the shared facets `color` / `characteristic` (storefront search filters);
   re-importing a CSV back-fills them, and hand-assigned facet values are kept.
+- **Members-only catalogue** (members-only plugin + storefront): anonymous Shop API calls get
+  `FORBIDDEN` for everything not in `PUBLIC_SHOP_OPERATIONS`. So every storefront catalogue query
+  must send the customer's token — `"use cache"` loaders take it as an argument (`getAuthToken()`),
+  uncached ones use `useAuthToken: true` — and page-shell data (navbar/footer categories, cart
+  badge, home counts) returns empty when signed out (`ForbiddenError` from `lib/api/client.ts`).
+  Catalogue pages are listed in `apps/storefront/src/lib/config/members-only.ts` (proxy redirect)
+  and call `requireActiveCustomer()`. Only add an operation to `PUBLIC_SHOP_OPERATIONS` if signed-out
+  visitors truly need it and it exposes no product data.
 - `vatNumber` / `company` are intentionally editable by customers (storefront profile page).
 - Only `dummyPaymentHandler` is configured — don't ship to production without a real
   payment method (e.g. invoice/bank-transfer handler, see skill backend §9).

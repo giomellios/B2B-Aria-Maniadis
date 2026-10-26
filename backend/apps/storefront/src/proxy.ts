@@ -1,10 +1,22 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALE_HEADER, isLocale } from "@/lib/i18n/config";
+import {
+  DEFAULT_LOCALE,
+  LOCALE_COOKIE,
+  LOCALE_HEADER,
+  isLocale,
+  stripLocale,
+} from "@/lib/i18n/config";
+import { isMembersOnlyPath } from "@/lib/config/members-only";
+
+// Same cookie as serverEnv.authTokenCookie (env.server.ts is server-only and also needs the API URL).
+const AUTH_TOKEN_COOKIE = process.env.VENDURE_AUTH_TOKEN_COOKIE || "vendure-auth-token";
 
 /**
  * Every page lives under /el/... or /en/....
  * - A URL without a locale (e.g. a link from a Vendure email) is redirected to the visitor's
  *   saved language, or Greek by default.
+ * - Product, catalogue and order pages without a session cookie are redirected to sign-in, which
+ *   comes back to them afterwards. (Only a quick check: the pages verify the session itself.)
  * - Requests with a locale get an x-locale header, so Server Actions and the Vendure API client
  *   (which cannot read route params) know which language to use.
  */
@@ -18,6 +30,14 @@ export function proxy(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
     url.search = search;
+    return NextResponse.redirect(url);
+  }
+
+  const path = stripLocale(pathname);
+  if (isMembersOnlyPath(path) && !request.cookies.has(AUTH_TOKEN_COOKIE)) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${first}/sign-in`;
+    url.search = new URLSearchParams({ redirectTo: `${path}${search}` }).toString();
     return NextResponse.redirect(url);
   }
 

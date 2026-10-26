@@ -4,7 +4,7 @@ import { localeRedirect } from "@/lib/i18n/redirect";
 import { getT } from "@/lib/i18n/server";
 import { CheckoutFlow, CheckoutProvider } from "@/features/checkout";
 import { noIndexRobots } from "@/lib/utils";
-import { getActiveCustomer } from "@/features/auth/server";
+import { requireActiveCustomer } from "@/features/auth/server";
 import { getCheckoutData } from "@/features/checkout/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,11 +14,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function CheckoutPage() {
   await connection();
-  const customer = await getActiveCustomer();
-  const isGuest = !customer;
+  // Only signed-in customers can order, so the checkout never runs as a guest
+  await requireActiveCustomer("/checkout");
 
   const { activeOrder, addresses, countries, shippingMethods, paymentMethods } =
-    await getCheckoutData({ isGuest });
+    await getCheckoutData({ isGuest: false });
 
   if (!activeOrder || activeOrder.lines.length === 0) {
     return localeRedirect("/cart");
@@ -37,7 +37,7 @@ export default async function CheckoutPage() {
         countries={countries}
         shippingMethods={shippingMethods}
         paymentMethods={paymentMethods}
-        isGuest={isGuest}
+        isGuest={false}
       >
         <CheckoutFlow />
       </CheckoutProvider>

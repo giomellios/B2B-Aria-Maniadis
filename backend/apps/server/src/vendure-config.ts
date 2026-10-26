@@ -25,6 +25,7 @@ import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
 import { B2BPostgresSearchStrategy } from "./plugins/search/b2b-search-strategy";
 import { B2BSearchPlugin } from "./plugins/search/b2b-search.plugin";
 import { CategoryFiltersPlugin } from "./plugins/category-filters/category-filters.plugin";
+import { MembersOnlyPlugin } from "./plugins/members-only/members-only.plugin";
 import "dotenv/config";
 import path from "path";
 
@@ -220,5 +221,6 @@ export const config: VendureConfig = {
     TranslationSyncPlugin,
     CsvImportPlugin,
     CustomerApprovalPlugin,
+    MembersOnlyPlugin,
   ],
 };

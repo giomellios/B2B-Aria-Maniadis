@@ -27,8 +27,14 @@ interface VendureRequestOptions {
 
 interface VendureResponse<T> {
   data?: T;
-  errors?: Array<{ message: string; [key: string]: unknown }>;
+  errors?: Array<{ message: string; extensions?: { code?: string }; [key: string]: unknown }>;
 }
+
+/**
+ * The Shop API refused the request because nobody is signed in (or the session has expired): it
+ * only answers signed-in customers, apart from sign-in / registration (server MembersOnlyPlugin).
+ */
+export class ForbiddenError extends Error {}
 
 /**
  * Extract the Vendure auth token from response headers
@@ -104,7 +110,11 @@ export async function query<TResult, TVariables>(
   const result: VendureResponse<TResult> = await response.json();
 
   if (result.errors) {
-    throw new Error(result.errors.map((e) => e.message).join(", "));
+    const message = result.errors.map((e) => e.message).join(", ");
+    if (result.errors.every((e) => e.extensions?.code === "FORBIDDEN")) {
+      throw new ForbiddenError(message);
+    }
+    throw new Error(message);
   }
 
   if (!result.data) {

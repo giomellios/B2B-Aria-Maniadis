@@ -6,6 +6,7 @@ import { localeRedirect } from "@/lib/i18n/redirect";
 import { LoginForm } from "@/features/auth";
 import { Card, CardContent, CardFooter, Skeleton } from "@/design-system";
 import { getActiveCustomer } from "@/features/auth/server";
+import { isMembersOnlyPath } from "@/lib/config/members-only";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -40,13 +41,27 @@ async function SignInContent({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const [customer, resolvedParams] = await Promise.all([getActiveCustomer(), searchParams]);
+  const [customer, resolvedParams, t] = await Promise.all([
+    getActiveCustomer(),
+    searchParams,
+    getT(),
+  ]);
   if (customer) {
     await localeRedirect("/");
   }
   const redirectTo = resolvedParams?.redirectTo as string | undefined;
 
-  return <LoginForm redirectTo={redirectTo} />;
+  return (
+    <>
+      {/* Sent here from a product, catalogue or order page */}
+      {redirectTo && isMembersOnlyPath(redirectTo) && (
+        <p role="status" className="mb-4 rounded-lg bg-card p-4 text-base">
+          {t.auth.signIn.membersOnly}
+        </p>
+      )}
+      <LoginForm redirectTo={redirectTo} />
+    </>
+  );
 }
 
 export default async function SignInPage({ searchParams }: PageProps<"/[locale]/sign-in">) {

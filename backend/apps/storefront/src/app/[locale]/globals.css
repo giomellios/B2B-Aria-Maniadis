@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 /* Not "inline", so the variables also exist at runtime (used in calc() in arbitrary values). */
 @theme {
   /* Five sizes do the work: 14 small, 17 body, 24 lead, section heads, display. */
@@ -106,45 +104,6 @@
   --sidebar-accent-foreground: #14110e;
   --sidebar-border: #d9d5ce;
   --sidebar-ring: #8a6a25;
-}
-
-.dark {
-  --background: #0c0a08;
-  --foreground: #ffffff;
-  --card: #181512;
-  --card-foreground: #ffffff;
-  --popover: #221e1a;
-  --popover-foreground: #ffffff;
-  --primary: #ffffff;
-  --primary-foreground: #0c0a08;
-  --secondary: #181512;
-  --secondary-foreground: #ffffff;
-  --muted: #181512;
-  --muted-foreground: #a39d96;
-  --accent: #26211c;
-  --accent-foreground: #ffffff;
-  --gold: #c9a45a;
-  --field: #26211c;
-  --field-hover: #2f2923;
-  --gold-foreground: #0c0a08;
-  --destructive: #f2867c;
-  --success: #7fcf9a;
-  --border: #2b2620;
-  --input: #3a342d;
-  --ring: #c9a45a;
-  --chart-1: #ffffff;
-  --chart-2: #a39d96;
-  --chart-3: #c9a45a;
-  --chart-4: #5a544d;
-  --chart-5: #3a342d;
-  --sidebar: #181512;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #ffffff;
-  --sidebar-primary-foreground: #0c0a08;
-  --sidebar-accent: #26211c;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #2b2620;
-  --sidebar-ring: #c9a45a;
 }
 
 @layer base {

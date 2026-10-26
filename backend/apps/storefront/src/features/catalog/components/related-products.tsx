@@ -1,6 +1,7 @@
 import { ProductCarousel } from "@/features/catalog/components/product-carousel";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { getRelatedProducts } from "@/features/catalog/services/catalog.service";
+import { getAuthToken } from "@/lib/api/auth-token";
 
 interface RelatedProductsProps {
   collectionSlug: string;
@@ -12,7 +13,8 @@ export async function RelatedProducts({ collectionSlug, currentProductId }: Rela
   const { products, fallbackImagesBySlug } = await getRelatedProducts(
     collectionSlug,
     currentProductId,
-    await getLocale()
+    await getLocale(),
+    await getAuthToken()
   );
 
   if (products.length === 0) {

@@ -103,7 +103,7 @@ src/
     shared/               commerce building blocks used by several features
                           (price, order totals, pagination, country select)
     layout/               app shell: navbar, footer, search
-    providers/            React context providers (theme)
+    providers/            React context providers (reduced motion)
   lib/
     api/                  Shop API client, gql.tada `graphql`, auth-token cookie (server-only)
     queries/              shared cached queries (channel, countries, top collections)

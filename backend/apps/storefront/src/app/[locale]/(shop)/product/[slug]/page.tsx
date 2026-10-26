@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ProductImageCarousel, ProductInfo } from "@/features/catalog";
 import { RelatedProducts, getProductData } from "@/features/catalog/server";
+import { getActiveCustomer, requireActiveCustomer } from "@/features/auth/server";
+import { getAuthToken } from "@/lib/api/auth-token";
 import { notFound } from "next/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
@@ -19,9 +21,11 @@ export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/product/[slug]">): Promise<Metadata> {
   const { slug } = await params;
+  // Products are for signed-in customers only, including their name and image in the page head
+  if (!(await getActiveCustomer())) return {};
   const locale = await getLocale();
   const t = await getT();
-  const result = await getProductData(slug, locale);
+  const result = await getProductData(slug, locale, await getAuthToken());
   const product = result.data.product;
 
   if (!product) {
@@ -61,8 +65,12 @@ export default async function ProductDetailPage({
 }: PageProps<"/[locale]/product/[slug]">) {
   const { slug } = await params;
   const searchParamsResolved = await searchParams;
+  await requireActiveCustomer(`/product/${slug}`);
 
-  const [result, t] = await Promise.all([getProductData(slug, await getLocale()), getT()]);
+  const [result, t] = await Promise.all([
+    getProductData(slug, await getLocale(), await getAuthToken()),
+    getT(),
+  ]);
 
   const product = result.data.product;
 

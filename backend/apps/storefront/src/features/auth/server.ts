@@ -6,4 +6,5 @@ export { NavbarUser } from "@/features/auth/components/navbar-user";
 export {
   getActiveCustomer,
   getActiveCustomerCustomFields,
+  requireActiveCustomer,
 } from "@/features/auth/services/customer.service";

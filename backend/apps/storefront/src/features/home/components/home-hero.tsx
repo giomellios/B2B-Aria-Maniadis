@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Link } from "@/lib/i18n/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
@@ -7,6 +8,7 @@ import { ISLAND_RUNS, type CatalogueRun } from "@/features/home/data/catalogue";
 import { getDestinations, type Destination } from "@/features/home/services/home.service";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
+import { getAuthToken } from "@/lib/api/auth-token";
 
 export const PHONE = "(2810) 319618";
 export const PHONE_HREF = "tel:+302810319618";
@@ -35,15 +37,26 @@ function toSheetRun(
   };
 }
 
+/** The island cards with each island's product count, for signed-in customers only. */
+async function LiveIslandSheet() {
+  const locale = await getLocale();
+  const [t, destinations] = await Promise.all([
+    getT(),
+    getDestinations(locale, await getAuthToken()),
+  ]);
+  const runs = ISLAND_RUNS.map((run) => toSheetRun(run, locale, t, destinations[run.code]));
+  return <IslandSheet runs={runs} label={t.home.hero.sheetLabel} />;
+}
+
 /**
  * First screen: a band of small text (who, what, the range, how to reach us), the title at
  * display size, and the contact sheet of island runs starting directly under it.
  */
 export async function HomeHero() {
   const locale = await getLocale();
-  const [t, destinations] = await Promise.all([getT(), getDestinations(locale)]);
+  const t = await getT();
   const hero = t.home.hero;
-  const runs = ISLAND_RUNS.map((run) => toSheetRun(run, locale, t, destinations[run.code]));
+  const runsWithoutCounts = ISLAND_RUNS.map((run) => toSheetRun(run, locale, t, undefined));
 
   return (
     <section aria-labelledby="home-title" className="px-4 pt-8 sm:px-5 md:pt-14">
@@ -105,7 +118,9 @@ export async function HomeHero() {
         <p className="text-base text-muted-foreground">{hero.pickIsland}</p>
       </div>
       <div className="mt-6">
-        <IslandSheet runs={runs} label={hero.sheetLabel} />
+        <Suspense fallback={<IslandSheet runs={runsWithoutCounts} label={hero.sheetLabel} />}>
+          <LiveIslandSheet />
+        </Suspense>
       </div>
     </section>
   );

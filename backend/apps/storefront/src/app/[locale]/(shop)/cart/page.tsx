@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { CartSkeleton, QuickOrder } from "@/features/cart";
 import { noIndexRobots } from "@/lib/utils";
 import { getT } from "@/lib/i18n/server";
+import { requireActiveCustomer } from "@/features/auth/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -11,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function CartPage() {
+  await requireActiveCustomer("/cart");
   const t = await getT();
   return (
     <div className="frame mt-header pt-8 pb-20">

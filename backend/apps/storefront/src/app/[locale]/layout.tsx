@@ -9,7 +9,7 @@ import { LocaleProvider } from "@/lib/i18n/provider";
 import { Toaster } from "@/design-system";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+import { MotionProvider } from "@/components/providers/motion-provider";
 import { RevealObserver } from "@/components/shared/reveal-observer";
 import { SITE_NAME, SITE_URL } from "@/lib/utils";
 
@@ -61,10 +61,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f1ee" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0a08" },
-  ],
+  themeColor: "#f3f1ee",
 };
 
 export default async function RootLayout({ children, params }: LayoutProps<"/[locale]">) {
@@ -72,10 +69,10 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale}>
       <body className={`${bodyFont.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <LocaleProvider locale={locale}>
-          <ThemeProvider>
+          <MotionProvider>
             <Navbar />
             {children}
             {/* The footer reads the request's locale and the collections. */}
@@ -86,7 +83,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
             <Suspense fallback={null}>
               <RevealObserver />
             </Suspense>
-          </ThemeProvider>
+          </MotionProvider>
         </LocaleProvider>
       </body>
     </html>

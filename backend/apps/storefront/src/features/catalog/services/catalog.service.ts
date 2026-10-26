@@ -16,10 +16,15 @@ import { buildBaseSearchInput, buildSearchInput } from "@/features/catalog/utils
 
 type SearchParams = { [key: string]: string | string[] | undefined };
 
+// The Shop API only answers signed-in customers, so every loader takes the customer's auth token
+// (getAuthToken(); "use cache" functions cannot read cookies). Being an argument, it is part of the
+// cache key: cached results are never shared between sessions.
+
 export async function getCollectionProducts(
   slug: string,
   searchParams: SearchParams,
-  languageCode: Locale
+  languageCode: Locale,
+  token: string | undefined
 ) {
   "use cache";
   cacheLife("hours");
@@ -33,11 +38,15 @@ export async function getCollectionProducts(
         collectionSlug: slug,
       }),
     },
-    { languageCode }
+    { languageCode, token }
   );
 }
 
-export async function getCollectionMetadata(slug: string, languageCode: Locale) {
+export async function getCollectionMetadata(
+  slug: string,
+  languageCode: Locale,
+  token: string | undefined
+) {
   "use cache";
   cacheLife("hours");
   cacheTag(`collection-meta-${slug}`);
@@ -48,31 +57,37 @@ export async function getCollectionMetadata(slug: string, languageCode: Locale) 
       slug,
       input: { take: 0, collectionSlug: slug, groupByProduct: true },
     },
-    { languageCode }
+    { languageCode, token }
   );
 }
 
 /** Collection name/description for the collection header (uncached). */
 export async function getCollectionSummary(slug: string) {
-  const result = await query(GetCollectionProductsQuery, {
-    slug,
-    input: { take: 0, collectionSlug: slug, groupByProduct: true },
-  });
+  const result = await query(
+    GetCollectionProductsQuery,
+    { slug, input: { take: 0, collectionSlug: slug, groupByProduct: true } },
+    { useAuthToken: true }
+  );
   return result.data.collection;
 }
 
-export async function getProductData(slug: string, languageCode: Locale) {
+export async function getProductData(
+  slug: string,
+  languageCode: Locale,
+  token: string | undefined
+) {
   "use cache";
   cacheLife("hours");
   cacheTag(`product-${slug}`);
 
-  return await query(GetProductDetailQuery, { slug }, { languageCode });
+  return await query(GetProductDetailQuery, { slug }, { languageCode, token });
 }
 
 export async function getRelatedProducts(
   collectionSlug: string,
   currentProductId: string,
-  languageCode: Locale
+  languageCode: Locale,
+  token: string | undefined
 ) {
   "use cache";
   cacheLife("hours");
@@ -90,7 +105,7 @@ export async function getRelatedProducts(
           groupByProduct: true,
         },
       },
-      { languageCode }
+      { languageCode, token }
     );
 
     const products = result.data.search.items
@@ -110,6 +125,7 @@ export async function getRelatedProducts(
 
     const fallbackImagesBySlugMap = await getProductCardImageFallbacks(
       missingImageSlugs,
+      token,
       languageCode
     );
 
@@ -129,11 +145,12 @@ export async function getRelatedProducts(
   }
 }
 
-/**
- * Search results for the /search page. Search is anonymous (no auth token), so results are
- * shared across visitors and revalidated every minute.
- */
-export async function searchProducts(searchParams: SearchParams, languageCode: Locale) {
+/** Search results for the /search page, revalidated every minute. */
+export async function searchProducts(
+  searchParams: SearchParams,
+  languageCode: Locale,
+  token: string | undefined
+) {
   "use cache";
   cacheLife("minutes");
   cacheTag("search");
@@ -141,7 +158,7 @@ export async function searchProducts(searchParams: SearchParams, languageCode: L
   return query(
     SearchProductsQuery,
     { input: buildSearchInput({ searchParams }) },
-    { languageCode }
+    { languageCode, token }
   );
 }
 
@@ -152,6 +169,7 @@ export async function searchProducts(searchParams: SearchParams, languageCode: L
 export async function getSearchFilterOptions(
   searchParams: SearchParams,
   languageCode: Locale,
+  token: string | undefined,
   collectionSlug?: string
 ) {
   "use cache";
@@ -166,7 +184,7 @@ export async function getSearchFilterOptions(
       cheapestInput: { ...base, take: 1, groupByProduct: false, sort: { price: "ASC" } },
       priciestInput: { ...base, take: 1, groupByProduct: false, sort: { price: "DESC" } },
     },
-    { languageCode }
+    { languageCode, token }
   );
   return result.data;
 }

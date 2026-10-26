@@ -24,8 +24,12 @@ function getFallbackPreview(product: {
   return firstVariantAsset?.featuredAsset?.preview;
 }
 
-/** languageCode is required when called from a "use cache" function. */
-export async function getProductCardImageFallbacks(slugs: string[], languageCode?: Locale) {
+/** `token`: the customer's auth token. languageCode is required when called from a "use cache" function. */
+export async function getProductCardImageFallbacks(
+  slugs: string[],
+  token: string | undefined,
+  languageCode?: Locale
+) {
   const uniqueSlugs = Array.from(new Set(slugs.filter(Boolean)));
 
   if (uniqueSlugs.length === 0) {
@@ -35,7 +39,11 @@ export async function getProductCardImageFallbacks(slugs: string[], languageCode
   const entries = await Promise.all(
     uniqueSlugs.map(async (slug) => {
       try {
-        const result = await query(GetProductCardImageFallbackQuery, { slug }, { languageCode });
+        const result = await query(
+          GetProductCardImageFallbackQuery,
+          { slug },
+          { languageCode, token }
+        );
         const product = result.data.product;
         if (!product) {
           return [slug, null] as const;

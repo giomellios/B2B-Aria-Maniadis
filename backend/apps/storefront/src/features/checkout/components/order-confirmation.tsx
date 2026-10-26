@@ -8,11 +8,13 @@ import { Price } from "@/components/shared/price";
 import { notFound } from "next/navigation";
 
 import { getOrderLineImagePreview } from "@/lib/utils";
+import { requireActiveCustomer } from "@/features/auth/server";
 
 export async function OrderConfirmation({
   params,
 }: PageProps<"/[locale]/order-confirmation/[code]">) {
   const [{ code }, t] = await Promise.all([params, getT()]);
+  await requireActiveCustomer(`/order-confirmation/${code}`);
   let order;
 
   try {

@@ -7,6 +7,7 @@ import { ListingViewControls, LoadMore } from "@/features/catalog/components/lis
 import { SearchProductsQuery } from "@/features/catalog/services/queries";
 import { ProductCardFragment } from "@/features/catalog/services/fragments";
 import { getProductCardImageFallbacks } from "@/features/catalog/services/product-card-images.service";
+import { getAuthToken } from "@/lib/api/auth-token";
 import { getListingView } from "@/features/catalog/utils/search-helpers";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +62,10 @@ export async function ProductGrid({ productDataPromise, searchParams }: ProductG
     .map((product) => product.slug)
     .filter(Boolean);
 
-  const fallbackImagesBySlug = await getProductCardImageFallbacks(missingImageSlugs);
+  const fallbackImagesBySlug = await getProductCardImageFallbacks(
+    missingImageSlugs,
+    await getAuthToken()
+  );
 
   return (
     <div className="space-y-8">
