@@ -57,6 +57,16 @@ export const GetProductDetailQuery = graphql(`
       name
       description
       slug
+      facetValues {
+        id
+        name
+        customFields {
+          commentEnabled
+          commentRequired
+          commentLabel
+          commentPlaceholder
+        }
+      }
       featuredAsset {
         id
         preview
@@ -79,6 +89,16 @@ export const GetProductDetailQuery = graphql(`
         }
         priceWithTax
         stockLevel
+        facetValues {
+          id
+          name
+          customFields {
+            commentEnabled
+            commentRequired
+            commentLabel
+            commentPlaceholder
+          }
+        }
         options {
           id
           code

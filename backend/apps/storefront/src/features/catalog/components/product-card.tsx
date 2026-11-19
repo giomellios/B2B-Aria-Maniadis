@@ -69,7 +69,8 @@ export function ProductCard({ product: productProp, fallbackImageUrl }: ProductC
             {product.priceWithTax.__typename === "PriceRange" ? (
               product.priceWithTax.min !== product.priceWithTax.max ? (
                 <>
-                  <span className="text-sm font-normal text-muted-foreground">
+                  {/* Variants cost different amounts: show the lowest as "from €x" */}
+                  <span className="font-normal">
                     <Msg k="catalog.from" />{" "}
                   </span>
                   <Price value={product.priceWithTax.min} currencyCode={product.currencyCode} />

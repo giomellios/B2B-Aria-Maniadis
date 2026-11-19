@@ -7,6 +7,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
 import { Button } from "@/design-system";
 import { DIGITAL_CATALOGUE_URL } from "@/lib/config/links";
+import { getActiveCustomer } from "@/features/auth/server";
 import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
@@ -19,9 +20,10 @@ const navLink = "link-underline text-base";
 /** The close of every page: one quiet panel with who we are, where to go and how to reach us. */
 export async function Footer() {
   const locale = await getLocale();
-  const [collections, t] = await Promise.all([
+  const [collections, t, customer] = await Promise.all([
     getTopCollections(locale, await getAuthToken()),
     getT(),
+    getActiveCustomer(),
   ]);
 
   return (
@@ -45,14 +47,25 @@ export async function Footer() {
               </span>
             </Link>
             <p className="mt-6 max-w-[30ch] text-2xl leading-snug">{t.footer.statement}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <Button variant="gold" size="lg" asChild>
-                <Link href="/register">{t.footer.apply}</Link>
-              </Button>
-              <Link href="/sign-in" className="link-underline text-base text-muted-foreground">
-                {t.footer.signIn}
-              </Link>
-            </div>
+            {customer ? (
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-base">
+                <Link href="/account/profile" className="link-underline">
+                  {t.nav.profile}
+                </Link>
+                <Link href="/account/orders" className="link-underline">
+                  {t.nav.orders}
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <Button variant="gold" size="lg" asChild>
+                  <Link href="/register">{t.footer.apply}</Link>
+                </Button>
+                <Link href="/sign-in" className="link-underline text-base text-muted-foreground">
+                  {t.footer.signIn}
+                </Link>
+              </div>
+            )}
           </div>
 
           <nav aria-label={t.footer.collections} className="grid grid-cols-2 gap-5 lg:col-span-4">
@@ -96,11 +109,13 @@ export async function Footer() {
                     {t.footer.contactPage}
                   </Link>
                 </li>
-                <li>
-                  <Link href="/account/orders" className={navLink}>
-                    {t.footer.myOrders}
-                  </Link>
-                </li>
+                {customer && (
+                  <li>
+                    <Link href="/account/orders" className={navLink}>
+                      {t.footer.myOrders}
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </nav>

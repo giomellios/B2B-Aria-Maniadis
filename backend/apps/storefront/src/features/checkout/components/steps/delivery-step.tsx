@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Button, RadioGroup, RadioGroupItem, Label, Card } from "@/design-system";
+import { Button, RadioGroup, RadioGroupItem, Label, Card, Textarea } from "@/design-system";
+import { toast } from "sonner";
 import { Spinner, Truck } from "@/design-system/icons";
 import { useRouter } from "next/navigation";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
@@ -26,17 +27,28 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
     return shippingMethods.length === 1 ? shippingMethods[0].id : null;
   });
   const [submitting, setSubmitting] = useState(false);
+  // "Μεταφορική": the customer's own transport company (Order.customFields.carrierDetails).
+  const [carrierDetails, setCarrierDetails] = useState(order.customFields?.carrierDetails ?? "");
+
+  const selectedMethod = shippingMethods.find((method) => method.id === selectedMethodId);
+  const needsCarrier = Boolean(selectedMethod?.customFields?.requiresCarrierDetails);
+  const missingCarrier = needsCarrier && !carrierDetails.trim();
 
   const handleContinue = async () => {
-    if (!selectedMethodId) return;
+    if (!selectedMethodId || missingCarrier) return;
 
     setSubmitting(true);
     try {
-      await setShippingMethodAction(selectedMethodId);
+      const result = await setShippingMethodAction(
+        selectedMethodId,
+        needsCarrier ? carrierDetails : null
+      );
+      if (!result.success) {
+        toast.error(t.checkout.errors.delivery, { description: result.error });
+        return;
+      }
       router.refresh();
       onComplete();
-    } catch (error) {
-      console.error("Error setting shipping method:", error);
     } finally {
       setSubmitting(false);
     }
@@ -84,9 +96,29 @@ export default function DeliveryStep({ onComplete }: DeliveryStepProps) {
         ))}
       </RadioGroup>
 
+      {needsCarrier && (
+        <div className="space-y-2">
+          <Label htmlFor="carrier-details" className="font-semibold">
+            {t.checkout.delivery.carrier}
+          </Label>
+          <Textarea
+            id="carrier-details"
+            value={carrierDetails}
+            placeholder={t.checkout.delivery.carrierPlaceholder}
+            maxLength={500}
+            required
+            aria-invalid={missingCarrier || undefined}
+            onChange={(e) => setCarrierDetails(e.target.value)}
+          />
+          {missingCarrier && (
+            <p className="text-sm text-muted-foreground">{t.checkout.delivery.carrierRequired}</p>
+          )}
+        </div>
+      )}
+
       <Button
         onClick={handleContinue}
-        disabled={!selectedMethodId || submitting}
+        disabled={!selectedMethodId || missingCarrier || submitting}
         className="w-full"
       >
         {submitting && <Spinner className="mr-2 h-4 w-4 animate-spin" />}

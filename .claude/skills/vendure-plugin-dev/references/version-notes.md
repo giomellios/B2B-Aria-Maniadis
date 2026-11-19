@@ -1,6 +1,6 @@
-# Version notes: what exists in our installed 3.7.3 (and what came in 3.6 / 3.7), and the upgrade runbook
+# Version notes: what exists in our installed 3.7.4 (and what came in 3.6 / 3.7), and the upgrade runbook
 
-The docs at docs.vendure.io track the **latest** release. This project runs **3.7.3**
+The docs at docs.vendure.io track the **latest** release. This project runs **3.7.4**
 (upgraded from 3.5.3 in Sept 2026) — the "3.5.3" column below is kept for reference and for
 reading older code. Confirm the installed versions with (in `backend/`):
 
@@ -8,7 +8,7 @@ reading older code. Confirm the installed versions with (in `backend/`):
 npm ls @vendure/core @vendure/dashboard typeorm
 ```
 
-**Confirmed in this repo's installed `@vendure/dashboard@3.7.3`:** `Button` is Base UI with a
+**Confirmed in this repo's installed `@vendure/dashboard@3.7.4` (same as 3.7.3 here):** `Button` is Base UI with a
 `render` prop (`src/lib/components/ui/button.tsx`); `ActionBarItem` exists
 (`framework/layout-engine/action-bar-item-wrapper.tsx`) and `PageActionBarRight` is still
 exported; `z`/`zodResolver` are re-exported; Vite 7. (Before the upgrade, 3.5.3 had Radix

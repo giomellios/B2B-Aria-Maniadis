@@ -6,6 +6,7 @@ declare module "@vendure/core/dist/entity/custom-entity-fields" {
     approved: boolean;
     vatNumber: string;
     company: string;
+    address: string;
   }
 }
 

@@ -35,6 +35,7 @@ export interface ShippingMethod {
   code: string;
   description?: string | null;
   priceWithTax: number;
+  customFields?: { requiresCarrierDetails?: boolean | null } | null;
 }
 
 export interface PaymentMethod {

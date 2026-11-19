@@ -21,6 +21,9 @@ export const GetActiveOrderQuery = graphql(`
       }
       lines {
         id
+        customFields {
+          comment
+        }
         productVariant {
           id
           name

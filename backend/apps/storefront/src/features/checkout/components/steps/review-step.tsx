@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/design-system";
+import { toast } from "sonner";
 import { Spinner, MapPin, Truck, CreditCard, Edit, Mail } from "@/design-system/icons";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
 import { placeOrder as placeOrderAction } from "@/features/checkout/services/checkout.actions";
@@ -26,13 +27,10 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
     if (!selectedPaymentMethodCode) return;
 
     setLoading(true);
-    try {
-      await placeOrderAction(selectedPaymentMethodCode);
-    } catch (error) {
-      if (error instanceof Error && error.message.includes("NEXT_REDIRECT")) {
-        throw error;
-      }
-      console.error("Error placing order:", error);
+    // On success the action redirects to the confirmation page; it only returns on failure.
+    const result = await placeOrderAction(selectedPaymentMethodCode);
+    if (!result.success) {
+      toast.error(t.checkout.errors.placeOrder, { description: result.error });
       setLoading(false);
     }
   };
@@ -106,6 +104,11 @@ export default function ReviewStep({ onEditStep }: ReviewStepProps) {
             <div className="text-sm space-y-3">
               <div>
                 <p className="font-medium">{order.shippingLines[0].shippingMethod.name}</p>
+                {order.customFields?.carrierDetails && (
+                  <p className="whitespace-pre-wrap text-muted-foreground">
+                    {r.carrier}: {order.customFields.carrierDetails}
+                  </p>
+                )}
                 <p className="text-muted-foreground">
                   {order.shippingLines[0].priceWithTax === 0 ? (
                     t.common.free

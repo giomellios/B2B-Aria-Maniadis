@@ -11,6 +11,7 @@ export async function loginAction(prevState: { error?: string } | undefined, for
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
   const redirectTo = formData.get("redirectTo") as string | null;
+  const rememberMe = formData.get("rememberMe") === "on";
   const t = await getRequestT();
 
   const result = await mutate(
@@ -18,6 +19,7 @@ export async function loginAction(prevState: { error?: string } | undefined, for
     {
       username,
       password,
+      rememberMe,
     },
     { useAuthToken: true }
   );
@@ -34,7 +36,7 @@ export async function loginAction(prevState: { error?: string } | undefined, for
 
   // Store the token in a cookie if returned
   if (result.token) {
-    await setAuthToken(result.token);
+    await setAuthToken(result.token, { remember: rememberMe });
   }
 
   revalidatePath("/[locale]", "layout");

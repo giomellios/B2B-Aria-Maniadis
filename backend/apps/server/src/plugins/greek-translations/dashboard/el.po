@@ -383,6 +383,10 @@ msgstr "Λάθος προϊόν"
 msgid "refundReason.Other"
 msgstr "Άλλο"
 
+# Column header of the product-image-filter plugin's "featuredAssetId" column (not in the source strings).
+msgid "fieldName.featuredAssetId"
+msgstr "Εικόνα"
+
 #. js-lingui-explicit-id
 #: src/i18n/common-strings.ts:50
 msgid "fieldName.attempts"

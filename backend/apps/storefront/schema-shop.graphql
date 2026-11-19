@@ -83,7 +83,7 @@ type Mutation {
   """
   Adds an item to the Order. If custom fields are defined on the OrderLine entity, a third argument 'customFields' will be available.
   """
-  addItemToOrder(productVariantId: ID!, quantity: Int!): UpdateOrderItemsResult!
+  addItemToOrder(productVariantId: ID!, quantity: Int!, customFields: OrderLineCustomFieldsInput = null): UpdateOrderItemsResult!
 
   """
   Adds mutliple items to the Order. Returns a list of errors for each item that failed to add. It will still add successful items.
@@ -99,7 +99,7 @@ type Mutation {
   """
   Adjusts an OrderLine. If custom fields are defined on the OrderLine entity, a third argument 'customFields' of type `OrderLineCustomFieldsInput` will be available.
   """
-  adjustOrderLine(orderLineId: ID!, quantity: Int!): UpdateOrderItemsResult!
+  adjustOrderLine(orderLineId: ID!, quantity: Int!, customFields: OrderLineCustomFieldsInput = null): UpdateOrderItemsResult!
 
   """Applies the given coupon code to the active Order"""
   applyCouponCode(couponCode: String!): ApplyCouponCodeResult!
@@ -1192,7 +1192,7 @@ type ShippingMethodQuote {
   Any optional metadata returned by the ShippingCalculator in the ShippingCalculationResult
   """
   metadata: JSON
-  customFields: JSON
+  customFields: ShippingMethodCustomFields
 }
 
 type PaymentMethodQuote {
@@ -2029,7 +2029,7 @@ type FacetValue implements Node {
   name: String!
   code: String!
   translations: [FacetValueTranslation!]!
-  customFields: JSON
+  customFields: FacetValueCustomFields
 }
 
 type FacetValueTranslation {
@@ -2038,6 +2038,7 @@ type FacetValueTranslation {
   updatedAt: DateTime!
   languageCode: LanguageCode!
   name: String!
+  customFields: FacetValueTranslationCustomFields
 }
 
 type Facet implements Node {
@@ -2715,7 +2716,10 @@ type Order implements Node {
   """A summary of the taxes being applied to this Order"""
   taxSummary: [OrderTaxSummary!]!
   history(options: HistoryEntryListOptions): HistoryEntryList!
-  customFields: JSON
+
+  """Tracking for this order, once the shop has added a tracking number."""
+  tracking: OrderTracking
+  customFields: OrderCustomFields
 }
 
 """
@@ -2855,7 +2859,7 @@ type OrderLine implements Node {
   taxLines: [TaxLine!]!
   order: Order!
   fulfillmentLines: [FulfillmentLine!]
-  customFields: JSON
+  customFields: OrderLineCustomFields
 }
 
 type Payment implements Node {
@@ -3284,7 +3288,7 @@ type ShippingMethod implements Node {
   checker: ConfigurableOperation!
   calculator: ConfigurableOperation!
   translations: [ShippingMethodTranslation!]!
-  customFields: JSON
+  customFields: ShippingMethodCustomFields
 }
 
 type ShippingMethodTranslation {
@@ -3529,7 +3533,7 @@ type PublicShippingMethod {
   name: String!
   description: String
   translations: [ShippingMethodTranslation!]!
-  customFields: JSON
+  customFields: PublicShippingMethodCustomFields
 }
 
 input AuthenticationInput {
@@ -3555,7 +3559,7 @@ input UpdateCustomerInput {
 }
 
 input UpdateOrderInput {
-  customFields: JSON
+  customFields: UpdateOrderCustomFieldsInput
 }
 
 """Passed as input to the `addPaymentToOrder` mutation."""
@@ -3710,6 +3714,7 @@ type UpdateMultipleOrderItemsResult {
 input AddItemInput {
   productVariantId: ID!
   quantity: Int!
+  customFields: OrderLineCustomFieldsInput
 }
 
 """
@@ -3718,6 +3723,25 @@ Price bounds in minor units (cents), tax included. Either bound may be omitted.
 input SearchPriceRangeInput {
   min: Int
   max: Int
+}
+
+"""Where the customer can follow their shipment."""
+type OrderTracking {
+  """The shipment's tracking number (entered by the shop)."""
+  trackingNumber: String!
+
+  """The shipping method's name, e.g. SPEEDEX."""
+  carrier: String
+
+  """
+  The carrier's tracking page, if the shop set one for this shipping method.
+  """
+  url: String
+
+  """
+  True when url already opens this shipment; otherwise the customer types the number there.
+  """
+  urlIncludesNumber: Boolean!
 }
 
 input ProductVariantFilterParameter {
@@ -3761,6 +3785,7 @@ input CustomerFilterParameter {
   _or: [CustomerFilterParameter!]
   vatNumber: StringOperators
   company: StringOperators
+  address: StringOperators
 }
 
 input CustomerSortParameter {
@@ -3774,6 +3799,7 @@ input CustomerSortParameter {
   emailAddress: SortOrder
   vatNumber: SortOrder
   company: SortOrder
+  address: SortOrder
 }
 
 input OrderFilterParameter {
@@ -3821,6 +3847,7 @@ input OrderFilterParameter {
   totalWithTax: NumberOperators
   _and: [OrderFilterParameter!]
   _or: [OrderFilterParameter!]
+  carrierDetails: StringOperators
 }
 
 input OrderSortParameter {
@@ -3859,6 +3886,7 @@ input OrderSortParameter {
   The final payable amount. Equal to subTotalWithTax plus shippingWithTax
   """
   totalWithTax: SortOrder
+  carrierDetails: SortOrder
 }
 
 input FacetValueFilterParameter {
@@ -3871,6 +3899,10 @@ input FacetValueFilterParameter {
   code: StringOperators
   _and: [FacetValueFilterParameter!]
   _or: [FacetValueFilterParameter!]
+  commentEnabled: BooleanOperators
+  commentRequired: BooleanOperators
+  commentLabel: StringOperators
+  commentPlaceholder: StringOperators
 }
 
 input FacetValueSortParameter {
@@ -3880,6 +3912,10 @@ input FacetValueSortParameter {
   facetId: SortOrder
   name: SortOrder
   code: SortOrder
+  commentEnabled: SortOrder
+  commentRequired: SortOrder
+  commentLabel: SortOrder
+  commentPlaceholder: SortOrder
 }
 
 input HistoryEntryFilterParameter {
@@ -3968,16 +4004,55 @@ input ProductSortParameter {
 type CustomerCustomFields {
   vatNumber: String
   company: String
+  address: String
 }
 
 input CreateCustomerCustomFieldsInput {
   vatNumber: String
   company: String
+  address: String
 }
 
 input UpdateCustomerCustomFieldsInput {
   vatNumber: String
   company: String
+  address: String
+}
+
+type FacetValueCustomFields {
+  commentEnabled: Boolean
+  commentRequired: Boolean
+  commentLabel: String
+  commentPlaceholder: String
+}
+
+type FacetValueTranslationCustomFields {
+  commentLabel: String
+  commentPlaceholder: String
+}
+
+type OrderCustomFields {
+  carrierDetails: String
+}
+
+input UpdateOrderCustomFieldsInput {
+  carrierDetails: String
+}
+
+type OrderLineCustomFields {
+  comment: String
+}
+
+type ShippingMethodCustomFields {
+  requiresCarrierDetails: Boolean
+}
+
+type PublicShippingMethodCustomFields {
+  requiresCarrierDetails: Boolean
+}
+
+input OrderLineCustomFieldsInput {
+  comment: String
 }
 
 input NativeAuthInput {
@@ -3988,4 +4063,5 @@ input NativeAuthInput {
 input RegisterCustomerCustomFieldsInput {
   vatNumber: String
   company: String
+  address: String
 }

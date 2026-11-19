@@ -5,6 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { getT } from "@/lib/i18n/server";
 import Image from "next/image";
 import { Price } from "@/components/shared/price";
+import { LineComment } from "@/components/shared/line-comment";
 import { notFound } from "next/navigation";
 
 import { getOrderLineImagePreview } from "@/lib/utils";
@@ -67,6 +68,7 @@ export async function OrderConfirmation({
                     {line.productVariant.name !== line.productVariant.product.name && (
                       <p className="text-sm text-muted-foreground">{line.productVariant.name}</p>
                     )}
+                    <LineComment comment={line.customFields?.comment} label={t.common.comment} />
                   </div>
                   <div className="text-center w-16">
                     <p className="text-sm text-muted-foreground">{t.common.qty}</p>
@@ -108,6 +110,12 @@ export async function OrderConfirmation({
                 {order.shippingAddress.postalCode}
               </p>
               <p className="text-sm text-muted-foreground">{order.shippingAddress.country}</p>
+              {order.customFields?.carrierDetails && (
+                <p className="mt-3 whitespace-pre-wrap text-sm">
+                  <span className="font-medium">{t.checkout.review.carrier}:</span>{" "}
+                  {order.customFields.carrierDetails}
+                </p>
+              )}
             </CardContent>
           </Card>
         )}

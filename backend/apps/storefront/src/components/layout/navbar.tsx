@@ -6,9 +6,10 @@ import { LanguageSwitcher } from "@/components/layout/navbar/language-switcher";
 import { CategoryLink } from "@/components/layout/navbar/category-link";
 import { MobileMenu } from "@/components/layout/navbar/mobile-menu";
 import { NavbarCart } from "@/features/cart/server";
-import { NavbarUser } from "@/features/auth/server";
+import { getActiveCustomer } from "@/features/auth/server";
+import { AccountMenu } from "@/components/layout/navbar/account-menu";
+import { GuestActions } from "@/components/layout/navbar/guest-actions";
 import { SearchDialog } from "@/components/layout/search-dialog";
-import { NavbarUserSkeleton } from "@/features/auth";
 import { getCategoryTree } from "@/lib/queries/cached";
 import { getAuthToken } from "@/lib/api/auth-token";
 
@@ -63,8 +64,8 @@ export async function Navbar() {
           <Suspense>
             <NavbarCart />
           </Suspense>
-          <Suspense fallback={<NavbarUserSkeleton />}>
-            <NavbarUser />
+          <Suspense>
+            <NavbarAccount />
           </Suspense>
           <Suspense fallback={<div className="size-10 lg:hidden" />}>
             <MobileLinks />
@@ -72,6 +73,23 @@ export async function Navbar() {
         </div>
       </div>
     </header>
+  );
+}
+
+/**
+ * Top right: Sign in / Sign up while signed out; once signed in, Orders and the profile menu
+ * (hover "Profile" for Information and Sign out) take their place.
+ */
+async function NavbarAccount() {
+  const [customer, t] = await Promise.all([getActiveCustomer(), getT()]);
+  if (!customer) return <GuestActions />;
+  return (
+    <nav aria-label={t.nav.profile} className="hidden items-center sm:flex">
+      <CategoryLink href="/account/orders" className={linkClass}>
+        {t.nav.orders}
+      </CategoryLink>
+      <AccountMenu triggerClassName={linkClass} />
+    </nav>
   );
 }
 
@@ -111,18 +129,29 @@ async function PrimaryLinks() {
 }
 
 async function MobileLinks() {
-  const [categories, t] = await Promise.all([
+  const [categories, t, customer] = await Promise.all([
     getCategoryTree(await getLocale(), await getAuthToken()),
     getT(),
+    getActiveCustomer(),
   ]);
   return (
     <MobileMenu
       label={t.nav.menu}
+      signedIn={Boolean(customer)}
       links={[
         { href: "/search", label: t.nav.catalogue },
         ...categories.map((c) => ({ href: `/collection/${c.slug}`, label: c.name })),
         { href: "/about", label: t.nav.about },
         { href: "/contact", label: t.nav.contact },
+        ...(customer
+          ? [
+              { href: "/account/profile", label: t.nav.information },
+              { href: "/account/orders", label: t.nav.orders },
+            ]
+          : [
+              { href: "/sign-in", label: t.nav.signIn },
+              { href: "/register", label: t.nav.signUp },
+            ]),
       ]}
     />
   );

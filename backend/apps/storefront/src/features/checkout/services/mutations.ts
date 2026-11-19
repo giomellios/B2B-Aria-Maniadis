@@ -80,6 +80,18 @@ export const SetOrderShippingMethodMutation = graphql(`
   }
 `);
 
+export const SetOrderCarrierDetailsMutation = graphql(`
+  mutation SetOrderCarrierDetails($carrierDetails: String) {
+    setOrderCustomFields(input: { customFields: { carrierDetails: $carrierDetails } }) {
+      __typename
+      ... on ErrorResult {
+        errorCode
+        message
+      }
+    }
+  }
+`);
+
 export const TransitionOrderToStateMutation = graphql(`
   mutation TransitionOrderToState($state: String!) {
     transitionOrderToState(state: $state) {
@@ -114,6 +126,12 @@ export const AddPaymentToOrderMutation = graphql(`
           amount
           state
         }
+      }
+      ... on PaymentFailedError {
+        paymentErrorMessage
+      }
+      ... on PaymentDeclinedError {
+        paymentErrorMessage
       }
       ... on ErrorResult {
         errorCode

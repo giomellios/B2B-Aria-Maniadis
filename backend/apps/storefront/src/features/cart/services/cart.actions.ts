@@ -13,9 +13,19 @@ import { updateTag } from "next/cache";
 import { setAuthToken } from "@/lib/api/auth-token";
 import { getRequestT } from "@/lib/i18n/server";
 
-export async function addToCart(variantId: string, quantity: number = 1) {
+/**
+ * Adds a variant to the active order. `comment` is the customer's answer for the variant's
+ * comment-enabled facet values (OrderLine.customFields.comment); lines with different comments
+ * stay separate in the order.
+ */
+export async function addToCart(variantId: string, quantity: number = 1, comment?: string) {
   try {
-    const result = await mutate(AddToCartMutation, { variantId, quantity }, { useAuthToken: true });
+    const trimmed = comment?.trim();
+    const result = await mutate(
+      AddToCartMutation,
+      { variantId, quantity, customFields: trimmed ? { comment: trimmed } : undefined },
+      { useAuthToken: true }
+    );
 
     if (result.token) {
       await setAuthToken(result.token);
@@ -27,7 +37,12 @@ export async function addToCart(variantId: string, quantity: number = 1) {
       updateTag("active-order");
       return { success: true, order: result.data.addItemToOrder };
     } else {
-      return { success: false, error: result.data.addItemToOrder.message };
+      const error = result.data.addItemToOrder;
+      return {
+        success: false,
+        error:
+          error.__typename === "OrderInterceptorError" ? error.interceptorError : error.message,
+      };
     }
   } catch {
     return { success: false, error: (await getRequestT()).product.addError };

@@ -1,8 +1,8 @@
 import { graphql } from "@/lib/api/graphql";
 
 export const LoginMutation = graphql(`
-  mutation Login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
+  mutation Login($username: String!, $password: String!, $rememberMe: Boolean) {
+    login(username: $username, password: $password, rememberMe: $rememberMe) {
       __typename
       ... on CurrentUser {
         id

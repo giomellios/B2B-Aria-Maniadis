@@ -7,7 +7,9 @@ import { createLoginSchema, type LoginFormData } from "@/features/auth/schemas/l
 import { loginAction } from "@/features/auth/services/sign-in.actions";
 import {
   Button,
+  Checkbox,
   Input,
+  PasswordInput,
   Card,
   CardContent,
   CardFooter,
@@ -36,6 +38,7 @@ export function LoginForm({ redirectTo }: LoginFormProps) {
     defaultValues: {
       username: "",
       password: "",
+      rememberMe: false,
     },
   });
 
@@ -46,6 +49,9 @@ export function LoginForm({ redirectTo }: LoginFormProps) {
       const formData = new FormData();
       formData.append("username", data.username);
       formData.append("password", data.password);
+      if (data.rememberMe) {
+        formData.append("rememberMe", "on");
+      }
       if (redirectTo) {
         formData.append("redirectTo", redirectTo);
       }
@@ -101,9 +107,28 @@ export function LoginForm({ redirectTo }: LoginFormProps) {
                   </div>
 
                   <FormControl>
-                    <Input type="password" placeholder="••••••••" disabled={isPending} {...field} />
+                    <PasswordInput placeholder="••••••••" disabled={isPending} {...field} />
                   </FormControl>
                   <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="rememberMe"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-center gap-2">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={(checked) => field.onChange(checked === true)}
+                      disabled={isPending}
+                    />
+                  </FormControl>
+                  <FormLabel className="cursor-pointer font-normal">
+                    {t.signIn.rememberMe}
+                  </FormLabel>
                 </FormItem>
               )}
             />

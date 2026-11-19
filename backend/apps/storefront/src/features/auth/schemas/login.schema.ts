@@ -5,6 +5,7 @@ export function createLoginSchema(v: Dictionary["auth"]["validation"]) {
   return z.object({
     username: z.email(v.email),
     password: z.string().min(1, v.passwordRequired),
+    rememberMe: z.boolean(),
   });
 }
 

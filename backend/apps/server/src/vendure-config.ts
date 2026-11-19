@@ -20,12 +20,17 @@ import { DashboardPlugin } from "@vendure/dashboard/plugin";
 import { GraphiqlPlugin } from "@vendure/graphiql-plugin";
 import { GreekTranslationsPlugin } from "./plugins/greek-translations/greek-translations.plugin";
 import { CustomerApprovalPlugin } from "./plugins/customer-approval/customer-approval.plugin";
+import { RootRedirectPlugin } from "./plugins/root-redirect/root-redirect.plugin";
 import { TranslationSyncPlugin } from "./plugins/translation-sync/translation-sync.plugin";
 import { CsvImportPlugin } from "./plugins/csv-import/csv-import.plugin";
 import { B2BPostgresSearchStrategy } from "./plugins/search/b2b-search-strategy";
 import { B2BSearchPlugin } from "./plugins/search/b2b-search.plugin";
 import { CategoryFiltersPlugin } from "./plugins/category-filters/category-filters.plugin";
 import { MembersOnlyPlugin } from "./plugins/members-only/members-only.plugin";
+import { FacetCommentsPlugin } from "./plugins/facet-comments/facet-comments.plugin";
+import { CheckoutOptionsPlugin } from "./plugins/checkout-options/checkout-options.plugin";
+import { OrderNotificationsPlugin } from "./plugins/order-notifications/order-notifications.plugin";
+import { ProductImageFilterPlugin } from "./plugins/product-image-filter/product-image-filter.plugin";
 import "dotenv/config";
 import path from "path";
 
@@ -188,6 +193,19 @@ export const config: VendureConfig = {
         nullable: false,
         defaultValue: "",
       },
+      {
+        // Business address given at registration (prefilled from VIES on the storefront).
+        name: "address",
+        type: "string",
+        length: 512,
+        label: [
+          { languageCode: LanguageCode.en, value: "Business address" },
+          { languageCode: LanguageCode.el, value: "Διεύθυνση επιχείρησης" },
+        ],
+        public: true,
+        nullable: false,
+        defaultValue: "",
+      },
     ],
   },
   plugins: [
@@ -217,10 +235,16 @@ export const config: VendureConfig = {
         ? path.join(__dirname, "../dist/dashboard")
         : path.join(__dirname, "dashboard"),
     }),
+    // "/" → the Dashboard (the server has no page of its own at its root).
+    RootRedirectPlugin.init({ to: "/dashboard/" }),
     GreekTranslationsPlugin,
     TranslationSyncPlugin,
     CsvImportPlugin,
     CustomerApprovalPlugin,
     MembersOnlyPlugin,
+    FacetCommentsPlugin,
+    CheckoutOptionsPlugin,
+    OrderNotificationsPlugin,
+    ProductImageFilterPlugin,
   ],
 };

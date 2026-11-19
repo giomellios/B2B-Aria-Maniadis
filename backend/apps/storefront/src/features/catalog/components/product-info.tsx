@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useTransition } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Button, Input, Label, RadioGroup, RadioGroupItem } from "@/design-system";
+import { Button, Input, Label, RadioGroup, RadioGroupItem, Textarea } from "@/design-system";
 import { ShoppingBag, Check, Spinner, Minus, Plus } from "@/design-system/icons";
 import { addToCart } from "@/features/cart";
 import { toast } from "sonner";
@@ -10,12 +10,18 @@ import { Price } from "@/components/shared/price";
 import { useT } from "@/lib/i18n/provider";
 import { format } from "@/lib/i18n/dictionaries";
 import { OrderMatrix } from "@/features/catalog/components/order-matrix";
+import {
+  commentFieldFor,
+  MAX_COMMENT_LENGTH,
+  type FacetValueWithComment,
+} from "@/features/catalog/utils/comment-field";
 
 interface ProductInfoProps {
   product: {
     id: string;
     name: string;
     description: string;
+    facetValues?: FacetValueWithComment[];
     variants: Array<{
       id: string;
       name: string;
@@ -23,6 +29,7 @@ interface ProductInfoProps {
       currencyCode: string;
       priceWithTax: number;
       stockLevel: string;
+      facetValues?: FacetValueWithComment[];
       options: Array<{
         id: string;
         code: string;
@@ -58,6 +65,7 @@ export function ProductInfo({ product, searchParams, layout = "stack" }: Product
   const [isPending, startTransition] = useTransition();
   const [isAdded, setIsAdded] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [comment, setComment] = useState("");
   const t = useT();
 
   // Initialize selected options from URL
@@ -138,7 +146,11 @@ export function ProductInfo({ product, searchParams, layout = "stack" }: Product
     if (!selectedVariant || quantity < 1) return;
 
     startTransition(async () => {
-      const result = await addToCart(selectedVariant.id, quantity);
+      const result = await addToCart(
+        selectedVariant.id,
+        quantity,
+        commentField ? comment : undefined
+      );
 
       if (result.success) {
         setIsAdded(true);
@@ -146,6 +158,7 @@ export function ProductInfo({ product, searchParams, layout = "stack" }: Product
           description: format(t.product.addedDescription, { qty: quantity, name: product.name }),
         });
         setQuantity(1);
+        setComment("");
 
         // Reset the added state after 2 seconds
         setTimeout(() => setIsAdded(false), 2000);
@@ -164,6 +177,10 @@ export function ProductInfo({ product, searchParams, layout = "stack" }: Product
     product.variants.length > 1 &&
     product.optionGroups.length >= 1 &&
     product.optionGroups.length <= 2;
+  const commentField = selectedVariant
+    ? commentFieldFor(selectedVariant.facetValues, product.facetValues)
+    : null;
+  const missingComment = Boolean(commentField?.required && !comment.trim());
   const canAddToCart = selectedVariant && isInStock;
 
   return (
@@ -201,6 +218,7 @@ export function ProductInfo({ product, searchParams, layout = "stack" }: Product
             rows={product.optionGroups[0]}
             columns={product.optionGroups[1]}
             variants={product.variants}
+            productFacetValues={product.facetValues}
           />
         ) : (
           renderSingleVariantOrder()
@@ -267,6 +285,31 @@ export function ProductInfo({ product, searchParams, layout = "stack" }: Product
           </div>
         )}
 
+        {/* Comment asked for by the variant's facet values (e.g. embroidery text) */}
+        {commentField && canAddToCart && (
+          <div className="space-y-2">
+            <Label htmlFor="variant-comment" className="text-sm font-semibold">
+              {commentField.label}
+              <span className="font-normal text-muted-foreground">
+                {" "}
+                · {commentField.required ? t.product.comment.required : t.product.comment.optional}
+              </span>
+            </Label>
+            <Textarea
+              id="variant-comment"
+              value={comment}
+              placeholder={commentField.placeholder}
+              maxLength={MAX_COMMENT_LENGTH}
+              required={commentField.required}
+              disabled={isPending}
+              onChange={(e) => setComment(e.target.value)}
+            />
+            {missingComment && (
+              <p className="text-sm text-muted-foreground">{t.product.comment.missing}</p>
+            )}
+          </div>
+        )}
+
         {/* Quantity Selector + Add to Cart Button */}
         <div className="flex items-center gap-3 pt-2">
           <div className="flex shrink-0 items-center rounded-md border border-input bg-card">
@@ -315,7 +358,7 @@ export function ProductInfo({ product, searchParams, layout = "stack" }: Product
           <Button
             size="lg"
             className="h-12 flex-1"
-            disabled={!canAddToCart || isPending}
+            disabled={!canAddToCart || missingComment || isPending}
             onClick={handleAddToCart}
           >
             {isAdded ? (

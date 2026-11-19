@@ -7,3 +7,4 @@ export { EditProfileForm } from "@/features/account/components/edit-profile-form
 export { OrderStatusBadge } from "@/features/account/components/order-status-badge";
 export { AccountNav, AccountNavList } from "@/features/account/components/account-nav";
 export { ReorderButton } from "@/features/account/components/reorder-button";
+export { OrderTracking, OrderTrackingLink } from "@/features/account/components/order-tracking";
