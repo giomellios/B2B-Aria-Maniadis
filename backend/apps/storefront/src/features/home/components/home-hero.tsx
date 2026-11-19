@@ -90,8 +90,7 @@ export async function HomeHero() {
           data-reveal-load
           style={{ "--i": 3 } as React.CSSProperties}
           className="col-span-2 flex flex-col items-start gap-4 sm:col-span-1 md:col-span-3 md:items-end md:text-right"
-        >
-        </div>
+        ></div>
       </div>
 
       <div className="mt-16 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 md:mt-24">

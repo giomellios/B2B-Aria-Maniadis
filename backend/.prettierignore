@@ -19,3 +19,7 @@ apps/server/src/gql/graphql-env.d.ts
 
 # Vendure's upstream Dashboard lingui config + 'el'; re-synced on every upgrade (see CLAUDE.md section 12)
 lingui.config.js
+
+# Vendure email templates (MJML + Handlebars): Prettier's Handlebars parser does not support partials
+# such as {{> header}}, so it cannot check these files.
+apps/server/static/email/templates/
