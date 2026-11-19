@@ -40,7 +40,9 @@ export default async function Home() {
       <OrderStepsSection />
       <AboutFacts />
       <TradeFaq />
-      <ApplyStrip />
+      <Suspense>
+        <ApplyStrip />
+      </Suspense>
     </main>
   );
 }

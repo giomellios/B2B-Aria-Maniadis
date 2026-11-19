@@ -1,6 +1,6 @@
 "use server";
 
-import { mutate } from "@/lib/api/client";
+import { mutate, query } from "@/lib/api/client";
 import {
   SetOrderShippingAddressMutation,
   SetOrderBillingAddressMutation,
@@ -8,7 +8,9 @@ import {
   AddPaymentToOrderMutation,
   TransitionOrderToStateMutation,
   SetCustomerForOrderMutation,
+  SetOrderCarrierDetailsMutation,
 } from "@/features/checkout/services/mutations";
+import { GetActiveOrderStateQuery } from "@/features/checkout/services/queries";
 import { CreateCustomerAddressMutation } from "@/features/account/server";
 import { revalidatePath, updateTag } from "next/cache";
 import { localeRedirect } from "@/lib/i18n/redirect";
@@ -26,43 +28,98 @@ interface AddressInput {
   company?: string;
 }
 
+export type CheckoutActionResult = { success: true } | { success: false; error: string };
+
+/**
+ * An order is only editable in AddingItems. A failed payment attempt leaves it in ArrangingPayment,
+ * which would block every later change (address, delivery) and every retry, so move it back first.
+ */
+async function reopenOrderForChanges() {
+  const { data } = await query(GetActiveOrderStateQuery, {}, { useAuthToken: true });
+  if (data.activeOrder?.state === "ArrangingPayment") {
+    await mutate(TransitionOrderToStateMutation, { state: "AddingItems" }, { useAuthToken: true });
+  }
+}
+
 export async function setShippingAddress(
   shippingAddress: AddressInput,
   useSameForBilling: boolean
-) {
-  const shippingResult = await mutate(
-    SetOrderShippingAddressMutation,
-    { input: shippingAddress },
-    { useAuthToken: true }
-  );
-
-  if (shippingResult.data.setOrderShippingAddress.__typename !== "Order") {
-    throw new Error("Failed to set shipping address");
-  }
-
-  if (useSameForBilling) {
-    await mutate(
-      SetOrderBillingAddressMutation,
+): Promise<CheckoutActionResult> {
+  const t = await getRequestT();
+  try {
+    await reopenOrderForChanges();
+    const shippingResult = await mutate(
+      SetOrderShippingAddressMutation,
       { input: shippingAddress },
       { useAuthToken: true }
     );
+    const shipping = shippingResult.data.setOrderShippingAddress;
+    if (shipping.__typename !== "Order") {
+      return {
+        success: false,
+        error: "message" in shipping ? shipping.message : t.checkout.errors.address,
+      };
+    }
+
+    if (useSameForBilling) {
+      await mutate(
+        SetOrderBillingAddressMutation,
+        { input: shippingAddress },
+        { useAuthToken: true }
+      );
+    }
+  } catch (error) {
+    console.error("setShippingAddress failed:", error);
+    return { success: false, error: t.checkout.errors.address };
   }
 
   revalidatePath("/[locale]/checkout", "page");
+  return { success: true };
 }
 
-export async function setShippingMethod(shippingMethodId: string) {
-  const result = await mutate(
-    SetOrderShippingMethodMutation,
-    { shippingMethodId: [shippingMethodId] },
-    { useAuthToken: true }
-  );
+/**
+ * Sets the delivery method. `carrierDetails` is the customer's own transport company for methods
+ * that ask for one (ShippingMethod.customFields.requiresCarrierDetails); null clears it.
+ */
+export async function setShippingMethod(
+  shippingMethodId: string,
+  carrierDetails: string | null
+): Promise<CheckoutActionResult> {
+  const t = await getRequestT();
+  try {
+    await reopenOrderForChanges();
+    const details = await mutate(
+      SetOrderCarrierDetailsMutation,
+      { carrierDetails: carrierDetails?.trim() || null },
+      { useAuthToken: true }
+    );
+    const detailsResult = details.data.setOrderCustomFields;
+    if (detailsResult.__typename !== "Order") {
+      return {
+        success: false,
+        error: "message" in detailsResult ? detailsResult.message : t.checkout.errors.delivery,
+      };
+    }
 
-  if (result.data.setOrderShippingMethod.__typename !== "Order") {
-    throw new Error("Failed to set shipping method");
+    const result = await mutate(
+      SetOrderShippingMethodMutation,
+      { shippingMethodId: [shippingMethodId] },
+      { useAuthToken: true }
+    );
+    const shipping = result.data.setOrderShippingMethod;
+    if (shipping.__typename !== "Order") {
+      return {
+        success: false,
+        error: "message" in shipping ? shipping.message : t.checkout.errors.delivery,
+      };
+    }
+  } catch (error) {
+    console.error("setShippingMethod failed:", error);
+    return { success: false, error: t.checkout.errors.delivery };
   }
 
   revalidatePath("/[locale]/checkout", "page");
+  return { success: true };
 }
 
 export async function createCustomerAddress(address: AddressInput) {
@@ -80,61 +137,62 @@ export async function createCustomerAddress(address: AddressInput) {
   return result.data.createCustomerAddress;
 }
 
-export async function transitionToArrangingPayment() {
-  const result = await mutate(
-    TransitionOrderToStateMutation,
-    { state: "ArrangingPayment" },
-    { useAuthToken: true }
-  );
+/**
+ * Moves the order to ArrangingPayment (unless a previous attempt already did) and adds the payment.
+ * Redirects to the confirmation page on success. On failure the order goes back to AddingItems, so
+ * the customer can change something and try again, and the reason is returned for the UI.
+ */
+export async function placeOrder(paymentMethodCode: string): Promise<CheckoutActionResult> {
+  const t = await getRequestT();
+  let orderCode: string;
+  try {
+    const { data } = await query(GetActiveOrderStateQuery, {}, { useAuthToken: true });
+    if (data.activeOrder?.state !== "ArrangingPayment") {
+      const transition = await mutate(
+        TransitionOrderToStateMutation,
+        { state: "ArrangingPayment" },
+        { useAuthToken: true }
+      );
+      const transitionResult = transition.data.transitionOrderToState;
+      if (transitionResult?.__typename === "OrderStateTransitionError") {
+        return {
+          success: false,
+          error: transitionResult.transitionError || transitionResult.message,
+        };
+      }
+    }
 
-  if (result.data.transitionOrderToState?.__typename === "OrderStateTransitionError") {
-    const errorResult = result.data.transitionOrderToState;
-    throw new Error(
-      `Failed to transition order state: ${errorResult.errorCode} - ${errorResult.message}`
+    const result = await mutate(
+      AddPaymentToOrderMutation,
+      { input: { method: paymentMethodCode, metadata: {} } },
+      { useAuthToken: true }
     );
+    const payment = result.data.addPaymentToOrder;
+    if (payment.__typename !== "Order") {
+      await mutate(
+        TransitionOrderToStateMutation,
+        { state: "AddingItems" },
+        { useAuthToken: true }
+      );
+      revalidatePath("/[locale]/checkout", "page");
+      const reason =
+        "paymentErrorMessage" in payment && payment.paymentErrorMessage
+          ? payment.paymentErrorMessage
+          : payment.message;
+      return { success: false, error: reason || t.checkout.errors.placeOrder };
+    }
+    orderCode = payment.code;
+  } catch (error) {
+    console.error("placeOrder failed:", error);
+    return { success: false, error: t.checkout.errors.tryAgain };
   }
-
-  revalidatePath("/[locale]/checkout", "page");
-}
-
-export async function placeOrder(paymentMethodCode: string) {
-  // First, transition the order to ArrangingPayment state
-  await transitionToArrangingPayment();
-
-  // Prepare metadata based on payment method
-  const metadata: Record<string, unknown> = {};
-
-  // For standard payment, include the required fields
-  if (paymentMethodCode === "standard-payment") {
-    metadata.shouldDecline = false;
-    metadata.shouldError = false;
-    metadata.shouldErrorOnSettle = false;
-  }
-
-  // Add payment to the order
-  const result = await mutate(
-    AddPaymentToOrderMutation,
-    {
-      input: {
-        method: paymentMethodCode,
-        metadata,
-      },
-    },
-    { useAuthToken: true }
-  );
-
-  if (result.data.addPaymentToOrder.__typename !== "Order") {
-    const errorResult = result.data.addPaymentToOrder;
-    throw new Error(`Failed to place order: ${errorResult.errorCode} - ${errorResult.message}`);
-  }
-
-  const orderCode = result.data.addPaymentToOrder.code;
 
   // Update the cart tag to immediately invalidate cached cart data
   updateTag("cart");
   updateTag("active-order");
 
   await localeRedirect(`/order-confirmation/${orderCode}`);
+  return { success: true };
 }
 
 interface GuestCustomerInput {

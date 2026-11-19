@@ -38,10 +38,19 @@ export const GetCustomerOrdersQuery = graphql(`
           state
           totalWithTax
           currencyCode
+          tracking {
+            trackingNumber
+            carrier
+            url
+            urlIncludesNumber
+          }
           createdAt
           updatedAt
           lines {
             id
+            customFields {
+              comment
+            }
             quantity
             productVariant {
               id
@@ -72,6 +81,15 @@ export const GetOrderDetailQuery = graphql(`
       id
       code
       state
+      customFields {
+        carrierDetails
+      }
+      tracking {
+        trackingNumber
+        carrier
+        url
+        urlIncludesNumber
+      }
       active
       createdAt
       updatedAt
@@ -129,6 +147,9 @@ export const GetOrderDetailQuery = graphql(`
       }
       lines {
         id
+        customFields {
+          comment
+        }
         productVariant {
           id
           name

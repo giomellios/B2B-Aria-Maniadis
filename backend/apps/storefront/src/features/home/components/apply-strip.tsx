@@ -1,13 +1,14 @@
 import { getLocale, getT } from "@/lib/i18n/server";
 import { localizePath } from "@/lib/i18n/config";
-import { PHONE_HREF } from "@/features/home/components/home-hero";
+import { getActiveCustomer } from "@/features/auth/server";
 
 /**
  * A field of the opposite tone: the heading and a
  * three-cell bar that starts the trade-account form with the company and email filled in.
  */
 export async function ApplyStrip() {
-  const [t, locale] = await Promise.all([getT(), getLocale()]);
+  const [t, locale, customer] = await Promise.all([getT(), getLocale(), getActiveCustomer()]);
+  if (customer) return null;
   const apply = t.home.apply;
 
   return (
@@ -58,11 +59,6 @@ export async function ApplyStrip() {
         </form>
         <div className="mt-3 grid gap-2 text-sm md:grid-cols-3">
           <p>{apply.note}</p>
-          <p className="md:col-start-3">
-            <a href={PHONE_HREF} className="link-underline">
-              {apply.call}
-            </a>
-          </p>
         </div>
       </div>
     </section>

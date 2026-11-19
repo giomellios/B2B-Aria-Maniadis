@@ -82,6 +82,9 @@
                     {{#if phoneNumber}}<li>{{ phoneNumber }}</li>{{/if}}
                 </ul>
             {{/with}}
+            {{#if order.customFields.carrierDetails }}
+                <p><strong>Transport company:</strong> {{ order.customFields.carrierDetails }}</p>
+            {{/if}}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -99,7 +102,12 @@
                              style="width: 50px; height: 50px;"
                              src="{{ featuredAsset.preview }}?w=50&h=50" />
                     </td>
-                    <td>{{ quantity }} x {{ productVariant.name }}</td>
+                    <td>
+                        {{ quantity }} x {{ productVariant.name }}
+                        {{#if customFields.comment }}
+                            <br /><small>Comment: {{ customFields.comment }}</small>
+                        {{/if}}
+                    </td>
                     <td>{{ productVariant.quantity }}</td>
                     <td>{{ formatMoney discountedLinePriceWithTax ../order.currencyCode 'en' }}</td>
                 </tr>

@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver } from "@nestjs/graphql";
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { Allow, Ctx, Customer, ID, Permission, RequestContext, Transaction } from "@vendure/core";
 
 import { CustomerApprovalService } from "../services/customer-approval.service";
@@ -6,6 +6,15 @@ import { CustomerApprovalService } from "../services/customer-approval.service";
 @Resolver()
 export class CustomerApprovalResolver {
   constructor(private customerApprovalService: CustomerApprovalService) {}
+
+  @Query()
+  @Allow(Permission.ReadCustomer)
+  pendingCustomerApprovals(
+    @Ctx() ctx: RequestContext,
+    @Args() args: { take?: number | null }
+  ): Promise<{ items: Customer[]; totalItems: number }> {
+    return this.customerApprovalService.findPending(ctx, args.take ?? undefined);
+  }
 
   @Mutation()
   @Transaction()

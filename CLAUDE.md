@@ -24,11 +24,11 @@ B2B-Aria-Maniadis/
 ├── CLAUDE.md, .mcp.json, .claude/skills/   ← Claude Code setup (open Claude Code HERE)
 ├── docker-compose.yml                       ← local Postgres 15 (+ Meilisearch, currently unused by Vendure)
 └── backend/                                 ← npm workspaces root (package-lock.json, postinstall, patches/)
-    ├── patches/@vendure+dashboard+3.7.3.patch
+    ├── patches/@vendure+dashboard+3.7.4.patch
     ├── scripts/postinstall.js, scripts/setup-greek-translations.js
     ├── lingui.config.js
     └── apps/
-        ├── server/       ← Vendure 3.7.3 (server + worker + Dashboard)
+        ├── server/       ← Vendure 3.7.4 (server + worker + Dashboard)
         └── storefront/   ← Next.js 16 / React 19 B2B storefront (gql.tada, Tailwind 4, Radix/shadcn)
 ```
 
@@ -37,7 +37,7 @@ B2B-Aria-Maniadis/
 | Fact | Value |
 |---|---|
 | What the app is | B2B wholesale shop for **ARIA Bags & Hats** (Greek client): Vendure backend + admin Dashboard + Next.js storefront. Customers register with company + VAT number and can log in **only after an admin approves them** (no self-service email verification). |
-| Vendure version (installed) | **3.7.3** (`@vendure/core`, `dashboard`, `cli`, `email-plugin`, `asset-server-plugin`, `graphiql-plugin` — all pinned exactly; upgraded from 3.5.3 in Sept 2026, see §11). `typeorm` is pinned in `backend/package.json` (root) so npm hoists a single copy — keep it equal to the version `@vendure/core` uses. Dashboard runs on Vite 7 / Base UI. |
+| Vendure version (installed) | **3.7.4** (`@vendure/core`, `dashboard`, `cli`, `email-plugin`, `asset-server-plugin`, `graphiql-plugin` — all pinned exactly; upgraded from 3.5.3 in Sept 2026 and to the 3.7.4 patch in Nov 2026, see §11). `typeorm` is pinned in `backend/package.json` (root) so npm hoists a single copy — keep it equal to the version `@vendure/core` uses. Dashboard runs on Vite 7 / Base UI. |
 | Package manager | **npm** workspaces (`backend/package-lock.json`). Never use pnpm/yarn/bun here. |
 | Database | **PostgreSQL** (`pg`), via `docker-compose.yml` locally. Env: `DB_HOST/PORT/NAME/USERNAME/PASSWORD/SCHEMA`. |
 | Node | Server Docker image uses `node:20`. |
@@ -48,9 +48,9 @@ B2B-Aria-Maniadis/
 | Search | `DefaultSearchPlugin` with custom `B2BPostgresSearchStrategy` (adds partial-SKU `ILIKE` matching). |
 | Auth | `requireVerification: true`, bearer + cookie tokens, superadmin from `SUPERADMIN_USERNAME/PASSWORD` env. Shop login uses `ApprovalAwareNativeAuthenticationStrategy` (customer-approval plugin); the "verify your email" email is disabled. |
 | Customer custom fields | `vatNumber`, `company` (in `vendure-config.ts`, editable by the customer in the storefront profile) and `approved` (readonly, admin-only, defined by the customer-approval plugin). |
-| Payments | `dummyPaymentHandler` only (no real payment method yet). |
+| Payments / shipping | `checkout-options` plugin: payment methods **bank deposit** (`bank-transfer`) and **cash on delivery** (`cash-on-delivery`), both offline handlers that leave the payment *Authorized* (admin settles it in the Dashboard); shipping methods **ΕΛΤΑ / SPEEDEX / Μεταφορική**. `dummyPaymentHandler` is still registered but its method is disabled. |
 | Email | Dev: files + `/mailbox`. Elsewhere: SMTP when `SMTP_HOST` is set, otherwise no emails. Links use `STOREFRONT_URL`. Env vars typed in `src/environment.d.ts`. |
-| Custom plugins (`src/plugins/`) | `csv-import` (upload → job queue on the **worker** → creates/updates products; permission `ImportProductsFromCsv`; Admin API `startCsvProductImport` / `csvProductImportJob`) · `customer-approval` (`Customer.approved` flag, `approveCustomer` / `revokeCustomerApproval` mutations, login gate, Dashboard button + bulk action) · `members-only` (global interceptor: the **Shop API answers signed-in users only**, except the operations in `PUBLIC_SHOP_OPERATIONS` — sign-in, registration, password reset, `activeChannel`, `availableCountries`) · `greek-translations` (Dashboard `el.po` + branded login page) · `translation-sync` (fills missing product/variant translations for all channel languages) · `search/b2b-search-strategy.ts` (SearchStrategy: partial-SKU `ILIKE` + `priceRangeWithTax` filter) with `search/b2b-search.plugin.ts` (`B2BSearchPlugin`, only extends the Shop API `SearchInput` with `priceRangeWithTax`). |
+| Custom plugins (`src/plugins/`) | `csv-import` (upload → job queue on the **worker** → creates/updates products; permission `ImportProductsFromCsv`; Admin API `startCsvProductImport` / `csvProductImportJob`) · `customer-approval` (`Customer.approved` flag, `approveCustomer` / `revokeCustomerApproval` mutations, login gate, Dashboard button + bulk action) · `members-only` (global interceptor: the **Shop API answers signed-in users only**, except the operations in `PUBLIC_SHOP_OPERATIONS` — sign-in, registration, password reset, `activeChannel`, `availableCountries`) · `greek-translations` (Dashboard `el.po` + branded login page) · `root-redirect` (`GET /` → 302 `/dashboard/`; nothing else) · `translation-sync` (fills missing product/variant translations for all channel languages) · `product-image-filter` (exposes `Product.featuredAssetId` / `ProductVariant.featuredAssetId` in the Admin API so the product and variant lists can sort by image — DESC = without an image first — and filter `isNull`; Dashboard column "Εικόνα" with ✓ / "Χωρίς εικόνα") · `order-notifications` (Dashboard bell alert "Νέα παραγγελία" for placed orders no admin has seen; internal `Order.adminSeenAt`; Admin API `unseenOrders` / `markOrdersSeen` (ReadOrder); opening an order in the Dashboard marks it seen) · `checkout-options` (bank-deposit + cash-on-delivery payment handlers; `ShippingMethod.requiresCarrierDetails` + `Order.carrierDetails` custom fields — "Μεταφορική" asks the customer for their transport company, enforced by an `OrderProcess` on → ArrangingPayment; `CheckoutOptionsSeedService` creates the methods on first server start and, only in that first run, soft-deletes the other shipping methods and disables the other payment methods; tracking: admin-only `Order.trackingNumber` (typed in the order page's custom fields) + `ShippingMethod.trackingUrl` (`{code}` = the number), exposed read-only to customers as Shop API `Order.tracking`) · `facet-comments` (FacetValue custom fields `commentEnabled` / `commentRequired` / `commentLabel` / `commentPlaceholder` set by the admin; variants tagged with such a value — directly or via their product — ask the customer for a comment on the storefront, stored in `OrderLine.customFields.comment`; an `OrderInterceptor` refuses Shop API lines missing a required comment; Dashboard block "Σχόλια πελάτη" on the order detail page) · `search/b2b-search-strategy.ts` (SearchStrategy: partial-SKU `ILIKE` + `priceRangeWithTax` filter) with `search/b2b-search.plugin.ts` (`B2BSearchPlugin`, only extends the Shop API `SearchInput` with `priceRangeWithTax`). |
 | Migrations | `src/migrations/` (Postgres). In **dev** (`APP_ENV=dev`) the server uses `synchronize: true` and does **not** run migrations; outside dev, `src/index.ts` runs `runMigrations` before bootstrap. `1790605810464-vendure-3-7-3-upgrade.ts` is the 3.5.3→3.7.3 upgrade (with the 3.6 data helpers); the first migration uses `IF NOT EXISTS` so it is safe on databases created by `synchronize`. |
 
 ---
@@ -125,7 +125,7 @@ tsconfig.dashboard.json    # dashboard extension type-checking (jsx, @/gql and @
 
 ## 5. Commands
 
-npm only. On **3.7.3** (current). `(backend)` = run in `backend/`, `(server)` = run in `backend/apps/server/`.
+npm only. On **3.7.4** (current). `(backend)` = run in `backend/`, `(server)` = run in `backend/apps/server/`.
 
 | Task | Command |
 |---|---|
@@ -160,7 +160,7 @@ starts prompting anyway, stop it and scaffold by hand using the templates in the
 
 1. **Never edit `node_modules/`, never fork or patch `@vendure/dashboard` or `@vendure/core`.**
    Extend through plugins, strategies, custom fields, and `defineDashboardExtension`.
-   (This repo has two legacy exceptions — `backend/patches/@vendure+dashboard+3.7.3.patch` and
+   (This repo has two legacy exceptions — `backend/patches/@vendure+dashboard+3.7.4.patch` and
    the Greek-translation copy in `postinstall`. Don't add new ones; see §12.)
 2. **All custom code lives in a plugin** under `src/plugins/<feature>/`, registered in the
    `plugins` array of `src/vendure-config.ts`. One plugin per business capability.
@@ -262,6 +262,11 @@ starts prompting anyway, stop it and scaffold by hand using the templates in the
 
 ## 11. Upgrade status
 
+Patched **3.7.3 → 3.7.4** (Nov 2026): fixes the dev Dashboard going blank after the login form
+flashes (Vendure #5451/#5459, triggered by `@tanstack/react-router` 1.170.x) and two security
+issues (API-key permissions, stock overselling). No schema change; Dashboard patch renamed (file
+unchanged), `lingui.config.js` and `nav-user.tsx` identical upstream, search strategy unaffected.
+
 Upgraded **3.5.3 → 3.7.3** on branch `chore/vendure-3.7.3-upgrade` (Sept 2026): packages bumped,
 Radix→Base UI codemod run on `src/plugins/`, Dashboard patch regenerated for 3.7.3, Greek
 lingui config re-synced, search strategy updated, upgrade migration generated and tested against
@@ -272,7 +277,7 @@ a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
 
 ## 12. Project-specific notes & known deviations (don't copy these patterns)
 
-- **`backend/patches/@vendure+dashboard+3.7.3.patch`** (patch-package) removes the "Explore
+- **`backend/patches/@vendure+dashboard+3.7.4.patch`** (patch-package) removes the "Explore
   Platform & Cloud" link from the Dashboard user menu (`nav-user.tsx`). It is tied to the exact
   version and **will fail on the next upgrade** — regenerate it: edit the file in
   `node_modules`, then `npx patch-package @vendure/dashboard` (restore the pristine
@@ -281,11 +286,11 @@ a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
 - **`scripts/setup-greek-translations.js`** copies `backend/lingui.config.js` and
   `src/plugins/greek-translations/dashboard/el.po` into `node_modules/@vendure/dashboard` on
   every install. The docs confirm a plugin cannot add a new Dashboard UI language, so this is
-  still needed. `backend/lingui.config.js` is the 3.7.3 upstream config + `'el'` — re-sync it on
+  still needed. `backend/lingui.config.js` is the 3.7.4 upstream config (identical to 3.7.3) + `'el'` — re-sync it on
   every Dashboard upgrade. Strings added after 3.5.3 show in English until added to `el.po`.
 - `search/b2b-search-strategy.ts` subclasses Vendure's **internal** `PostgresSearchStrategy`
   via `require('@vendure/core/dist/...')` and re-implements the private `applyTermAndFilters`
-  (currently mirroring 3.7.3 + the partial-SKU `ILIKE`). On every upgrade, diff it against the
+  (currently mirroring 3.7.4 — unchanged since 3.7.3 — + the partial-SKU `ILIKE`). On every upgrade, diff it against the
   new core file and re-test that searching "1034" finds SKU "A1034…".
 - **Customer approval invariants** (customer-approval plugin): `approved === true` ⇔ admin
   approved. Approve also sets `user.verified = true`; revoke sets it back to `false` and deletes
@@ -308,7 +313,16 @@ a copy of a 3.5.3 schema. For the next upgrade follow the runbook in
   and call `requireActiveCustomer()`. Only add an operation to `PUBLIC_SHOP_OPERATIONS` if signed-out
   visitors truly need it and it exposes no product data.
 - `vatNumber` / `company` are intentionally editable by customers (storefront profile page).
-- Only `dummyPaymentHandler` is configured — don't ship to production without a real
-  payment method (e.g. invoice/bank-transfer handler, see skill backend §9).
+- Checkout methods are created by `CheckoutOptionsSeedService` (matched by code, never updated). On
+  the first boot that creates them it also removes every other shipping method and disables every
+  other payment method — that is a one-time cleanup; don't make it run on every boot. Shipping prices
+  start at 0: the admin sets real rates in the Dashboard.
+- Tracking links: ΕΛΤΑ / SPEEDEX document no deep link to a shipment, so their `trackingUrl` defaults
+  are the carriers' search pages (the storefront shows the number with a copy button). Put `{code}`
+  in a method's tracking page in the Dashboard if a direct link becomes available.
+- Dashboard alerts start checking 5 s after the Dashboard loads, then every `recheckInterval`; a
+  check that fails (e.g. before sign-in) returns null, so the bell may need up to a minute.
+- The storefront checkout moves an order stuck in `ArrangingPayment` back to `AddingItems` before
+  changing it (a failed payment attempt would otherwise block address/delivery changes and retries).
 - `README.md` mentions Meilisearch, but Vendure currently uses the Postgres search strategy.
 - Secrets live in `.env` / `.env.local` (git-ignored). Never print, copy or commit their values.

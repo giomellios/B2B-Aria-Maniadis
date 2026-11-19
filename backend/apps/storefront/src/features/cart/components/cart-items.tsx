@@ -4,6 +4,7 @@ import { getT } from "@/lib/i18n/server";
 import { Button } from "@/design-system";
 import { Minus, Plus, X } from "@/design-system/icons";
 import { Price } from "@/components/shared/price";
+import { LineComment } from "@/components/shared/line-comment";
 import { removeFromCart, adjustQuantity } from "@/features/cart/services/cart.actions";
 
 import { getOrderLineImagePreview } from "@/lib/utils";
@@ -14,6 +15,7 @@ type ActiveOrder = {
   lines: Array<{
     id: string;
     quantity: number;
+    customFields?: { comment?: string | null } | null;
     unitPriceWithTax: number;
     linePriceWithTax: number;
     productVariant: {
@@ -97,6 +99,11 @@ export async function CartItems({ activeOrder }: { activeOrder: ActiveOrder | nu
                   <Price value={line.unitPriceWithTax} currencyCode={activeOrder.currencyCode} />{" "}
                   {t.common.each}
                 </p>
+                <LineComment
+                  comment={line.customFields?.comment}
+                  label={t.common.comment}
+                  className="mt-1"
+                />
               </div>
 
               <div className="col-start-2 flex items-center gap-1 sm:col-start-auto">

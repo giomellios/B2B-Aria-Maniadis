@@ -22,6 +22,7 @@ import {
   FieldGroup,
 } from "@/design-system";
 import { useForm, Controller } from "react-hook-form";
+import { toast } from "sonner";
 import { Spinner } from "@/design-system/icons";
 import { useRouter } from "next/navigation";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
@@ -70,6 +71,9 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
   const [saving, setSaving] = useState(false);
   const [useSameForBilling, setUseSameForBilling] = useState(true);
 
+  // The company the customer registered with: new addresses start with it.
+  const customerCompany = order.customer?.customFields?.company?.trim() || "";
+
   const getDefaultFormValues = (): Partial<AddressFormData> => {
     const customerFullName = order.customer
       ? `${order.customer.firstName} ${order.customer.lastName}`.trim()
@@ -88,11 +92,12 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
           countries[0]?.code ||
           "US",
         phoneNumber: order.shippingAddress.phoneNumber || order.customer?.phoneNumber || "",
-        company: order.shippingAddress.company || "",
+        company: order.shippingAddress.company || customerCompany,
       };
     }
     return {
       fullName: customerFullName,
+      company: customerCompany,
       countryCode: countries[0]?.code || "US",
       phoneNumber: order.customer?.phoneNumber || "",
     };
@@ -116,10 +121,10 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
       const selectedAddress = addresses.find((a) => a.id === selectedAddressId);
       if (!selectedAddress) return;
 
-      await setShippingAddress(
+      const result = await setShippingAddress(
         {
           fullName: selectedAddress.fullName || "",
-          company: selectedAddress.company || "",
+          company: selectedAddress.company || customerCompany,
           streetLine1: selectedAddress.streetLine1,
           streetLine2: selectedAddress.streetLine2 || "",
           city: selectedAddress.city || "",
@@ -130,11 +135,13 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
         },
         useSameForBilling
       );
+      if (!result.success) {
+        toast.error(t.checkout.errors.address, { description: result.error });
+        return;
+      }
 
       router.refresh();
       onComplete();
-    } catch (error) {
-      console.error("Error setting address:", error);
     } finally {
       setLoading(false);
     }
@@ -159,11 +166,13 @@ export default function ShippingAddressStep({ onComplete }: ShippingAddressStepP
   const onSubmitGuestAddress = async (data: AddressFormData) => {
     setLoading(true);
     try {
-      await setShippingAddress(data, useSameForBilling);
+      const result = await setShippingAddress(data, useSameForBilling);
+      if (!result.success) {
+        toast.error(t.checkout.errors.address, { description: result.error });
+        return;
+      }
       router.refresh();
       onComplete();
-    } catch (error) {
-      console.error("Error setting address:", error);
     } finally {
       setLoading(false);
     }

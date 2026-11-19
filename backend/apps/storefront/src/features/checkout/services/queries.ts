@@ -15,12 +15,18 @@ export const GetActiveOrderForCheckoutQuery = graphql(`
       totalWithTax
       currencyCode
       couponCodes
+      customFields {
+        carrierDetails
+      }
       customer {
         id
         firstName
         lastName
         emailAddress
         phoneNumber
+        customFields {
+          company
+        }
       }
       shippingAddress {
         fullName
@@ -58,6 +64,9 @@ export const GetActiveOrderForCheckoutQuery = graphql(`
       }
       lines {
         id
+        customFields {
+          comment
+        }
         productVariant {
           id
           name
@@ -84,6 +93,16 @@ export const GetActiveOrderForCheckoutQuery = graphql(`
   }
 `);
 
+/** Just the active order's state, for the checkout actions. */
+export const GetActiveOrderStateQuery = graphql(`
+  query GetActiveOrderState {
+    activeOrder {
+      id
+      state
+    }
+  }
+`);
+
 export const GetEligibleShippingMethodsQuery = graphql(`
   query GetEligibleShippingMethods {
     eligibleShippingMethods {
@@ -92,6 +111,9 @@ export const GetEligibleShippingMethodsQuery = graphql(`
       code
       description
       priceWithTax
+      customFields {
+        requiresCarrierDetails
+      }
     }
   }
 `);
@@ -117,8 +139,14 @@ export const GetOrderByCodeQuery = graphql(`
       state
       totalWithTax
       currencyCode
+      customFields {
+        carrierDetails
+      }
       lines {
         id
+        customFields {
+          comment
+        }
         productVariant {
           id
           name

@@ -9,6 +9,7 @@ import { format } from "@/lib/i18n/dictionaries";
 import { Link } from "@/lib/i18n/navigation";
 import { ChevronRight } from "@/design-system/icons";
 import { TradeFaq } from "@/features/home/server";
+import { ResetOnRevisit } from "@/components/shared/reset-on-revisit";
 import {
   SITE_NAME,
   truncateDescription,
@@ -134,22 +135,26 @@ export default async function ProductDetailPage({
           <span className="line-clamp-1 text-foreground">{product.name}</span>
         </nav>
 
-        {productImages.length > 0 ? (
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-5">
-            <div className="lg:sticky lg:top-sticky lg:col-span-6 lg:self-start">
-              <ProductImageCarousel
-                images={productImages}
-                variantImages={variantImages}
-                code={product.variants[0]?.sku.split("-")[0]}
-              />
+        {/* Quantities, comments and selections start empty on every visit, also when the page
+            comes back from Next's client cache (cacheComponents keeps it alive in the background). */}
+        <ResetOnRevisit>
+          {productImages.length > 0 ? (
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-5">
+              <div className="lg:sticky lg:top-sticky lg:col-span-6 lg:self-start">
+                <ProductImageCarousel
+                  images={productImages}
+                  variantImages={variantImages}
+                  code={product.variants[0]?.sku.split("-")[0]}
+                />
+              </div>
+              <div className="lg:col-span-6 lg:pl-8">
+                <ProductInfo product={product} searchParams={searchParamsResolved} />
+              </div>
             </div>
-            <div className="lg:col-span-6 lg:pl-8">
-              <ProductInfo product={product} searchParams={searchParamsResolved} />
-            </div>
-          </div>
-        ) : (
-          <ProductInfo product={product} searchParams={searchParamsResolved} layout="split" />
-        )}
+          ) : (
+            <ProductInfo product={product} searchParams={searchParamsResolved} layout="split" />
+          )}
+        </ResetOnRevisit>
       </div>
 
       <TradeFaq compact />

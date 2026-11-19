@@ -9,13 +9,15 @@ interface LoginButtonProps extends ComponentProps<"button"> {
   isLoggedIn: boolean;
 }
 
-export function LoginButton({ isLoggedIn, ...props }: LoginButtonProps) {
+/** Sign-in / sign-out button. `children` (e.g. an icon) are rendered before the label. */
+export function LoginButton({ isLoggedIn, children, ...props }: LoginButtonProps) {
   const [isPending, startTransition] = useTransition();
   const router = useLocaleRouter();
   const t = useT();
 
   return (
     <button
+      type="button"
       {...props}
       aria-disabled={isPending}
       onClick={() => {
@@ -28,6 +30,7 @@ export function LoginButton({ isLoggedIn, ...props }: LoginButtonProps) {
         }
       }}
     >
+      {children}
       {isLoggedIn ? t.nav.signOut : t.nav.signIn}
     </button>
   );

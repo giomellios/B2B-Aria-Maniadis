@@ -26,7 +26,7 @@ import {
   Button,
 } from "@/design-system";
 import { Price } from "@/components/shared/price";
-import { OrderStatusBadge, ReorderButton } from "@/features/account";
+import { OrderStatusBadge, OrderTrackingLink, ReorderButton } from "@/features/account";
 import { formatDate } from "@/lib/utils";
 import { Link } from "@/lib/i18n/navigation";
 
@@ -114,6 +114,11 @@ export default async function OrdersPage(props: PageProps<"/[locale]/account/ord
                     </TableCell>
                     <TableCell>
                       <OrderStatusBadge state={order.state} />
+                      {order.tracking && (
+                        <div>
+                          <OrderTrackingLink tracking={order.tracking} />
+                        </div>
+                      )}
                     </TableCell>
                     <TableCell className="text-right tabular-nums">
                       {t.pieces(pieces)}

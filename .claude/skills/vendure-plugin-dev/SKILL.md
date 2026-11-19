@@ -11,7 +11,7 @@ you are working on — don't work from memory, Vendure's APIs are specific.
 
 | Reference | Read it when |
 |---|---|
-| `references/version-notes.md` | **Always first.** Version gate table (which APIs exist in our installed 3.7.3, and which were added in 3.6/3.7), Dashboard API changes since 3.5, and the upgrade runbook for the next upgrade. |
+| `references/version-notes.md` | **Always first.** Version gate table (which APIs exist in our installed 3.7.4, and which were added in 3.6/3.7), Dashboard API changes since 3.5, and the upgrade runbook for the next upgrade. |
 | `references/backend-recipes.md` | Plugins, entities, custom fields, services, GraphQL, permissions, channels, events, job queue, strategies, migrations, tests. |
 | `references/dashboard-recipes.md` | Anything the admin sees: routes/pages, list & detail pages, page blocks, action bar, nav, forms, tables, widgets, data fetching, build & deploy. |
 | `references/extension-targets.md` | Built-in `pageId` / `blockId` / action-bar `itemId` / nav section IDs to hook into. |

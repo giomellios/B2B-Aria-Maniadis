@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, Separator } from "@/design-sy
 import { OrderLine } from "@/features/checkout/types";
 import { useCheckout } from "@/features/checkout/hooks/use-checkout";
 import { Price } from "@/components/shared/price";
+import { LineComment } from "@/components/shared/line-comment";
 import { OrderGrandTotal, OrderTotalsBreakdown } from "@/components/shared/order-totals";
 
 import { getOrderLineImagePreview } from "@/lib/utils";
@@ -45,6 +46,11 @@ export default function OrderSummary() {
                   <p className="text-xs text-muted-foreground">
                     {t.common.qty}: {line.quantity}
                   </p>
+                  <LineComment
+                    comment={line.customFields?.comment}
+                    label={t.common.comment}
+                    className="text-xs"
+                  />
                 </div>
                 <div className="text-sm font-medium">
                   <Price value={line.linePriceWithTax} currencyCode={order.currencyCode} />

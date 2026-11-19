@@ -18,7 +18,8 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { localeRedirect } from "@/lib/i18n/redirect";
 import { format } from "@/lib/i18n/dictionaries";
 import { Price } from "@/components/shared/price";
-import { OrderStatusBadge } from "@/features/account";
+import { LineComment } from "@/components/shared/line-comment";
+import { OrderStatusBadge, OrderTracking } from "@/features/account";
 import { formatDate } from "@/lib/utils";
 import { Link } from "@/lib/i18n/navigation";
 import { getOrderLineImagePreview } from "@/lib/utils";
@@ -105,6 +106,10 @@ export default async function OrderDetailPage(props: PageProps<"/[locale]/accoun
                         <p className="text-sm text-muted-foreground">
                           {dict.common.sku}: {line.productVariant.sku}
                         </p>
+                        <LineComment
+                          comment={line.customFields?.comment}
+                          label={dict.common.comment}
+                        />
                       </div>
                       <div className="text-right">
                         <p className="font-medium">
@@ -269,6 +274,15 @@ export default async function OrderDetailPage(props: PageProps<"/[locale]/accoun
                     </p>
                   </div>
                 ))}
+                {order.customFields?.carrierDetails && (
+                  <p className="mt-3 whitespace-pre-wrap text-sm">
+                    <span className="font-medium">{dict.checkout.review.carrier}:</span>{" "}
+                    {order.customFields.carrierDetails}
+                  </p>
+                )}
+                {order.tracking && (
+                  <OrderTracking tracking={order.tracking} className="mt-4 border-t pt-4" />
+                )}
               </CardContent>
             </Card>
           )}

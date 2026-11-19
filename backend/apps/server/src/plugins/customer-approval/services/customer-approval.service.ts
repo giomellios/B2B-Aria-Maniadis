@@ -125,6 +125,29 @@ export class CustomerApprovalService implements OnModuleInit {
     return this.getCustomerWithUser(ctx, customer.id);
   }
 
+  /**
+   * Registered (non-guest, non-deleted) customers of the active channel who have not been
+   * approved yet, newest first.
+   */
+  async findPending(
+    ctx: RequestContext,
+    take = 5
+  ): Promise<{ items: Customer[]; totalItems: number }> {
+    const [items, totalItems] = await this.connection
+      .getRepository(ctx, Customer)
+      .createQueryBuilder("customer")
+      .innerJoin("customer.channels", "channel", "channel.id = :channelId", {
+        channelId: ctx.channelId,
+      })
+      .innerJoin("customer.user", "user", "user.deletedAt IS NULL")
+      .where("customer.deletedAt IS NULL")
+      .andWhere("customer.customFields.approved = :approved", { approved: false })
+      .orderBy("customer.createdAt", "DESC")
+      .take(Math.min(Math.max(take, 1), 50)) // take(0) would mean "no limit"
+      .getManyAndCount();
+    return { items, totalItems };
+  }
+
   private async setApproved(ctx: RequestContext, customer: Customer, approved: boolean) {
     // Only touch the one column; saving the whole entity would also cascade into the user relation.
     await this.connection

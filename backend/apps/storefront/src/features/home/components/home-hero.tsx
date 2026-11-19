@@ -1,8 +1,6 @@
 import { Suspense } from "react";
-import { Link } from "@/lib/i18n/navigation";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
-import { Button } from "@/design-system";
 import { IslandSheet, type SheetRun } from "@/features/home/components/island-sheet";
 import { ISLAND_RUNS, type CatalogueRun } from "@/features/home/data/catalogue";
 import { getDestinations, type Destination } from "@/features/home/services/home.service";
@@ -92,25 +90,7 @@ export async function HomeHero() {
           data-reveal-load
           style={{ "--i": 3 } as React.CSSProperties}
           className="col-span-2 flex flex-col items-start gap-4 sm:col-span-1 md:col-span-3 md:items-end md:text-right"
-        >
-          <p>
-            <a href={PHONE_HREF} className="link-underline">
-              {PHONE}
-            </a>
-            <br />
-            <a href={`mailto:${EMAIL}`} className="link-underline">
-              {EMAIL}
-            </a>
-          </p>
-          <div className="flex flex-wrap items-center gap-4 md:justify-end">
-            <Link href="/sign-in" className="link-underline">
-              {hero.signIn}
-            </Link>
-            <Button variant="gold" size="lg" asChild>
-              <Link href="/register">{hero.apply}</Link>
-            </Button>
-          </div>
-        </div>
+        ></div>
       </div>
 
       <div className="mt-16 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 md:mt-24">

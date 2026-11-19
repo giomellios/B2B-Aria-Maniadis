@@ -20,9 +20,11 @@ export * from "@/design-system/forms/checkbox";
 export * from "@/design-system/forms/field";
 export * from "@/design-system/forms/form";
 export * from "@/design-system/forms/input";
+export * from "@/design-system/forms/password-input";
 export * from "@/design-system/forms/label";
 export * from "@/design-system/forms/radio-group";
 export * from "@/design-system/forms/select";
+export * from "@/design-system/forms/textarea";
 
 // motion
 export * from "@/design-system/motion/reveal-heading";
